@@ -1,31 +1,29 @@
-# export-host-commands.tcl — 在 **Capture 内部**运行，导出宿主命令面（headless 拿不到的那部分）
+# export-host-commands.tcl (v2) — 在 **Capture 内部**导出宿主命令面
 #
-# 用法（在 Capture 的命令窗口 / 脚本窗口里）：
-#     source <本文件路径>
-#     ::hostdump::Run
-# 或者指定输出目录：
-#     ::hostdump::Run D:/tmp/capture-host-export
+# v2 相比 v1 的变化：
+#   1) arity 探测覆盖到 Place* / Add* / Register* / Cap*（零参调用，最安全的情形）
+#   2) 结果写成 **arity-probe.tsv**（cmd / 类别 / 参数名或类型 / 原始报错），可直接排序筛选
+#   3) 新增 namespace-procs.txt：每个命名空间下的 proc **带参数名**（`info args`）
+#   4) 新增 place-and-cap.txt：Place*/Cap*/Add*/Register* 单独成表
+#   5) report.txt 里内建"关键命令存在性核对"（RegisterAction/PlaceWire/…）
 #
-# 产出（UTF-8 纯文本，UTF-8 无 BOM）：
-#   report.txt                 概要与统计（先看这个）
-#   commands-all.txt           全部命令名（info commands，排序）
-#   commands-prefix.tsv        前缀 → 数量（看家族分布）
-#   commands-candidates.txt    与 action/菜单/放置/选中 相关的命令（最有价值）
-#   procs-all.txt              全部 Tcl proc 名（info procs）
-#   namespaces.txt             顶层命名空间及其 proc 数
-#   packages.txt               已加载 package 及版本
-#   env.txt                    Tcl/平台/安装路径等环境信息
-#   arity-probe.txt            **对安全前缀做零参探测**，从报错文本反推参数名
+# 用法（Capture 命令窗口）：
+#     source <本文件>
+#     ::hostdump::Run                                   ;# 默认目录 + 全套探测
+#     ::hostdump::Run D:/tmp/capture-host-v2            ;# 指定目录
+#     ::hostdump::Run D:/tmp/x --no-probe               ;# 完全不调用任何命令
+#     ::hostdump::Run D:/tmp/x --deep                   ;# 额外对 Get/Is/Has 试 1..4 个空参
 #
-# 说明：
-#   * 全程不修改设计、不保存、不注册任何东西；
-#   * arity 探测只对白名单前缀（capGet/capIs/capHas/Get/Is/Has 等）做**零参调用**，
-#     并跳过含 exit/quit/delete/remove/close/open/save/load/run/exec 等词的名字；
-#     如仍不放心，用 `::hostdump::Run <dir> --no-probe` 完全跳过探测。
+# 安全边界：
+#   * 默认只做**零参**调用；零参时放置类命令会在参数检查阶段就报错，不会进入交互；
+#   * 跳过名字含 exit/quit/delete/remove/close/open/save/load/run/exec/reset/clear 的命令；
+#   * 跳过 `*WithDialog`（弹窗会阻塞 Capture）；
+#   * 全程不注册、不修改设计、不保存。
 
 namespace eval ::hostdump {
     variable outdir ""
     variable errors {}
+    variable probeCount 0
 }
 
 proc ::hostdump::W {name content} {
@@ -38,40 +36,56 @@ proc ::hostdump::W {name content} {
     return $p
 }
 
-proc ::hostdump::Section {label script} {
-    variable errors
-    set code [catch {uplevel 1 $script} res]
-    if {$code} {
-        lappend errors "$label: $res"
-        return ""
+# 解析一条零参调用的报错，返回 {kind arity detail}
+proc ::hostdump::ParseErr {msg} {
+    set msg [string map {"\n" " "} $msg]
+    # 形态1: Wrong number of arguments :cmd a b c  argument 1
+    if {[regexp {Wrong number of arguments :(\S+)((?:\s+\S+)*?)\s+argument\s+(\d+)} $msg -> cmd params idx]} {
+        set plist [regexp -all -inline {\S+} $params]
+        return [list wrongnum [llength $plist] [join $plist " "]]
     }
-    return $res
+    # 形态2: TypeError in method 'X', argument N of type 'T'
+    if {[regexp {argument (\d+) of type '([^']+)'} $msg -> pos typ]} {
+        return [list typeerror $pos $typ]
+    }
+    if {[regexp {No matching function for overloaded '([^']+)'} $msg -> m]} {
+        return [list overloaded "" $m]
+    }
+    if {$msg eq ""} { return [list ok 0 ""] }
+    return [list other "" [string range $msg 0 120]]
 }
 
 proc ::hostdump::Run {args} {
     variable outdir
     variable errors
+    variable probeCount
     set outdir ""
     set probe 1
+    set deep 0
+    set probePlace 0
     foreach a $args {
-        if {$a eq "--no-probe"} { set probe 0 } else { set outdir $a }
+        switch -- $a {
+            --no-probe { set probe 0 }
+            --deep        { set deep 1 }
+            --probe-place { set probePlace 1 }
+            default    { set outdir $a }
+        }
     }
     if {$outdir eq ""} {
         if {[info exists ::env(TEMP)]} {
-            set outdir [file join $::env(TEMP) capture-host-export]
+            set outdir [file join $::env(TEMP) capture-host-export-v2]
         } else {
-            set outdir [file join [pwd] capture-host-export]
+            set outdir [file join [pwd] capture-host-export-v2]
         }
     }
     file mkdir $outdir
     set errors {}
+    set probeCount 0
 
-    # ---- 1) 全部命令 ----
+    # ---- 1) 全量命令 / 前缀分布 ----
     set all [lsort [info commands]]
     ::hostdump::W commands-all.txt [join $all "\n"]
-    set nAll [llength $all]
 
-    # ---- 2) 前缀分布 ----
     array set cnt {}
     foreach c $all {
         set p [lindex [split $c "_"] 0]
@@ -82,7 +96,7 @@ proc ::hostdump::Run {args} {
     foreach p [lsort [array names cnt]] { lappend lines "$p\t$cnt($p)" }
     ::hostdump::W commands-prefix.tsv [join $lines "\n"]
 
-    # ---- 3) 关心的命令（action / 菜单 / 放置 / 选中 / 设计 / 页）----
+    # ---- 2) 候选 / 放置与 Cap 专表 ----
     set interesting {}
     foreach c $all {
         if {[regexp -nocase -- {(action|menu|command|place|draw|add|create|new|delete|select|active|page|design|panel|dock|widget|tool|bar)} $c]} {
@@ -90,24 +104,35 @@ proc ::hostdump::Run {args} {
         }
     }
     ::hostdump::W commands-candidates.txt [join $interesting "\n"]
-    set nInt [llength $interesting]
 
-    # ---- 4) proc 与命名空间 ----
+    set place {}
+    foreach c $all {
+        if {[regexp {^(Place|Cap|cap|Add|Register|Insert)} $c]} { lappend place $c }
+    }
+    ::hostdump::W place-and-cap.txt [join $place "\n"]
+
+    # ---- 3) proc / 命名空间（带参数名）----
     set procs [lsort [info procs]]
     ::hostdump::W procs-all.txt [join $procs "\n"]
-    set nProc [llength $procs]
 
     set nsLines {}
+    set nsProcLines {}
     foreach ns [lsort [namespace children ::]] {
         set ps {}
         catch {set ps [namespace eval $ns {info procs}]}
         set cs {}
         catch {set cs [namespace eval $ns {info commands}]}
         lappend nsLines "$ns\tprocs=[llength $ps]\tcmds=[llength $cs]"
+        foreach p [lsort $ps] {
+            set a {}
+            catch {set a [namespace eval $ns [list info args $p]]}
+            lappend nsProcLines "$ns\::$p\t[join $a { }]"
+        }
     }
     ::hostdump::W namespaces.txt [join $nsLines "\n"]
+    ::hostdump::W namespace-procs.txt [join $nsProcLines "\n"]
 
-    # ---- 5) 包 ----
+    # ---- 4) 包 / 环境 ----
     set pkLines {}
     foreach p [lsort [package names]] {
         set v ""
@@ -116,7 +141,6 @@ proc ::hostdump::Run {args} {
     }
     ::hostdump::W packages.txt [join $pkLines "\n"]
 
-    # ---- 6) 环境 ----
     set envLines {}
     lappend envLines "tcl_patchlevel\t[info patchlevel]"
     lappend envLines "tcl_library\t[info library]"
@@ -130,44 +154,84 @@ proc ::hostdump::Run {args} {
     }
     ::hostdump::W env.txt [join $envLines "\n"]
 
-    # ---- 7) 安全的 arity 探测（零参，从报错文本拿参数名）----
+    # ---- 5) 关键命令存在性 ----
+    set keyCmds {
+        RegisterAction InsertXMLMenu RefreshMenu GetSelectedObjects GetActivePage
+        GetActivePMDesign capTrue PlaceWire PlacePart PlaceNetAlias PlaceOffPage
+        PlacePort PlaceJunction PlaceNoConnect AddMenu AddAccessoryMenu AskUserInput
+        AutoWire BusWire CapPdfPrint CapFindObjects ExecuteAction ExecuteCommand
+    }
+    set keyLines {}
+    foreach k $keyCmds {
+        set has [expr {[llength [info commands $k]] > 0 ? "YES" : "-"}]
+        lappend keyLines "$k\t$has"
+    }
+
+    # ---- 6) arity 探测 ----
+    set tsv [list [join {cmd kind arity_or_pos detail raw} "\t"]]
     if {$probe} {
-        set allow {^(capGet|capIs|capHas|capCan|capTrue|Get|Is|Has|Find|Query|List)}
-        set block {exit|quit|delete|remove|close|open|save|load|run|exec|exitapp|kill|drop|reset|clear}
-        set probeLines {}
+        # default: read-only/query families only (zero-arg calls cannot start UI)
+        set allow {^(Get|Is|Has|Can|Find|Query|List)}
+        set block {exit|quit|delete|remove|close|open|save|load|\brun\b|exec|reset|clear|withdialog|drop|kill|placenext}
+        if {$probePlace} { set allow {^(Get|Is|Has|Can|Find|Query|List|Place)} }
         set n 0
         foreach c $all {
             if {![regexp -- $allow $c]} { continue }
-            set lc [string tolower $c]
-            if {[regexp -- $block $lc]} { continue }
+            if {[regexp -nocase -- $block $c]} { continue }
             incr n
-            if {$n > 400} { lappend probeLines "# (truncated after 400 probes)"; break }
+            if {$n > 900} { lappend tsv "# truncated after 900 probes"; break }
+            incr probeCount
             set code [catch {uplevel #0 [list $c]} r]
-            set r [string map {"\n" " "} $r]
-            if {[string length $r] > 200} { set r [string range $r 0 199] }
-            lappend probeLines "$c\tcode=$code\t$r"
+            lassign [::hostdump::ParseErr $r] kind arity detail
+            set raw [string range [string map {"\n" " " "\t" " "} $r] 0 180]
+            lappend tsv [join [list $c $kind $arity $detail $raw] "\t"]
         }
-        ::hostdump::W arity-probe.txt [join $probeLines "\n"]
     } else {
-        ::hostdump::W arity-probe.txt "(skipped: --no-probe)"
+        lappend tsv "# skipped (--no-probe)"
+    }
+    ::hostdump::W arity-probe.tsv [join $tsv "\n"]
+    ::hostdump::W arity-probe.txt [join [lrange $tsv 0 400] "\n"]
+
+    # ---- 7) 深探（可选，仅 Get/Is/Has，1..4 个空参）----
+    if {$deep} {
+        set dtsv [list [join {cmd arity detail} "\t"]]
+        foreach c $all {
+            if {![regexp {^(Get|Is|Has)} $c]} { continue }
+            if {[regexp -nocase -- {exit|quit|delete|remove|close|open|save|load|exec} $c]} { continue }
+            for {set k 1} {$k <= 4} {incr k} {
+                set args {}
+                for {set i 0} {$i < $k} {incr i} { lappend args "" }
+                set code [catch {uplevel #0 [list $c {*}$args]} r]
+                lassign [::hostdump::ParseErr $r] kind arity detail
+                if {$kind ne "wrongnum" || $arity != $k} {
+                    lappend dtsv [join [list $c $k "$kind $detail"] "\t"]
+                    break
+                }
+            }
+        }
+        ::hostdump::W arity-deep.tsv [join $dtsv "\n"]
     }
 
     # ---- 8) 报告 ----
     set rep {}
     lappend rep "output_dir\t$outdir"
     lappend rep "tcl\t[info patchlevel]"
-    lappend rep "commands\t$nAll"
-    lappend rep "procs\t$nProc"
-    lappend rep "candidates\t$nInt"
-    lappend rep "probe\t[expr {$probe ? "on" : "off"}]"
+    lappend rep "commands\t[llength $all]"
+    lappend rep "procs\t[llength $procs]"
+    lappend rep "candidates\t[llength $interesting]"
+    lappend rep "place_or_cap\t[llength $place]"
+    lappend rep "probes\t$probeCount"
+    lappend rep "deep\t$deep"
+    lappend rep ""
+    lappend rep "== key commands =="
+    foreach l $keyLines { lappend rep $l }
     lappend rep ""
     lappend rep "== errors =="
     if {[llength $errors]} { foreach e $errors { lappend rep $e } } else { lappend rep "(none)" }
     ::hostdump::W report.txt [join $rep "\n"]
 
-    puts "hostdump: $nAll commands / $nProc procs -> $outdir"
-    if {[llength $errors]} { puts "hostdump errors: [join $errors {; }]" }
+    puts "hostdump v2: [llength $all] commands / [llength $procs] procs / probes=$probeCount -> $outdir"
     return $outdir
 }
 
-puts "::hostdump::Run ?outdir? ?--no-probe?  ready"
+puts "::hostdump::Run ?outdir? ?--no-probe? ?--deep? ?--probe-place?  ready (v2)"
