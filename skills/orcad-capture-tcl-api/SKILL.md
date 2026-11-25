@@ -290,6 +290,7 @@ exit 0
 - 单元级：把 Dbo 调用包一层，先跑 headless 版（文件级）验证逻辑，再进 GUI。[`batch-olb-index.tcl`](examples/batch-olb-index.tcl) 就是可跑的回归基线（对同一批 OLB 输出 diff）。
 - 集成级：在 Capture 里 `source` 后 `puts` 关键状态；把 `$::errorInfo` 原样打到日志（Tcl 的错误链比 `catch` 的结果有用得多）。
 - 宿主能力检测统一用 `if {[llength [info commands <cmd>]]}`，不要按版本号硬分叉。
+**编码陷阱（headless 脚本特有）**：`tclsh` 按系统编码读脚本。脚本里若把中文写进要输出的 HTML/JSON 字符串，宿主会按 GBK 解释 UTF-8 字节再按 UTF-8 写出 → 双重编码，页面上显示成乱码；Tcl 注释里的中文不受影响。对策：**输出模板一律只用 ASCII**（标签写英文），或先 `encoding system utf-8` 再 `source`（见 §4.1 的 `SourceUtf8`），或把非 ASCII 写成 `\uXXXX` 转义。
 
 ## 14. 官方脚本里的范式（564 个文件实测统计）
 

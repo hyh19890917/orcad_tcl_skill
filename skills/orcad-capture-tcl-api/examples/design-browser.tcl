@@ -272,17 +272,17 @@ details{margin-left:12px}summary{cursor:pointer}
 #legend{padding:4px 10px;border-bottom:1px solid #eee;background:#fff;max-height:64px;overflow:auto}
 </style>
 <div id=app><aside id=tree></aside><main id=main>
-<div id=bar><b id=ttl>-</b><input id=q placeholder="筛选位号" size=18><label><input id=cm type=checkbox checked> 网络配色</label><span id=st></span></div>
+<div id=bar><b id=ttl>-</b><input id=q placeholder="filter refdes" size=18><label><input id=cm type=checkbox checked> net colors</label><span id=st></span></div>
 <div id=legend></div>
 <div id=wrap><svg id=cv width=1 height=1></svg></div>
-<div id=info>点页面看线框；点器件看封装与管脚。</div>
+<div id=info>Pick a page to see frames; click a part for package/pins.</div>
 </main></div>}
 puts $fh {<script id=data type="application/json">}
 puts $fh "{\"design\":[jstr $dname],\"root\":[jstr $rootName],\"tree\":\[[join $treeRecs ,]\],\"pages\":\{[join $pagePairs ,]\},\"lib\":$libJson}"
 puts $fh {</script>}
 puts $fh {<script>
 const D=JSON.parse(document.getElementById('data').textContent);
-const PAL=['#1f77b4','#ff7f0e','#2ca02c','#d62728','#9467bd','#8c564b','#e377c2','#7f7f7f','#bcbd22','#17becf','#393b79','#637939','#8c6d31','#843c39','#7b4173','#5254a3','#6b6ecf','#9c9ede','#e6550d','#fd8d3c'];
+const PAL=['#1f77b4','#ff7f0e','#2ca02c','#d62728','#9467bd','#8c564b','#e377c2','#7f7f7f'];
 const byId={};D.tree.forEach(n=>byId[n.id]=n);
 const kids={};D.tree.forEach(n=>{if(n.parent)(kids[n.parent]=kids[n.parent]||[]).push(n.id)});
 const pagesBySch={};Object.keys(D.pages).forEach(k=>{const p=D.pages[k];(pagesBySch[p.schematic]=pagesBySch[p.schematic]||[]).push(k)});
@@ -302,6 +302,11 @@ function assignNets(wires){
   const n=Math.max(list.length,12);
   list.forEach((nm,i)=>{netMap[nm]='hsl('+Math.round(i*360/n)+',66%,45%)'});
 }
+const netIndex={};
+Object.keys(D.pages).forEach(k=>{
+  const cnt={};D.pages[k].wires.forEach(w=>{if(w.n)cnt[w.n]=(cnt[w.n]||0)+1});
+  Object.keys(cnt).forEach(n=>{(netIndex[n]=netIndex[n]||[]).push({k:k,c:cnt[n]})});
+});
 function applyVB(){if(vb)cv.setAttribute('viewBox',vb.x+' '+vb.y+' '+vb.w+' '+vb.h);}
 function fit(){const p=D.pages[curKey];const e=p.extent,pad=40;
   vb={x:e[0]-pad,y:Y(e[3])-pad,w:(e[2]-e[0])+2*pad,h:(e[3]-e[1])+2*pad};applyVB();}
@@ -310,26 +315,32 @@ function paint(){
     const g=pl.parentElement, n=g.getAttribute('data-net')||'';
     const base=colorMode?netColor(n):'#2b6';
     const on=selNet&&n===selNet;
-    pl.style.stroke=base;
-    pl.style.strokeWidth=on?3:1;
-    pl.style.opacity=(selNet&&!on)?0.12:1;
+    pl.style.stroke=base;pl.style.strokeWidth=on?3:1;pl.style.opacity=(selNet&&!on)?0.12:1;
   });
+}
+function showNetPanel(n){
+  const box=document.getElementById('info'), hits=netIndex[n]||[];
+  box.innerHTML='<b style="color:'+netColor(n)+'">'+n+'</b> appears on '+hits.length+' page(s): '+
+    '<div style="margin-top:4px">'+hits.map(x=>'<span class="chip" data-k="'+x.k+'" style="background:'+netColor(n)+'">'+
+      D.pages[x.k].schematic+'/'+D.pages[x.k].page+' x'+x.c+'</span>').join(' ')+'</div>';
+  box.querySelectorAll('span.chip').forEach(s=>{s.onclick=()=>showPage(s.getAttribute('data-k'))});
 }
 function buildLegend(wires){
   const cnt={};wires.forEach(w=>{if(w.n)cnt[w.n]=(cnt[w.n]||0)+1});
   const list=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]);
   legend.textContent='';
-  if(!list.length){legend.textContent='(本页无网络名)';return;}
+  if(!list.length){legend.textContent='(no net names on this page)';return;}
   const head=document.createElement('span');head.style.color='#888';head.style.marginRight='6px';
-  head.textContent='网络('+list.length+'):';legend.appendChild(head);
+  head.textContent='nets('+list.length+'): ';legend.appendChild(head);
   list.slice(0,24).forEach(n=>{
-    const c=document.createElement('span');c.className='chip';
-    c.style.background=netColor(n);c.textContent=n+'×'+cnt[n];
-    c.onclick=()=>{selNet=(selNet===n?null:n);paint();
-      document.getElementById('st').textContent=selNet?('net='+selNet):'已清除高亮';};
+    const c=document.createElement('span');c.className='chip';c.style.background=netColor(n);
+    const pg=(netIndex[n]||[]).length;
+    c.textContent=n+' x'+cnt[n]+(pg>1?' ('+pg+'p)':'');
+    c.onclick=()=>{selNet=(selNet===n?null:n);paint();showNetPanel(n);
+      document.getElementById('st').textContent=selNet?('net='+selNet+' / '+pg+' pages'):'highlight cleared';};
     legend.appendChild(c);
   });
-  if(list.length>24){const more=document.createElement('span');more.style.color='#888';more.textContent=' …共'+list.length+'个';legend.appendChild(more);}
+  if(list.length>24){const more=document.createElement('span');more.style.color='#888';more.textContent=' ...total '+list.length;legend.appendChild(more);}
 }
 function showPage(key){
   const p=D.pages[key];if(!p)return;curKey=key;selNet=null;
@@ -341,8 +352,8 @@ function showPage(key){
     const g=el('g',{'data-net':w.n||''});
     g.appendChild(el('polyline',{points:pts.map(q=>X(q[0])+','+Y(q[1])).join(' '),class:'w'}));
     g.style.cursor='pointer';
-    g.onclick=ev=>{ev.stopPropagation();selNet=w.n||null;paint();
-      document.getElementById('st').textContent=selNet?('net='+selNet):'已清除高亮';};
+    g.onclick=ev=>{ev.stopPropagation();selNet=w.n||null;paint();if(selNet)showNetPanel(selNet);
+      document.getElementById('st').textContent=selNet?('net='+selNet+' / '+((netIndex[selNet]||[]).length)+' pages'):'highlight cleared';};
     cv.appendChild(g);
   });
   p.parts.forEach(pt=>{
@@ -361,10 +372,11 @@ function showPage(key){
 }
 function showPart(pt){
   const box=document.getElementById('info');
-  let h='<b>'+(pt.r||'(无位号)')+'</b> &nbsp; value='+(pt.v||'')+' &nbsp; footprint='+(pt.f||'(未填)');
+  let h='<b>'+(pt.r||'(no refdes)')+'</b> value='+(pt.v||'')+' footprint='+(pt.f||'(empty)');
   const pk=D.lib[(pt.f||'').toLowerCase()];
-  if(pk){h+='<br>封装 <b>'+pk.name+'</b>：'+pk.pins.length+' 管脚<div style="margin-top:4px">'+pk.pins.slice(0,40).map(p=>'<code>'+p.n+':'+p.name+'</code>').join(' ')+(pk.pins.length>40?' …':'')+'</div>';}
-  else if(pt.f){h+='<br><span style="color:#999">（OLB 里没有该封装：用 --olb 指定库再看管脚）</span>';}
+  if(pk){h+='<br>package <b>'+pk.name+'</b>: '+pk.pins.length+' pins<div style="margin-top:4px">'+
+    pk.pins.slice(0,40).map(p=>'<code>'+p.n+':'+p.name+'</code>').join(' ')+(pk.pins.length>40?' ...':'')+'</div>';}
+  else if(pt.f){h+='<br><span style="color:#999">(package not found in OLB; pass --olb to list pins)</span>';}
   box.innerHTML=h;
 }
 function schStats(sch){
@@ -375,7 +387,7 @@ function schStats(sch){
 function nodeLabel(n){
   let s=n.path||'(root)';
   if(n.ref)s+='  '+n.ref;
-  if(n.contents){const st=schStats(n.contents);s+='  -> '+n.contents+' ('+st.pages+'页/'+st.parts+'器件)';}
+  if(n.contents){const st=schStats(n.contents);s+='  -> '+n.contents+' ('+st.pages+'p/'+st.parts+'parts)';}
   return s;
 }
 function buildTree(id,depth){
@@ -383,7 +395,7 @@ function buildTree(id,depth){
   const d=document.createElement('details');if(depth<2)d.open=true;
   const sm=document.createElement('summary');sm.textContent=nodeLabel(n);d.appendChild(sm);
   (pagesBySch[n.contents]||[]).forEach(k=>{
-    const a=document.createElement('div');a.className='pg';a.textContent='页 '+D.pages[k].page;
+    const a=document.createElement('div');a.className='pg';a.textContent='page '+D.pages[k].page;
     a.onclick=ev=>{ev.preventDefault();ev.stopPropagation();showPage(k)};d.appendChild(a);
   });
   (kids[id]||[]).forEach(c=>{const e=buildTree(c,depth+1);if(e)d.appendChild(e)});
@@ -406,7 +418,7 @@ cv.addEventListener('dblclick',()=>{if(curKey)fit()});
 document.getElementById('cm').onchange=ev=>{colorMode=ev.target.checked;paint()};
 const rootIds=D.tree.filter(n=>!n.parent).map(n=>n.id);
 const tree=document.getElementById('tree');
-if(!rootIds.length)tree.textContent='(无 occurrence)';
+if(!rootIds.length)tree.textContent='(no occurrence)';
 rootIds.forEach(r=>{const e=buildTree(r,0);if(e)tree.appendChild(e)});
 const first=Object.keys(D.pages)[0];if(first)showPage(first);
 document.getElementById('q').oninput=e=>{
