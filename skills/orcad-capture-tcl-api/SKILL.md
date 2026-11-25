@@ -152,7 +152,7 @@ DboTclHelper_sDeleteSession $s
 | 值 | `DboValue` | `DboTclHelper_sMakeDboValue` | `SetColor` `GetString`（颜色表 0–48） |
 | 状态 | `DboState` | `DboState`（构造）/ 各方法返回 | `OK` `Failed` `-delete` |
 
-对象类型码（`GetObjectType`）实测/推断：`5`=Lib，`13`=PartInst，`31`=设计缓存里的 Package，`66`=InstOccurrence。判断"是不是 occurrence"用 66，别用类名猜。
+对象类型码 = 宿主预置常量：`$::DboBaseObject_LIBRARY`(5)、`_PAGE`(10)、`_PLACED_INSTANCE`(13)、`_PACKAGE`(31)、`_INST_OCCURRENCE`(66) 等，共 154 个。**用常量名判断，别写数字**（数字会随版本变）。完整表见 [`constants.md`](reference/constants.md)。
 
 ### 5.1 显示属性放到器件旁边（别自己算坐标）
 
@@ -322,6 +322,9 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 | [`version-matrix.md`](reference/version-matrix.md) | 三版本实测对照、增量、适配清单 |
 | [official-patterns.md](reference/official-patterns.md) | 官方 564 个 tcl 的用法统计、宿主常量、capDB/orPrmDboUtils 封装、推荐范式与反模式 |
 | [dbo-advanced.md](reference/dbo-advanced.md) | 进阶族：事务/撤销、器件与 BOM JSON、位号标注、路径与内存目录、扩展属性、官方 web 宿主 |
+| [official-symbol-builder.md](reference/official-symbol-builder.md) | 官方符号生成器的九步序列：NewPackage/NewPart/NewSymbolPinScalar/NewDisplayProp/SaveLib + 可抄骨架 |
+| [official-workflows.md](reference/official-workflows.md) | 应用层 C* 类、StringMap、CIS 分组、差异/搜索/路径/PDF、官方 web 宿主与对象流协议 |
+| [constants.md](reference/constants.md) · [constants-17.4.txt](reference/constants-17.4.txt) | 437 个宿主常量（对象类型/值枚举/迭代位），附 [dump-constants.tcl](scripts/dump-constants.tcl) |
 | [`commands-16.6.txt`](reference/commands-16.6.txt) · [`-17.2`](reference/commands-17.2.txt) · [`-17.4`](reference/commands-17.4.txt) | 全量命令名（diff / grep 用） |
 | [`dump-dbo-api.tcl`](scripts/dump-dbo-api.tcl) | 换机器/换版本时重新导出命令面 |
 | [`dump-dbo-signatures.tcl`](scripts/dump-dbo-signatures.tcl) | 重新导出参数签名（零参调用法） |
