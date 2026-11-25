@@ -1,6 +1,3 @@
-# 本地私有笔记：不随仓库发布
-skills/orcad-capture-tcl-api/local/
-
-# 安装/同步脚本产生的临时痕迹
+# scratch files produced by the helper scripts
 *.tmp
 _check.tcl
