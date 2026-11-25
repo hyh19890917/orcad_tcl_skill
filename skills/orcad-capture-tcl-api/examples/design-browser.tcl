@@ -115,16 +115,25 @@ if {![catch {set vi [$design NewViewsIter $st $::IterDefs_SCHEMATICS]}] && $vi n
                 set wi "NULL"
                 if {![catch {set wi [$page NewWiresIter $st]}] && $wi ne "NULL"} {
                     for {set w [$wi NextWire $st]} {$w ne "NULL"} {set w [$wi NextWire $st]} {
-                        set s [Pt $w GetStartPoint $st]; set e [Pt $w GetEndPoint $st]
-                        if {[llength $s] != 2 || [llength $e] != 2} continue
-                        foreach pt [list $s $e] {
-                            set x [lindex $pt 0]; set y [lindex $pt 1]
+                        # 全部折点：GetPointCount + GetPoint i（返回 CPoint 指针）
+                        set cnt 0
+                        catch {set cnt [$w GetPointCount $st]}
+                        set pts {}
+                        for {set k 0} {$k < $cnt} {incr k} {
+                            set cp ""
+                            if {[catch {set cp [$w GetPoint $k $st]}]} { continue }
+                            if {$cp eq "NULL" || $cp eq ""} { continue }
+                            set x [DboTclHelper_sGetCPointX $cp]
+                            set y [DboTclHelper_sGetCPointY $cp]
+                            catch {DboTclHelper_sDeleteCPoint $cp}
+                            lappend pts "\[$x,$y\]"
                             if {$minX eq "" || $x < $minX} { set minX $x }
                             if {$maxX eq "" || $x > $maxX} { set maxX $x }
                             if {$minY eq "" || $y < $minY} { set minY $y }
                             if {$maxY eq "" || $y > $maxY} { set maxY $y }
                         }
-                        lappend wires "\[[lindex $s 0],[lindex $s 1],[lindex $e 0],[lindex $e 1]\]"
+                        if {[llength $pts] < 2} continue
+                        lappend wires "\{\"n\":[jstr [readText $w GetNetName]],\"p\":\[[join $pts ,]\]\}"
                     }
                     catch {delete_DboPageWiresIter $wi}
                 }
@@ -273,29 +282,47 @@ const D=JSON.parse(document.getElementById('data').textContent);
 const byId={};D.tree.forEach(n=>byId[n.id]=n);
 const kids={};D.tree.forEach(n=>{if(n.parent)(kids[n.parent]=kids[n.parent]||[]).push(n.id)});
 const pagesBySch={};Object.keys(D.pages).forEach(k=>{const p=D.pages[k];(pagesBySch[p.schematic]=pagesBySch[p.schematic]||[]).push(k)});
+const cv=document.getElementById('cv');
+const X=x=>x, Y=y=>-y;
+let vb=null, curKey=null, drag=null;
 function el(t,a,txt){const e=document.createElementNS('http://www.w3.org/2000/svg',t);for(const k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e;}
+function applyVB(){if(vb)cv.setAttribute('viewBox',vb.x+' '+vb.y+' '+vb.w+' '+vb.h);}
+function fit(){const p=D.pages[curKey];const e=p.extent,pad=40;
+  vb={x:e[0]-pad,y:Y(e[3])-pad,w:(e[2]-e[0])+2*pad,h:(e[3]-e[1])+2*pad};applyVB();}
 function showPage(key){
-  const p=D.pages[key];if(!p)return;
+  const p=D.pages[key];if(!p)return;curKey=key;
   document.getElementById('ttl').textContent=p.schematic+' / '+p.page;
-  const cv=document.getElementById('cv');while(cv.firstChild)cv.removeChild(cv.firstChild);
-  const [x0,y0,x1,y1]=p.extent;const w=Math.max(1,x1-x0),h=Math.max(1,y1-y0);const pad=30;
-  cv.setAttribute('viewBox',(-pad)+' '+(-pad)+' '+(w+2*pad)+' '+(h+2*pad));
-  cv.setAttribute('width',Math.min(2400,w+2*pad));cv.setAttribute('height',Math.min(1600,h+2*pad));
-  const X=x=>x-x0, Y=y=>y1-y;
-  p.wires.forEach(wv=>{cv.appendChild(el('polyline',{points:X(wv[0])+','+Y(wv[1])+' '+X(wv[2])+','+Y(wv[3]),class:'w'}))});
+  while(cv.firstChild)cv.removeChild(cv.firstChild);
+  p.wires.forEach((w,idx)=>{
+    const pts=w.p||[], g=el('g',{'data-net':w.n||''});
+    if(pts.length>1){
+      const s=pts.map(q=>X(q[0])+','+Y(q[1])).join(' ');
+      g.appendChild(el('polyline',{points:s,class:'w','data-i':idx}));
+    }
+    g.style.cursor='pointer';
+    g.onclick=ev=>{ev.stopPropagation();hl(w.n)};
+    cv.appendChild(g);
+  });
   p.parts.forEach(pt=>{
     const g=el('g',{});
     g.appendChild(el('rect',{x:X(pt.x)-4,y:Y(pt.y)-4,width:8,height:8,class:'p'}));
     g.appendChild(el('text',{x:X(pt.x)+6,y:Y(pt.y)-5,class:'lbl'},pt.r||'?'));
-    g.style.cursor='pointer';
-    g.onclick=()=>showPart(pt);
+    g.style.cursor='pointer';g.onclick=ev=>{ev.stopPropagation();showPart(pt)};
     cv.appendChild(g);
   });
   p.ports.forEach(po=>{
     cv.appendChild(el('circle',{cx:X(po.x),cy:Y(po.y),r:4,class:'pt'}));
     cv.appendChild(el('text',{x:X(po.x)+6,y:Y(po.y)+3,class:'pl'},po.name||''));
   });
+  fit();
   document.getElementById('st').textContent='parts='+p.parts.length+' wires='+p.wires.length+' ports='+p.ports.length;
+}
+function hl(net){
+  document.getElementById('st').textContent=net?('net='+net):'已清除高亮';
+  document.querySelectorAll('polyline.w').forEach(pl=>{
+    const g=pl.parentElement, on=net&&g.getAttribute('data-net')===net;
+    pl.style.stroke=on?'#e33':'';pl.style.strokeWidth=on?2.5:'';
+  });
 }
 function showPart(pt){
   const box=document.getElementById('info');
@@ -317,6 +344,23 @@ function buildTree(id,depth){
   (kids[id]||[]).forEach(c=>{const e=buildTree(c,depth+1);if(e)d.appendChild(e)});
   return d;
 }
+cv.addEventListener('wheel',ev=>{
+  if(!vb)return;ev.preventDefault();
+  const r=cv.getBoundingClientRect();
+  const px=vb.x+(ev.clientX-r.left)/r.width*vb.w;
+  const py=vb.y+(ev.clientY-r.top)/r.height*vb.h;
+  const k=ev.deltaY>0?1.15:1/1.15;
+  vb={x:px-(px-vb.x)*k,y:py-(py-vb.y)*k,w:vb.w*k,h:vb.h*k};applyVB();
+},{passive:false});
+cv.addEventListener('mousedown',ev=>{if(!vb)return;drag={x:ev.clientX,y:ev.clientY,vb:Object.assign({},vb)};cv.style.cursor='grabbing'});
+window.addEventListener('mousemove',ev=>{
+  if(!drag||!vb)return;
+  const r=cv.getBoundingClientRect();
+  vb.x=drag.vb.x-(ev.clientX-drag.x)/r.width*drag.vb.w;
+  vb.y=drag.vb.y-(ev.clientY-drag.y)/r.height*drag.vb.h;applyVB();
+});
+window.addEventListener('mouseup',()=>{drag=null;cv.style.cursor=''});
+cv.addEventListener('dblclick',()=>{if(curKey)fit()});
 const rootIds=D.tree.filter(n=>!n.parent).map(n=>n.id);
 const tree=document.getElementById('tree');
 if(!rootIds.length)tree.textContent='(无 occurrence)';
@@ -324,7 +368,7 @@ rootIds.forEach(r=>{const e=buildTree(r,0);if(e)tree.appendChild(e)});
 const first=Object.keys(D.pages)[0];if(first)showPage(first);
 document.getElementById('q').oninput=e=>{
   const v=(e.target.value||'').toLowerCase();
-  document.querySelectorAll('#tree summary').forEach(s=>{s.parentElement.style.display=(!v||s.textContent.toLowerCase().includes(v))?'':'none';});
+  document.querySelectorAll('#tree details').forEach(d=>{d.style.display=(!v||d.textContent.toLowerCase().includes(v))?'':'none';});
 };
 document.getElementById('st').textContent='occ='+D.tree.length+' pages='+Object.keys(D.pages).length;
 </script>}

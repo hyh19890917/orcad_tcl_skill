@@ -140,14 +140,23 @@ if {![catch {set wi [$pageObj NewWiresIter $st]}] && $wi ne "NULL"} {
     for {set w [$wi NextWire $st]} {$w ne "NULL"} {set w [$wi NextWire $st]} {
         incr nWire
         set id ""; catch {set id [$w GetId $st]}
-        set s [Pt $w GetStartPoint $st]
-        set e [Pt $w GetEndPoint $st]
+        # 全部折点：GetPointCount + GetPoint i（CPoint 指针）
+        set cnt 0; catch {set cnt [$w GetPointCount $st]}
         set pts {}
-        if {[llength $s] && [llength $e]} { set pts [list $s $e] }
-        foreach p $pts { grow [lindex $p 0] [lindex $p 1] }
+        for {set k 0} {$k < $cnt} {incr k} {
+            set cp ""
+            if {[catch {set cp [$w GetPoint $k $st]}]} { continue }
+            if {$cp eq "NULL" || $cp eq ""} { continue }
+            set x [DboTclHelper_sGetCPointX $cp]; set y [DboTclHelper_sGetCPointY $cp]
+            catch {DboTclHelper_sDeleteCPoint $cp}
+            lappend pts [list $x $y]
+            grow $x $y
+        }
+        if {[llength $pts] < 2} continue
         set pj {}
         foreach p $pts { lappend pj "\[[lindex $p 0],[lindex $p 1]\]" }
-        lappend wires "{\"id\":[jstr $id],\"name\":[jstr [readText $w GetNetName]],\"points\":\[[join $pj ,]\]}"
+        set net [readText $w GetNetName]
+        lappend wires "{\"id\":[jstr $id],\"name\":[jstr $net],\"points\":\[[join $pj ,]\]}"
         lappend wireGeom $pts
     }
     catch {delete_DboPageWiresIter $wi}
