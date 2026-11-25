@@ -113,3 +113,31 @@ Cadence 自带一套"把设计对象暴露给浏览器"的框架，不必自己�
 4. 位号 → 用 `DboRefDesManager` 的 pending 流程，别自己拼字符串。
 5. 路径/只读 → 用 `DboPathMgr`，别用 `file` 命令猜。
 6. 未知族 → 先在测试设计上跑零参/最小参数试探（`DboLib_GetPackage` 那种"错参报签名"的机制对多数族有效），再写生产代码。
+
+## 10. 实测补充：BOM / JSON 助手怎么调、返回什么（17.4）
+
+`DboTclBom_*` 与 `DboTclUtils_*` 的返回值是 **`std::string` 指针对象**（形如 `_xxxx_p_std__string`），不是 Tcl 字符串。必须用 `DboTclHelper_sGetConstCharPtr` 取内容：
+
+```tcl
+set sess [DboTclHelper_sCreateSession]
+set st   [DboState]
+set d    [$sess GetDesign [DboTclHelper_sMakeCString $dsn 0] $st]     ;# 离屏打开设计
+set raw  [DboTclBom_GetBOMOptionsJSON $d]                             ;# 返回 std::string 指针
+set json [DboTclHelper_sGetConstCharPtr $raw]
+```
+
+实测（`PS15.DSN`，约 400 个器件）：
+
+| 调用 | 返回长度 | 内容（真实结构） |
+| --- | --- | --- |
+| `DboTclBom_GetBOMOptionsJSON $design` | 5,169 B | `{"DesignName":…,"SelectionProps":[{PropName,PropDispName,PropType,PropSource}…],"OutPutFormatProps":[…],"Options":{}}` |
+| `DboTclBom_GetBOMJSON $design "{}"` | 403 B | `{"metadata":{date,time,Title,Page Modify Date,Doc,RevCode,OrgName},"tableHeader":{outputFormat:[],keyProp:[]},"tableData":[{index,key,quantity,partD…}]}` |
+| `DboTclBom_GetBOMJSON1 $design "{}"` | 同上量级 | 另一版表结构（`1` 后缀，字段名略有差异） |
+| `DboTclUtils_GetDesignHierarchyInJSON()` | — | 零参调用报 `No matching function for overloaded`，说明**必须带参**（重载未公开） |
+
+两个能直接用的结论：
+
+1. **`SelectionProps` 就是 CIS/BOM 的属性白名单**（`PropName`/`PropDispName`/`PropType`(SCH|BOM|INTDP)/`PropSource`(CIS|Internet)）。要做一个"可选列"的 BOM 界面，不必自己硬编码 50 个属性名——先读它，再让用户勾选。
+2. **`GetBOMJSON` 的表结构是 `metadata / tableHeader / tableData`**：`tableData[i]` 至少含 `index`、`key`、`quantity`；`tableHeader.outputFormat` / `keyProp` 是调用方通过入参 JSON 指定的（传 `{}` 时为空）。这意味着**分组/排序规则由入参 JSON 决定**，不是函数写死的。
+
+一个坑：`DboTclUtils_GetDesignHierarchyInJSON` / `GetComponentsAndCountInJSON` 零参不可用（报重载不匹配），但签名表里参数是空的——说明它们属于"重载但参数表未暴露"的那类，只能按用途试参数（例如先试 `(design)`、再试 `(design, out)`），别当成零参函数。
