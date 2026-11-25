@@ -73,7 +73,9 @@ set d    [$sess GetDesign [DboTclHelper_sMakeCString $dsn 0] $st]
 | `OrHandlerSymbolEditorConfig.tcl` 里的 `lNewAlias` | 同上 |
 | 真正的 `$obj NewAlias/NewName/NewJunction/NewOffPageConnector` | **一个都没有** |
 
-也就是说：**官方脚本不通过 Dbo 创建 API 造这些对象**，它们走宿主动作（菜单/工具条 → action → 内部实现）。命令表里同样找不到 `Place*` 这类宿主放置命令，进一步印证"放置是 action 触发的，不是一条可直接调的全局命令"。
+也就是说：**官方脚本不通过 Dbo 创建 API 造这些对象**。它们走宿主命令——在真实 Capture 里导出的命令表确认存在 `Place*` 家族 63 条（`PlaceNetAlias`/`PlaceOffPage`/`PlacePort`/`PlaceWire`/`PlacePart`…，见 [host-commands-surface.md](host-commands-surface.md)）。
+
+> 勘误：早期版本的本文档写过"命令表里找不到 `Place*`，放置是 action 触发的"——那是基于**只含 Dbo 面**的命令导出得出的错误结论。宿主命令面（`capture.exe` 启动时注册、共约 3,700 条）必须用 `scripts/export-host-commands.tcl` 在 Capture 内导出才看得见。
 
 因此写工具的路线应该是：
 
