@@ -102,3 +102,62 @@ FindEcSet              Wrong number of arguments :FindEcSet designName ecsetName
 1. 用同一脚本的二版（允许前缀加 `Place|Add|Register|Cap|Set`）再导一次 arity-probe，拿到 `Place*` 的参数个数；
 2. 在 Capture 里试 `PlaceNetAlias` 的最小调用（先 `PlaceNetAliasWithDialog` 看它弹什么参数），把可用形态固化成一个 `examples/place-net-alias.tcl`；
 3. 把 `CapPdfPrint` / `CapPdfAddMark*` 纳入"PDF 导出"专章——现在 PDF 相关能力有两套（Dbo 侧 `capPDFExport` 脚本 + 宿主 `CapPdf*` 命令），需要说明各自适用场景。
+
+## 9. v2 导出实测（166 条探测，含真实参数名）
+
+v2 脚本（`scripts/export-host-commands.tcl`）在 Capture 17.4 里跑出的结果：**9,832 条命令 / 166 条探测**，`report.txt` 的关键命令核对 **21 个 YES / 2 个 `-`**（`ExecuteAction`、`ExecuteCommand` 确实不存在）。
+
+探测按报错类型分布：`wrongnum` 105、`other` 48（多为"成功返回了值"）、`ok` 11、`overloaded` 2。
+
+### 9.1 恢复出的签名（参数名是宿主给的，不是猜的）
+
+| 命令 | 参数 |
+| --- | --- |
+| `FindBookMarks` / `FindDRCMarks` / `FindNets` / `FindParts` / `FindPins` / `FindText` / `FindOffPageConnectors` / `FindHierarchicalPorts` | `value boolvalue2`（通用桩命名，名字不可信、个数可信） |
+| `FindDPByName` | `designName diffPairName` |
+| `FindEcSet` | `designName ecsetName` |
+| `FindXnetByName` | `designName xnetName` |
+| `FindPinByNumber` | `compID pinNumber` |
+| `FindProp` | `objectID propType` |
+| `FindPropByName` | `objectID propName` |
+| `FindProps` | `objectID propType numPropIDs propIDs` |
+| `FindXMLMenu` / `FindXMLToolbar` | `pArgv` |
+| `GetCompClass` | `compID` |
+| `GetCompPins` | `compId numOfPins pinIDs` |
+| `GetNetPins` | `netID numPins pinIDs` |
+| `GetEnv` | `pEnvKey` |
+| `GetLibrary` | `isNew libPath` |
+| `GetDRCSettings` | `pDesignName pStrParam pStrDefault` |
+| `GetECSetCnsValue` | `ecsetID propType propName` |
+| `GetDPMembers` | `diffPairID memberID1 memberID2` |
+| `GetDesignSpecificPM` | `pDesignName` |
+| `GetColumnDataType` | `pSqlQuery` |
+| `GetCisExplorerRowFieldValue` | `nRow pFieldName` |
+| `GetModifiedTime` | `lFileName` |
+| `GetActivateData` | `data` |
+
+规律：`Find*` 普遍是 `(匹配值, 是否…)` 两参；`Get*` 普遍是 `(某个 ID)` 一参或 `(ID, 计数, 出参)` 三参——**"出参"形态（`pinIDs`/`propIDs`）意味着这些命令要把数组句柄传进去**，用法与 Dbo 侧的 `sMake*` 指针一致。
+
+### 9.2 关键发现：`GetActivePMDesign` 是宿主→Dbo 的桥
+
+零参调用直接返回活对象（探测记录里能看到类型）：
+
+| 命令 | 返回 |
+| --- | --- |
+| `GetActivePM` | `_…_p_COrCapturePMDoc`（宿主文档对象） |
+| `GetActivePMDesign` | `_…_p_DboDesign`（**Dbo 设计对象**） |
+| `GetActiveOpjName` | `…\HSD_FPGA.opj`（工程文件路径） |
+| `GetActivePage` | 无页打开时抛 `RuntimeError: Command Requires SchematicView` |
+| `GetActivePMLastLibrary` | `NULL`（当前无库上下文） |
+
+也就是说：**插件从宿主侧拿到 `DboDesign` 只需要一次 `GetActivePMDesign`**，不必自己 `DboSession_GetDesign` 去开文件；反过来 `GetActivePage` 在"没有打开的原理图页"时会直接抛错，必须 `catch` 包住。这两条把前面几轮"Dbo 面 / 宿主人面"的接缝补上了。
+
+### 9.3 还没拿到的：`Place*` 的参数
+
+这轮没加 `--probe-place`（默认关闭，避免交互态），所以 63 条 `Place*` 只有存在性、没有参数。下一次导出请加该开关：
+
+```tcl
+::hostdump::Run "D:/tmp/capture-host-v2-place" --probe-place
+```
+
+预期能拿到 `PlaceWire` / `PlaceNetAlias` / `PlaceOffPage` / `PlacePort` / `PlacePart` 的参数个数与名字——那是写"自动放置"工具的最后一块拼图。
