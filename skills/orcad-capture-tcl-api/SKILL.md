@@ -326,6 +326,7 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 | [official-workflows.md](reference/official-workflows.md) | 应用层 C* 类、StringMap、CIS 分组、差异/搜索/路径/PDF、官方 web 宿主与对象流协议 |
 | [constants.md](reference/constants.md) · [constants-17.4.txt](reference/constants-17.4.txt) | 437 个宿主常量（对象类型/值枚举/迭代位），附 [dump-constants.tcl](scripts/dump-constants.tcl) |
 | [official-ui-layout-export.md](reference/official-ui-layout-export.md) | 官方四套范式：偏好表单（CFT 字段+树表+JSON）、对齐/分布选项模型、PDF 导出的标注+跨进程管线、对象流序列化字段分层 |
+| [allegro-3d-and-models.md](reference/allegro-3d-and-models.md) | 封装与 3D 绑定：axlStepSet/axlStepGet 读回校验、PACKAGE_HEIGHT_MAX、清单哈希与 height_source 设计、反模式 |
 | [`commands-16.6.txt`](reference/commands-16.6.txt) · [`-17.2`](reference/commands-17.2.txt) · [`-17.4`](reference/commands-17.4.txt) | 全量命令名（diff / grep 用） |
 | [`dump-dbo-api.tcl`](scripts/dump-dbo-api.tcl) | 换机器/换版本时重新导出命令面 |
 | [`dump-dbo-signatures.tcl`](scripts/dump-dbo-signatures.tcl) | 重新导出参数签名（零参调用法） |
@@ -338,6 +339,7 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 | [`build-symbol.tcl`](examples/build-symbol.tcl) | headless：从零建符号（Package/Cell/Part/Device + 管脚 + 显示属性），保存后回读校验 |
 | [`stream-olb.tcl`](examples/stream-olb.tcl) | headless：OLB → JSON（封装/器件/管脚，字段风格对齐官方 streamer，可喂预览器） |
 | [`hier-tree.tcl`](examples/hier-tree.tcl) | headless：.dsn → 层级 JSON（occurrence 树 + 分支页/器件数/类型直方图，可选 `--html` 折叠树）；平面与层级设计均实测 |
+| [`page-stream.tcl`](examples/page-stream.tcl) | headless：单页 → JSON（器件/导线/端口 + extent），`--html` 出 SVG 线框预览；与 hier-tree 组成离线浏览器 |
 | [`align-objects.tcl`](examples/align-objects.tcl) | 进程内：对齐/等距分布（包围盒 + SetLocation，dry-run 先看计划） |
 | [`bulk-edit-csv.tcl`](examples/bulk-edit-csv.tcl) | 进程内：CSV 驱动批量改属性（前值校验 + 读回 + 逆序回滚，-commit 才存盘） |
 
