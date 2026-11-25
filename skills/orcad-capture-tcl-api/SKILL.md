@@ -325,6 +325,7 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 | [official-symbol-builder.md](reference/official-symbol-builder.md) | 官方符号生成器的九步序列：NewPackage/NewPart/NewSymbolPinScalar/NewDisplayProp/SaveLib + 可抄骨架 |
 | [official-workflows.md](reference/official-workflows.md) | 应用层 C* 类、StringMap、CIS 分组、差异/搜索/路径/PDF、官方 web 宿主与对象流协议 |
 | [constants.md](reference/constants.md) · [constants-17.4.txt](reference/constants-17.4.txt) | 437 个宿主常量（对象类型/值枚举/迭代位），附 [dump-constants.tcl](scripts/dump-constants.tcl) |
+| [official-ui-layout-export.md](reference/official-ui-layout-export.md) | 官方四套范式：偏好表单（CFT 字段+树表+JSON）、对齐/分布选项模型、PDF 导出的标注+跨进程管线、对象流序列化字段分层 |
 | [`commands-16.6.txt`](reference/commands-16.6.txt) · [`-17.2`](reference/commands-17.2.txt) · [`-17.4`](reference/commands-17.4.txt) | 全量命令名（diff / grep 用） |
 | [`dump-dbo-api.tcl`](scripts/dump-dbo-api.tcl) | 换机器/换版本时重新导出命令面 |
 | [`dump-dbo-signatures.tcl`](scripts/dump-dbo-signatures.tcl) | 重新导出参数签名（零参调用法） |
