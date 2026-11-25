@@ -337,6 +337,9 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 | [`plugin-skeleton.tcl`](examples/plugin-skeleton.tcl) | 进程内：菜单 + 控制条 + executeTcl 白名单入口骨架 |
 | [`build-symbol.tcl`](examples/build-symbol.tcl) | headless：从零建符号（Package/Cell/Part/Device + 管脚 + 显示属性），保存后回读校验 |
 | [`stream-olb.tcl`](examples/stream-olb.tcl) | headless：OLB → JSON（封装/器件/管脚，字段风格对齐官方 streamer，可喂预览器） |
+| [`hier-tree.tcl`](examples/hier-tree.tcl) | headless：.dsn → 层级 JSON（occurrence 树 + 页 + 器件数），已用真实设计验证 |
+| [`align-objects.tcl`](examples/align-objects.tcl) | 进程内：对齐/等距分布（包围盒 + SetLocation，dry-run 先看计划） |
+| [`bulk-edit-csv.tcl`](examples/bulk-edit-csv.tcl) | 进程内：CSV 驱动批量改属性（前值校验 + 读回 + 逆序回滚，-commit 才存盘） |
 
 > `signatures.*` 目前只导出了 17.4；16.6 / 17.2 只有命令面（`commands-*.txt`）。需要签名时按 §4 的两行命令自己生成对应版本即可（同一脚本，换 DLL 与输出名）。
 

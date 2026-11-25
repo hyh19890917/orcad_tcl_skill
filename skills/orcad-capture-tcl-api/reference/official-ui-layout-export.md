@@ -104,3 +104,33 @@ switch -- [$obj GetObjectType] {
 | 对齐/分布 | `capAlignObject` 的选项模型（照抄 API 设计） | 具体算法可自己写，几十行 |
 | 打印/导出 | `sSetDboObjectInProcess` 跨进程传参 | 自己序列化成 SVG/PDF |
 | 预览 | `orPrmDboStreamer` 的字段分层 | 只读场景直接用官方 viewer 协议 |
+
+## 6. 层级流：`orPrmDboHierStreamer`（6.8 KB）
+
+官方还有一个专门处理**层级设计**的 streamer，比 `orPrmDboStreamer` 更轻，只要树和页：
+
+| proc | 作用 |
+| --- | --- |
+| `init <stopType>` | 设定遍历截止类型（默认 `$::DboBaseObject_PART_INSTANCE`） |
+| `openDesign <dsn>` | **离屏打开设计**：本质是 `$session GetDesign <path> $status`（headless 可用） |
+| `getViewNames <lib>` | 取设计所在库里的视图名 |
+| `getHierData <design> ?occMode?` | 主入口：产出 `{viewNames, schHiers, pageNames, pageInsts}` |
+| `getSchematicChildren` / `getPageChildren` | 层级下钻 |
+| `getInstHierStream <design>` | `getHierData` → `orPrmJSON::encode` 的 JSON 版 |
+| `getInstHierStreamFromFile <dsn> ?stopType?` | 一行式：开文件 → 取层级 JSON |
+
+**可抄的两点**：
+1. 层级遍历用 **occurrence 树**（`GetRootOccurrence` → `NewChildrenIter` → `DboOccurrenceToDboInstOccurrence`），不是按视图/页递归——共享页只会出现一次，分支由 occurrence 表达。
+2. 停到 `PART_INSTANCE` 即止，避免把每个图元都流出去；要更细就换 stopType。
+
+最小实现（`examples/hier-tree.tcl`，已用 Cadence 自带 `PS15.DSN` 实测：32 个 occurrence / 1 页 / 31 个器件实例，JSON 合法）：
+
+```text
+session GetDesign <dsn> → design GetRootName
+→ GetRootOccurrence → NewChildrenIter $st $::IterDefs_INSTS → NextOccurrence
+→ DboOccurrenceToDboInstOccurrence → GetPathName / GetId / GetPartInst / IsPrimitive
+→ 位号：occurrence 上取 "Part Reference"（分支可覆盖），空则退回 GetDesignator
+→ 页：NewViewsIter $::IterDefs_SCHEMATICS → DboViewToDboSchematic → NewPagesIter → NewPartInstsIter（计数）
+```
+
+输出契约：`{design, root, occurrences:[{id,path,ref,page,primitive,children}], views:[{schematic,pages:[{name,partInsts}]}], occurrenceCount, pageCount, partInstCount, depthLimitHit}`。
