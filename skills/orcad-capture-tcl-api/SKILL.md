@@ -327,6 +327,7 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 | [official-workflows.md](reference/official-workflows.md) | 应用层 C* 类、StringMap、CIS 分组、差异/搜索/路径/PDF、官方 web 宿主与对象流协议 |
 | [constants.md](reference/constants.md) · [constants-17.4.txt](reference/constants-17.4.txt) | 437 个宿主常量（对象类型/值枚举/迭代位），附 [dump-constants.tcl](scripts/dump-constants.tcl) |
 | [official-ui-layout-export.md](reference/official-ui-layout-export.md) | 官方四套范式：偏好表单（CFT 字段+树表+JSON）、对齐/分布选项模型、PDF 导出的标注+跨进程管线、对象流序列化字段分层 |
+| [host-pdf-api.md](reference/host-pdf-api.md) | **PDF 打印与标注**：CapPdfPrint(outDir,outFile)、CapPdfAddMarkStart(x1y1x2y2,id,0)+AddMarkData+AddMarkEnd、七个选项(InstMode/书签/纸张索引/驱动)、与 capPdfUtil 脚本层的分工 |
 | [host-place-api.md](reference/host-place-api.md) | **放置类完整签名**（实测）：PlaceWire/PlaceBus(x1y1x2y2)、PlaceNetAlias(x,y,name)、PlaceOffPage/Port/Power/Ground(x,y,lib,symbol,name)、PlacePart 六参与索引状态机、PlaceNetgroup 需页上下文 |
 | [host-commands-surface.md](reference/host-commands-surface.md) | **宿主命令面盘点**：Capture 内 9830 条 vs headless 6112 条、家族分布、`Place*` 63 条全清单（PlaceNetAlias/PlaceOffPage/PlacePort…）、关键命令存在性核对、`cap*` 533 条亮点、旧结论勘误 |
 | [web-panel-bridge.md](reference/web-panel-bridge.md) | 面板桥官方实现：服务端 methodLabel=executeTcl 直接 eval、页面侧 orPrmConnector(widgetId, tcl)、Tcl 侧 webpanel::exec/nativeCall、白名单骨架 |
