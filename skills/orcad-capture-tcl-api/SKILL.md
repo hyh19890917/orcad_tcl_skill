@@ -306,6 +306,8 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 
 完整频次表、常量清单、七组"官方 → 常驻插件"对照、可抄范式与反模式清单见 [`official-patterns.md`](reference/official-patterns.md)。
 
+还有一批**存在但官方 tcl 从未使用**的进阶族——事务与撤销（DboPageTransaction）、BOM/器件 JSON（DboTclBom、DboTclUtils_*JSON）、位号状态机（DboRefDes*）、路径与内存目录（DboPathMgr/DboDirectory）、扩展属性、以及官方 web 宿主（orPrmWebApp）。用它们能省掉大段自研代码，但没有官方示例，需先自测：见 [dbo-advanced.md](reference/dbo-advanced.md)。
+
 ## 15. 文件索引
 
 | 文件 | 内容 |
@@ -319,6 +321,7 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 | [`marshalling.md`](reference/marshalling.md) | 90 个 `DboTclHelper_*` 分组与所有权规则 |
 | [`version-matrix.md`](reference/version-matrix.md) | 三版本实测对照、增量、适配清单 |
 | [official-patterns.md](reference/official-patterns.md) | 官方 564 个 tcl 的用法统计、宿主常量、capDB/orPrmDboUtils 封装、推荐范式与反模式 |
+| [dbo-advanced.md](reference/dbo-advanced.md) | 进阶族：事务/撤销、器件与 BOM JSON、位号标注、路径与内存目录、扩展属性、官方 web 宿主 |
 | [`commands-16.6.txt`](reference/commands-16.6.txt) · [`-17.2`](reference/commands-17.2.txt) · [`-17.4`](reference/commands-17.4.txt) | 全量命令名（diff / grep 用） |
 | [`dump-dbo-api.tcl`](scripts/dump-dbo-api.tcl) | 换机器/换版本时重新导出命令面 |
 | [`dump-dbo-signatures.tcl`](scripts/dump-dbo-signatures.tcl) | 重新导出参数签名（零参调用法） |
