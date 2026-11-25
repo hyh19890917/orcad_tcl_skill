@@ -327,6 +327,7 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 | [official-workflows.md](reference/official-workflows.md) | 应用层 C* 类、StringMap、CIS 分组、差异/搜索/路径/PDF、官方 web 宿主与对象流协议 |
 | [constants.md](reference/constants.md) · [constants-17.4.txt](reference/constants-17.4.txt) | 437 个宿主常量（对象类型/值枚举/迭代位），附 [dump-constants.tcl](scripts/dump-constants.tcl) |
 | [official-ui-layout-export.md](reference/official-ui-layout-export.md) | 官方四套范式：偏好表单（CFT 字段+树表+JSON）、对齐/分布选项模型、PDF 导出的标注+跨进程管线、对象流序列化字段分层 |
+| [web-panel-bridge.md](reference/web-panel-bridge.md) | 面板桥官方实现：服务端 methodLabel=executeTcl 直接 eval、页面侧 orPrmConnector(widgetId, tcl)、Tcl 侧 webpanel::exec/nativeCall、白名单骨架 |
 | [plugin-lifecycle.md](reference/plugin-lifecycle.md) | 插件生命周期：capAutoLoad 即入口、`<Feature>Init.tcl` 壳与体之分、约定式 proc 名、`package require orPrmDesigner` 面板三步、命令表盲区（宿主命令不在 6109 条里） |
 | [host-actions.md](reference/host-actions.md) | RegisterAction 的 5 参数形态、InsertXMLMenu 嵌套结构 + RefreshMenu、handler/enabler 的 {args}/return true 契约、headless 不存在该命令的硬边界、可复用 enabler 名单 |
 | [dbo-value-and-creation.md](reference/dbo-value-and-creation.md) | DboValue 类型与创建类 API 实测：ValueType&/int& 出参的正确指针、junction 可用、NewName 假成功、offpage 真重载、ReleaseAllCreatedPtrs |
