@@ -1,0 +1,6 @@
+# 本地私有笔记：不随仓库发布
+skills/orcad-capture-tcl-api/local/
+
+# 安装/同步脚本产生的临时痕迹
+*.tmp
+_check.tcl

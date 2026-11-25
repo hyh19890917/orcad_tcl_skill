@@ -1,0 +1,15 @@
+* text=auto
+
+# Tcl/PowerShell 源码保持可读文本，避免 CRLF 影响 tclsh 解析
+*.tcl text eol=lf
+*.md  text eol=lf
+*.csv text eol=lf
+*.tsv text eol=lf
+*.txt text eol=lf
+*.ps1 text eol=crlf
+
+# 导出的大表不参与 diff 统计
+reference/signatures-17.4.tsv  -diff
+reference/commands-17.4.txt     -diff
+reference/commands-17.2.txt     -diff
+reference/commands-16.6.txt     -diff
