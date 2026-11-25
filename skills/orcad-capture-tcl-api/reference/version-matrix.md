@@ -79,3 +79,20 @@ $env:PATH = "$root\tools\bin;" + $env:PATH
 
 - 22.1 及以上版本本机没有，本文件不臆测其增量；用 §4 的脚本自己生成。
 - 各版本的 `orPrm::*` 宿主命令参数未见官方文档，`reference/host-api.md` 里的形态来自真实调用点，跨大版本时要用 `info commands` 做能力检测。
+
+## 行为差异（实测，同一套探针跑两版）
+
+探针脚本：`createLib → NewPackage/NewCell/NewPart → AddPart/SetCellPtr/SetPackagePtr → NewDevice → NewSymbolPinScalar ×2`，分别在 **16.6（tclsh 8.4.15 x86 + `tools\capture\orDb_Dll_Tcl.dll`）** 与 **17.4（tclsh 8.6.5 x64 + `tools\bin\orDb_Dll_Tcl64.dll`）** 上跑：
+
+| 行为 | 16.6 | 17.4 | 结论 |
+| --- | --- | --- | --- |
+| `SaveLib` 前不 `MarkAllLibForSave` | `save=ok`，重开 pkg=0/part=0/pin=0 | 同 | **两版都会静默不写**，规则通用 |
+| 加 `DboSession_MarkAllLibForSave` 后 | 重开 pkg=1/part=1/pin=2 | 同 | 两版都正确落盘 |
+| `$wire GetPointCount $st` | 返回 2 | 返回 2 | 形态一致 |
+| `$wire GetPoint 0 $st` | 返回 `CPoint*` | 返回 `CPoint*` | 形态一致（指针串在 32 位下更短，不影响用法） |
+| `DboTclBom_GetBOMOptionsJSON` | **不存在**（`invalid command name`） | 存在，返回 `std::string*` | BOM JSON 助手是 **17.x 才有** |
+
+两条工程结论：
+
+1. **写插件时若要把脚本放进 16.6 也能跑的地方，只用 Tcl 8.4 语法**（别用 `dict`/`lmap`/`{*}` 的复杂形态）；探针脚本 `probe-166-vs-174.tcl` 就是这么写的，两版都能执行。
+2. 判"功能是否存在"不要按版本号猜，用 `[llength [info commands DboTclBom_GetBOMOptionsJSON]]` —— 17.2/17.4 有、16.6 没有，这属于族级差异而非签名差异。
