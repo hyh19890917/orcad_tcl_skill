@@ -264,7 +264,7 @@ DboSession_SaveLib $s $lib
 2. `sMakeCString` 默认登记 → 与宿主二次释放；用 `0` 或 `AppOwned`。
 3. 忘记 `$state -delete` / 忘记 `delete_Dbo*Iter` → 长会话泄漏、最终卡死。**显示属性相关流程最容易漏**（`NewDisplayProp`/`SetLocation` 前后都会新造 state）：一个 proc 里复用同一个 `DboState`，`return` 前统一 `-delete` 最省心。
 4. 25.1 的 `DboValue_SetColor` 返回未初始化的 state；用 `GetString` 当权威结果。
-5. 设计属性 >32767 字节时 Capture 25.1 会崩 → 分块写（用 `chunks-v1 N` + base64，16000/块）。
+5. 设计属性 >32767 字节时 Capture 25.1 会崩 → 分块写：首字段放"块数+版本"，每块 base64，单块约 16 KB，写后回读校验。
 6. `CopyPackageAll` 会丢内置管脚标注 → 复制后逐管脚补 `NewDisplayProp`。
 7. 16.6 会对负字号做取整缩水；用 `GetLFHeight` 二分补偿。
 8. 没有 `Redraw` 命令，但 **`Menu View::Zoom::Redraw` 可用**（17.4 实测）：新增/删除显示属性（`NewDisplayProp`/`DeleteDisplayProp`）后必须调它才会立刻刷新，否则要等取消选中才显示出来。批量操作收尾时再用 `ui::SchematicActivate [capGetMostRecentSchFrameID]` 刷一次更保险。
@@ -291,7 +291,22 @@ exit 0
 - 集成级：在 Capture 里 `source` 后 `puts` 关键状态；把 `$::errorInfo` 原样打到日志（Tcl 的错误链比 `catch` 的结果有用得多）。
 - 宿主能力检测统一用 `if {[llength [info commands <cmd>]]}`，不要按版本号硬分叉。
 
-## 14. 文件索引
+## 14. 官方脚本里的范式（564 个文件实测统计）
+
+Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts`，约 4.2 MB）。统计它们的写法，能直接回答"哪些是官方惯例、哪些只适合一次性脚本"：
+
+- 字符串：`sMakeCString` 1315 次 vs `sDeleteCString` 141 次，其中只有 78 次带 `0` → **官方多数依赖宿主清理**；
+- 状态：441 个 `DboState`，显式判 `OK`/`Failed` 仅约 34 处 → **官方大量忽略状态**；
+- 属性：`GetEffectivePropStringValue` 109 次，`GetUserPropStringValue` **0 次** → 官方只用 effective 语义，几乎不碰本地值；
+- 迭代器：`delete_Dbo*Iter` 176 次 → 按类型释放是官方惯例。
+
+**结论**：官方样本是"跑完就退"的短生命周期写法；常驻插件必须自己管指针、判状态、写后回读（见 §12 的坑）。
+
+另外三样现成的东西别自己造：宿主预置常量（`::IterDefs_*` / `::DboValue_*`，别硬编码 90/270 这类魔法数）、官方封装包（`capDB` 的 `capLibPropUtil`/`capDboGeom`、`orPrmDboUtils`）、官方标注位置算法（包围盒右下角 + 已有标注最大 Y + 10）。
+
+完整频次表、常量清单、七组"官方 → 常驻插件"对照、可抄范式与反模式清单见 [`official-patterns.md`](reference/official-patterns.md)。
+
+## 15. 文件索引
 
 | 文件 | 内容 |
 | --- | --- |
@@ -303,6 +318,7 @@ exit 0
 | [`host-api.md`](reference/host-api.md) | Capture 宿主命令（菜单、控制条、放置、文档）与 executeTcl 桥 |
 | [`marshalling.md`](reference/marshalling.md) | 90 个 `DboTclHelper_*` 分组与所有权规则 |
 | [`version-matrix.md`](reference/version-matrix.md) | 三版本实测对照、增量、适配清单 |
+| [official-patterns.md](reference/official-patterns.md) | 官方 564 个 tcl 的用法统计、宿主常量、capDB/orPrmDboUtils 封装、推荐范式与反模式 |
 | [`commands-16.6.txt`](reference/commands-16.6.txt) · [`-17.2`](reference/commands-17.2.txt) · [`-17.4`](reference/commands-17.4.txt) | 全量命令名（diff / grep 用） |
 | [`dump-dbo-api.tcl`](scripts/dump-dbo-api.tcl) | 换机器/换版本时重新导出命令面 |
 | [`dump-dbo-signatures.tcl`](scripts/dump-dbo-signatures.tcl) | 重新导出参数签名（零参调用法） |
