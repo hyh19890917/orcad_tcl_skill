@@ -72,6 +72,32 @@ DboTclHelper_sDeleteSession $sess
 6. **保存前不需要 `MarkModified`**（新建对象自带 dirty），但**保存后要检查 `DboState`**——官方脚本里到处 `if {[$status Failed]} exit`，因为任何一步失败都必须中止，否则会留下半个符号。
 7. 建完最好**重开一次**枚举（`GetLib` → `NewPartsIter`/`NewLPinsIter`）核对管脚数与名字；这是最便宜的回归测试。
 
+## 2.1 实测补丁：两个让"建了但读不到"的环节
+
+官方脚本读起来是九步，实际跑通还差两处——这两条是**跑出来的**，不是读出来的：
+
+| 症状 | 原因 | 做法 |
+| --- | --- | --- |
+| 建了 Package/Cell/Part，重开后 `NewPartsIter` 一个都没有 | Package 通过 **Device** 引用 Cell，没有 Device 时 Package 看不到任何 Part | `$pkg NewDevice <designator> <position> <cell> $st`（单单元用 `A`, 0） |
+| `SaveLib` 返回 OK，但文件里什么都没有（重开是空库） | 新建库的对象没有被标脏，`SaveLib` 静默跳过 | 保存前先 `DboSession_MarkAllLibForSave $sess $lib`（或 `$lib MarkModified`） |
+
+完整可跑链路（已用 `examples/build-symbol.tcl` 验证：写 4 个管脚，重开读到 4 个）：
+
+```text
+sCreateSession
+→ CreateLib / GetLib
+→ SetDefaultFont 0..23
+→ NewPackage <pkg>
+→ NewCell <cell>            ; 通常与 Package 同名
+→ NewPart "<pkg>.Normal"    ; 单单元固定 .Normal
+→ $cell AddPart $part
+→ $part SetCellPtr $cell ; $part SetPackagePtr $pkg
+→ $pkg NewDevice A 0 $cell   ; ★ 没有它，Package 里没有 Part
+→ SetBoundingBox / NewSymbolPinScalar / NewDisplayProp
+→ DboSession_MarkAllLibForSave ; ★ 没有它，SaveLib 静默不写
+→ SaveLib → RemoveLib → 重开枚举校验
+```
+
 ## 3. 最小可用骨架（自写，基于上面序列）
 
 ```tcl
