@@ -62,3 +62,23 @@ set d    [$sess GetDesign [DboTclHelper_sMakeCString $dsn 0] $st]
 ```
 
 原则：**任何"创建/写入"API，都以回读结果为准**。本仓库已经踩到三个"返回值说 OK 但没生效"的样本：`SaveLib`（未标记脏）、`SetUserPropStringValue`、`DboWire_NewName`。
+
+## 5. 为什么 alias / off-page 建不出来：官方自己也不这么建
+
+把 Cadence 自带 `tclscripts` 下所有 `.tcl` 扫了一遍，搜 `NewAlias` / `NewName` / `NewJunction` / `NewOffPageConnector` 的真实调用点：
+
+| 搜索结果 | 说明 |
+| --- | --- |
+| `capChangeName.tcl` 里的 `lNewName` | 只是局部变量名，不是 API 调用 |
+| `OrHandlerSymbolEditorConfig.tcl` 里的 `lNewAlias` | 同上 |
+| 真正的 `$obj NewAlias/NewName/NewJunction/NewOffPageConnector` | **一个都没有** |
+
+也就是说：**官方脚本不通过 Dbo 创建 API 造这些对象**，它们走宿主动作（菜单/工具条 → action → 内部实现）。命令表里同样找不到 `Place*` 这类宿主放置命令，进一步印证"放置是 action 触发的，不是一条可直接调的全局命令"。
+
+因此写工具的路线应该是：
+
+1. **能改属性/位置的，用 Dbo**（`SetEffectivePropStringValue`、`SetLocation`、`NewJunction`）；
+2. **要"放置"新对象的（页间连接符、网络标签、端口），走宿主 action**（`RegisterAction` / `ExecuteAction` 那套，见 §host-api）；
+3. 凡是走 Dbo 创建路径的，一律**回读验证**（iter 计数、`GetNetName`、`GetBoundingBox`），因为至少有三类 API 会"返回成功但什么都没做"。
+
+`DboWire_NewName` 的参数形态（`self,name,location,font,rotation,color`）已经拿到，但它在 headless 会话里没有任何可观测副作用——**要么依赖宿主交互上下文，要么需要额外的 net 解析步骤**，目前没有定论，按"不可用"处理。
