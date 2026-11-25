@@ -141,3 +141,55 @@ set json [DboTclHelper_sGetConstCharPtr $raw]
 2. **`GetBOMJSON` 的表结构是 `metadata / tableHeader / tableData`**：`tableData[i]` 至少含 `index`、`key`、`quantity`；`tableHeader.outputFormat` / `keyProp` 是调用方通过入参 JSON 指定的（传 `{}` 时为空）。这意味着**分组/排序规则由入参 JSON 决定**，不是函数写死的。
 
 一个坑：`DboTclUtils_GetDesignHierarchyInJSON` / `GetComponentsAndCountInJSON` 零参不可用（报重载不匹配），但签名表里参数是空的——说明它们属于"重载但参数表未暴露"的那类，只能按用途试参数（例如先试 `(design)`、再试 `(design, out)`），别当成零参函数。
+## 11. 属性三层与显示属性实参（实测，17.4 / PS15.DSN）
+
+### 11.1 三个 getter 不是同一层
+
+同一个 `PartInst`，同一个属性名，读出来不一样：
+
+| 属性 | `GetEffectivePropStringValue` | `GetUserPropStringValue` | `GetPropStringValue` |
+| --- | --- | --- | --- |
+| `Reference` | `R754` | 空 | **报错**（code=1） |
+| `PCB Footprint` | `res_0603` | `res_0603` | **报错** |
+
+结论：`Effective` = 最终值（继承+覆盖），`User` = **实例本地覆盖**（空表示没覆盖、走继承），`GetPropStringValue` 在实例上不可用（属于符号/库层的读法，调它只会拿到错误）。
+
+### 11.2 写属性落在哪一层
+
+```tcl
+$part SetEffectivePropStringValue $name $val      ;# 写后 effective 与 user 都变成新值
+```
+
+实测：写 `ZZPROBE=hello` 后 `Effective=hello`、`User=hello` → **写 effective 会顺带在实例上建立本地覆盖**。
+
+但：
+
+```tcl
+$part SetUserPropStringValue $name $val           ;# code=0，但 effective/user 仍为空
+```
+
+`SetUserPropStringValue` 返回成功却**什么都没写**（又一个"看返回值会骗人"的例子）。要用它，属性必须先存在，或者改走 `SetEffectivePropStringValue`。
+
+### 11.3 `NewDisplayProp(status, name, loc, ?, font, color)`
+
+用 6 参调用成功，返回 `DboDisplayProp`，随后回读：
+
+| 回读 | 结果 | 说明 |
+| --- | --- | --- |
+| `GetLocation` | `CPoint*` | 位置生效 |
+| `GetRotation` | `0` | 第 4 个参数（传 0）是朝向/对齐 |
+| `GetColor` | `48` | **第 6 个参数是颜色，不是字号** |
+| `GetFont` | 报 `Wrong number of arguments` | 需要出参形态 |
+| `GetName` | 报 TypeError | 需要 `CString&` 出参 |
+
+即官方脚本里的 `NewDisplayProp $st $name $loc 0 $font 48` 中 **`48` 是颜色码**，字号在 `LOGFONT` 里。之前按"48=字号"理解是错的——这就是为什么参数顺序要用回读验证，而不是猜。
+
+### 11.4 成本量级（PS15 单页：31 器件 / 158 导线）
+
+| 操作 | 耗时 |
+| --- | --- |
+| 遍历 31 个器件并各取一次 `GetBoundingBox` | < 1 ms |
+| 遍历 158 条导线 | ~1 ms |
+| 200 次属性读 | ~3 ms |
+
+结论：**页级遍历与包围盒计算便宜到可以忽略**；大设计的瓶颈在"页数 × 每页器件"的一次性扫描，不在单次调用。批量改属性时不必为了性能做复杂缓存。
