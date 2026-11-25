@@ -8,12 +8,15 @@
 #
 # CSV 表头（逗号分隔，允许空列）：
 #     kind,x1,y1,x2,y2,name,lib,symbol
-#
+# 
 #   kind 取值：
 #     wire      需要 x1,y1,x2,y2
 #     junction / noconnect        需要 x1,y1
 #     alias                       需要 x1,y1,name
 #     offpage / port / power / ground   需要 x1,y1,lib,symbol,name
+#     part      需要 x1,y1,lib,pkgName(=symbol),device(=name)   -> PlacePart x y lib pkg device 0
+#     partsel   需要 x1,y1,lib(库全路径),symbol(件名)            -> 先按名字+库选件，再 PlacePart 落位
+#     block     需要 x1,y1,x2,y2,lib(库),symbol(视图),name(实例名) -> PlaceBlock x1 y1 x2 y2 lib view inst 0
 #
 # 例：
 #     kind,x1,y1,x2,y2,name,lib,symbol
@@ -109,6 +112,27 @@ proc ::placecsv::DoOne {kind x1 y1 x2 y2 name lib symbol} {
                 power   { set code [catch {PlacePower   $x1 $y1 $lib $symbol $name} r] }
                 ground  { set code [catch {PlaceGround  $x1 $y1 $lib $symbol $name} r] }
             }
+        }
+        part {
+            if {$x1 eq "" || $y1 eq "" || $lib eq "" || $symbol eq "" || $name eq ""} {
+                return [list skip "part needs x1 y1 lib pkgName device"]
+            }
+            set code [catch {PlacePart $x1 $y1 $lib $symbol $name 0} r]
+        }
+        partsel {
+            if {$x1 eq "" || $y1 eq "" || $lib eq "" || $symbol eq ""} {
+                return [list skip "partsel needs x1 y1 lib(库全路径) symbol(件名)"]
+            }
+            set code [catch {
+                PlacePartSelectPartByNameAndLib $symbol $lib
+                PlacePart $x1 $y1 $lib $symbol $symbol 0
+            } r]
+        }
+        block {
+            if {$x1 eq "" || $y1 eq "" || $x2 eq "" || $y2 eq "" || $lib eq "" || $symbol eq "" || $name eq ""} {
+                return [list skip "block needs x1 y1 x2 y2 lib view instName"]
+            }
+            set code [catch {PlaceBlock $x1 $y1 $x2 $y2 $lib $symbol $name 0} r]
         }
         default { return [list skip "unknown kind: $kind"] }
     }

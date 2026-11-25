@@ -348,7 +348,7 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 | [`stream-olb.tcl`](examples/stream-olb.tcl) | headless：OLB → JSON（封装/器件/管脚，字段风格对齐官方 streamer，可喂预览器） |
 | [`hier-tree.tcl`](examples/hier-tree.tcl) | headless：.dsn → 层级 JSON（occurrence 树 + 分支页/器件数/类型直方图，可选 `--html` 折叠树）；平面与层级设计均实测 |
 | [`page-stream.tcl`](examples/page-stream.tcl) | headless：单页 → JSON（器件/导线/端口 + extent），`--html` 出 SVG 线框预览；与 hier-tree 组成离线浏览器 |
-| [`place-from-csv.tcl`](examples/place-from-csv.tcl) | **Capture 内批量放置**：CSV 驱动 wire/alias/offpage/port/power/ground/junction/noconnect；逐行 catch 记账、前置页检查、`--dry-run`/`--verify`（Dbo 回读计数） |
+| [`place-from-csv.tcl`](examples/place-from-csv.tcl) | **Capture 内批量放置**：CSV 驱动 wire/alias/offpage/port/power/ground/junction/noconnect/**part/partsel/block**；逐行 catch 记账、前置页检查、`--dry-run`/`--verify`（Dbo 回读计数）；桩环境已验证 6 类参数顺序 |
 | [`design-browser.tcl`](examples/design-browser.tcl) | headless：一条命令出**自包含 HTML 浏览器**：层级树（带分支页/器件数）+ 逐页 SVG + **网络配色**（HSL 均分、图例可点、可关）+ 滚轮缩放/拖拽/双击复位 + 点器件看封装管脚；数据内嵌双击即用 |
 | [`align-objects.tcl`](examples/align-objects.tcl) | 进程内：对齐/等距分布（包围盒 + SetLocation，dry-run 先看计划） |
 | [`bulk-edit-csv.tcl`](examples/bulk-edit-csv.tcl) | 进程内：CSV 驱动批量改属性（前值校验 + 读回 + 逆序回滚，-commit 才存盘） |
