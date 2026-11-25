@@ -359,3 +359,5 @@ $env:PATH = '<root>\tools\bin;' + $env:PATH
 '<root>\tools\bin\tclsh.exe' scripts\dump-dbo-api.tcl '<root>\tools\bin\orDb_Dll_Tcl64.dll' reference\commands-<ver>.txt
 '<root>\tools\bin\tclsh.exe' scripts\dump-dbo-signatures.tcl '<root>\tools\bin\orDb_Dll_Tcl64.dll' reference\signatures-<ver>.tsv
 ```
+
+| [export-host-commands.tcl](scripts/export-host-commands.tcl) | **在 Capture 里跑**：导出宿主命令面（commands/procs/namespaces/packages/env + 安全前缀的零参 arity 探测），补 headless 拿不到的那部分 |
