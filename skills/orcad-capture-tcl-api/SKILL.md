@@ -337,7 +337,7 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 | [`plugin-skeleton.tcl`](examples/plugin-skeleton.tcl) | 进程内：菜单 + 控制条 + executeTcl 白名单入口骨架 |
 | [`build-symbol.tcl`](examples/build-symbol.tcl) | headless：从零建符号（Package/Cell/Part/Device + 管脚 + 显示属性），保存后回读校验 |
 | [`stream-olb.tcl`](examples/stream-olb.tcl) | headless：OLB → JSON（封装/器件/管脚，字段风格对齐官方 streamer，可喂预览器） |
-| [`hier-tree.tcl`](examples/hier-tree.tcl) | headless：.dsn → 层级 JSON（occurrence 树 + 页 + 器件数），已用真实设计验证 |
+| [`hier-tree.tcl`](examples/hier-tree.tcl) | headless：.dsn → 层级 JSON（occurrence 树 + 分支页/器件数/类型直方图，可选 `--html` 折叠树）；平面与层级设计均实测 |
 | [`align-objects.tcl`](examples/align-objects.tcl) | 进程内：对齐/等距分布（包围盒 + SetLocation，dry-run 先看计划） |
 | [`bulk-edit-csv.tcl`](examples/bulk-edit-csv.tcl) | 进程内：CSV 驱动批量改属性（前值校验 + 读回 + 逆序回滚，-commit 才存盘） |
 

@@ -133,4 +133,23 @@ session GetDesign <dsn> → design GetRootName
 → 页：NewViewsIter $::IterDefs_SCHEMATICS → DboViewToDboSchematic → NewPagesIter → NewPartInstsIter（计数）
 ```
 
-输出契约：`{design, root, occurrences:[{id,path,ref,page,primitive,children}], views:[{schematic,pages:[{name,partInsts}]}], occurrenceCount, pageCount, partInstCount, depthLimitHit}`。
+输出契约（v2，直接可喂树控件）：
+
+```text
+{design, root,
+ occurrences:[{id, parent, path, ref, page, primitive, recursive, contents,
+               children, pages:[{name,partInsts}], partCount, types:{TYPE_NAME:count}}],
+ views:[{schematic,pages:[{name,partInsts}]}],
+ occurrenceCount, pageCount, partInstCount, depthLimitHit}
+```
+
+关键点：`pages/partCount/types` **不是**每个 occurrence 各扫一遍页得来的——先扫一遍"视图→页"建 `schematic → {pages, parts, types}` 统计表，遍历 occurrence 时按 `contents` 查表。两遍遍历、每页只扫一次，大设计也不慢。
+
+实测（两份 Cadence 自带样本）：
+
+| 设计 | 规模 | occurrence | 页 | 器件实例 | 耗时 | 产物 |
+| --- | --- | --- | --- | --- | --- | --- |
+| `PS15.DSN`（平面） | 201 KB | 32 | 1 | 31 | 0.7 s | JSON 5.5 KB |
+| `HSD_FPGA.DSN`（层级） | 3.1 MB | 441 | 17 | 440 | 1.2 s | JSON 91 KB + HTML 29 KB |
+
+层级样本里 root 的 `contents=Top`、`pages=[Top_Level(10)]`、`types={DRAWN_INSTANCE:9, PLACED_INSTANCE:1}`——正是树控件要显示的东西。加 `--html out.html` 会额外生成一份零依赖的 `<details>` 折叠树，双击就能在浏览器里逐层展开。
