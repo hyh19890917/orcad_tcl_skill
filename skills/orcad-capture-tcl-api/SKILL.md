@@ -327,6 +327,7 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 | [official-workflows.md](reference/official-workflows.md) | 应用层 C* 类、StringMap、CIS 分组、差异/搜索/路径/PDF、官方 web 宿主与对象流协议 |
 | [constants.md](reference/constants.md) · [constants-17.4.txt](reference/constants-17.4.txt) | 437 个宿主常量（对象类型/值枚举/迭代位），附 [dump-constants.tcl](scripts/dump-constants.tcl) |
 | [official-ui-layout-export.md](reference/official-ui-layout-export.md) | 官方四套范式：偏好表单（CFT 字段+树表+JSON）、对齐/分布选项模型、PDF 导出的标注+跨进程管线、对象流序列化字段分层 |
+| [host-actions.md](reference/host-actions.md) | RegisterAction 的 5 参数形态、InsertXMLMenu 嵌套结构 + RefreshMenu、handler/enabler 的 {args}/return true 契约、headless 不存在该命令的硬边界、可复用 enabler 名单 |
 | [dbo-value-and-creation.md](reference/dbo-value-and-creation.md) | DboValue 类型与创建类 API 实测：ValueType&/int& 出参的正确指针、junction 可用、NewName 假成功、offpage 真重载、ReleaseAllCreatedPtrs |
 | [probing-api-gaps.md](reference/probing-api-gaps.md) | 自己补签名空白：类型错误文本反推参数（arg N of type）、临时对象当 self 逐级逼近、DboState 报错真实语义（Message 是 setter、Code 常为 0、有的直接抛异常） |
 | [allegro-3d-and-models.md](reference/allegro-3d-and-models.md) | 封装与 3D 绑定：axlStepSet/axlStepGet 读回校验、PACKAGE_HEIGHT_MAX、清单哈希与 height_source 设计、反模式 |
