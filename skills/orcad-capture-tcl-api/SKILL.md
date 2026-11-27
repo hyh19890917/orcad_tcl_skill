@@ -309,39 +309,99 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 
 还有一批**存在但官方 tcl 从未使用**的进阶族——事务与撤销（DboPageTransaction）、BOM/器件 JSON（DboTclBom、DboTclUtils_*JSON）、位号状态机（DboRefDes*）、路径与内存目录（DboPathMgr/DboDirectory）、扩展属性、以及官方 web 宿主（orPrmWebApp）。用它们能省掉大段自研代码，但没有官方示例，需先自测：见 [dbo-advanced.md](reference/dbo-advanced.md)。
 
-## 15. 文件索引
+## 15. 文件索引（全量）
 
-**完整清单（按主题分组、带依据等级）见 [`reference/README.md`](reference/README.md)**。这里只列最常用的入口。
+> 同内容按主题分组、并标注「实测 / 原文 / 推断 / 查阅」依据等级的版本见 [`reference/README.md`](reference/README.md)。本节是**全量清单 + 每篇包含什么**。
 
-### 15.1 主查表（写代码时最常翻）
+### 15.1 Dbo 面（对象模型与 API）
 
-| 文件 | 用途 |
+| 文件 | 里面有什么 |
 | --- | --- |
-| [`signatures.md`](reference/signatures.md) / [`signatures-17.4.csv`](reference/signatures-17.4.csv) | 3,941 条命令的参数名 + C++ 类型（按类分组 / 机读） |
-| [`dbo-classes.md`](reference/dbo-classes.md) | 291 个类的成员总表 |
-| [`iterators.md`](reference/iterators.md) | 迭代器 → `Next*` → `delete_*` 对应 |
-| [`constants.md`](reference/constants.md) · [`constants-17.4.txt`](reference/constants-17.4.txt) | 437 个宿主常量（对象类型/值枚举/迭代位） |
-| [`marshalling.md`](reference/marshalling.md) | `DboTclHelper_*` 指针与所有权 |
-| [`version-matrix.md`](reference/version-matrix.md) | 16.6/17.2/17.4 实测对照与行为差异 |
+| [`signatures.md`](reference/signatures.md) | **主查表**：3,941 条命令的官方参数名 + C++ 类型（17.4），按声明类分组；重载未暴露的条目单独标注 |
+| [`signatures-17.4.csv`](reference/signatures-17.4.csv) / [`.tsv`](reference/signatures-17.4.tsv) | 同上，机读格式（command, class, method, params），便于 grep/脚本消费 |
+| [`dbo-classes.md`](reference/dbo-classes.md) | 291 个类的成员总表：类 → 方法 → 参数，用来反查"这个东西在哪个类上" |
+| [`dbo-commands-17.4.csv`](reference/dbo-commands-17.4.csv) / [`-16.6.csv`](reference/dbo-commands-16.6.csv) | 类·方法·种类·命令名四列，跨版本 diff 用 |
+| [`iterators.md`](reference/iterators.md) | 127 个迭代器 → `Next*` 方法名 → 对应的 `delete_Dbo*Iter`，含"必须删除"提醒 |
+| [`marshalling.md`](reference/marshalling.md) | 90 个 `DboTclHelper_*`：CString/CPoint/CRect/LOGFONT/DboValue 的构造-读取-释放配对，与"谁拥有指针"规则 |
+| [`constants.md`](reference/constants.md) · [`constants-17.4.txt`](reference/constants-17.4.txt) | 437 个宿主常量：对象类型（`LIBRARY=5`/`PAGE=10`/`PLACED_INSTANCE=13`…）、155 个 `DboValue_*`、128 个 `IterDefs_*` |
+| [`dbo-advanced.md`](reference/dbo-advanced.md) | 进阶族：事务与撤销、**BOM/JSON 助手实测**（`GetBOMOptionsJSON` 5,169 B 的 CIS 属性白名单；`GetBOMJSON` 的 `metadata/tableHeader/tableData`）、位号、路径与内存目录、属性三层与 `NewDisplayProp` 实参纠正 |
+| [`dbo-value-and-creation.md`](reference/dbo-value-and-creation.md) | `GetEffectivePropValueType` 的真实参数（`ValueType&` + 两个 `int&`）、`sMakeDboValueType` 用法、`NewJunction` 可用 / `NewName` 假成功 / `NewOffPageConnector` 真重载、`sReleaseAllCreatedPtrs` |
+| [`official-patterns.md`](reference/official-patterns.md) | 官方 564 个 tcl 的用法统计：谁被用最多（`DboState` 441、`sMakeCString` 1315）、七组"官方 → 常驻插件"对照、可抄范式与反模式 |
+| [`official-symbol-builder.md`](reference/official-symbol-builder.md) | 官方 PSpice 符号生成器的十步序列，**外加两个跑出来的坑**：`NewDevice` 不建就看得到 Package 里没 Part、`SaveLib` 前不 `MarkAllLibForSave` 就静默不写 |
+| [`official-workflows.md`](reference/official-workflows.md) | 应用级 `C*` 类（CIS 分组、差异比较、搜索）、StringMap 用法、成套流程 |
+| [`official-ui-layout-export.md`](reference/official-ui-layout-export.md) | 四套官方范式：偏好表单（`COrConfigField_CFT_*` + 树/表 + JSON）、对齐/分布选项模型、PDF 标注 + 跨进程对象、`orPrmDboStreamer` 的对象流分层 |
 
-### 15.2 按任务找文档
+### 15.2 宿主面（Capture 进程内的命令、面板、事件）
 
-- **改属性 / 批量编辑** → [`dbo-advanced.md`](reference/dbo-advanced.md)、[`safe-edit-prop.tcl`](examples/safe-edit-prop.tcl)、[`bulk-edit-csv.tcl`](examples/bulk-edit-csv.tcl)
-- **写插件（菜单 / 面板 / 事件）** → [`host-actions.md`](reference/host-actions.md)、[`plugin-lifecycle.md`](reference/plugin-lifecycle.md)、[`host-event-hooks.md`](reference/host-event-hooks.md)、[`web-panel-bridge.md`](reference/web-panel-bridge.md)、[`plugin-skeleton.tcl`](examples/plugin-skeleton.tcl)
-- **符号库（新建 / 修改）** → [`official-symbol-builder.md`](reference/official-symbol-builder.md)、[`symbol-editor-api.md`](reference/symbol-editor-api.md)、[`build-symbol.tcl`](examples/build-symbol.tcl)
-- **放置 / 连线** → [`host-place-api.md`](reference/host-place-api.md)、[`place-from-csv.tcl`](examples/place-from-csv.tcl)
-- **PDF / 导出** → [`host-pdf-api.md`](reference/host-pdf-api.md)、[`export-pdf.tcl`](examples/export-pdf.tcl)
-- **BOM / 变体** → [`dbo-advanced.md`](reference/dbo-advanced.md) §10、[`host-capability-map.md`](reference/host-capability-map.md) §3
-- **预览 / 索引（离线）** → [`hier-tree.tcl`](examples/hier-tree.tcl)、[`page-stream.tcl`](examples/page-stream.tcl)、[`stream-olb.tcl`](examples/stream-olb.tcl)、[`design-browser.tcl`](examples/design-browser.tcl)
-- **自己继续挖 API** → [`probing-api-gaps.md`](reference/probing-api-gaps.md)、[`coverage.md`](reference/coverage.md)、[`export-host-commands.tcl`](scripts/export-host-commands.tcl)
+| 文件 | 里面有什么 |
+| --- | --- |
+| [`host-commands-surface.md`](reference/host-commands-surface.md) | **盘点**：Capture 内 9,830 条 vs headless 6,112 条；`Place*` 63 条全清单；关键命令存在性逐条核对（`ExecuteAction` 确认不存在）；`cap*` 533 条的亮点；v2 探测恢复的 20+ 条真实签名；`GetActivePMDesign` 是宿主→Dbo 的桥 |
+| [`host-place-api.md`](reference/host-place-api.md) | 放置族完整签名：`PlaceWire(x1 y1 x2 y2)`、`PlaceJunction/NoConnect(x y)`、`PlaceNetAlias(x y name)`、`PlaceOffPage/Port/Power/Ground(x y lib symbol name)`、`PlaceBlock(x1 y1 x2 y2 lib view inst type)`、`PlacePart` 六参 + `AddLib/Select*Index/SelectPartByNameAndLib` 索引状态机、`PlaceNetgroup*` 需页上下文；4 项未验证点 |
+| [`host-pdf-api.md`](reference/host-pdf-api.md) | `CapPdf*` 六签名（真机探测：`pStartPtX…pId pAttributeMarkType`）、7 个选项、**纸张索引 0..69**、ini 12 个 `capPDF*` 键、编排链路 `printPdf→CapPdfPrint→printPdfFromPS(gs)`、真机三次记录（含 0 字节 PS 全过程与结论） |
+| [`host-event-hooks.md`](reference/host-event-hooks.md) | **事件钩子目录**：约 100 个 `_cdn*` 保留名（设计打开/保存/另存/关闭/退出/空闲、页创建、连接性变更、选择、上下文菜单、`_cdnCapAction/Update*` 成对、PDF 两钩子）；官方 `capOnlineDRC` 的挂法；`SubscribeForDBChange` 订阅点；`COrDRCTclInterface_*` 九个接口 |
+| [`host-actions.md`](reference/host-actions.md) | `RegisterAction` 5 参数形态（两处官方来源一致）、`InsertXMLMenu` 嵌套结构 + `RefreshMenu`、handler/enabler 的 `{args}`/`return true` 契约、重复注册用 `catch`、**headless 不存在这四个命令**的硬边界 |
+| [`plugin-lifecycle.md`](reference/plugin-lifecycle.md) | `capAutoLoad` 即入口、`<Feature>Init.tcl` 壳与体之分、约定式 proc 名、`package require orPrmDesigner` 面板三步、6109 条命令表的盲区说明 |
+| [`web-panel-bridge.md`](reference/web-panel-bridge.md) | 面板桥官方实现：服务端 `methodLabel=executeTcl` 直接 `eval`、页面侧 `orPrmConnector(widgetId, tcl)`、Tcl 侧 `webpanel::exec` / `nativeCall`、白名单分派骨架 |
+| [`host-panel-api.md`](reference/host-panel-api.md) | 面板 API 全景：240 个命名空间 / 3,126 个方法；`OrEntry<Feature>` 的 `pStrClientId` 契约与四类方法；`::capObjectAlignment::` 120 个对齐/分布方法（含 `ConvertDocToUser` 单位换算）；`orPrmServerPrimary` 的 `(commandName, argsList)` RPC 形态 |
+| [`symbol-editor-api.md`](reference/symbol-editor-api.md) | 符号编辑器 59 个方法：**`GetPackageXmL` → 改 XML → `savePackageData` 往返**（改已有封装的捷径）、12 个 `OnClickPlace*`、`RunCommand/OnAppCommand/setNotifyCommands` 命令通道、`orjson` 打包协议、与 Dbo 建符号的取舍表 |
+| [`orjson-usage.md`](reference/orjson-usage.md) | `orjson_*` 64 命令速查：构造/解析/序列化/转换/结构操作分组、官方调用形态、五个配方（建对象/取值/遍历/大小写不敏感/Base64）、五个坑（`get` 返回节点必须 `as_*` 等） |
+| [`host-capability-map.md`](reference/host-capability-map.md) | 宿主家族地图：`CorSimSrvr`/`CPMgt`/`DBXMLWriter`/`orSysObjectsManager`/`CIS*`/`CVariant`/`orjson`/`CNewBOm` 的数量与用途、掌握度标注、`DboTclBom_*` 导出 vs `CNewBOm_*` 操作的关键区分 |
+| [`host-api.md`](reference/host-api.md) | 早期整理的宿主命令概览：菜单、控制条、放置、文档命令、`executeTcl` 桥 |
 
-### 15.3 脚本
+### 15.3 版本、覆盖面与方法学
+
+| 文件 | 里面有什么 |
+| --- | --- |
+| [`version-matrix.md`](reference/version-matrix.md) | 16.6（Tcl 8.4.15/x86 + `tools\capture\orDb_Dll_Tcl.dll`，4,962 命令）、17.2（8.6.0/x64，6,022）、17.4（8.6.5/x64，6,109）实测对照；族级增量（如 `DboTclBom_*` 17.x 才有）；**两版行为实测**（`MarkAllLibForSave` 两版都必须、`GetPoint` 形态一致）；`capPdfUtil` 位置差异；别把 System Capture 的文档当 OrCAD 规范 |
+| [`coverage.md`](reference/coverage.md) | 覆盖面盘点：9,832 条 vs 文档提及率 69.7%；未覆盖家族分三层（离线可挖 / 需真机 / 绑定层不必挖）；收尾顺序建议 |
+| [`probing-api-gaps.md`](reference/probing-api-gaps.md) | 自己补 API 空白：类型错误文本反推参数（`arg N of type 'T'`）、临时对象当 `self` 逐级逼近、`DboState` 报错的真实语义（`Message` 是 setter、`Code` 常为 0、有的直接抛异常）、**为什么宿主面只能在进程内探** + `cap2xml` 等 CLI 旁路 |
+| [`allegro-3d-and-models.md`](reference/allegro-3d-and-models.md) | 封装↔3D 绑定：`axlStepSet/axlStepGet` 读回校验（容差 1e-4）、`PACKAGE_HEIGHT_MAX` 属性、清单设计（文件/几何/模型三重哈希 + `height_source`）、5 条反模式 |
+
+### 15.4 数据文件（查阅型，别通读）
+
+| 文件 | 规模 | 内容 |
+| --- | --- | --- |
+| [`signatures-17.4.csv`](reference/signatures-17.4.csv) · [`.tsv`](reference/signatures-17.4.tsv) | 3.9k 行 / 350–433 KB | 参数签名机读版 |
+| [`dbo-commands-17.4.csv`](reference/dbo-commands-17.4.csv) · [`dbo-commands-16.6.csv`](reference/dbo-commands-16.6.csv) | 6.1k / 5.0k 行 | 类·方法·种类·命令名 |
+| [`commands-17.4.txt`](reference/commands-17.4.txt) · [`-17.2`](reference/commands-17.2.txt) · [`-16.6`](reference/commands-16.6.txt) | 6.1k / 6.0k / 5.0k 行 | 各版本命令全量清单（一行一条） |
+| [`constants-17.4.txt`](reference/constants-17.4.txt) | 437 行 | `name=value` 形式的宿主常量 |
+
+### 15.5 脚本（`scripts/`）
 
 | 脚本 | 用途 |
 | --- | --- |
-| [`dump-dbo-api.tcl`](scripts/dump-dbo-api.tcl) | 换机器/换版本时重新导出命令面 |
-| [`dump-dbo-signatures.tcl`](scripts/dump-dbo-signatures.tcl) | 重新导出参数签名（零参调用法） |
-| [`dump-constants.tcl`](scripts/dump-constants.tcl) | 重新导出宿主常量 |
-| [`probe-calling-form.tcl`](scripts/probe-calling-form.tcl) | 验证调用形态 / 对象命名 / 类型码 |
-| [`debug-olb.tcl`](scripts/debug-olb.tcl) | 单库诊断（打开是否成功、Package 迭代器是否为空） |
-| [`export-host-commands.tcl`](scripts/export-host-commands.tcl) | **在 Capture 里跑**：导出宿主人面（`--probe-place` / `--probe-pdf` / `--probe-bom`） |
+| [`dump-dbo-api.tcl`](scripts/dump-dbo-api.tcl) | 枚举某套安装的 Dbo 命令面（换机器/换版本时重跑） |
+| [`dump-dbo-signatures.tcl`](scripts/dump-dbo-signatures.tcl) | 重新导出参数签名（零参调用法，含 `Wrong number of arguments` 解析） |
+| [`dump-constants.tcl`](scripts/dump-constants.tcl) | 把宿主预置全局常量（对象类型/值枚举/迭代位）导成 `name=value` |
+| [`probe-calling-form.tcl`](scripts/probe-calling-form.tcl) | 验证调用形态：对象式 vs 全局式、对象命名、类型码 |
+| [`debug-olb.tcl`](scripts/debug-olb.tcl) | 单库诊断：打开是否成功、Package 迭代器为什么为空 |
+| [`export-host-commands.tcl`](scripts/export-host-commands.tcl) | **在 Capture 里跑**：导出宿主命令面（commands/procs/namespaces/packages/env + 零参 arity 探测），支持 `--probe-place` / `--probe-pdf` / `--probe-bom` / `--deep` / `--no-probe` |
+
+### 15.6 示例（`examples/`）
+
+| 示例 | 场景 | 验证状态 |
+| --- | --- | --- |
+| [`batch-olb-index.tcl`](examples/batch-olb-index.tcl) | headless：OLB → TSV（Package/Symbol/Part/Pin 全量） | 对真实库验证（1200 封装 / 9492 行） |
+| [`build-symbol.tcl`](examples/build-symbol.tcl) | headless：从零建符号（Package/Cell/Part/Device + 管脚 + 显示属性），保存后回读校验 | 验证（写 4 管脚读回 4） |
+| [`stream-olb.tcl`](examples/stream-olb.tcl) | headless：OLB → JSON（封装/器件/管脚），字段风格对齐官方 streamer | 验证（含 Cadence 自带库） |
+| [`hier-tree.tcl`](examples/hier-tree.tcl) | headless：`.dsn` → 层级 JSON（occurrence 树 + 分支页/器件数/类型直方图），`--html` 出折叠树 | 验证（平面 32 节点 / 层级 441 节点） |
+| [`page-stream.tcl`](examples/page-stream.tcl) | headless：单页 → JSON（器件/导线折点/端口 + extent），`--html` 出 SVG 线框 | 验证（31 器件 / 158 导线） |
+| [`design-browser.tcl`](examples/design-browser.tcl) | headless：一条命令出自包含 HTML 浏览器（层级树 + 逐页 SVG + 网络配色 + 缩放/拖拽 + 点器件看管脚） | 验证（3 个真实设计） |
+| [`safe-edit-prop.tcl`](examples/safe-edit-prop.tcl) | 进程内：批量改属性，前值校验 + 逆序回滚（8.4 兼容） | 逻辑在 headless 桩验 |
+| [`bulk-edit-csv.tcl`](examples/bulk-edit-csv.tcl) | 进程内：CSV 驱动批量改属性，`-commit` 才落盘 | 桩验 |
+| [`align-objects.tcl`](examples/align-objects.tcl) | 进程内：对齐/等距分布（包围盒 + `SetLocation`，dry-run 先看计划） | 桩验 |
+| [`place-from-csv.tcl`](examples/place-from-csv.tcl) | **Capture 内**：CSV 驱动批量放置 11 类对象（wire/alias/offpage/port/power/ground/junction/noconnect/part/partsel/block） | 桩验（参数顺序与实测签名一致）；真机待验 |
+| [`export-pdf.tcl`](examples/export-pdf.tcl) | **Capture 内**：导出 PDF（选项逐个回读、`CapPdfPrint` 后按文件判定、`--dry-run` 出诊断） | 真机跑到"PS 为 0 字节"阶段，缺 Ghostscript |
+| [`probe-design.tcl`](examples/probe-design.tcl) | 进程内：设计/页/实例/选中体检（只读） | 已验证 |
+| [`plugin-skeleton.tcl`](examples/plugin-skeleton.tcl) | 进程内：菜单 + 控制条 + 本地网页 + `executeTcl` 白名单入口骨架 | 骨架，未在真机跑 |
+
+### 15.7 按目标选入口
+
+- **只改属性**：§4.2 + §6 + [`safe-edit-prop.tcl`](examples/safe-edit-prop.tcl) / [`bulk-edit-csv.tcl`](examples/bulk-edit-csv.tcl)
+- **写插件**：§10 + [`host-actions.md`](reference/host-actions.md) + [`plugin-lifecycle.md`](reference/plugin-lifecycle.md) + [`host-event-hooks.md`](reference/host-event-hooks.md) + [`web-panel-bridge.md`](reference/web-panel-bridge.md) + [`plugin-skeleton.tcl`](examples/plugin-skeleton.tcl)
+- **符号库**：[`official-symbol-builder.md`](reference/official-symbol-builder.md)（新建）+ [`symbol-editor-api.md`](reference/symbol-editor-api.md)（改旧）+ [`build-symbol.tcl`](examples/build-symbol.tcl)
+- **放置/连线**：[`host-place-api.md`](reference/host-place-api.md) + [`place-from-csv.tcl`](examples/place-from-csv.tcl)
+- **PDF/导出**：[`host-pdf-api.md`](reference/host-pdf-api.md) + [`export-pdf.tcl`](examples/export-pdf.tcl)
+- **BOM/变体**：[`dbo-advanced.md`](reference/dbo-advanced.md) §10 + [`host-capability-map.md`](reference/host-capability-map.md) §3
+- **离线预览/索引**：[`hier-tree.tcl`](examples/hier-tree.tcl) + [`page-stream.tcl`](examples/page-stream.tcl) + [`stream-olb.tcl`](examples/stream-olb.tcl) + [`design-browser.tcl`](examples/design-browser.tcl)
+- **自己继续挖 API**：[`probing-api-gaps.md`](reference/probing-api-gaps.md) + [`coverage.md`](reference/coverage.md) + [`export-host-commands.tcl`](scripts/export-host-commands.tcl)
