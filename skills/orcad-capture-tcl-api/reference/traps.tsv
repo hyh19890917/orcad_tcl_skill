@@ -1,31 +1,31 @@
-api	area	symptom	cause	fix	evidence	status
-SaveLib	dbo	Returns OK; reopened library has 0 packages/parts/pins	Objects not marked dirty; SaveLib silently skips	DboSession_MarkAllLibForSave $sess $lib before SaveLib	measured 16.6+17.4	verified
-NewPackage/NewCell/NewPart	dbo	Part invisible after reopening the OLB	Package references Cell only through Device	$pkg NewDevice <designator> <position> <cell> $st	measured 17.4	verified
-SetUserPropStringValue	dbo	Returns code=0 but effective and user values stay empty	API no-ops for non-existing property	Use SetEffectivePropStringValue (it also creates the local override)	measured 17.4	verified
-Write:NewName	dbo	Returns OK; alias count 0 and net name unchanged	Wrong layer: net labels are host-level, not Dbo	PlaceNetAlias x y netAlias (host command)	measured 17.4	verified
-CapPdfPrint	host-pdf	Returns code=0 in 2-4 ms, no file created (or 0-byte .ps)	Bare call skips orchestration: mPSFilePath/mPdfFilePath/converter command uninitialized	package require capPdfUtil; SetOptionString keys; ::capPdfUtil::printPdf $dir $file	measured 17.4	verified
-capIsPrinterDriverAvailable	host-pdf	Returns empty string	Missing required argument (driver name)	capIsPrinterDriverAvailable "OrCADPS_17.4" -> 1/0	measured 17.4	verified
-CapPdfAddMarkStart	host-pdf	6th parameter meaning unknown	Param name is pAttributeMarkType; all 18 official call sites pass 0	Pass 0; do not invent enum values	probe + official call sites	unknown-enum
-PlaceNetgroup	host-place	RuntimeError: Command Requires SchematicView	No open schematic view	Open a page first; wrap all Place* in catch	measured 17.4	verified
-PlacePart	host-place	6th parameter semantics unknown	Param list ends with boolvalue6	Pass 0 for now	probe	unknown
-PlaceNew/PlacePartEx	host-place	No matching function for overloaded	True C++ overload; type mismatch aborts resolution	Find official call site or probe by usage	probe	unknown
-DboTclBom_GetBOMOptionsJSON	dbo-bom	Returns pointer object, not a string	Binding returns std::string*	Read with DboTclHelper_sGetConstCharPtr	measured 17.4	verified
-DboTclBom_*	version	invalid command name in 16.6	Family introduced in 17.x	Guard with [llength [info commands DboTclBom_GetBOMJSON]]	measured 16.6	verified
-GetEffectivePropValueType	dbo	TypeError argument 3 of type 'DboValue::ValueType &'	Third param is enum reference	Pass DboTclHelper_sMakeDboValueType; 4th/5th are int& -> sMakeInt	measured 17.4	verified
-GetEffectivePropValueType	dbo	Success but the ValueType value cannot be read back	sGetInt does not read the ValueType pointer	No working reader found yet; treat as opaque	measured 17.4	unknown
-GetPropStringValue	dbo	Errors on a PartInst	Not an instance-level getter	Use GetEffectivePropStringValue / GetUserPropStringValue	measured 17.4	verified
-SetEffectivePropStringValue	dbo	User value changes too	Writing effective creates a local override	Expected behavior; account for it in rollback logic	measured 17.4	verified
-Iterator lifetime	dbo	Memory growth / stale iteration	Iterators are not auto-freed	Always call delete_Dbo<X>Iter	official patterns	verified
-Pointer helpers	dbo	Leaks in long scripts	Manual sDelete* per pointer	DboTclHelper_sReleaseAllCreatedPtrs at the end	measured 17.4	verified
-Method existence	dbo	info commands DboPartInst_GetEffectivePropStringValue is empty though $part method works	Methods dispatch via inheritance; only declaring-class globals exist	Probe with catch {$obj Method} instead of info commands	measured 17.4	verified
-Host commands	host	RegisterAction/InsertXMLMenu/PlaceWire/CapPdf* missing in tclsh	Registered by Capture.exe, not by the Dbo DLL	Guard plugin UI with if {[llength [info commands RegisterAction]]==0} { return }	measured 17.4	verified
-ExecuteAction	host	command not found in Capture either	No such host command	Invoke the menu item or call the underlying proc directly	measured 17.4	verified
-Output encoding	script	Tcl-written HTML/JSON shows mojibake for non-ASCII	tclsh reads scripts with system encoding; non-ASCII literals get double-encoded	Emit ASCII only, or bulletproof with encoding system utf-8 before source	measured 17.4	verified
-Tcl version	script	Dict/lmap fail on 16.6	16.6 ships Tcl 8.4.15	Avoid dict/lmap if the script must run on 16.6	measured 16.6	verified
-ABI detection	script	tcl_platform(wordSize) returns 4 on x64 Windows	Platform quirk	Detect arch by DLL path/bitness, never by wordSize	measured	verified
-orjson_get	host-json	Value used as a string yields _xxxx_p_... object name	Returns a JSON node, not a Tcl string	Convert with orjson_as_string/int/float/bool/array	official call sites	verified
-orjson_new	host-json	Numbers/booleans arrive as strings	All values created with new_a	Use orjson_new_f for numbers, orjson_new_b for booleans, orjson_new_a for strings	official call sites	verified
-capPdfUtil location	version	package require capPdfUtil fails on some installs	16.6 keeps it under tclscripts/capUtils, 17.4 under tclscripts/capPDFExport/tcl	Search both paths by version	measured	verified
-DBXMLWriter	host-xml	Parameter table unknown	Zero call sites in official Tcl	Use cap2xml.exe CLI to study output XML (requires license), or probe in session	coverage analysis	unknown
-CNewBOm/CVariant/CDiff/orExprEval	host-bom	Parameter tables unknown	Zero call sites in official Tcl; pure in-process objects	Run scripts/export-host-commands.tcl with --probe-bom inside Capture	coverage analysis	unknown
-22.1+ behavior	version	Not verified	Only 16.6/17.2/17.4 were measured	Re-run dump scripts on 22.1 before trusting anything	coverage analysis	unknown
+api	area	symptom	cause	fix	evidence	status	official_calls	matched_tokens
+SaveLib	dbo	Returns OK; reopened library has 0 packages/parts/pins	Objects not marked dirty; SaveLib silently skips	DboSession_MarkAllLibForSave $sess $lib before SaveLib	measured 16.6+17.4	verified	11	SaveLib=11
+NewPackage/NewCell/NewPart	dbo	Part invisible after reopening the OLB	Package references Cell only through Device	$pkg NewDevice <designator> <position> <cell> $st	measured 17.4	verified	6	NewPackage=2 NewCell=2 NewPart=2
+SetUserPropStringValue	dbo	Returns code=0 but effective and user values stay empty	API no-ops for non-existing property	Use SetEffectivePropStringValue (it also creates the local override)	measured 17.4	verified	0	(api 字段是描述性文字，无命令名)
+Write:NewName	dbo	Returns OK; alias count 0 and net name unchanged	Wrong layer: net labels are host-level, not Dbo	PlaceNetAlias x y netAlias (host command)	measured 17.4	verified	0	(api 字段是描述性文字，无命令名)
+CapPdfPrint	host-pdf	Returns code=0 in 2-4 ms, no file created (or 0-byte .ps)	Bare call skips orchestration: mPSFilePath/mPdfFilePath/converter command uninitialized	package require capPdfUtil; SetOptionString keys; ::capPdfUtil::printPdf $dir $file	measured 17.4	verified	1	CapPdfPrint=1
+capIsPrinterDriverAvailable	host-pdf	Returns empty string	Missing required argument (driver name)	capIsPrinterDriverAvailable "OrCADPS_17.4" -> 1/0	measured 17.4	verified	1	capIsPrinterDriverAvailable=1
+CapPdfAddMarkStart	host-pdf	6th parameter meaning unknown	Param name is pAttributeMarkType; all 18 official call sites pass 0	Pass 0; do not invent enum values	probe + official call sites	unknown-enum	18	CapPdfAddMarkStart=18
+PlaceNetgroup	host-place	RuntimeError: Command Requires SchematicView	No open schematic view	Open a page first; wrap all Place* in catch	measured 17.4	verified	0	(api 字段是描述性文字，无命令名)
+PlacePart	host-place	6th parameter semantics unknown	Param list ends with boolvalue6	Host form: PlacePart x y lib pkg device bool; NOTE ::capPSpiceModelAppWrapper::PlacePart is a same-named Tcl proc (olbPath symbol flag) - do not confuse	probe + official wrapper collision	verified	22	PlacePart=22
+PlaceNew/PlacePartEx	host-place	No matching function for overloaded	True C++ overload; type mismatch aborts resolution	PlacePartEx lib pkg device isConvert propNameList propValueList; PlaceNew olbPath partOrSymbol flag	OrHandlerUnifiedSearch.tcl:775, OrHandlerCapPSpicePWLExtractor.tcl:438, capPSpPartPick.tcl:69	verified-by-callsite	9	PlaceNew=5 PlacePartEx=4
+DboTclBom_GetBOMOptionsJSON	dbo-bom	Returns pointer object, not a string	Binding returns std::string*	Read with DboTclHelper_sGetConstCharPtr	measured 17.4	verified	0	(api 字段是描述性文字，无命令名)
+DboTclBom_*	version	invalid command name in 16.6	Family introduced in 17.x	Guard with [llength [info commands DboTclBom_GetBOMJSON]]	measured 16.6	verified	0	(api 字段是描述性文字，无命令名)
+GetEffectivePropValueType	dbo	TypeError argument 3 of type 'DboValue::ValueType &'	Third param is enum reference	Pass DboTclHelper_sMakeDboValueType; 4th/5th are int& -> sMakeInt	measured 17.4	verified	0	(api 字段是描述性文字，无命令名)
+GetEffectivePropValueType	dbo	Success but the ValueType value cannot be read back	sGetInt does not read the ValueType pointer	No working reader found yet; treat as opaque	measured 17.4	unknown	0	(api 字段是描述性文字，无命令名)
+GetPropStringValue	dbo	Errors on a PartInst	Not an instance-level getter	Use GetEffectivePropStringValue / GetUserPropStringValue	measured 17.4	verified	0	(api 字段是描述性文字，无命令名)
+SetEffectivePropStringValue	dbo	User value changes too	Writing effective creates a local override	Expected behavior; account for it in rollback logic	measured 17.4	verified	13	SetEffectivePropStringValue=13
+Iterator lifetime	dbo	Memory growth / stale iteration	Iterators are not auto-freed	Always call delete_Dbo<X>Iter	official patterns	verified	0	(api 字段是描述性文字，无命令名)
+Pointer helpers	dbo	Leaks in long scripts	Manual sDelete* per pointer	DboTclHelper_sReleaseAllCreatedPtrs at the end	measured 17.4	verified	0	(api 字段是描述性文字，无命令名)
+Method existence	dbo	info commands DboPartInst_GetEffectivePropStringValue is empty though $part method works	Methods dispatch via inheritance; only declaring-class globals exist	Probe with catch {$obj Method} instead of info commands	measured 17.4	verified	0	(api 字段是描述性文字，无命令名)
+Host commands	host	RegisterAction/InsertXMLMenu/PlaceWire/CapPdf* missing in tclsh	Registered by Capture.exe, not by the Dbo DLL	Guard plugin UI with if {[llength [info commands RegisterAction]]==0} { return }	measured 17.4	verified	0	(api 字段是描述性文字，无命令名)
+ExecuteAction	host	command not found in Capture either	No such host command	Invoke the menu item or call the underlying proc directly	measured 17.4	verified	0	(api 字段是描述性文字，无命令名)
+Output encoding	script	Tcl-written HTML/JSON shows mojibake for non-ASCII	tclsh reads scripts with system encoding; non-ASCII literals get double-encoded	Emit ASCII only, or bulletproof with encoding system utf-8 before source	measured 17.4	verified	0	(api 字段是描述性文字，无命令名)
+Tcl version	script	Dict/lmap fail on 16.6	16.6 ships Tcl 8.4.15	Avoid dict/lmap if the script must run on 16.6	measured 16.6	verified	0	(api 字段是描述性文字，无命令名)
+ABI detection	script	tcl_platform(wordSize) returns 4 on x64 Windows	Platform quirk	Detect arch by DLL path/bitness, never by wordSize	measured	verified	0	(api 字段是描述性文字，无命令名)
+orjson_get	host-json	Value used as a string yields _xxxx_p_... object name	Returns a JSON node, not a Tcl string	Convert with orjson_as_string/int/float/bool/array	official call sites	verified	228	orjson_get=228
+orjson_new	host-json	Numbers/booleans arrive as strings	All values created with new_a	Use orjson_new_f for numbers, orjson_new_b for booleans, orjson_new_a for strings	official call sites	verified	191	orjson_new=191
+capPdfUtil location	version	package require capPdfUtil fails on some installs	16.6 keeps it under tclscripts/capUtils, 17.4 under tclscripts/capPDFExport/tcl	Search both paths by version	measured	verified	0	(api 字段是描述性文字，无命令名)
+DBXMLWriter	host-xml	Parameter table unknown	Zero call sites in official Tcl	Use cap2xml.exe CLI to study output XML (requires license), or probe in session	coverage analysis	unknown	0	(api 字段是描述性文字，无命令名)
+CNewBOm/CVariant/CDiff/orExprEval	host-bom	Parameter tables unknown	Zero call sites in official Tcl; pure in-process objects	Run scripts/export-host-commands.tcl with --probe-bom inside Capture	coverage analysis	unknown	0	(api 字段是描述性文字，无命令名)
+22.1+ behavior	version	Not verified	Only 16.6/17.2/17.4 were measured	Re-run dump scripts on 22.1 before trusting anything	coverage analysis	unknown	0	(api 字段是描述性文字，无命令名)

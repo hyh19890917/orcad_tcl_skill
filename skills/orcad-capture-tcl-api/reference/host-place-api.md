@@ -74,6 +74,31 @@
 | --- | --- |
 | `PlaceBlock` | `x1 y1 x2 y2 libName viewName instName primitiveType` |
 
+### 1.6 `PlacePartEx` / `PlaceNew` 的真实调用形态（来自官方调用点）
+
+这三个此前标"真重载/未知"的命令，在官方 Tcl 里有调用点，形态可以直接抄：
+
+```tcl
+# OrHandlerUnifiedSearch.tcl:775 与 OrHandlerCapPSpicePWLExtractor.tcl:438
+PlacePartEx $lLib $lPkg $lDeviceDesignator $lIsConvert $lListPropName $lListPropValue
+PlacePartEx $olb_path $aPartName "" 0 "" ""
+
+# capPSpPartPick.tcl:69 / PSpiceModelAppCapture.tcl:250
+PlaceNew $lOlbPath $Part 0
+PlaceNew $olbPath $symbol $flag
+```
+
+据此推定参数表：
+
+| 命令 | 参数（推定） |
+| --- | --- |
+| `PlacePartEx` | `libName pkgName deviceDesignator isConvert propNameList propValueList`（6 参；省略时用 `""` 与 `0`） |
+| `PlaceNew` | `olbPath partOrSymbol flag`（3 参，flag 官方传 `0`） |
+
+**命名冲突警告**：`::capPSpiceModelAppWrapper::PlacePart {olbPath symbol flag}` 是**同名 Tcl proc**，不是宿主命令。统计"官方使用次数"时会被混算——看到 `PlacePart` 的调用点时先确认它是不是这个包装器。
+
+另外 `PlaceNetgroup` 在官方脚本里只以**菜单名**出现（`string compare $menuName "PlaceNetGroup"`），没有直接调用点，所以它的参数只能靠探测。
+
 ## 2. 三条使用规则
 
 1. **必须有打开的页**：`PlaceNetgroup` 在无页时直接抛 `RuntimeError: Command Requires SchematicView`。所有放置命令都依赖当前 schematic 视图——跑批前先 `GetActivePage`（并 `catch`）。
