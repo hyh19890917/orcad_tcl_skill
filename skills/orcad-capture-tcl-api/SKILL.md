@@ -7,6 +7,11 @@ description: Write, extend, or debug Tcl against Cadence OrCAD Capture (16.6 / 1
 
 面向"要动真格写 Tcl 插件/批处理"的场景。所有结论都来自本机 Cadence 实测导出，不是凭记忆写的；参考表在 [`reference/`](reference/)，可直接 grep。
 
+## 0. 先读事实库
+
+[`reference/llm-facts.md`](reference/llm-facts.md) 是本 skill 的**事实库**：硬规则、精确签名、假成功清单、报错文本映射、决策表、明确未验证项。先读它拿结论，需要推导过程再展开对应文档。
+
+约定：`[实测]` 本机跑过；`[原文]` Cadence 自带 tcl 调用点；`[推断]` 未单独验证；`[未知]` 禁止当事实输出。
 ## 0. 先判定你走哪条路线
 
 | 需求 | 路线 | 入口 |
@@ -317,6 +322,7 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 
 | 文件 | 里面有什么 |
 | --- | --- |
+| [`llm-facts.md`](reference/llm-facts.md) | **事实库（先读这个）**：12 条硬规则、5 条假成功清单、精确签名（Dbo/Place/CapPdf/OrEntry/orjson/符号编辑器）、7 条报错文本映射、9 条决策表、7 条明确未验证、可运行入口表 |
 | [`signatures.md`](reference/signatures.md) | **主查表**：3,941 条命令的官方参数名 + C++ 类型（17.4），按声明类分组；重载未暴露的条目单独标注 |
 | [`signatures-17.4.csv`](reference/signatures-17.4.csv) / [`.tsv`](reference/signatures-17.4.tsv) | 同上，机读格式（command, class, method, params），便于 grep/脚本消费 |
 | [`dbo-classes.md`](reference/dbo-classes.md) | 291 个类的成员总表：类 → 方法 → 参数，用来反查"这个东西在哪个类上" |
