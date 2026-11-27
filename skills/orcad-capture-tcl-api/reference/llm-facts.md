@@ -27,6 +27,7 @@
 10. `[实测]` 输出模板（HTML/JSON/日志）只用 ASCII：`tclsh` 按系统编码读脚本，源码里的中文会被双重编码成乱码；Tcl 注释里的中文无影响。
 11. `[原文]` 事件注册用 `RegisterAction "_cdn*" ...`（保留名，~100 个，见 `host-event-hooks.md`）；自创名只用于自己的菜单动作。
 12. `[实测]` 事务：`DboPageTransaction` 可用；保存链 `MarkAllLibForSave` + `SaveDesign`。
+13. `[实测]` 类型名查询用 `DboValue_GetLogicalTypeName <0..16> <outCString>`；`GetEffectivePropValueType` 的 `ValueType&` 出参读不出值，`sCastPtr` 猜参数会崩进程。
 
 ## 3. 假成功清单（返回 OK 但没做事）
 
@@ -180,7 +181,7 @@ orjson_delete $node / orjson_free $node
 - `[未知]` `CapPdfAddMarkStart` 第 6 参的**枚举名**（0/1 的实际用法已由 18 个调用点解出：0=仅包围盒，1=按第 5 参的形状名绘制；具体常量名未暴露）。
 - `[未知]` `PlacePart` 第 6 参语义（先按 0 用）。
 - `[未知]` `PlaceNext*Point` 续点坐标是绝对还是相对。
-- `[未知]` `DboTclHelper_sMakeDboValueType` 返回值如何**读回**枚举（`sGetInt` 无效）。
+- `[部分解决]` `DboValue::ValueType` 枚举：编号与 LogicalType 同一套（0 String / 1 Long / 2 Integer / 3 Boolean / 4 Color / 5 Font / 6 Time / 7 Pin Type / 8 Line Style / 9 Line Width / 10 Fill Style / 11 Hatch Style / 12 Rotation / 13 Primitive / 14 Implementation / 15 Display Type / 16 Invalid），用 `DboValue_GetLogicalTypeName $n $out` 取名；但那个 `ValueType&` 出参**只写不读**（`sGetInt` 无值）。**`sCastPtr` 猜参数会让进程崩溃，别赌。**
 - `[未知]` `CNewBOm_*` / `CVariant_*` / `CDiff*` / `orExprEval` 的参数表（零调用点，需 `--probe-bom` 真机探）。
 - `[未知]` `DBXMLWriter_*` 的 XML 结构（可用 `cap2xml.exe` 旁路研究，需 license）。
 - `[未知]` 22.1+ 版本行为（只在 16.6/17.2/17.4 上实测过）。

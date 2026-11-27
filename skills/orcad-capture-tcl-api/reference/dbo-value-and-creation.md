@@ -29,7 +29,36 @@ DboTclHelper_sDeleteInt $e
 DboTclHelper_sDeleteInt $d
 ```
 
-**未解决**：`ValueType*` 这个指针怎么读回枚举值——`DboTclHelper_sGetInt` 对它返回空；又没有 `sGetDboValueType`（只有 `sMakeDboValueType` / `sDeleteDboValueType`）。要么枚举值留给宿主内部用，要么得先 `sCastPtr` 成 int 指针再 `sGetInt`（未验证，别当结论）。
+**部分解决（2026-11-28 实测）**：`ValueType*` 本身仍读不出数值，但**枚举的编号体系已经被测出来**，配套的类型名查询也可用：
+
+```tcl
+# 1) 枚举值 → 类型名（实测可用，0..16）
+set out [DboTclHelper_sMakeCString ""]
+DboValue_GetLogicalTypeName $enumValue $out
+set typeName [DboTclHelper_sGetConstCharPtr $out]      ;# 见下表
+DboTclHelper_sDeleteCString $out
+```
+
+| 枚举 | 名称 | 枚举 | 名称 |
+| --- | --- | --- | --- |
+| 0 | String | 9 | Line Width |
+| 1 | Long Integer | 10 | Fill Style |
+| 2 | Integer | 11 | Hatch Style |
+| 3 | Boolean | 12 | Rotation Value |
+| 4 | Color | 13 | Primitive Type |
+| 5 | Font | 14 | Implementation Type |
+| 6 | Time | 15 | Display Type |
+| 7 | Pin Type | 16 | Invalid Object |
+| 8 | Line Style | | |
+
+`[实测]` **`DboValue::ValueType` 与这套 LogicalType 用的是同一套编号**——用 `sMakeDboValue` + 各 `Set*` 后读 `$v GetType $st` 得到：`SetString`→0、`SetLong`→1、`SetInt`→2、`SetColor`→4、`SetLineWidth`→9、`SetRotation`→12、`SetDisplayType`→15，与上表逐一吻合（注意：同一个 `DboValue` 连续调不同 `Set*` 时类型不一定会变，要每次新建对象再测）。
+
+结论：**类型名可以直接查；类型值只能间接获得**——`GetEffectivePropValueType` 的第 3 参是只写不读的 `ValueType&`。补充两条实测依据：
+
+- `DboTclHelper_sGetInt $vt` 返回空（读不出）；`sGetBool`/`sGetULong` 同样无值。
+- **`DboTclHelper_sCastPtr` 用猜测的参数组合会让 tclsh 直接崩溃**（`sCastPtr "int" $vt $i` 实测把进程打死）。要么确定签名再试，要么放弃这条路，别在正式脚本里赌。
+
+替代方案（可用）：先用 `DboTclHelper_sMakeDboValue` 造一个 DboValue，用 `SetString/SetInt/SetBool/SetColor/...` 反推某属性"能不能按字符串读"——能读字符串就说明是 String 类，够大多数批量改属性的场景用。
 
 实测补充：这个方法在 **`PartInst` 上直接可用**（不必转 occurrence）；属性名不存在（如 `xyzzy`）也返回 code=0，不报错——所以不能拿它探测属性是否存在。
 
