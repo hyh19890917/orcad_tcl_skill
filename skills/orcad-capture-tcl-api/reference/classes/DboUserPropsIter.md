@@ -1,9 +1,9 @@
-# DboUserPropsIter (3 methods)
+# DboUserPropsIter (3 methods, official_calls(upper bound)=30)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `Next` | `self,status` | argc=1 |
-| `NextUserProp` | `self,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `Next` | `self,status` | argc=1 | 30 | 88 |
+| `NextUserProp` | `self,status` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboUserPropsIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboUserPropsIter_<method> $obj <args...>`

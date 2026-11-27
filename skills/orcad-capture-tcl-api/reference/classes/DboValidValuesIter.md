@@ -1,7 +1,7 @@
-# DboValidValuesIter (1 methods)
+# DboValidValuesIter (1 methods, official_calls(upper bound)=0)
 
-| method | params | note |
-| --- | --- | --- |
-| `NextValue` | `` | overloaded-C++ |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `NextValue` | `` | overloaded-C++ | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboValidValuesIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboValidValuesIter_<method> $obj <args...>`

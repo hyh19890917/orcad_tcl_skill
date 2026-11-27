@@ -1,7 +1,7 @@
-# DboDesignUpdateOccurrenceBlockerManager (1 methods)
+# DboDesignUpdateOccurrenceBlockerManager (1 methods, official_calls(upper bound)=19)
 
-| method | params | note |
-| --- | --- | --- |
-| `Release` | `` | overloaded-C++ |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `Release` | `` | overloaded-C++ | 19 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboDesignUpdateOccurrenceBlockerManager_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboDesignUpdateOccurrenceBlockerManager_<method> $obj <args...>`

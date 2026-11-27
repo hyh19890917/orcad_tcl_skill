@@ -1,8 +1,8 @@
-# DboLibPackageAliasesIter (2 methods)
+# DboLibPackageAliasesIter (2 methods, official_calls(upper bound)=24)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `NextAlias` | `self,name` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `NextAlias` | `self,name` | argc=1 | 24 | 4 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboLibPackageAliasesIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboLibPackageAliasesIter_<method> $obj <args...>`

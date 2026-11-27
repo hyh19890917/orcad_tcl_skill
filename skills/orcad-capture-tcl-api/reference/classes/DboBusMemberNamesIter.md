@@ -1,9 +1,9 @@
-# DboBusMemberNamesIter (3 methods)
+# DboBusMemberNamesIter (3 methods, official_calls(upper bound)=0)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `NextBundleMemberName` | `self,Name,parentName` | argc=1 |
-| `NextMemberName` | `self,Name` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `NextBundleMemberName` | `self,Name,parentName` | argc=1 | 0 | 1 |
+| `NextMemberName` | `self,Name` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboBusMemberNamesIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboBusMemberNamesIter_<method> $obj <args...>`

@@ -1,8 +1,8 @@
-# DboSymbolVectorVectorsIter (2 methods)
+# DboSymbolVectorVectorsIter (2 methods, official_calls(upper bound)=2)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `NextVector` | `self,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `NextVector` | `self,status` | argc=1 | 2 | 2 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboSymbolVectorVectorsIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboSymbolVectorVectorsIter_<method> $obj <args...>`

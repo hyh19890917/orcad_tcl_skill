@@ -1,8 +1,8 @@
-# DboDirectoryEntriesIter (2 methods)
+# DboDirectoryEntriesIter (2 methods, official_calls(upper bound)=0)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `NextEntry` | `self,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `NextEntry` | `self,status` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboDirectoryEntriesIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboDirectoryEntriesIter_<method> $obj <args...>`

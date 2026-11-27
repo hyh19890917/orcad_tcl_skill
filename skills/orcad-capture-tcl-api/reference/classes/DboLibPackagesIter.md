@@ -1,10 +1,10 @@
-# DboLibPackagesIter (4 methods)
+# DboLibPackagesIter (4 methods, official_calls(upper bound)=36)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `GetKey` | `self,pObject` | argc=1 |
-| `Next` | `self,status` | argc=1 |
-| `NextPackage` | `self,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `GetKey` | `self,pObject` | argc=1 | 0 | 80 |
+| `Next` | `self,status` | argc=1 | 30 | 88 |
+| `NextPackage` | `self,status` | argc=1 | 6 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboLibPackagesIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboLibPackagesIter_<method> $obj <args...>`

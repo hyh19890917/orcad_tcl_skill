@@ -1,8 +1,8 @@
-# DboLibViewNamesIter (2 methods)
+# DboLibViewNamesIter (2 methods, official_calls(upper bound)=7)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `NextName` | `self,name` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `NextName` | `self,name` | argc=1 | 7 | 10 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboLibViewNamesIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboLibViewNamesIter_<method> $obj <args...>`

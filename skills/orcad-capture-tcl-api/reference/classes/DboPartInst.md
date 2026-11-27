@@ -1,85 +1,85 @@
-# DboPartInst (79 methods)
+# DboPartInst (79 methods, official_calls(upper bound)=225)
 
-| method | params | note |
-| --- | --- | --- |
-| `AddVariantProp` | `self,strName,strVal` | argc=1 |
-| `ClearVariantMap` | `` | overloaded-C++ |
-| `Connect` | `self` | argc=1 |
-| `CountPinsWithName` | `self,PinName` | argc=1 |
-| `Disconnect` | `self` | argc=1 |
-| `FindPinByPinName` | `self,PinName,status` | argc=1 |
-| `GetBundleEntryPinName` | `self,entryPinName` | argc=1 |
-| `GetBundleEntryPortInst` | `self` | argc=1 |
-| `GetContents` | `self,status` | argc=1 |
-| `GetContentsLibName` | `self,name` | argc=1 |
-| `GetContentsViewName` | `self,name` | argc=1 |
-| `GetContentsViewType` | `self,status` | argc=1 |
-| `GetDefiningPart` | `self,status` | argc=1 |
-| `GetIsPrimitive` | `self,status` | argc=1 |
-| `GetIsPrimitiveProp` | `self,status` | argc=1 |
-| `GetNextNewVariantProp` | `self,strName,strVal,bNewFound` | argc=1 |
-| `GetObjectOccurrence` | `self,pParentSchematicOcc` | argc=1 |
-| `GetObjectOccurrences` | `` | overloaded-C++ |
-| `GetOccAutoRefMode` | `self` | argc=1 |
-| `GetPartValue` | `self,value` | argc=1 |
-| `GetPin` | `self,nPosition,status` | argc=1 |
-| `GetPinByBasePinName` | `self,PinBaseName,nType,status` | argc=1 |
-| `GetPinByHotSpot` | `self,hotSpot,status` | argc=1 |
-| `GetPinByID` | `self,pPinID` | argc=1 |
-| `GetPinByPinName` | `self,PinName,status` | argc=1 |
-| `GetPinByPinNumber` | `self,PinNumber,status` | argc=1 |
-| `GetPinCount` | `self,status` | argc=1 |
-| `GetPinNamesAreRotated` | `self,status` | argc=1 |
-| `GetPinNamesAreVisible` | `self,status` | argc=1 |
-| `GetPinNumbersAreVisible` | `self,status` | argc=1 |
-| `GetPinOrderedByLocation` | `self,nPosition,status` | argc=1 |
-| `GetPowerPinsAreVisible` | `self,status` | argc=1 |
-| `GetReference` | `self,Ref` | argc=1 |
-| `GetReferenceDesignator` | `self,RefDes` | argc=1 |
-| `GetVariantProp` | `self,strName,strVal` | argc=1 |
-| `HasBundleOwner` | `` | overloaded-C++ |
-| `HasMultiplePinsWithName` | `self,PinName` | argc=1 |
-| `IsBoundingBoxDirty` | `self` | argc=1 |
-| `IsExternalDesignPart` | `self` | argc=1 |
-| `IsNetlistIgnore` | `self,status` | argc=1 |
-| `IsOptimizerTemplate` | `self,status` | argc=1 |
-| `IsPrimitive` | `self,status` | argc=1 |
-| `IsPropOverridenOnAnyOcc` | `self,pPropName` | argc=1 |
-| `IsPropOverridenOnAnyOccInDesign` | `self,pPropName,pDsn` | argc=1 |
-| `IsPSpiceOnly` | `self,status` | argc=1 |
-| `IsVariantPropMapEmpty` | `self` | argc=1 |
-| `Move` | `self,offset` | argc=1 |
-| `NewPinsIter` | `` | overloaded-C++ |
-| `PositionAllDisplayProp` | `pPage,pInst` | argc=1 |
-| `PositionDisplayProp` | `pPage,pProp` | argc=1 |
-| `ProcessRefDesDelete` | `self` | argc=1 |
-| `ProcessRefDesModify` | `self` | argc=1 |
-| `ResetAllDisplayPropertiesFontToDefault` | `self` | argc=1 |
-| `SetBoundingBoxDirty` | `self,bSetting` | argc=1 |
-| `SetContentsLibName` | `` | overloaded-C++ |
-| `SetContentsViewName` | `` | overloaded-C++ |
-| `SetContentsViewNameWithoutChangingOccurrences` | `self,newName,isForSchematicRename` | argc=1 |
-| `SetContentsViewType` | `` | overloaded-C++ |
-| `SetContentViewTypeWithoutChangingOccurrences` | `self,pType` | argc=1 |
-| `SetCurrent` | `self,bVal` | argc=1 |
-| `SetId` | `` | overloaded-C++ |
-| `SetIsPrimitiveProp` | `self,prim` | argc=1 |
-| `SetLocation` | `self,location` | argc=1 |
-| `SetMirror` | `self,mirror` | argc=1 |
-| `SetName` | `self,newName` | argc=1 |
-| `SetOccAutoRefMode` | `self,pMode` | argc=1 |
-| `SetOccsModified` | `self,bVal` | argc=1 |
-| `SetPartValue` | `self,name` | argc=1 |
-| `SetPowerPinsAreVisible` | `self,bVal` | argc=1 |
-| `SetReference` | `self,name` | argc=1 |
-| `SetRotation` | `self,rotation` | argc=1 |
-| `sGetContentsLibName` | `obj,status` | argc=1 |
-| `sGetContentsViewName` | `obj,status` | argc=1 |
-| `sGetContentsViewType` | `obj,status` | argc=1 |
-| `sGetIsPrimitive` | `obj,status` | argc=1 |
-| `sGetPartValue` | `obj,status` | argc=1 |
-| `sGetPinCount` | `obj,status` | argc=1 |
-| `sGetPowerPinsAreVisible` | `obj,status` | argc=1 |
-| `sGetReference` | `obj,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `AddVariantProp` | `self,strName,strVal` | argc=1 | 0 | 5 |
+| `ClearVariantMap` | `` | overloaded-C++ | 0 | 5 |
+| `Connect` | `self` | argc=1 | 2 | 1 |
+| `CountPinsWithName` | `self,PinName` | argc=1 | 0 | 1 |
+| `Disconnect` | `self` | argc=1 | 0 | 2 |
+| `FindPinByPinName` | `self,PinName,status` | argc=1 | 0 | 1 |
+| `GetBundleEntryPinName` | `self,entryPinName` | argc=1 | 0 | 1 |
+| `GetBundleEntryPortInst` | `self` | argc=1 | 0 | 1 |
+| `GetContents` | `self,status` | argc=1 | 1 | 3 |
+| `GetContentsLibName` | `self,name` | argc=1 | 0 | 2 |
+| `GetContentsViewName` | `self,name` | argc=1 | 1 | 2 |
+| `GetContentsViewType` | `self,status` | argc=1 | 2 | 2 |
+| `GetDefiningPart` | `self,status` | argc=1 | 1 | 1 |
+| `GetIsPrimitive` | `self,status` | argc=1 | 0 | 1 |
+| `GetIsPrimitiveProp` | `self,status` | argc=1 | 0 | 1 |
+| `GetNextNewVariantProp` | `self,strName,strVal,bNewFound` | argc=1 | 0 | 5 |
+| `GetObjectOccurrence` | `self,pParentSchematicOcc` | argc=1 | 13 | 9 |
+| `GetObjectOccurrences` | `` | overloaded-C++ | 0 | 8 |
+| `GetOccAutoRefMode` | `self` | argc=1 | 0 | 1 |
+| `GetPartValue` | `self,value` | argc=1 | 0 | 4 |
+| `GetPin` | `self,nPosition,status` | argc=1 | 0 | 3 |
+| `GetPinByBasePinName` | `self,PinBaseName,nType,status` | argc=1 | 0 | 1 |
+| `GetPinByHotSpot` | `self,hotSpot,status` | argc=1 | 0 | 1 |
+| `GetPinByID` | `self,pPinID` | argc=1 | 0 | 1 |
+| `GetPinByPinName` | `self,PinName,status` | argc=1 | 1 | 1 |
+| `GetPinByPinNumber` | `self,PinNumber,status` | argc=1 | 0 | 1 |
+| `GetPinCount` | `self,status` | argc=1 | 3 | 3 |
+| `GetPinNamesAreRotated` | `self,status` | argc=1 | 0 | 2 |
+| `GetPinNamesAreVisible` | `self,status` | argc=1 | 2 | 2 |
+| `GetPinNumbersAreVisible` | `self,status` | argc=1 | 2 | 2 |
+| `GetPinOrderedByLocation` | `self,nPosition,status` | argc=1 | 0 | 1 |
+| `GetPowerPinsAreVisible` | `self,status` | argc=1 | 0 | 1 |
+| `GetReference` | `self,Ref` | argc=1 | 5 | 5 |
+| `GetReferenceDesignator` | `self,RefDes` | argc=1 | 6 | 4 |
+| `GetVariantProp` | `self,strName,strVal` | argc=1 | 5 | 5 |
+| `HasBundleOwner` | `` | overloaded-C++ | 0 | 1 |
+| `HasMultiplePinsWithName` | `self,PinName` | argc=1 | 0 | 1 |
+| `IsBoundingBoxDirty` | `self` | argc=1 | 0 | 6 |
+| `IsExternalDesignPart` | `self` | argc=1 | 0 | 1 |
+| `IsNetlistIgnore` | `self,status` | argc=1 | 0 | 2 |
+| `IsOptimizerTemplate` | `self,status` | argc=1 | 0 | 2 |
+| `IsPrimitive` | `self,status` | argc=1 | 3 | 2 |
+| `IsPropOverridenOnAnyOcc` | `self,pPropName` | argc=1 | 0 | 1 |
+| `IsPropOverridenOnAnyOccInDesign` | `self,pPropName,pDsn` | argc=1 | 0 | 1 |
+| `IsPSpiceOnly` | `self,status` | argc=1 | 0 | 2 |
+| `IsVariantPropMapEmpty` | `self` | argc=1 | 6 | 5 |
+| `Move` | `self,offset` | argc=1 | 14 | 20 |
+| `NewPinsIter` | `` | overloaded-C++ | 9 | 2 |
+| `PositionAllDisplayProp` | `pPage,pInst` | argc=1 | 0 | 1 |
+| `PositionDisplayProp` | `pPage,pProp` | argc=1 | 1 | 1 |
+| `ProcessRefDesDelete` | `self` | argc=1 | 0 | 1 |
+| `ProcessRefDesModify` | `self` | argc=1 | 0 | 2 |
+| `ResetAllDisplayPropertiesFontToDefault` | `self` | argc=1 | 0 | 1 |
+| `SetBoundingBoxDirty` | `self,bSetting` | argc=1 | 1 | 6 |
+| `SetContentsLibName` | `` | overloaded-C++ | 3 | 2 |
+| `SetContentsViewName` | `` | overloaded-C++ | 3 | 2 |
+| `SetContentsViewNameWithoutChangingOccurrences` | `self,newName,isForSchematicRename` | argc=1 | 0 | 1 |
+| `SetContentsViewType` | `` | overloaded-C++ | 3 | 2 |
+| `SetContentViewTypeWithoutChangingOccurrences` | `self,pType` | argc=1 | 0 | 1 |
+| `SetCurrent` | `self,bVal` | argc=1 | 0 | 2 |
+| `SetId` | `` | overloaded-C++ | 55 | 10 |
+| `SetIsPrimitiveProp` | `self,prim` | argc=1 | 1 | 1 |
+| `SetLocation` | `self,location` | argc=1 | 9 | 12 |
+| `SetMirror` | `self,mirror` | argc=1 | 0 | 9 |
+| `SetName` | `self,newName` | argc=1 | 66 | 17 |
+| `SetOccAutoRefMode` | `self,pMode` | argc=1 | 0 | 1 |
+| `SetOccsModified` | `self,bVal` | argc=1 | 0 | 3 |
+| `SetPartValue` | `self,name` | argc=1 | 2 | 3 |
+| `SetPowerPinsAreVisible` | `self,bVal` | argc=1 | 0 | 1 |
+| `SetReference` | `self,name` | argc=1 | 5 | 4 |
+| `SetRotation` | `self,rotation` | argc=1 | 0 | 13 |
+| `sGetContentsLibName` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetContentsViewName` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetContentsViewType` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetIsPrimitive` | `obj,status` | argc=1 | 0 | 2 |
+| `sGetPartValue` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetPinCount` | `obj,status` | argc=1 | 0 | 2 |
+| `sGetPowerPinsAreVisible` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetReference` | `obj,status` | argc=1 | 0 | 3 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboPartInst_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboPartInst_<method> $obj <args...>`

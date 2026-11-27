@@ -1,9 +1,9 @@
-# DboWireScalar (3 methods)
+# DboWireScalar (3 methods, official_calls(upper bound)=152)
 
-| method | params | note |
-| --- | --- | --- |
-| `DeleteAlias` | `self,pAlias` | argc=1 |
-| `GetObjectType` | `self` | argc=1 |
-| `SetName` | `self,name` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `DeleteAlias` | `self,pAlias` | argc=1 | 0 | 2 |
+| `GetObjectType` | `self` | argc=1 | 86 | 57 |
+| `SetName` | `self,name` | argc=1 | 66 | 17 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboWireScalar_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboWireScalar_<method> $obj <args...>`

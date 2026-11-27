@@ -1,10 +1,10 @@
-# DboSymbolPinsIter (4 methods)
+# DboSymbolPinsIter (4 methods, official_calls(upper bound)=53)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `GetKey` | `self,pObject` | argc=1 |
-| `Next` | `self,status` | argc=1 |
-| `NextPin` | `self,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `GetKey` | `self,pObject` | argc=1 | 0 | 80 |
+| `Next` | `self,status` | argc=1 | 30 | 88 |
+| `NextPin` | `self,status` | argc=1 | 23 | 3 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboSymbolPinsIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboSymbolPinsIter_<method> $obj <args...>`

@@ -1,10 +1,10 @@
-# DboSchematicNetOffPageConnectorsIter (4 methods)
+# DboSchematicNetOffPageConnectorsIter (4 methods, official_calls(upper bound)=40)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `GetKey` | `self,pObject` | argc=1 |
-| `Next` | `self,status` | argc=1 |
-| `NextOffPageConnector` | `self,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `GetKey` | `self,pObject` | argc=1 | 0 | 80 |
+| `Next` | `self,status` | argc=1 | 30 | 88 |
+| `NextOffPageConnector` | `self,status` | argc=1 | 10 | 5 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboSchematicNetOffPageConnectorsIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboSchematicNetOffPageConnectorsIter_<method> $obj <args...>`

@@ -1,52 +1,52 @@
-# DboAlias (46 methods)
+# DboAlias (46 methods, official_calls(upper bound)=627)
 
-| method | params | note |
-| --- | --- | --- |
-| `GetBoundingBox` | `self` | argc=1 |
-| `GetBundleOwnerPropName` | `self,propName,sourceLibName` | argc=1 |
-| `GetBundleOwnerPropValue` | `self,propName,sourceLibName` | argc=1 |
-| `GetColor` | `self,status` | argc=1 |
-| `GetContainingLib` | `self` | argc=1 |
-| `GetDisplayName` | `self` | argc=1 |
-| `GetFont` | `self,status` | argc=1 |
-| `GetId` | `self,status` | argc=1 |
-| `GetLocation` | `self,status` | argc=1 |
-| `GetName` | `self,name` | argc=1 |
-| `GetObjectType` | `self` | argc=1 |
-| `GetOwner` | `self` | argc=1 |
-| `GetRotation` | `self,status` | argc=1 |
-| `IsBoundingBoxDirty` | `self` | argc=1 |
-| `IsBundleObject` | `self` | argc=1 |
-| `IsFontDefault` | `self,status` | argc=1 |
-| `m_nId_get` | `self` | argc=1 |
-| `m_nId_set` | `self,m_nId` | argc=1 |
-| `RemoveBundleOwner` | `self` | argc=1 |
-| `RemoveBundleProperties` | `self` | argc=1 |
-| `SetBoundingBox` | `self,boundingBox` | argc=1 |
-| `SetBoundingBoxDirty` | `self,bSetting` | argc=1 |
-| `SetBundleOwner` | `` | overloaded-C++ |
-| `SetColor` | `self,color` | argc=1 |
-| `SetDisplayName` | `self,pName` | argc=1 |
-| `SetFont` | `self,font` | argc=1 |
-| `SetId` | `self,newId` | argc=1 |
-| `SetLocation` | `self,location` | argc=1 |
-| `SetName` | `self,name` | argc=1 |
-| `SetOwnerBoundingBoxDirty` | `self,bSetting` | argc=1 |
-| `SetPropertyToExtention` | `self,bundleOwnerPropName,bundleOwnerPropValue` | argc=1 |
-| `SetRotation` | `self,rotation` | argc=1 |
-| `sGetColor` | `obj,status` | argc=1 |
-| `sGetFont` | `obj,status` | argc=1 |
-| `sGetLocationX` | `obj,status` | argc=1 |
-| `sGetLocationY` | `obj,status` | argc=1 |
-| `sGetName` | `obj,status` | argc=1 |
-| `sGetRotation` | `obj,status` | argc=1 |
-| `sSetColor` | `obj,color` | argc=1 |
-| `sSetFont` | `obj,font` | argc=1 |
-| `sSetLocationX` | `obj,x` | argc=1 |
-| `sSetLocationY` | `obj,y` | argc=1 |
-| `sSetName` | `obj,name` | argc=1 |
-| `sSetRotation` | `obj,rotation` | argc=1 |
-| `UpdateBundleOwner` | `` | overloaded-C++ |
-| `ValidateNGName` | `self,OldName,NewName,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `GetBoundingBox` | `self` | argc=1 | 79 | 16 |
+| `GetBundleOwnerPropName` | `self,propName,sourceLibName` | argc=1 | 0 | 3 |
+| `GetBundleOwnerPropValue` | `self,propName,sourceLibName` | argc=1 | 0 | 2 |
+| `GetColor` | `self,status` | argc=1 | 0 | 12 |
+| `GetContainingLib` | `self` | argc=1 | 2 | 20 |
+| `GetDisplayName` | `self` | argc=1 | 0 | 2 |
+| `GetFont` | `self,status` | argc=1 | 1 | 5 |
+| `GetId` | `self,status` | argc=1 | 37 | 15 |
+| `GetLocation` | `self,status` | argc=1 | 14 | 7 |
+| `GetName` | `self,name` | argc=1 | 185 | 18 |
+| `GetObjectType` | `self` | argc=1 | 86 | 57 |
+| `GetOwner` | `self` | argc=1 | 69 | 19 |
+| `GetRotation` | `self,status` | argc=1 | 3 | 5 |
+| `IsBoundingBoxDirty` | `self` | argc=1 | 0 | 6 |
+| `IsBundleObject` | `self` | argc=1 | 2 | 10 |
+| `IsFontDefault` | `self,status` | argc=1 | 0 | 3 |
+| `m_nId_get` | `self` | argc=1 | 0 | 1 |
+| `m_nId_set` | `self,m_nId` | argc=1 | 0 | 1 |
+| `RemoveBundleOwner` | `self` | argc=1 | 0 | 1 |
+| `RemoveBundleProperties` | `self` | argc=1 | 0 | 2 |
+| `SetBoundingBox` | `self,boundingBox` | argc=1 | 4 | 16 |
+| `SetBoundingBoxDirty` | `self,bSetting` | argc=1 | 1 | 6 |
+| `SetBundleOwner` | `` | overloaded-C++ | 0 | 2 |
+| `SetColor` | `self,color` | argc=1 | 10 | 11 |
+| `SetDisplayName` | `self,pName` | argc=1 | 0 | 1 |
+| `SetFont` | `self,font` | argc=1 | 2 | 5 |
+| `SetId` | `self,newId` | argc=1 | 55 | 10 |
+| `SetLocation` | `self,location` | argc=1 | 9 | 12 |
+| `SetName` | `self,name` | argc=1 | 66 | 17 |
+| `SetOwnerBoundingBoxDirty` | `self,bSetting` | argc=1 | 1 | 2 |
+| `SetPropertyToExtention` | `self,bundleOwnerPropName,bundleOwnerPropValue` | argc=1 | 0 | 1 |
+| `SetRotation` | `self,rotation` | argc=1 | 0 | 13 |
+| `sGetColor` | `obj,status` | argc=1 | 0 | 8 |
+| `sGetFont` | `obj,status` | argc=1 | 0 | 4 |
+| `sGetLocationX` | `obj,status` | argc=1 | 0 | 8 |
+| `sGetLocationY` | `obj,status` | argc=1 | 0 | 8 |
+| `sGetName` | `obj,status` | argc=1 | 1 | 15 |
+| `sGetRotation` | `obj,status` | argc=1 | 0 | 3 |
+| `sSetColor` | `obj,color` | argc=1 | 0 | 3 |
+| `sSetFont` | `obj,font` | argc=1 | 0 | 2 |
+| `sSetLocationX` | `obj,x` | argc=1 | 0 | 2 |
+| `sSetLocationY` | `obj,y` | argc=1 | 0 | 2 |
+| `sSetName` | `obj,name` | argc=1 | 0 | 2 |
+| `sSetRotation` | `obj,rotation` | argc=1 | 0 | 2 |
+| `UpdateBundleOwner` | `` | overloaded-C++ | 0 | 2 |
+| `ValidateNGName` | `self,OldName,NewName,status` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboAlias_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboAlias_<method> $obj <args...>`

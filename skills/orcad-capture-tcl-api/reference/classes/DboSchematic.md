@@ -1,100 +1,100 @@
-# DboSchematic (94 methods)
+# DboSchematic (94 methods, official_calls(upper bound)=284)
 
-| method | params | note |
-| --- | --- | --- |
-| `BuildIDMap` | `self` | argc=1 |
-| `CanAssignRefDes` | `self,pPartInst,pRef,pDes` | argc=1 |
-| `CanThisPinBeAddedToUnnamedNetgroup` | `self,pinName` | argc=1 |
-| `CheckSchematicSymbolInstContainersAndUpdateConnectivity` | `self,pPage,pNewDboNetsMap,pDeletedSourcesMap,pAvailableSourcesMap` | argc=1 |
-| `ClearModified` | `self,pPage` | argc=1 |
-| `ClearNextReferences` | `self` | argc=1 |
-| `Copy` | `self,source` | argc=1 |
-| `CreateSchNetAndContainerMapping` | `` | overloaded-C++ |
-| `DeleteAllOptimizerParameter` | `self` | argc=1 |
-| `DeleteOptimizerParameter` | `self,name` | argc=1 |
-| `DeletePage` | `self,pPage` | argc=1 |
-| `DoActualSchematicExpansion` | `self,pPage,pReferredSchNetsMap,pNewDboNetsMap,pDeletedSourcesMap,pAvailableSourcesMap,pAvailableOccurrencesMap,pDeletedOccurrencesMap,pRecreatePage` | argc=1 |
-| `DumpPageDirectoryInfo` | `self` | argc=1 |
-| `Expand` | `self` | argc=1 |
-| `ExpandMinimal` | `` | overloaded-C++ |
-| `FilterSchematicNetsForPage` | `` | overloaded-C++ |
-| `FindUnnamedNetgroupByName` | `self,name` | argc=1 |
-| `GetDefaultPageName` | `self` | argc=1 |
-| `GetDeletedNet` | `self,nId,status` | argc=1 |
-| `GetGlobal` | `self,name,status` | argc=1 |
-| `GetId` | `self` | argc=1 |
-| `GetLowestPageNumberFromDboNets` | `self,pSchNet` | argc=1 |
-| `GetNet` | `` | overloaded-C++ |
-| `GetNextDeviceAndPartToBePlaced` | `self,pSchOcc,aPackage,aSourceName,aPartValue,aPackageRef,aDeviceDesignator,aIsNormal,aDevice,aLibPart` | argc=1 |
-| `GetNextReference` | `` | overloaded-C++ |
-| `GetNextReferenceEx` | `self,pSchOcc,newPartVal,sourcePkgName,strReferencePrefix,suffixStr,wPart,bIncrementNext` | argc=1 |
-| `GetNextReferenceOld` | `` | overloaded-C++ |
-| `GetObjectContainer` | `self,pObject` | argc=1 |
-| `GetObjectType` | `self` | argc=1 |
-| `GetOccUndoStack` | `` | overloaded-C++ |
-| `GetOffPageConnector` | `self,name,status` | argc=1 |
-| `GetOffPageConnectorForOcc` | `self,nID` | argc=1 |
-| `GetOpenReferringDesigns` | `self,designs,status` | argc=1 |
-| `GetOpStartWithCurrenV` | `self,status` | argc=1 |
-| `GetOptFileName` | `self` | argc=1 |
-| `GetOptimizerParameter` | `self,name,st` | argc=1 |
-| `GetOptimizerTemplate` | `self` | argc=1 |
-| `GetPage` | `` | overloaded-C++ |
-| `GetPageCount` | `self,status` | argc=1 |
-| `GetPageFromID` | `self,nPageID,status` | argc=1 |
-| `GetPageNumber` | `self,name,status` | argc=1 |
-| `GetPartInst` | `` | overloaded-C++ |
-| `GetPort` | `self,name,status` | argc=1 |
-| `GetPortIgnoreWidth` | `self,Name,status` | argc=1 |
-| `GetRegisteredObject` | `self,nID` | argc=1 |
-| `GetSchematicAtID` | `nSchematicID` | argc=1 |
-| `GetSchematicID` | `self` | argc=1 |
-| `GetTitleBlock` | `self,nId,status` | argc=1 |
-| `GetUnNamedBundleList` | `self,UnNamedBundleList` | argc=1 |
-| `GetUnnamedNetGroupOwnerObject` | `self,pUnnamedBundleOwner` | argc=1 |
-| `GetUserStorage` | `self,name,status` | argc=1 |
-| `IsExpanded` | `self` | argc=1 |
-| `IsModified` | `self,status` | argc=1 |
-| `IsOccsModified` | `self` | argc=1 |
-| `IsOptimizerTemplateExist` | `self` | argc=1 |
-| `IsOptimizerUseCurrentValue` | `self` | argc=1 |
-| `IsPageInMemory` | `self,name,status` | argc=1 |
-| `IsPageModified` | `self,pPage` | argc=1 |
-| `IsPagePersistent` | `` | overloaded-C++ |
-| `MarkModified` | `` | overloaded-C++ |
-| `MarkSchematicNetForDeletion` | `self,pSchematicNet` | argc=1 |
-| `NewChangedPagesIter` | `self,status` | argc=1 |
-| `NewGlobalsIter` | `self,status` | argc=1 |
-| `NewInstsIter` | `self,status` | argc=1 |
-| `NewNetsIter` | `` | overloaded-C++ |
-| `NewOccUndoStackEntryIter` | `` | overloaded-C++ |
-| `NewOffPageConnectorsIter` | `` | overloaded-C++ |
-| `NewOptimizerParametersIter` | `self,st` | argc=1 |
-| `NewPage` | `` | overloaded-C++ |
-| `NewPageNamesIter` | `self,status` | argc=1 |
-| `NewPagesIter` | `self,status` | argc=1 |
-| `NewPortsIter` | `` | overloaded-C++ |
-| `PageExists` | `self,name,status` | argc=1 |
-| `ReadAllPages` | `self` | argc=1 |
-| `ReleaseCollectedPageIDs` | `self,pPageIDList` | argc=1 |
-| `ReleaseID` | `self,nID` | argc=1 |
-| `RemoveOptimizerParameter` | `self,name` | argc=1 |
-| `RemovePage` | `self,pPage` | argc=1 |
-| `RemoveSchematicNetAndRebuildFromPageNets` | `self,lSchNet,pNewDboNetsMap` | argc=1 |
-| `Rename` | `self,pObj,newName` | argc=1 |
-| `ResolveBaseNameConflict` | `self,pSchNet1,pSchNet2` | argc=1 |
-| `RestoreOptimizerParameter` | `self` | argc=1 |
-| `SavePage` | `` | overloaded-C++ |
-| `sDeleteTempShadowPage` | `pPage` | argc=1 |
-| `SetMinId` | `self,p_nId` | argc=1 |
-| `SetNextReference` | `self,strReferencePrefix,nNextReference` | argc=1 |
-| `SetOccsModified` | `` | overloaded-C++ |
-| `SetOpStartWithCurrenV` | `self,bVal` | argc=1 |
-| `SetPageNumber` | `self,pPage,pageNumber` | argc=1 |
-| `sGetName` | `obj,status` | argc=1 |
-| `UpdateFlatNetsOfAllInstantiatingDesigns` | `self` | argc=1 |
-| `UpdateNextReference` | `self,strReference` | argc=1 |
-| `UpdateUnnamedNetgroupRegistry` | `self,pNetgrp` | argc=1 |
-| `UpdateUnnamedNetSymbols` | `self,bOwnerName,bEntryPinName,newBOwner,pInitatingPage` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `BuildIDMap` | `self` | argc=1 | 0 | 1 |
+| `CanAssignRefDes` | `self,pPartInst,pRef,pDes` | argc=1 | 0 | 1 |
+| `CanThisPinBeAddedToUnnamedNetgroup` | `self,pinName` | argc=1 | 0 | 1 |
+| `CheckSchematicSymbolInstContainersAndUpdateConnectivity` | `self,pPage,pNewDboNetsMap,pDeletedSourcesMap,pAvailableSourcesMap` | argc=1 | 0 | 1 |
+| `ClearModified` | `self,pPage` | argc=1 | 0 | 3 |
+| `ClearNextReferences` | `self` | argc=1 | 0 | 1 |
+| `Copy` | `self,source` | argc=1 | 38 | 8 |
+| `CreateSchNetAndContainerMapping` | `` | overloaded-C++ | 0 | 1 |
+| `DeleteAllOptimizerParameter` | `self` | argc=1 | 0 | 1 |
+| `DeleteOptimizerParameter` | `self,name` | argc=1 | 0 | 1 |
+| `DeletePage` | `self,pPage` | argc=1 | 0 | 1 |
+| `DoActualSchematicExpansion` | `self,pPage,pReferredSchNetsMap,pNewDboNetsMap,pDeletedSourcesMap,pAvailableSourcesMap,pAvailableOccurrencesMap,pDeletedOccurrencesMap,pRecreatePage` | argc=1 | 0 | 1 |
+| `DumpPageDirectoryInfo` | `self` | argc=1 | 0 | 1 |
+| `Expand` | `self` | argc=1 | 13 | 1 |
+| `ExpandMinimal` | `` | overloaded-C++ | 0 | 1 |
+| `FilterSchematicNetsForPage` | `` | overloaded-C++ | 0 | 1 |
+| `FindUnnamedNetgroupByName` | `self,name` | argc=1 | 0 | 1 |
+| `GetDefaultPageName` | `self` | argc=1 | 0 | 1 |
+| `GetDeletedNet` | `self,nId,status` | argc=1 | 0 | 2 |
+| `GetGlobal` | `self,name,status` | argc=1 | 0 | 1 |
+| `GetId` | `self` | argc=1 | 37 | 15 |
+| `GetLowestPageNumberFromDboNets` | `self,pSchNet` | argc=1 | 0 | 1 |
+| `GetNet` | `` | overloaded-C++ | 17 | 8 |
+| `GetNextDeviceAndPartToBePlaced` | `self,pSchOcc,aPackage,aSourceName,aPartValue,aPackageRef,aDeviceDesignator,aIsNormal,aDevice,aLibPart` | argc=1 | 0 | 1 |
+| `GetNextReference` | `` | overloaded-C++ | 0 | 1 |
+| `GetNextReferenceEx` | `self,pSchOcc,newPartVal,sourcePkgName,strReferencePrefix,suffixStr,wPart,bIncrementNext` | argc=1 | 0 | 1 |
+| `GetNextReferenceOld` | `` | overloaded-C++ | 0 | 1 |
+| `GetObjectContainer` | `self,pObject` | argc=1 | 0 | 1 |
+| `GetObjectType` | `self` | argc=1 | 86 | 57 |
+| `GetOccUndoStack` | `` | overloaded-C++ | 0 | 1 |
+| `GetOffPageConnector` | `self,name,status` | argc=1 | 0 | 1 |
+| `GetOffPageConnectorForOcc` | `self,nID` | argc=1 | 0 | 1 |
+| `GetOpenReferringDesigns` | `self,designs,status` | argc=1 | 0 | 1 |
+| `GetOpStartWithCurrenV` | `self,status` | argc=1 | 0 | 1 |
+| `GetOptFileName` | `self` | argc=1 | 0 | 1 |
+| `GetOptimizerParameter` | `self,name,st` | argc=1 | 0 | 1 |
+| `GetOptimizerTemplate` | `self` | argc=1 | 0 | 1 |
+| `GetPage` | `` | overloaded-C++ | 1 | 2 |
+| `GetPageCount` | `self,status` | argc=1 | 0 | 2 |
+| `GetPageFromID` | `self,nPageID,status` | argc=1 | 6 | 2 |
+| `GetPageNumber` | `self,name,status` | argc=1 | 6 | 3 |
+| `GetPartInst` | `` | overloaded-C++ | 13 | 3 |
+| `GetPort` | `self,name,status` | argc=1 | 0 | 4 |
+| `GetPortIgnoreWidth` | `self,Name,status` | argc=1 | 0 | 1 |
+| `GetRegisteredObject` | `self,nID` | argc=1 | 0 | 1 |
+| `GetSchematicAtID` | `nSchematicID` | argc=1 | 0 | 1 |
+| `GetSchematicID` | `self` | argc=1 | 2 | 1 |
+| `GetTitleBlock` | `self,nId,status` | argc=1 | 1 | 3 |
+| `GetUnNamedBundleList` | `self,UnNamedBundleList` | argc=1 | 0 | 2 |
+| `GetUnnamedNetGroupOwnerObject` | `self,pUnnamedBundleOwner` | argc=1 | 0 | 1 |
+| `GetUserStorage` | `self,name,status` | argc=1 | 0 | 3 |
+| `IsExpanded` | `self` | argc=1 | 0 | 2 |
+| `IsModified` | `self,status` | argc=1 | 7 | 6 |
+| `IsOccsModified` | `self` | argc=1 | 0 | 1 |
+| `IsOptimizerTemplateExist` | `self` | argc=1 | 0 | 1 |
+| `IsOptimizerUseCurrentValue` | `self` | argc=1 | 0 | 1 |
+| `IsPageInMemory` | `self,name,status` | argc=1 | 0 | 1 |
+| `IsPageModified` | `self,pPage` | argc=1 | 0 | 1 |
+| `IsPagePersistent` | `` | overloaded-C++ | 0 | 1 |
+| `MarkModified` | `` | overloaded-C++ | 13 | 13 |
+| `MarkSchematicNetForDeletion` | `self,pSchematicNet` | argc=1 | 0 | 1 |
+| `NewChangedPagesIter` | `self,status` | argc=1 | 0 | 1 |
+| `NewGlobalsIter` | `self,status` | argc=1 | 5 | 6 |
+| `NewInstsIter` | `self,status` | argc=1 | 1 | 1 |
+| `NewNetsIter` | `` | overloaded-C++ | 2 | 3 |
+| `NewOccUndoStackEntryIter` | `` | overloaded-C++ | 0 | 1 |
+| `NewOffPageConnectorsIter` | `` | overloaded-C++ | 6 | 5 |
+| `NewOptimizerParametersIter` | `self,st` | argc=1 | 0 | 1 |
+| `NewPage` | `` | overloaded-C++ | 0 | 1 |
+| `NewPageNamesIter` | `self,status` | argc=1 | 0 | 1 |
+| `NewPagesIter` | `self,status` | argc=1 | 22 | 1 |
+| `NewPortsIter` | `` | overloaded-C++ | 6 | 5 |
+| `PageExists` | `self,name,status` | argc=1 | 0 | 1 |
+| `ReadAllPages` | `self` | argc=1 | 0 | 1 |
+| `ReleaseCollectedPageIDs` | `self,pPageIDList` | argc=1 | 0 | 1 |
+| `ReleaseID` | `self,nID` | argc=1 | 0 | 1 |
+| `RemoveOptimizerParameter` | `self,name` | argc=1 | 0 | 1 |
+| `RemovePage` | `self,pPage` | argc=1 | 0 | 1 |
+| `RemoveSchematicNetAndRebuildFromPageNets` | `self,lSchNet,pNewDboNetsMap` | argc=1 | 0 | 1 |
+| `Rename` | `self,pObj,newName` | argc=1 | 1 | 1 |
+| `ResolveBaseNameConflict` | `self,pSchNet1,pSchNet2` | argc=1 | 0 | 1 |
+| `RestoreOptimizerParameter` | `self` | argc=1 | 0 | 1 |
+| `SavePage` | `` | overloaded-C++ | 0 | 1 |
+| `sDeleteTempShadowPage` | `pPage` | argc=1 | 0 | 1 |
+| `SetMinId` | `self,p_nId` | argc=1 | 0 | 1 |
+| `SetNextReference` | `self,strReferencePrefix,nNextReference` | argc=1 | 0 | 1 |
+| `SetOccsModified` | `` | overloaded-C++ | 0 | 3 |
+| `SetOpStartWithCurrenV` | `self,bVal` | argc=1 | 0 | 1 |
+| `SetPageNumber` | `self,pPage,pageNumber` | argc=1 | 0 | 2 |
+| `sGetName` | `obj,status` | argc=1 | 1 | 15 |
+| `UpdateFlatNetsOfAllInstantiatingDesigns` | `self` | argc=1 | 0 | 1 |
+| `UpdateNextReference` | `self,strReference` | argc=1 | 0 | 1 |
+| `UpdateUnnamedNetgroupRegistry` | `self,pNetgrp` | argc=1 | 0 | 1 |
+| `UpdateUnnamedNetSymbols` | `self,bOwnerName,bEntryPinName,newBOwner,pInitatingPage` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboSchematic_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboSchematic_<method> $obj <args...>`

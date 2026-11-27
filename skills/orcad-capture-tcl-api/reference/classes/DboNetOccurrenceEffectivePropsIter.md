@@ -1,8 +1,8 @@
-# DboNetOccurrenceEffectivePropsIter (2 methods)
+# DboNetOccurrenceEffectivePropsIter (2 methods, official_calls(upper bound)=10)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `NextEffectiveProp` | `` | overloaded-C++ |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `NextEffectiveProp` | `` | overloaded-C++ | 10 | 11 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboNetOccurrenceEffectivePropsIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboNetOccurrenceEffectivePropsIter_<method> $obj <args...>`

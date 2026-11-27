@@ -1,8 +1,8 @@
-# DboNetAliasesIter (2 methods)
+# DboNetAliasesIter (2 methods, official_calls(upper bound)=24)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `NextAlias` | `self,nxtAlias` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `NextAlias` | `self,nxtAlias` | argc=1 | 24 | 4 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboNetAliasesIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboNetAliasesIter_<method> $obj <args...>`

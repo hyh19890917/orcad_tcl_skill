@@ -1,12 +1,12 @@
-# DboBusEntryData (6 methods)
+# DboBusEntryData (6 methods, official_calls(upper bound)=0)
 
-| method | params | note |
-| --- | --- | --- |
-| `Color_get` | `self` | argc=1 |
-| `Color_set` | `self,Color` | argc=1 |
-| `End_get` | `self` | argc=1 |
-| `End_set` | `self,End` | argc=1 |
-| `Start_get` | `self` | argc=1 |
-| `Start_set` | `self,Start` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `Color_get` | `self` | argc=1 | 0 | 4 |
+| `Color_set` | `self,Color` | argc=1 | 0 | 4 |
+| `End_get` | `self` | argc=1 | 0 | 4 |
+| `End_set` | `self,End` | argc=1 | 0 | 4 |
+| `Start_get` | `self` | argc=1 | 0 | 5 |
+| `Start_set` | `self,Start` | argc=1 | 0 | 5 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboBusEntryData_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboBusEntryData_<method> $obj <args...>`

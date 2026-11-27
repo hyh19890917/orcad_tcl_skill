@@ -1,10 +1,10 @@
-# DboAnnotateControl (4 methods)
+# DboAnnotateControl (4 methods, official_calls(upper bound)=2)
 
-| method | params | note |
-| --- | --- | --- |
-| `GetNumRange` | `self` | argc=1 |
-| `GetPagePath` | `self` | argc=1 |
-| `GetRangeAt` | `self,pos` | argc=1 |
-| `GetSchName` | `self` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `GetNumRange` | `self` | argc=1 | 0 | 1 |
+| `GetPagePath` | `self` | argc=1 | 2 | 1 |
+| `GetRangeAt` | `self,pos` | argc=1 | 0 | 1 |
+| `GetSchName` | `self` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboAnnotateControl_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboAnnotateControl_<method> $obj <args...>`

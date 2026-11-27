@@ -1,9 +1,9 @@
-# DboExtBlobHandlerImage (3 methods)
+# DboExtBlobHandlerImage (3 methods, official_calls(upper bound)=2)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `Construct` | `` | overloaded-C++ |
-| `Serialize` | `self,pNode` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `Construct` | `` | overloaded-C++ | 2 | 5 |
+| `Serialize` | `self,pNode` | argc=1 | 0 | 5 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboExtBlobHandlerImage_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboExtBlobHandlerImage_<method> $obj <args...>`

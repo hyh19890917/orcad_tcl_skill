@@ -1,7 +1,7 @@
-# DboTclUtilHelper (1 methods)
+# DboTclUtilHelper (1 methods, official_calls(upper bound)=0)
 
-| method | params | note |
-| --- | --- | --- |
-| `GetNextIndex` | `self` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `GetNextIndex` | `self` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboTclUtilHelper_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboTclUtilHelper_<method> $obj <args...>`

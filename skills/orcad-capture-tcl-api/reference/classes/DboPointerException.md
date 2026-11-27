@@ -1,7 +1,7 @@
-# DboPointerException (1 methods)
+# DboPointerException (1 methods, official_calls(upper bound)=45)
 
-| method | params | note |
-| --- | --- | --- |
-| `what` | `self` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `what` | `self` | argc=1 | 45 | 4 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboPointerException_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboPointerException_<method> $obj <args...>`

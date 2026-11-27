@@ -1,271 +1,271 @@
-# DboPage (265 methods)
+# DboPage (265 methods, official_calls(upper bound)=570)
 
-| method | params | note |
-| --- | --- | --- |
-| `AddJunctionToWire` | `self,location,status` | argc=1 |
-| `ClearUndoRedoData` | `self` | argc=1 |
-| `ClearUndoRedoInfo` | `self,bRedo` | argc=1 |
-| `CloseLog` | `self` | argc=1 |
-| `Copy` | `self,source` | argc=1 |
-| `CopyFromFile` | `` | overloaded-C++ |
-| `CopyToFile` | `self,pFile` | argc=1 |
-| `CreateLog` | `self` | argc=1 |
-| `DeleteBookMark` | `` | overloaded-C++ |
-| `DeleteBusEntry` | `` | overloaded-C++ |
-| `DeleteCommentGraphic` | `` | overloaded-C++ |
-| `DeleteCustomItemInst` | `self,pCustomItemInst` | argc=1 |
-| `DeleteDeletedObject` | `self,pObject` | argc=1 |
-| `DeleteERC` | `` | overloaded-C++ |
-| `DeleteGlobal` | `` | overloaded-C++ |
-| `DeleteJunction` | `self,location` | argc=1 |
-| `DeleteLabelState` | `self,label` | argc=1 |
-| `DeleteOffPageConnector` | `` | overloaded-C++ |
-| `DeletePartInst` | `` | overloaded-C++ |
-| `DeletePort` | `` | overloaded-C++ |
-| `DeleteTitleBlock` | `` | overloaded-C++ |
-| `DeleteWire` | `` | overloaded-C++ |
-| `DumpObjectMap` | `self,bRedo` | argc=1 |
-| `GetANSIGridRefs` | `self,status` | argc=1 |
-| `GetBookMarksList` | `self` | argc=1 |
-| `GetBorderDisplayed` | `self,status` | argc=1 |
-| `GetBorderPrinted` | `self,status` | argc=1 |
-| `GetBusEntriesList` | `self` | argc=1 |
-| `GetBusEntry` | `self,location,status` | argc=1 |
-| `GetBusEntryCount` | `self,status` | argc=1 |
-| `GetColor` | `self,status` | argc=1 |
-| `GetCommentGraphicCount` | `self,status` | argc=1 |
-| `GetCommentGraphicsList` | `self` | argc=1 |
-| `GetConnection` | `self,location` | argc=1 |
-| `GetConnectionCount` | `self,location,status` | argc=1 |
-| `GetContainingLib` | `self` | argc=1 |
-| `GetCreateTime` | `self,status` | argc=1 |
-| `GetCustomItemsList` | `self` | argc=1 |
-| `GetDocUnits` | `` | overloaded-C++ |
-| `GetDocUnitsPerInch` | `self` | argc=1 |
-| `GetERCsList` | `self` | argc=1 |
-| `GetFirstWireEndPoint` | `self,location,status` | argc=1 |
-| `GetGlobalCount` | `self,status` | argc=1 |
-| `GetGlobalsList` | `self` | argc=1 |
-| `GetGraphicInst` | `` | overloaded-C++ |
-| `GetGridRefDisplayed` | `self,status` | argc=1 |
-| `GetGridRefPrinted` | `self,status` | argc=1 |
-| `GetHorizontalLabelCount` | `self,status` | argc=1 |
-| `GetHorizontalLabelIsAscending` | `self,status` | argc=1 |
-| `GetHorizontalLabelIsChar` | `self,status` | argc=1 |
-| `GetHorizontalLabelIsVisible` | `self,status` | argc=1 |
-| `GetHorizontalLabelWidth` | `self,status` | argc=1 |
-| `GetHorizontalSeparatorLineStyle` | `self,status` | argc=1 |
-| `GetHorizontalSeparatorLineWidth` | `self,status` | argc=1 |
-| `GetInnerBorderIsVisible` | `self,status` | argc=1 |
-| `GetInnerBorderLineStyle` | `self,status` | argc=1 |
-| `GetInnerBorderLineWidth` | `self,status` | argc=1 |
-| `GetInnerBorderMargin` | `self,status` | argc=1 |
-| `GetIsMetric` | `self` | argc=1 |
-| `GetLabelArray` | `self,label` | argc=1 |
-| `GetLabelColor` | `self,status` | argc=1 |
-| `GetLabelFont` | `self,font` | argc=1 |
-| `GetLabelState` | `self,label` | argc=1 |
-| `GetLastTransactionNumber` | `self` | argc=1 |
-| `GetModifyTime` | `self,status` | argc=1 |
-| `GetName` | `self,name` | argc=1 |
-| `GetNet` | `` | overloaded-C++ |
-| `GetObjectType` | `self` | argc=1 |
-| `GetOffPageConnectorCount` | `self,status` | argc=1 |
-| `GetOffPageConnectorFromID` | `self,nID` | argc=1 |
-| `GetOffPageConnectorsList` | `self` | argc=1 |
-| `GetOuterBorderIsVisible` | `self,status` | argc=1 |
-| `GetOuterBorderLineStyle` | `self,status` | argc=1 |
-| `GetOuterBorderLineWidth` | `self,status` | argc=1 |
-| `GetOuterBorderMargin` | `self,status` | argc=1 |
-| `GetOwner` | `self` | argc=1 |
-| `GetPageHeight` | `self` | argc=1 |
-| `GetPageNumber` | `self,status` | argc=1 |
-| `GetPageSizeInfo` | `self,nPageWidth,nPageHeight,nPinToPin,bIsMetric` | argc=1 |
-| `GetPageWidth` | `self` | argc=1 |
-| `GetParentObj` | `self` | argc=1 |
-| `GetPartInst` | `` | overloaded-C++ |
-| `GetPartInstCount` | `` | overloaded-C++ |
-| `GetPartInstFromSch` | `self,name,status` | argc=1 |
-| `GetPartInstList` | `self` | argc=1 |
-| `GetPhysicalGranularity` | `self` | argc=1 |
-| `GetPinToPin` | `self` | argc=1 |
-| `GetPinToPinScaleFactor` | `self` | argc=1 |
-| `GetPort` | `self,name,status` | argc=1 |
-| `GetPortCount` | `self,status` | argc=1 |
-| `GetPortInst` | `self,location,status` | argc=1 |
-| `GetPortsList` | `self` | argc=1 |
-| `GetSize` | `self,status` | argc=1 |
-| `GetSizeName` | `self,size` | argc=1 |
-| `GetTitleBlock` | `self,id,status` | argc=1 |
-| `GetTitleBlockDisplayed` | `self,status` | argc=1 |
-| `GetTitleBlockPrinted` | `self,status` | argc=1 |
-| `GetTitleBlocksList` | `self` | argc=1 |
-| `GetTransactionCount` | `self` | argc=1 |
-| `GetUnNamedBundleList` | `self,UnNamedBundleList` | argc=1 |
-| `GetUserStorage` | `self,name,status` | argc=1 |
-| `GetVerticalLabelCount` | `self,status` | argc=1 |
-| `GetVerticalLabelIsAscending` | `self,status` | argc=1 |
-| `GetVerticalLabelIsChar` | `self,status` | argc=1 |
-| `GetVerticalLabelIsVisible` | `self,status` | argc=1 |
-| `GetVerticalLabelWidth` | `self,status` | argc=1 |
-| `GetVerticalSeparatorLineStyle` | `self,status` | argc=1 |
-| `GetVerticalSeparatorLineWidth` | `self,status` | argc=1 |
-| `GetWire` | `` | overloaded-C++ |
-| `GetWireAtJunction` | `self,location,status` | argc=1 |
-| `GetWireCount` | `self,status` | argc=1 |
-| `GetWiresList` | `self` | argc=1 |
-| `Import` | `self,pBlock` | argc=1 |
-| `InitUndoRedoData` | `self` | argc=1 |
-| `IsConnectionPoint` | `self,location,status` | argc=1 |
-| `IsLocked` | `self,status` | argc=1 |
-| `IsModified` | `self,status` | argc=1 |
-| `IsPersistent` | `self,status` | argc=1 |
-| `IsTransactionInProgress` | `self` | argc=1 |
-| `IsValidNetName` | `csNetName` | argc=1 |
-| `m_nRedo_get` | `self` | argc=1 |
-| `m_nRedo_set` | `self,m_nRedo` | argc=1 |
-| `m_nUndo_get` | `self` | argc=1 |
-| `m_nUndo_set` | `self,m_nUndo` | argc=1 |
-| `m_pCmdList_get` | `self` | argc=1 |
-| `m_pCmdList_set` | `self,m_pCmdList` | argc=1 |
-| `m_pFile_get` | `self` | argc=1 |
-| `m_pFile_set` | `self,m_pFile` | argc=1 |
-| `m_pObjMapRedo_get` | `self` | argc=1 |
-| `m_pObjMapRedo_set` | `self,m_pObjMapRedo` | argc=1 |
-| `m_pObjMapUndo_get` | `self` | argc=1 |
-| `m_pObjMapUndo_set` | `self,m_pObjMapUndo` | argc=1 |
-| `m_pRedoList_get` | `self` | argc=1 |
-| `m_pRedoList_set` | `self,m_pRedoList` | argc=1 |
-| `m_pTempObjMapRedo_get` | `self` | argc=1 |
-| `m_pTempObjMapRedo_set` | `self,m_pTempObjMapRedo` | argc=1 |
-| `m_pTempObjMapUndo_get` | `self` | argc=1 |
-| `m_pTempObjMapUndo_set` | `self,m_pTempObjMapUndo` | argc=1 |
-| `MarkModified` | `self` | argc=1 |
-| `NewBookMark` | `` | overloaded-C++ |
-| `NewBookMarksIter` | `self,status` | argc=1 |
-| `NewBusEntriesIter` | `self,status` | argc=1 |
-| `NewBusEntry` | `` | overloaded-C++ |
-| `NewCommentGraphic` | `` | overloaded-C++ |
-| `NewCommentGraphicsIter` | `self,status` | argc=1 |
-| `NewConnectivityObjectsAtPointIter` | `self,location,status` | argc=1 |
-| `NewCustomItemInstance` | `self,pDefiningObj,nType,idInterfaceID,strPluginName,nCookie,nDefColorIdx,pSchOcc` | argc=1 |
-| `NewCustomItemsListIter` | `self,status` | argc=1 |
-| `NewDeletedObject` | `self` | argc=1 |
-| `NewDrawnInst` | `` | overloaded-C++ |
-| `NewEditsIter` | `` | overloaded-C++ |
-| `NewERC` | `` | overloaded-C++ |
-| `NewERCsIter` | `self,status` | argc=1 |
-| `NewGlobal` | `` | overloaded-C++ |
-| `NewGlobalsIter` | `self,status` | argc=1 |
-| `NewGraphicArcInst` | `` | overloaded-C++ |
-| `NewGraphicBezierInst` | `` | overloaded-C++ |
-| `NewGraphicBitMapInst` | `` | overloaded-C++ |
-| `NewGraphicBitMapInstFromDib` | `self,status,pBase64BmpData,pBBox,pLocation,pDbId` | argc=1 |
-| `NewGraphicBoxInst` | `` | overloaded-C++ |
-| `NewGraphicCommentTextInst` | `` | overloaded-C++ |
-| `NewGraphicEllipseInst` | `` | overloaded-C++ |
-| `NewGraphicLineInst` | `` | overloaded-C++ |
-| `NewGraphicOleEmbedInst` | `` | overloaded-C++ |
-| `NewGraphicPolygonInst` | `` | overloaded-C++ |
-| `NewGraphicPolylineInst` | `` | overloaded-C++ |
-| `NewGraphicSymbolVectorInst` | `self,status,location,rotation` | argc=1 |
-| `NewNetBus` | `` | overloaded-C++ |
-| `NewNetScalar` | `self` | argc=1 |
-| `NewObjectsAtPointIter` | `self,location,status` | argc=1 |
-| `NewOffPageConnector` | `` | overloaded-C++ |
-| `NewOffPageConnectorsIter` | `` | overloaded-C++ |
-| `NewPartInstsIter` | `self,status` | argc=1 |
-| `NewPlacedInst` | `` | overloaded-C++ |
-| `NewPlacedInstVer` | `` | overloaded-C++ |
-| `NewPort` | `` | overloaded-C++ |
-| `NewPortsIter` | `` | overloaded-C++ |
-| `NewTitleBlock` | `` | overloaded-C++ |
-| `NewTitleBlocksIter` | `self,status` | argc=1 |
-| `NewWireBus` | `` | overloaded-C++ |
-| `NewWiresAtPointIter` | `self,pt,status` | argc=1 |
-| `NewWireScalar` | `` | overloaded-C++ |
-| `NewWiresInAreaIter` | `self,area,status` | argc=1 |
-| `NewWiresIter` | `` | overloaded-C++ |
-| `NotifyChangingInstId` | `self,oldId,inst` | argc=1 |
-| `NotifyChangingInstName` | `self,oldname,inst` | argc=1 |
-| `PartAlreadyExistsWithName` | `UniqueNm` | argc=1 |
-| `PointOnHotSpot` | `self,location` | argc=1 |
-| `ReplaceGraphicInst` | `` | overloaded-C++ |
-| `ReplaceInst` | `` | overloaded-C++ |
-| `RestorePrevState` | `self,bRedo` | argc=1 |
-| `SetANSIGridRefs` | `self,bVal` | argc=1 |
-| `SetBorderDisplayed` | `self,bVal` | argc=1 |
-| `SetBorderPrinted` | `self,bVal` | argc=1 |
-| `SetColor` | `self,color` | argc=1 |
-| `SetGridRefDisplayed` | `self,bVal` | argc=1 |
-| `SetGridRefPrinted` | `self,bVal` | argc=1 |
-| `SetHorizontalLabelCount` | `self,count` | argc=1 |
-| `SetHorizontalLabelIsAscending` | `self,bval` | argc=1 |
-| `SetHorizontalLabelIsChar` | `self,bval` | argc=1 |
-| `SetHorizontalLabelIsVisible` | `self,bval` | argc=1 |
-| `SetHorizontalLabelWidth` | `self,nWidth` | argc=1 |
-| `SetHorizontalSeparatorLineStyle` | `self,lineStyle` | argc=1 |
-| `SetHorizontalSeparatorLineWidth` | `self,lineWidth` | argc=1 |
-| `SetInnerBorderIsVisible` | `self,bval` | argc=1 |
-| `SetInnerBorderLineStyle` | `self,lineStyle` | argc=1 |
-| `SetInnerBorderLineWidth` | `self,lineWidth` | argc=1 |
-| `SetInnerBorderMargin` | `self,location` | argc=1 |
-| `SetIsMetric` | `self,bIsMetric` | argc=1 |
-| `SetLabelColor` | `self,color` | argc=1 |
-| `SetLabelFont` | `self,font` | argc=1 |
-| `SetLabelState` | `self,label` | argc=1 |
-| `SetOuterBorderIsVisible` | `self,bval` | argc=1 |
-| `SetOuterBorderLineStyle` | `self,lineStyle` | argc=1 |
-| `SetOuterBorderLineWidth` | `self,lineWidth` | argc=1 |
-| `SetOuterBorderMargin` | `self,location` | argc=1 |
-| `SetPageHeight` | `self,nPageHeight` | argc=1 |
-| `SetPageSizeInfo` | `self,nPageWidth,nPageHeight,nPinToPin,bIsMetric` | argc=1 |
-| `SetPageWidth` | `self,nPageWidth` | argc=1 |
-| `SetPinToPin` | `self,nPinToPin` | argc=1 |
-| `SetSize` | `self,size` | argc=1 |
-| `SetSizeName` | `self,name` | argc=1 |
-| `SetTitleBlockDisplayed` | `self,bVal` | argc=1 |
-| `SetTitleBlockPrinted` | `self,bVal` | argc=1 |
-| `SetVerticalLabelCount` | `self,count` | argc=1 |
-| `SetVerticalLabelIsAscending` | `self,bval` | argc=1 |
-| `SetVerticalLabelIsChar` | `self,bval` | argc=1 |
-| `SetVerticalLabelIsVisible` | `self,bval` | argc=1 |
-| `SetVerticalLabelWidth` | `self,nWidth` | argc=1 |
-| `SetVerticalSeparatorLineStyle` | `self,lineStyle` | argc=1 |
-| `SetVerticalSeparatorLineWidth` | `self,lineWidth` | argc=1 |
-| `sGetColor` | `obj,status` | argc=1 |
-| `sGetCreateTime` | `obj,status` | argc=1 |
-| `sGetHorizontalLabelCount` | `obj,status` | argc=1 |
-| `sGetHorizontalLabelIsAscending` | `obj,status` | argc=1 |
-| `sGetHorizontalLabelIsChar` | `obj,status` | argc=1 |
-| `sGetHorizontalLabelIsVisible` | `obj,status` | argc=1 |
-| `sGetHorizontalSeparatorLineStyle` | `obj,status` | argc=1 |
-| `sGetHorizontalSeparatorLineWidth` | `obj,status` | argc=1 |
-| `sGetInnerBorderIsVisible` | `obj,status` | argc=1 |
-| `sGetInnerBorderLineStyle` | `obj,status` | argc=1 |
-| `sGetInnerBorderLineWidth` | `obj,status` | argc=1 |
-| `sGetInnerBorderMarginX` | `obj,status` | argc=1 |
-| `sGetInnerBorderMarginY` | `obj,status` | argc=1 |
-| `sGetLabelColor` | `obj,status` | argc=1 |
-| `sGetModifyTime` | `obj,status` | argc=1 |
-| `sGetName` | `obj,status` | argc=1 |
-| `sGetOuterBorderIsVisible` | `obj,status` | argc=1 |
-| `sGetOuterBorderLineStyle` | `obj,status` | argc=1 |
-| `sGetOuterBorderLineWidth` | `obj,status` | argc=1 |
-| `sGetOuterBorderMarginX` | `obj,status` | argc=1 |
-| `sGetOuterBorderMarginY` | `obj,status` | argc=1 |
-| `sGetPageNumber` | `obj,status` | argc=1 |
-| `sGetSizeName` | `obj,status` | argc=1 |
-| `sGetSizeX` | `obj,status` | argc=1 |
-| `sGetSizeY` | `obj,status` | argc=1 |
-| `sGetVerticalLabelCount` | `obj,status` | argc=1 |
-| `sGetVerticalLabelIsAscending` | `obj,status` | argc=1 |
-| `sGetVerticalLabelIsChar` | `obj,status` | argc=1 |
-| `sGetVerticalLabelIsVisible` | `obj,status` | argc=1 |
-| `sGetVerticalSeparatorLineStyle` | `obj,status` | argc=1 |
-| `sGetVerticalSeparatorLineWidth` | `obj,status` | argc=1 |
-| `StartTransaction` | `` | overloaded-C++ |
-| `UpdatePageState` | `self` | argc=1 |
-| `UpdateRedoState` | `self` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `AddJunctionToWire` | `self,location,status` | argc=1 | 0 | 1 |
+| `ClearUndoRedoData` | `self` | argc=1 | 0 | 1 |
+| `ClearUndoRedoInfo` | `self,bRedo` | argc=1 | 0 | 1 |
+| `CloseLog` | `self` | argc=1 | 0 | 1 |
+| `Copy` | `self,source` | argc=1 | 38 | 8 |
+| `CopyFromFile` | `` | overloaded-C++ | 0 | 1 |
+| `CopyToFile` | `self,pFile` | argc=1 | 0 | 1 |
+| `CreateLog` | `self` | argc=1 | 0 | 1 |
+| `DeleteBookMark` | `` | overloaded-C++ | 0 | 1 |
+| `DeleteBusEntry` | `` | overloaded-C++ | 0 | 1 |
+| `DeleteCommentGraphic` | `` | overloaded-C++ | 0 | 1 |
+| `DeleteCustomItemInst` | `self,pCustomItemInst` | argc=1 | 0 | 1 |
+| `DeleteDeletedObject` | `self,pObject` | argc=1 | 0 | 1 |
+| `DeleteERC` | `` | overloaded-C++ | 0 | 1 |
+| `DeleteGlobal` | `` | overloaded-C++ | 0 | 1 |
+| `DeleteJunction` | `self,location` | argc=1 | 0 | 2 |
+| `DeleteLabelState` | `self,label` | argc=1 | 0 | 1 |
+| `DeleteOffPageConnector` | `` | overloaded-C++ | 0 | 1 |
+| `DeletePartInst` | `` | overloaded-C++ | 0 | 1 |
+| `DeletePort` | `` | overloaded-C++ | 0 | 1 |
+| `DeleteTitleBlock` | `` | overloaded-C++ | 2 | 1 |
+| `DeleteWire` | `` | overloaded-C++ | 0 | 1 |
+| `DumpObjectMap` | `self,bRedo` | argc=1 | 0 | 1 |
+| `GetANSIGridRefs` | `self,status` | argc=1 | 0 | 1 |
+| `GetBookMarksList` | `self` | argc=1 | 0 | 1 |
+| `GetBorderDisplayed` | `self,status` | argc=1 | 0 | 1 |
+| `GetBorderPrinted` | `self,status` | argc=1 | 0 | 1 |
+| `GetBusEntriesList` | `self` | argc=1 | 0 | 1 |
+| `GetBusEntry` | `self,location,status` | argc=1 | 0 | 1 |
+| `GetBusEntryCount` | `self,status` | argc=1 | 0 | 1 |
+| `GetColor` | `self,status` | argc=1 | 0 | 12 |
+| `GetCommentGraphicCount` | `self,status` | argc=1 | 0 | 1 |
+| `GetCommentGraphicsList` | `self` | argc=1 | 0 | 1 |
+| `GetConnection` | `self,location` | argc=1 | 0 | 2 |
+| `GetConnectionCount` | `self,location,status` | argc=1 | 0 | 1 |
+| `GetContainingLib` | `self` | argc=1 | 2 | 20 |
+| `GetCreateTime` | `self,status` | argc=1 | 0 | 4 |
+| `GetCustomItemsList` | `self` | argc=1 | 0 | 1 |
+| `GetDocUnits` | `` | overloaded-C++ | 2 | 1 |
+| `GetDocUnitsPerInch` | `self` | argc=1 | 0 | 1 |
+| `GetERCsList` | `self` | argc=1 | 0 | 1 |
+| `GetFirstWireEndPoint` | `self,location,status` | argc=1 | 0 | 1 |
+| `GetGlobalCount` | `self,status` | argc=1 | 0 | 1 |
+| `GetGlobalsList` | `self` | argc=1 | 0 | 1 |
+| `GetGraphicInst` | `` | overloaded-C++ | 0 | 1 |
+| `GetGridRefDisplayed` | `self,status` | argc=1 | 0 | 1 |
+| `GetGridRefPrinted` | `self,status` | argc=1 | 0 | 1 |
+| `GetHorizontalLabelCount` | `self,status` | argc=1 | 0 | 1 |
+| `GetHorizontalLabelIsAscending` | `self,status` | argc=1 | 0 | 1 |
+| `GetHorizontalLabelIsChar` | `self,status` | argc=1 | 0 | 1 |
+| `GetHorizontalLabelIsVisible` | `self,status` | argc=1 | 0 | 1 |
+| `GetHorizontalLabelWidth` | `self,status` | argc=1 | 0 | 1 |
+| `GetHorizontalSeparatorLineStyle` | `self,status` | argc=1 | 0 | 1 |
+| `GetHorizontalSeparatorLineWidth` | `self,status` | argc=1 | 0 | 1 |
+| `GetInnerBorderIsVisible` | `self,status` | argc=1 | 0 | 1 |
+| `GetInnerBorderLineStyle` | `self,status` | argc=1 | 0 | 1 |
+| `GetInnerBorderLineWidth` | `self,status` | argc=1 | 0 | 1 |
+| `GetInnerBorderMargin` | `self,status` | argc=1 | 0 | 1 |
+| `GetIsMetric` | `self` | argc=1 | 2 | 1 |
+| `GetLabelArray` | `self,label` | argc=1 | 0 | 1 |
+| `GetLabelColor` | `self,status` | argc=1 | 0 | 1 |
+| `GetLabelFont` | `self,font` | argc=1 | 0 | 1 |
+| `GetLabelState` | `self,label` | argc=1 | 0 | 1 |
+| `GetLastTransactionNumber` | `self` | argc=1 | 0 | 1 |
+| `GetModifyTime` | `self,status` | argc=1 | 0 | 4 |
+| `GetName` | `self,name` | argc=1 | 185 | 18 |
+| `GetNet` | `` | overloaded-C++ | 17 | 8 |
+| `GetObjectType` | `self` | argc=1 | 86 | 57 |
+| `GetOffPageConnectorCount` | `self,status` | argc=1 | 0 | 1 |
+| `GetOffPageConnectorFromID` | `self,nID` | argc=1 | 0 | 1 |
+| `GetOffPageConnectorsList` | `self` | argc=1 | 0 | 1 |
+| `GetOuterBorderIsVisible` | `self,status` | argc=1 | 0 | 1 |
+| `GetOuterBorderLineStyle` | `self,status` | argc=1 | 0 | 1 |
+| `GetOuterBorderLineWidth` | `self,status` | argc=1 | 0 | 1 |
+| `GetOuterBorderMargin` | `self,status` | argc=1 | 0 | 1 |
+| `GetOwner` | `self` | argc=1 | 69 | 19 |
+| `GetPageHeight` | `self` | argc=1 | 3 | 1 |
+| `GetPageNumber` | `self,status` | argc=1 | 6 | 3 |
+| `GetPageSizeInfo` | `self,nPageWidth,nPageHeight,nPinToPin,bIsMetric` | argc=1 | 0 | 1 |
+| `GetPageWidth` | `self` | argc=1 | 3 | 1 |
+| `GetParentObj` | `self` | argc=1 | 0 | 18 |
+| `GetPartInst` | `` | overloaded-C++ | 13 | 3 |
+| `GetPartInstCount` | `` | overloaded-C++ | 0 | 1 |
+| `GetPartInstFromSch` | `self,name,status` | argc=1 | 0 | 1 |
+| `GetPartInstList` | `self` | argc=1 | 0 | 1 |
+| `GetPhysicalGranularity` | `self` | argc=1 | 6 | 1 |
+| `GetPinToPin` | `self` | argc=1 | 0 | 1 |
+| `GetPinToPinScaleFactor` | `self` | argc=1 | 1 | 1 |
+| `GetPort` | `self,name,status` | argc=1 | 0 | 4 |
+| `GetPortCount` | `self,status` | argc=1 | 0 | 1 |
+| `GetPortInst` | `self,location,status` | argc=1 | 3 | 3 |
+| `GetPortsList` | `self` | argc=1 | 0 | 1 |
+| `GetSize` | `self,status` | argc=1 | 2 | 6 |
+| `GetSizeName` | `self,size` | argc=1 | 2 | 1 |
+| `GetTitleBlock` | `self,id,status` | argc=1 | 1 | 3 |
+| `GetTitleBlockDisplayed` | `self,status` | argc=1 | 0 | 1 |
+| `GetTitleBlockPrinted` | `self,status` | argc=1 | 0 | 1 |
+| `GetTitleBlocksList` | `self` | argc=1 | 0 | 1 |
+| `GetTransactionCount` | `self` | argc=1 | 0 | 2 |
+| `GetUnNamedBundleList` | `self,UnNamedBundleList` | argc=1 | 0 | 2 |
+| `GetUserStorage` | `self,name,status` | argc=1 | 0 | 3 |
+| `GetVerticalLabelCount` | `self,status` | argc=1 | 0 | 1 |
+| `GetVerticalLabelIsAscending` | `self,status` | argc=1 | 0 | 1 |
+| `GetVerticalLabelIsChar` | `self,status` | argc=1 | 0 | 1 |
+| `GetVerticalLabelIsVisible` | `self,status` | argc=1 | 0 | 1 |
+| `GetVerticalLabelWidth` | `self,status` | argc=1 | 0 | 1 |
+| `GetVerticalSeparatorLineStyle` | `self,status` | argc=1 | 0 | 1 |
+| `GetVerticalSeparatorLineWidth` | `self,status` | argc=1 | 0 | 1 |
+| `GetWire` | `` | overloaded-C++ | 0 | 3 |
+| `GetWireAtJunction` | `self,location,status` | argc=1 | 0 | 1 |
+| `GetWireCount` | `self,status` | argc=1 | 0 | 1 |
+| `GetWiresList` | `self` | argc=1 | 0 | 1 |
+| `Import` | `self,pBlock` | argc=1 | 9 | 1 |
+| `InitUndoRedoData` | `self` | argc=1 | 0 | 1 |
+| `IsConnectionPoint` | `self,location,status` | argc=1 | 0 | 1 |
+| `IsLocked` | `self,status` | argc=1 | 0 | 1 |
+| `IsModified` | `self,status` | argc=1 | 7 | 6 |
+| `IsPersistent` | `self,status` | argc=1 | 1 | 3 |
+| `IsTransactionInProgress` | `self` | argc=1 | 0 | 1 |
+| `IsValidNetName` | `csNetName` | argc=1 | 0 | 1 |
+| `m_nRedo_get` | `self` | argc=1 | 0 | 1 |
+| `m_nRedo_set` | `self,m_nRedo` | argc=1 | 0 | 1 |
+| `m_nUndo_get` | `self` | argc=1 | 0 | 1 |
+| `m_nUndo_set` | `self,m_nUndo` | argc=1 | 0 | 1 |
+| `m_pCmdList_get` | `self` | argc=1 | 0 | 1 |
+| `m_pCmdList_set` | `self,m_pCmdList` | argc=1 | 0 | 1 |
+| `m_pFile_get` | `self` | argc=1 | 0 | 1 |
+| `m_pFile_set` | `self,m_pFile` | argc=1 | 0 | 1 |
+| `m_pObjMapRedo_get` | `self` | argc=1 | 0 | 1 |
+| `m_pObjMapRedo_set` | `self,m_pObjMapRedo` | argc=1 | 0 | 1 |
+| `m_pObjMapUndo_get` | `self` | argc=1 | 0 | 1 |
+| `m_pObjMapUndo_set` | `self,m_pObjMapUndo` | argc=1 | 0 | 1 |
+| `m_pRedoList_get` | `self` | argc=1 | 0 | 1 |
+| `m_pRedoList_set` | `self,m_pRedoList` | argc=1 | 0 | 1 |
+| `m_pTempObjMapRedo_get` | `self` | argc=1 | 0 | 1 |
+| `m_pTempObjMapRedo_set` | `self,m_pTempObjMapRedo` | argc=1 | 0 | 1 |
+| `m_pTempObjMapUndo_get` | `self` | argc=1 | 0 | 1 |
+| `m_pTempObjMapUndo_set` | `self,m_pTempObjMapUndo` | argc=1 | 0 | 1 |
+| `MarkModified` | `self` | argc=1 | 13 | 13 |
+| `NewBookMark` | `` | overloaded-C++ | 0 | 1 |
+| `NewBookMarksIter` | `self,status` | argc=1 | 0 | 1 |
+| `NewBusEntriesIter` | `self,status` | argc=1 | 3 | 3 |
+| `NewBusEntry` | `` | overloaded-C++ | 0 | 1 |
+| `NewCommentGraphic` | `` | overloaded-C++ | 0 | 1 |
+| `NewCommentGraphicsIter` | `self,status` | argc=1 | 3 | 1 |
+| `NewConnectivityObjectsAtPointIter` | `self,location,status` | argc=1 | 0 | 1 |
+| `NewCustomItemInstance` | `self,pDefiningObj,nType,idInterfaceID,strPluginName,nCookie,nDefColorIdx,pSchOcc` | argc=1 | 0 | 1 |
+| `NewCustomItemsListIter` | `self,status` | argc=1 | 0 | 1 |
+| `NewDeletedObject` | `self` | argc=1 | 0 | 1 |
+| `NewDrawnInst` | `` | overloaded-C++ | 1 | 1 |
+| `NewEditsIter` | `` | overloaded-C++ | 0 | 1 |
+| `NewERC` | `` | overloaded-C++ | 1 | 1 |
+| `NewERCsIter` | `self,status` | argc=1 | 1 | 1 |
+| `NewGlobal` | `` | overloaded-C++ | 0 | 1 |
+| `NewGlobalsIter` | `self,status` | argc=1 | 5 | 6 |
+| `NewGraphicArcInst` | `` | overloaded-C++ | 0 | 1 |
+| `NewGraphicBezierInst` | `` | overloaded-C++ | 0 | 1 |
+| `NewGraphicBitMapInst` | `` | overloaded-C++ | 0 | 1 |
+| `NewGraphicBitMapInstFromDib` | `self,status,pBase64BmpData,pBBox,pLocation,pDbId` | argc=1 | 0 | 2 |
+| `NewGraphicBoxInst` | `` | overloaded-C++ | 0 | 1 |
+| `NewGraphicCommentTextInst` | `` | overloaded-C++ | 0 | 1 |
+| `NewGraphicEllipseInst` | `` | overloaded-C++ | 0 | 1 |
+| `NewGraphicLineInst` | `` | overloaded-C++ | 0 | 1 |
+| `NewGraphicOleEmbedInst` | `` | overloaded-C++ | 0 | 1 |
+| `NewGraphicPolygonInst` | `` | overloaded-C++ | 0 | 1 |
+| `NewGraphicPolylineInst` | `` | overloaded-C++ | 0 | 1 |
+| `NewGraphicSymbolVectorInst` | `self,status,location,rotation` | argc=1 | 0 | 1 |
+| `NewNetBus` | `` | overloaded-C++ | 0 | 1 |
+| `NewNetScalar` | `self` | argc=1 | 0 | 1 |
+| `NewObjectsAtPointIter` | `self,location,status` | argc=1 | 2 | 1 |
+| `NewOffPageConnector` | `` | overloaded-C++ | 0 | 1 |
+| `NewOffPageConnectorsIter` | `` | overloaded-C++ | 6 | 5 |
+| `NewPartInstsIter` | `self,status` | argc=1 | 14 | 1 |
+| `NewPlacedInst` | `` | overloaded-C++ | 0 | 1 |
+| `NewPlacedInstVer` | `` | overloaded-C++ | 0 | 1 |
+| `NewPort` | `` | overloaded-C++ | 0 | 1 |
+| `NewPortsIter` | `` | overloaded-C++ | 6 | 5 |
+| `NewTitleBlock` | `` | overloaded-C++ | 8 | 1 |
+| `NewTitleBlocksIter` | `self,status` | argc=1 | 5 | 1 |
+| `NewWireBus` | `` | overloaded-C++ | 0 | 1 |
+| `NewWiresAtPointIter` | `self,pt,status` | argc=1 | 0 | 1 |
+| `NewWireScalar` | `` | overloaded-C++ | 0 | 1 |
+| `NewWiresInAreaIter` | `self,area,status` | argc=1 | 0 | 1 |
+| `NewWiresIter` | `` | overloaded-C++ | 10 | 4 |
+| `NotifyChangingInstId` | `self,oldId,inst` | argc=1 | 0 | 1 |
+| `NotifyChangingInstName` | `self,oldname,inst` | argc=1 | 0 | 1 |
+| `PartAlreadyExistsWithName` | `UniqueNm` | argc=1 | 0 | 1 |
+| `PointOnHotSpot` | `self,location` | argc=1 | 0 | 1 |
+| `ReplaceGraphicInst` | `` | overloaded-C++ | 0 | 1 |
+| `ReplaceInst` | `` | overloaded-C++ | 0 | 1 |
+| `RestorePrevState` | `self,bRedo` | argc=1 | 0 | 1 |
+| `SetANSIGridRefs` | `self,bVal` | argc=1 | 0 | 1 |
+| `SetBorderDisplayed` | `self,bVal` | argc=1 | 0 | 1 |
+| `SetBorderPrinted` | `self,bVal` | argc=1 | 0 | 1 |
+| `SetColor` | `self,color` | argc=1 | 10 | 11 |
+| `SetGridRefDisplayed` | `self,bVal` | argc=1 | 0 | 1 |
+| `SetGridRefPrinted` | `self,bVal` | argc=1 | 0 | 1 |
+| `SetHorizontalLabelCount` | `self,count` | argc=1 | 0 | 1 |
+| `SetHorizontalLabelIsAscending` | `self,bval` | argc=1 | 0 | 1 |
+| `SetHorizontalLabelIsChar` | `self,bval` | argc=1 | 0 | 1 |
+| `SetHorizontalLabelIsVisible` | `self,bval` | argc=1 | 0 | 1 |
+| `SetHorizontalLabelWidth` | `self,nWidth` | argc=1 | 0 | 1 |
+| `SetHorizontalSeparatorLineStyle` | `self,lineStyle` | argc=1 | 0 | 1 |
+| `SetHorizontalSeparatorLineWidth` | `self,lineWidth` | argc=1 | 0 | 1 |
+| `SetInnerBorderIsVisible` | `self,bval` | argc=1 | 0 | 1 |
+| `SetInnerBorderLineStyle` | `self,lineStyle` | argc=1 | 0 | 1 |
+| `SetInnerBorderLineWidth` | `self,lineWidth` | argc=1 | 0 | 1 |
+| `SetInnerBorderMargin` | `self,location` | argc=1 | 0 | 1 |
+| `SetIsMetric` | `self,bIsMetric` | argc=1 | 0 | 1 |
+| `SetLabelColor` | `self,color` | argc=1 | 0 | 1 |
+| `SetLabelFont` | `self,font` | argc=1 | 0 | 1 |
+| `SetLabelState` | `self,label` | argc=1 | 0 | 1 |
+| `SetOuterBorderIsVisible` | `self,bval` | argc=1 | 0 | 1 |
+| `SetOuterBorderLineStyle` | `self,lineStyle` | argc=1 | 0 | 1 |
+| `SetOuterBorderLineWidth` | `self,lineWidth` | argc=1 | 0 | 1 |
+| `SetOuterBorderMargin` | `self,location` | argc=1 | 0 | 1 |
+| `SetPageHeight` | `self,nPageHeight` | argc=1 | 0 | 1 |
+| `SetPageSizeInfo` | `self,nPageWidth,nPageHeight,nPinToPin,bIsMetric` | argc=1 | 0 | 1 |
+| `SetPageWidth` | `self,nPageWidth` | argc=1 | 0 | 1 |
+| `SetPinToPin` | `self,nPinToPin` | argc=1 | 0 | 1 |
+| `SetSize` | `self,size` | argc=1 | 21 | 1 |
+| `SetSizeName` | `self,name` | argc=1 | 0 | 1 |
+| `SetTitleBlockDisplayed` | `self,bVal` | argc=1 | 0 | 1 |
+| `SetTitleBlockPrinted` | `self,bVal` | argc=1 | 0 | 1 |
+| `SetVerticalLabelCount` | `self,count` | argc=1 | 0 | 1 |
+| `SetVerticalLabelIsAscending` | `self,bval` | argc=1 | 0 | 1 |
+| `SetVerticalLabelIsChar` | `self,bval` | argc=1 | 0 | 1 |
+| `SetVerticalLabelIsVisible` | `self,bval` | argc=1 | 0 | 1 |
+| `SetVerticalLabelWidth` | `self,nWidth` | argc=1 | 0 | 1 |
+| `SetVerticalSeparatorLineStyle` | `self,lineStyle` | argc=1 | 0 | 1 |
+| `SetVerticalSeparatorLineWidth` | `self,lineWidth` | argc=1 | 0 | 1 |
+| `sGetColor` | `obj,status` | argc=1 | 0 | 8 |
+| `sGetCreateTime` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetHorizontalLabelCount` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetHorizontalLabelIsAscending` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetHorizontalLabelIsChar` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetHorizontalLabelIsVisible` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetHorizontalSeparatorLineStyle` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetHorizontalSeparatorLineWidth` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetInnerBorderIsVisible` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetInnerBorderLineStyle` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetInnerBorderLineWidth` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetInnerBorderMarginX` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetInnerBorderMarginY` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetLabelColor` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetModifyTime` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetName` | `obj,status` | argc=1 | 1 | 15 |
+| `sGetOuterBorderIsVisible` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetOuterBorderLineStyle` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetOuterBorderLineWidth` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetOuterBorderMarginX` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetOuterBorderMarginY` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetPageNumber` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetSizeName` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetSizeX` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetSizeY` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetVerticalLabelCount` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetVerticalLabelIsAscending` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetVerticalLabelIsChar` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetVerticalLabelIsVisible` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetVerticalSeparatorLineStyle` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetVerticalSeparatorLineWidth` | `obj,status` | argc=1 | 0 | 1 |
+| `StartTransaction` | `` | overloaded-C++ | 0 | 1 |
+| `UpdatePageState` | `self` | argc=1 | 0 | 1 |
+| `UpdateRedoState` | `self` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboPage_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboPage_<method> $obj <args...>`

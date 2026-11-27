@@ -1,12 +1,12 @@
-# DboAnnotateRange (6 methods)
+# DboAnnotateRange (6 methods, official_calls(upper bound)=0)
 
-| method | params | note |
-| --- | --- | --- |
-| `GetLastIndex` | `self` | argc=1 |
-| `GetRefdesPrefix` | `self` | argc=1 |
-| `GetStartIndex` | `self` | argc=1 |
-| `SetLastIndex` | `self,lIndex` | argc=1 |
-| `SetRefDesPrefix` | `self,refdesprfx` | argc=1 |
-| `SetStartIndex` | `self,sIndex` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `GetLastIndex` | `self` | argc=1 | 0 | 1 |
+| `GetRefdesPrefix` | `self` | argc=1 | 0 | 1 |
+| `GetStartIndex` | `self` | argc=1 | 0 | 1 |
+| `SetLastIndex` | `self,lIndex` | argc=1 | 0 | 1 |
+| `SetRefDesPrefix` | `self,refdesprfx` | argc=1 | 0 | 1 |
+| `SetStartIndex` | `self,sIndex` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboAnnotateRange_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboAnnotateRange_<method> $obj <args...>`

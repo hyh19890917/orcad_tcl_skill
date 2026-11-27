@@ -1,119 +1,119 @@
-# DboBaseObject (113 methods)
+# DboBaseObject (113 methods, official_calls(upper bound)=701)
 
-| method | params | note |
-| --- | --- | --- |
-| `AddLockingInfo` | `self,propName,lLock,preTriggerName,postTrigerName` | argc=1 |
-| `AddPropertyToPropertyBag` | `self,BagType,pBagName,pName,pValue` | argc=1 |
-| `AddVariantProp` | `self,strName,strVal` | argc=1 |
-| `ClearVariantMap` | `` | overloaded-C++ |
-| `CopyExtensions` | `self,srcExtn` | argc=1 |
-| `Decrement` | `self` | argc=1 |
-| `DeleteDBProp` | `self,name` | argc=1 |
-| `DeleteDisplayProp` | `self,DboDisplayProp,*` | argc=1 |
-| `DeleteEffectiveProp` | `self,name` | argc=1 |
-| `DeleteUserProp` | `self,name` | argc=1 |
-| `DeleteUserProps` | `self` | argc=1 |
-| `EffectiveNGMatch` | `` | overloaded-C++ |
-| `EffectivePropNameMatch` | `` | overloaded-C++ |
-| `EffectivePropsMatch` | `` | overloaded-C++ |
-| `GetAttributeLockingInfo` | `self,propName,lLock,preTrigger,postTrigger` | argc=1 |
-| `GetBaseProp` | `` | overloaded-C++ |
-| `GetBasePropNC` | `self,name,status` | argc=1 |
-| `GetBitmask` | `self,pBitmask` | argc=1 |
-| `GetBoundingBox` | `self` | argc=1 |
-| `GetBundleOwner` | `self` | argc=1 |
-| `GetBundleOwnerPropName` | `self,propName,sourceLibName` | argc=1 |
-| `GetBundleOwnerPropValue` | `self,propName,sourceLibName` | argc=1 |
-| `GetBundleTemplateMap` | `self` | argc=1 |
-| `GetContainingLib` | `self` | argc=1 |
-| `GetCurrentObject` | `self,nTransCount` | argc=1 |
-| `GetDBProp` | `` | overloaded-C++ |
-| `GetDBPropFromObject` | `self,strName,status` | argc=1 |
-| `GetDBPropNC` | `self,name,status` | argc=1 |
-| `GetDBPropValue` | `` | overloaded-C++ |
-| `GetDisplayProp` | `self,name,status` | argc=1 |
-| `GetDisplayPropEx` | `self,name,status` | argc=1 |
-| `GetDisplayPropsPermitted` | `self,status` | argc=1 |
-| `GetEffectivePropStringValue` | `` | overloaded-C++ |
-| `GetEffectivePropStringValueNC` | `self,name,value` | argc=1 |
-| `GetEffectivePropValueChoices` | `self,name,choices` | argc=1 |
-| `GetEffectivePropValueExists` | `self,name,bExists` | argc=1 |
-| `GetEffectivePropValueType` | `self,name,nType,bEditable,bDeletable` | argc=1 |
-| `GetExtensionHandle` | `self` | argc=1 |
-| `GetId` | `self,status` | argc=1 |
-| `GetMask` | `self` | argc=1 |
-| `GetName` | `self,name` | argc=1 |
-| `GetNextNewVariantProp` | `self,strName,strVal,bNewFound` | argc=1 |
-| `GetNextState` | `self` | argc=1 |
-| `GetObjectOccurrence` | `` | overloaded-C++ |
-| `GetObjectOccurrences` | `` | overloaded-C++ |
-| `GetObjectType` | `self` | argc=1 |
-| `GetOpenDesigns` | `self,designs,status` | argc=1 |
-| `GetPaint` | `self` | argc=1 |
-| `GetPrevState` | `self` | argc=1 |
-| `GetPropertyBag` | `self,BagType` | argc=1 |
-| `GetPropertyFromPropertyBag` | `self,BagType,bagName,propName,propValue` | argc=1 |
-| `GetRefCount` | `self` | argc=1 |
-| `GetSemanticID` | `self` | argc=1 |
-| `GetSemanticString` | `self,str` | argc=1 |
-| `GetSession` | `self,status` | argc=1 |
-| `GetTransactionCount` | `self` | argc=1 |
-| `GetTypeString` | `self,strType` | argc=1 |
-| `GetUserEditAttributeOnProp` | `self,propName` | argc=1 |
-| `GetUserProp` | `` | overloaded-C++ |
-| `GetUserPropNC` | `self,name,status` | argc=1 |
-| `GetUserPropsCount` | `self,status` | argc=1 |
-| `GetUserPropsPermitted` | `self,status` | argc=1 |
-| `GetUserPropStringValue` | `self,name,value` | argc=1 |
-| `GetUserPropStringValueNC` | `self,name,value` | argc=1 |
-| `GetVariantProp` | `self,strName,strVal` | argc=1 |
-| `HasPropertyThatExists` | `self,status` | argc=1 |
-| `Increment` | `self` | argc=1 |
-| `IsBitmaskAllowed` | `self,pBitmask` | argc=1 |
-| `IsBundleObject` | `self` | argc=1 |
-| `isBundleTemplateExists` | `self` | argc=1 |
-| `IsCurrent` | `self` | argc=1 |
-| `IsEquivalent` | `self,pObj` | argc=1 |
-| `IsObjLocked` | `self` | argc=1 |
-| `IsOccModified` | `self` | argc=1 |
-| `IsPropertyLockable` | `self,propName` | argc=1 |
-| `IsPropertyLockedForEditing` | `self,propName` | argc=1 |
-| `IsPtrDeleted` | `pPtr` | argc=1 |
-| `IsUpdated` | `self` | argc=1 |
-| `IsVariantPropMapEmpty` | `self` | argc=1 |
-| `MakeBundle` | `self,sOwner,sSourceLib,flag` | argc=1 |
-| `MarkModified` | `self` | argc=1 |
-| `NewDBPropsIter` | `self,status` | argc=1 |
-| `NewDisplayProp` | `self,status,CString&,CPoint,DboValue::RotationT,LOGFONT&,DboValue::ColorT` | argc=1 |
-| `NewDisplayPropsIter` | `self,status` | argc=1 |
-| `NewEffectivePropsIter` | `` | overloaded-C++ |
-| `NewUserProp` | `` | overloaded-C++ |
-| `NewUserPropsIter` | `self,status` | argc=1 |
-| `RemoveBundleProperties` | `self` | argc=1 |
-| `RemovePropertiesFromPropertyBag` | `self,BagType,bagName,propName` | argc=1 |
-| `RemovePropertyBag` | `self,BagType,bagName` | argc=1 |
-| `RemovePropsFromObject` | `self` | argc=1 |
-| `ResetObject` | `self` | argc=1 |
-| `sDoPatternMatch` | `lpszPat,lpszSrc,bMatchCase` | argc=1 |
-| `SetBitmask` | `self,pBitmask` | argc=1 |
-| `SetBundleOwner` | `` | overloaded-C++ |
-| `SetCurrent` | `self,bVal` | argc=1 |
-| `SetDBPropValue` | `` | overloaded-C++ |
-| `SetEffectivePropStringValue` | `` | overloaded-C++ |
-| `SetMask` | `self,pMask` | argc=1 |
-| `SetName` | `self,name` | argc=1 |
-| `SetNextState` | `self,pObj` | argc=1 |
-| `SetObjectType` | `self,DboBaseObject::ObjectTypeT` | argc=1 |
-| `SetOccsModified` | `self,bMod` | argc=1 |
-| `SetPaint` | `` | overloaded-C++ |
-| `SetPrevState` | `self,pObj` | argc=1 |
-| `SetPropStringValueWithEditTracking` | `self,propName,newVal,flag` | argc=1 |
-| `SetTransactionCount` | `self,count` | argc=1 |
-| `SetUserEditAttributeOnProp` | `self,propName,flag` | argc=1 |
-| `SetUserPropStringValue` | `self,name,value` | argc=1 |
-| `sGetDBProp` | `` | overloaded-C++ |
-| `StatefulCreate` | `self` | argc=1 |
-| `UnsetBitmask` | `self,pBitmask` | argc=1 |
-| `UpdateBundleOwner` | `` | overloaded-C++ |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `AddLockingInfo` | `self,propName,lLock,preTriggerName,postTrigerName` | argc=1 | 0 | 1 |
+| `AddPropertyToPropertyBag` | `self,BagType,pBagName,pName,pValue` | argc=1 | 0 | 1 |
+| `AddVariantProp` | `self,strName,strVal` | argc=1 | 0 | 5 |
+| `ClearVariantMap` | `` | overloaded-C++ | 0 | 5 |
+| `CopyExtensions` | `self,srcExtn` | argc=1 | 0 | 3 |
+| `Decrement` | `self` | argc=1 | 7 | 1 |
+| `DeleteDBProp` | `self,name` | argc=1 | 0 | 2 |
+| `DeleteDisplayProp` | `self,DboDisplayProp,*` | argc=1 | 4 | 3 |
+| `DeleteEffectiveProp` | `self,name` | argc=1 | 6 | 10 |
+| `DeleteUserProp` | `self,name` | argc=1 | 0 | 7 |
+| `DeleteUserProps` | `self` | argc=1 | 0 | 1 |
+| `EffectiveNGMatch` | `` | overloaded-C++ | 0 | 1 |
+| `EffectivePropNameMatch` | `` | overloaded-C++ | 0 | 1 |
+| `EffectivePropsMatch` | `` | overloaded-C++ | 0 | 4 |
+| `GetAttributeLockingInfo` | `self,propName,lLock,preTrigger,postTrigger` | argc=1 | 0 | 5 |
+| `GetBaseProp` | `` | overloaded-C++ | 0 | 1 |
+| `GetBasePropNC` | `self,name,status` | argc=1 | 0 | 1 |
+| `GetBitmask` | `self,pBitmask` | argc=1 | 0 | 2 |
+| `GetBoundingBox` | `self` | argc=1 | 79 | 16 |
+| `GetBundleOwner` | `self` | argc=1 | 0 | 2 |
+| `GetBundleOwnerPropName` | `self,propName,sourceLibName` | argc=1 | 0 | 3 |
+| `GetBundleOwnerPropValue` | `self,propName,sourceLibName` | argc=1 | 0 | 2 |
+| `GetBundleTemplateMap` | `self` | argc=1 | 0 | 3 |
+| `GetContainingLib` | `self` | argc=1 | 2 | 20 |
+| `GetCurrentObject` | `self,nTransCount` | argc=1 | 0 | 1 |
+| `GetDBProp` | `` | overloaded-C++ | 0 | 1 |
+| `GetDBPropFromObject` | `self,strName,status` | argc=1 | 0 | 1 |
+| `GetDBPropNC` | `self,name,status` | argc=1 | 0 | 1 |
+| `GetDBPropValue` | `` | overloaded-C++ | 0 | 1 |
+| `GetDisplayProp` | `self,name,status` | argc=1 | 9 | 1 |
+| `GetDisplayPropEx` | `self,name,status` | argc=1 | 0 | 1 |
+| `GetDisplayPropsPermitted` | `self,status` | argc=1 | 0 | 6 |
+| `GetEffectivePropStringValue` | `` | overloaded-C++ | 109 | 8 |
+| `GetEffectivePropStringValueNC` | `self,name,value` | argc=1 | 0 | 3 |
+| `GetEffectivePropValueChoices` | `self,name,choices` | argc=1 | 0 | 6 |
+| `GetEffectivePropValueExists` | `self,name,bExists` | argc=1 | 0 | 7 |
+| `GetEffectivePropValueType` | `self,name,nType,bEditable,bDeletable` | argc=1 | 0 | 9 |
+| `GetExtensionHandle` | `self` | argc=1 | 0 | 1 |
+| `GetId` | `self,status` | argc=1 | 37 | 15 |
+| `GetMask` | `self` | argc=1 | 0 | 2 |
+| `GetName` | `self,name` | argc=1 | 185 | 18 |
+| `GetNextNewVariantProp` | `self,strName,strVal,bNewFound` | argc=1 | 0 | 5 |
+| `GetNextState` | `self` | argc=1 | 0 | 1 |
+| `GetObjectOccurrence` | `` | overloaded-C++ | 13 | 9 |
+| `GetObjectOccurrences` | `` | overloaded-C++ | 0 | 8 |
+| `GetObjectType` | `self` | argc=1 | 86 | 57 |
+| `GetOpenDesigns` | `self,designs,status` | argc=1 | 2 | 2 |
+| `GetPaint` | `self` | argc=1 | 0 | 1 |
+| `GetPrevState` | `self` | argc=1 | 0 | 1 |
+| `GetPropertyBag` | `self,BagType` | argc=1 | 0 | 2 |
+| `GetPropertyFromPropertyBag` | `self,BagType,bagName,propName,propValue` | argc=1 | 0 | 1 |
+| `GetRefCount` | `self` | argc=1 | 0 | 2 |
+| `GetSemanticID` | `self` | argc=1 | 0 | 1 |
+| `GetSemanticString` | `self,str` | argc=1 | 0 | 8 |
+| `GetSession` | `self,status` | argc=1 | 0 | 1 |
+| `GetTransactionCount` | `self` | argc=1 | 0 | 2 |
+| `GetTypeString` | `self,strType` | argc=1 | 2 | 1 |
+| `GetUserEditAttributeOnProp` | `self,propName` | argc=1 | 1 | 1 |
+| `GetUserProp` | `` | overloaded-C++ | 0 | 2 |
+| `GetUserPropNC` | `self,name,status` | argc=1 | 0 | 1 |
+| `GetUserPropsCount` | `self,status` | argc=1 | 0 | 1 |
+| `GetUserPropsPermitted` | `self,status` | argc=1 | 1 | 1 |
+| `GetUserPropStringValue` | `self,name,value` | argc=1 | 0 | 1 |
+| `GetUserPropStringValueNC` | `self,name,value` | argc=1 | 0 | 1 |
+| `GetVariantProp` | `self,strName,strVal` | argc=1 | 5 | 5 |
+| `HasPropertyThatExists` | `self,status` | argc=1 | 0 | 3 |
+| `Increment` | `self` | argc=1 | 17 | 1 |
+| `IsBitmaskAllowed` | `self,pBitmask` | argc=1 | 0 | 2 |
+| `IsBundleObject` | `self` | argc=1 | 2 | 10 |
+| `isBundleTemplateExists` | `self` | argc=1 | 0 | 3 |
+| `IsCurrent` | `self` | argc=1 | 2 | 1 |
+| `IsEquivalent` | `self,pObj` | argc=1 | 1 | 8 |
+| `IsObjLocked` | `self` | argc=1 | 6 | 2 |
+| `IsOccModified` | `self` | argc=1 | 0 | 1 |
+| `IsPropertyLockable` | `self,propName` | argc=1 | 0 | 1 |
+| `IsPropertyLockedForEditing` | `self,propName` | argc=1 | 0 | 1 |
+| `IsPtrDeleted` | `pPtr` | argc=1 | 0 | 1 |
+| `IsUpdated` | `self` | argc=1 | 0 | 1 |
+| `IsVariantPropMapEmpty` | `self` | argc=1 | 6 | 5 |
+| `MakeBundle` | `self,sOwner,sSourceLib,flag` | argc=1 | 0 | 1 |
+| `MarkModified` | `self` | argc=1 | 13 | 13 |
+| `NewDBPropsIter` | `self,status` | argc=1 | 1 | 1 |
+| `NewDisplayProp` | `self,status,CString&,CPoint,DboValue::RotationT,LOGFONT&,DboValue::ColorT` | argc=1 | 12 | 7 |
+| `NewDisplayPropsIter` | `self,status` | argc=1 | 3 | 6 |
+| `NewEffectivePropsIter` | `` | overloaded-C++ | 6 | 12 |
+| `NewUserProp` | `` | overloaded-C++ | 4 | 8 |
+| `NewUserPropsIter` | `self,status` | argc=1 | 1 | 1 |
+| `RemoveBundleProperties` | `self` | argc=1 | 0 | 2 |
+| `RemovePropertiesFromPropertyBag` | `self,BagType,bagName,propName` | argc=1 | 0 | 1 |
+| `RemovePropertyBag` | `self,BagType,bagName` | argc=1 | 0 | 1 |
+| `RemovePropsFromObject` | `self` | argc=1 | 0 | 1 |
+| `ResetObject` | `self` | argc=1 | 0 | 1 |
+| `sDoPatternMatch` | `lpszPat,lpszSrc,bMatchCase` | argc=1 | 0 | 1 |
+| `SetBitmask` | `self,pBitmask` | argc=1 | 0 | 2 |
+| `SetBundleOwner` | `` | overloaded-C++ | 0 | 2 |
+| `SetCurrent` | `self,bVal` | argc=1 | 0 | 2 |
+| `SetDBPropValue` | `` | overloaded-C++ | 0 | 1 |
+| `SetEffectivePropStringValue` | `` | overloaded-C++ | 13 | 11 |
+| `SetMask` | `self,pMask` | argc=1 | 0 | 2 |
+| `SetName` | `self,name` | argc=1 | 66 | 17 |
+| `SetNextState` | `self,pObj` | argc=1 | 0 | 2 |
+| `SetObjectType` | `self,DboBaseObject::ObjectTypeT` | argc=1 | 0 | 3 |
+| `SetOccsModified` | `self,bMod` | argc=1 | 0 | 3 |
+| `SetPaint` | `` | overloaded-C++ | 0 | 1 |
+| `SetPrevState` | `self,pObj` | argc=1 | 0 | 1 |
+| `SetPropStringValueWithEditTracking` | `self,propName,newVal,flag` | argc=1 | 0 | 1 |
+| `SetTransactionCount` | `self,count` | argc=1 | 0 | 1 |
+| `SetUserEditAttributeOnProp` | `self,propName,flag` | argc=1 | 0 | 1 |
+| `SetUserPropStringValue` | `self,name,value` | argc=1 | 0 | 6 |
+| `sGetDBProp` | `` | overloaded-C++ | 0 | 1 |
+| `StatefulCreate` | `self` | argc=1 | 0 | 11 |
+| `UnsetBitmask` | `self,pBitmask` | argc=1 | 0 | 2 |
+| `UpdateBundleOwner` | `` | overloaded-C++ | 0 | 2 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboBaseObject_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboBaseObject_<method> $obj <args...>`

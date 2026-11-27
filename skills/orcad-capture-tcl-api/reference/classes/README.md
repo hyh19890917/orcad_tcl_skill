@@ -1,296 +1,299 @@
 # Dbo classes index (17.4, machine-generated)
 
-| class | methods | file |
-| --- | --- | --- |
-| `DboAlias` | 46 | [DboAlias.md](DboAlias.md) |
-| `DboAliasData` | 12 | [DboAliasData.md](DboAliasData.md) |
-| `DboAnnotateControl` | 4 | [DboAnnotateControl.md](DboAnnotateControl.md) |
-| `DboAnnotateRange` | 6 | [DboAnnotateRange.md](DboAnnotateRange.md) |
-| `DboArc` | 22 | [DboArc.md](DboArc.md) |
-| `DboArcData` | 10 | [DboArcData.md](DboArcData.md) |
-| `DboBaseObject` | 113 | [DboBaseObject.md](DboBaseObject.md) |
-| `DboBezier` | 14 | [DboBezier.md](DboBezier.md) |
-| `DboBezierPointsIter` | 2 | [DboBezierPointsIter.md](DboBezierPointsIter.md) |
-| `DboBitMap` | 20 | [DboBitMap.md](DboBitMap.md) |
-| `DboBitMapData` | 6 | [DboBitMapData.md](DboBitMapData.md) |
-| `DboBookMark` | 3 | [DboBookMark.md](DboBookMark.md) |
-| `DboBox` | 22 | [DboBox.md](DboBox.md) |
-| `DboBoxData` | 10 | [DboBoxData.md](DboBoxData.md) |
-| `DboBundle` | 31 | [DboBundle.md](DboBundle.md) |
-| `DboBundleBusMember` | 8 | [DboBundleBusMember.md](DboBundleBusMember.md) |
-| `DboBundleMemberIter` | 2 | [DboBundleMemberIter.md](DboBundleMemberIter.md) |
-| `DboBundleNetIter` | 2 | [DboBundleNetIter.md](DboBundleNetIter.md) |
-| `DboBundleScalarMember` | 2 | [DboBundleScalarMember.md](DboBundleScalarMember.md) |
-| `DboBundleTemplateMap` | 43 | [DboBundleTemplateMap.md](DboBundleTemplateMap.md) |
-| `DboBundleType` | 10 | [DboBundleType.md](DboBundleType.md) |
-| `DboBus` | 11 | [DboBus.md](DboBus.md) |
-| `DboBusEntry` | 25 | [DboBusEntry.md](DboBusEntry.md) |
-| `DboBusEntryData` | 6 | [DboBusEntryData.md](DboBusEntryData.md) |
-| `DboBusMemberNamesIter` | 3 | [DboBusMemberNamesIter.md](DboBusMemberNamesIter.md) |
-| `DboCell` | 9 | [DboCell.md](DboCell.md) |
-| `DboCellPartNamesIter` | 2 | [DboCellPartNamesIter.md](DboCellPartNamesIter.md) |
-| `DboCellPartsIter` | 4 | [DboCellPartsIter.md](DboCellPartsIter.md) |
-| `DboColorRotMirror` | 6 | [DboColorRotMirror.md](DboColorRotMirror.md) |
-| `DboCommentText` | 25 | [DboCommentText.md](DboCommentText.md) |
-| `DboConnectivityChangeIter` | 5 | [DboConnectivityChangeIter.md](DboConnectivityChangeIter.md) |
-| `DboConnectivityObjectsAtPointIter` | 4 | [DboConnectivityObjectsAtPointIter.md](DboConnectivityObjectsAtPointIter.md) |
-| `DboCustomItemInstance` | 9 | [DboCustomItemInstance.md](DboCustomItemInstance.md) |
-| `DboDBPropsIter` | 3 | [DboDBPropsIter.md](DboDBPropsIter.md) |
-| `DboDBQuery` | 20 | [DboDBQuery.md](DboDBQuery.md) |
-| `DboDefinition` | 4 | [DboDefinition.md](DboDefinition.md) |
-| `DboDeletedObject` | 4 | [DboDeletedObject.md](DboDeletedObject.md) |
-| `DboDesign` | 85 | [DboDesign.md](DboDesign.md) |
-| `DboDesignCachesIter` | 4 | [DboDesignCachesIter.md](DboDesignCachesIter.md) |
-| `DboDesignFlatNetsIter` | 4 | [DboDesignFlatNetsIter.md](DboDesignFlatNetsIter.md) |
-| `DboDesignGlobalsIter` | 4 | [DboDesignGlobalsIter.md](DboDesignGlobalsIter.md) |
-| `DboDesignOccurrencesIter` | 4 | [DboDesignOccurrencesIter.md](DboDesignOccurrencesIter.md) |
-| `DboDesignPackageInstOccIter` | 4 | [DboDesignPackageInstOccIter.md](DboDesignPackageInstOccIter.md) |
-| `DboDesignSchematicOccurrencesIter` | 5 | [DboDesignSchematicOccurrencesIter.md](DboDesignSchematicOccurrencesIter.md) |
-| `DboDesignUpdateOccurrenceBlockerManager` | 1 | [DboDesignUpdateOccurrenceBlockerManager.md](DboDesignUpdateOccurrenceBlockerManager.md) |
-| `DboDevice` | 30 | [DboDevice.md](DboDevice.md) |
-| `DboDevicePinNumbersIter` | 2 | [DboDevicePinNumbersIter.md](DboDevicePinNumbersIter.md) |
-| `DboDirectory` | 21 | [DboDirectory.md](DboDirectory.md) |
-| `DboDirectoryEntriesIter` | 2 | [DboDirectoryEntriesIter.md](DboDirectoryEntriesIter.md) |
-| `DboDirectoryEntry` | 4 | [DboDirectoryEntry.md](DboDirectoryEntry.md) |
-| `DboDirectoryObjectsIter` | 2 | [DboDirectoryObjectsIter.md](DboDirectoryObjectsIter.md) |
-| `DboDirectoryRec` | 20 | [DboDirectoryRec.md](DboDirectoryRec.md) |
-| `DboDisplayProp` | 50 | [DboDisplayProp.md](DboDisplayProp.md) |
-| `DboDisplayPropsIter` | 4 | [DboDisplayPropsIter.md](DboDisplayPropsIter.md) |
-| `DboDrawnInst` | 16 | [DboDrawnInst.md](DboDrawnInst.md) |
-| `DboEffectivePropsIter` | 2 | [DboEffectivePropsIter.md](DboEffectivePropsIter.md) |
-| `DboEllipse` | 20 | [DboEllipse.md](DboEllipse.md) |
-| `DboEllipseData` | 10 | [DboEllipseData.md](DboEllipseData.md) |
-| `DboERC` | 10 | [DboERC.md](DboERC.md) |
-| `DboExtBlobHandler` | 7 | [DboExtBlobHandler.md](DboExtBlobHandler.md) |
-| `DboExtBlobHandlerExtMask` | 3 | [DboExtBlobHandlerExtMask.md](DboExtBlobHandlerExtMask.md) |
-| `DboExtBlobHandlerImage` | 3 | [DboExtBlobHandlerImage.md](DboExtBlobHandlerImage.md) |
-| `DboExtBlobHandlerLineStyle` | 3 | [DboExtBlobHandlerLineStyle.md](DboExtBlobHandlerLineStyle.md) |
-| `DboExtBlobHandlerPassThru` | 3 | [DboExtBlobHandlerPassThru.md](DboExtBlobHandlerPassThru.md) |
-| `DboExtBlobHandlerRegistry` | 5 | [DboExtBlobHandlerRegistry.md](DboExtBlobHandlerRegistry.md) |
-| `DboExtBlobNode` | 34 | [DboExtBlobNode.md](DboExtBlobNode.md) |
-| `DboExtBlobNodeExtMask` | 4 | [DboExtBlobNodeExtMask.md](DboExtBlobNodeExtMask.md) |
-| `DboExtBlobNodeImage` | 11 | [DboExtBlobNodeImage.md](DboExtBlobNodeImage.md) |
-| `DboExtBlobNodePassThru` | 7 | [DboExtBlobNodePassThru.md](DboExtBlobNodePassThru.md) |
-| `DboExtBlobNodePsp2Cap` | 5 | [DboExtBlobNodePsp2Cap.md](DboExtBlobNodePsp2Cap.md) |
-| `DboExtCentral` | 8 | [DboExtCentral.md](DboExtCentral.md) |
-| `DboExtension` | 10 | [DboExtension.md](DboExtension.md) |
-| `DboExtensionCreator` | 1 | [DboExtensionCreator.md](DboExtensionCreator.md) |
-| `DboExtensionDataT` | 8 | [DboExtensionDataT.md](DboExtensionDataT.md) |
-| `DboExtensionFactory` | 3 | [DboExtensionFactory.md](DboExtensionFactory.md) |
-| `DboExtensionGeneric` | 4 | [DboExtensionGeneric.md](DboExtensionGeneric.md) |
-| `DboExtensionIter` | 2 | [DboExtensionIter.md](DboExtensionIter.md) |
-| `DboExtensionManager` | 14 | [DboExtensionManager.md](DboExtensionManager.md) |
-| `DboExtensionMaskInfo` | 11 | [DboExtensionMaskInfo.md](DboExtensionMaskInfo.md) |
-| `DboExtnAttrLockPvt` | 24 | [DboExtnAttrLockPvt.md](DboExtnAttrLockPvt.md) |
-| `DboExtnPropertyBag` | 10 | [DboExtnPropertyBag.md](DboExtnPropertyBag.md) |
-| `DboFill` | 12 | [DboFill.md](DboFill.md) |
-| `DboFlatNet` | 31 | [DboFlatNet.md](DboFlatNet.md) |
-| `DboFlatNetEffectivePropsIter` | 2 | [DboFlatNetEffectivePropsIter.md](DboFlatNetEffectivePropsIter.md) |
-| `DboFlatNetNetOccurrencesIter` | 4 | [DboFlatNetNetOccurrencesIter.md](DboFlatNetNetOccurrencesIter.md) |
-| `DboFlatNetNetsIter` | 4 | [DboFlatNetNetsIter.md](DboFlatNetNetsIter.md) |
-| `DboFlatNetPortOccurrencesIter` | 4 | [DboFlatNetPortOccurrencesIter.md](DboFlatNetPortOccurrencesIter.md) |
-| `DboFlatNetWiresIter` | 4 | [DboFlatNetWiresIter.md](DboFlatNetWiresIter.md) |
-| `DboFontAndRotation` | 4 | [DboFontAndRotation.md](DboFontAndRotation.md) |
-| `DboGlobal` | 5 | [DboGlobal.md](DboGlobal.md) |
-| `DboGraphicArcInst` | 18 | [DboGraphicArcInst.md](DboGraphicArcInst.md) |
-| `DboGraphicBezierInst` | 9 | [DboGraphicBezierInst.md](DboGraphicBezierInst.md) |
-| `DboGraphicBitMapInst` | 7 | [DboGraphicBitMapInst.md](DboGraphicBitMapInst.md) |
-| `DboGraphicBoxInst` | 17 | [DboGraphicBoxInst.md](DboGraphicBoxInst.md) |
-| `DboGraphicCommentTextInst` | 14 | [DboGraphicCommentTextInst.md](DboGraphicCommentTextInst.md) |
-| `DboGraphicEllipseInst` | 16 | [DboGraphicEllipseInst.md](DboGraphicEllipseInst.md) |
-| `DboGraphicInstance` | 48 | [DboGraphicInstance.md](DboGraphicInstance.md) |
-| `DboGraphicInstEffectivePropsIter` | 2 | [DboGraphicInstEffectivePropsIter.md](DboGraphicInstEffectivePropsIter.md) |
-| `DboGraphicLineInst` | 13 | [DboGraphicLineInst.md](DboGraphicLineInst.md) |
-| `DboGraphicObject` | 24 | [DboGraphicObject.md](DboGraphicObject.md) |
-| `DboGraphicObjectVectorsIter` | 2 | [DboGraphicObjectVectorsIter.md](DboGraphicObjectVectorsIter.md) |
-| `DboGraphicOleEmbedInst` | 7 | [DboGraphicOleEmbedInst.md](DboGraphicOleEmbedInst.md) |
-| `DboGraphicPolygonInst` | 13 | [DboGraphicPolygonInst.md](DboGraphicPolygonInst.md) |
-| `DboGraphicPolylineInst` | 9 | [DboGraphicPolylineInst.md](DboGraphicPolylineInst.md) |
-| `DboGraphicSymbolVectorInst` | 1 | [DboGraphicSymbolVectorInst.md](DboGraphicSymbolVectorInst.md) |
-| `DboInstanceDisplayPropsIter` | 4 | [DboInstanceDisplayPropsIter.md](DboInstanceDisplayPropsIter.md) |
-| `DboInstData` | 8 | [DboInstData.md](DboInstData.md) |
-| `DboInstOccMapper` | 4 | [DboInstOccMapper.md](DboInstOccMapper.md) |
-| `DboInstOccurrence` | 88 | [DboInstOccurrence.md](DboInstOccurrence.md) |
-| `DboInstOccurrenceEffectivePropsIter` | 2 | [DboInstOccurrenceEffectivePropsIter.md](DboInstOccurrenceEffectivePropsIter.md) |
-| `DboInvalidDeleteException` | 1 | [DboInvalidDeleteException.md](DboInvalidDeleteException.md) |
-| `DboInvalidPointerAccessException` | 1 | [DboInvalidPointerAccessException.md](DboInvalidPointerAccessException.md) |
-| `DboJsonUtils` | 1 | [DboJsonUtils.md](DboJsonUtils.md) |
-| `DboLib` | 325 | [DboLib.md](DboLib.md) |
-| `DboLibCachesIter` | 4 | [DboLibCachesIter.md](DboLibCachesIter.md) |
-| `DboLibCellNamesIter` | 2 | [DboLibCellNamesIter.md](DboLibCellNamesIter.md) |
-| `DboLibCellsIter` | 4 | [DboLibCellsIter.md](DboLibCellsIter.md) |
-| `DboLibChangedObjectsIter` | 4 | [DboLibChangedObjectsIter.md](DboLibChangedObjectsIter.md) |
-| `DboLibExportBlockNamesIter` | 2 | [DboLibExportBlockNamesIter.md](DboLibExportBlockNamesIter.md) |
-| `DboLibExportBlocksIter` | 4 | [DboLibExportBlocksIter.md](DboLibExportBlocksIter.md) |
-| `DboLibGraphicNamesIter` | 2 | [DboLibGraphicNamesIter.md](DboLibGraphicNamesIter.md) |
-| `DboLibGraphicsIter` | 4 | [DboLibGraphicsIter.md](DboLibGraphicsIter.md) |
-| `DboLibObject` | 19 | [DboLibObject.md](DboLibObject.md) |
-| `DboLibPackageAliasesIter` | 2 | [DboLibPackageAliasesIter.md](DboLibPackageAliasesIter.md) |
-| `DboLibPackageNamesIter` | 2 | [DboLibPackageNamesIter.md](DboLibPackageNamesIter.md) |
-| `DboLibPackagesIter` | 4 | [DboLibPackagesIter.md](DboLibPackagesIter.md) |
-| `DboLibPart` | 38 | [DboLibPart.md](DboLibPart.md) |
-| `DboLibPartNamesIter` | 2 | [DboLibPartNamesIter.md](DboLibPartNamesIter.md) |
-| `DboLibPartPinsIter` | 2 | [DboLibPartPinsIter.md](DboLibPartPinsIter.md) |
-| `DboLibPartsIter` | 4 | [DboLibPartsIter.md](DboLibPartsIter.md) |
-| `DboLibSymbolNamesIter` | 2 | [DboLibSymbolNamesIter.md](DboLibSymbolNamesIter.md) |
-| `DboLibSymbolsIter` | 4 | [DboLibSymbolsIter.md](DboLibSymbolsIter.md) |
-| `DboLibUnusedCacheEntriesIter` | 4 | [DboLibUnusedCacheEntriesIter.md](DboLibUnusedCacheEntriesIter.md) |
-| `DboLibViewNamesIter` | 2 | [DboLibViewNamesIter.md](DboLibViewNamesIter.md) |
-| `DboLibViewsIter` | 4 | [DboLibViewsIter.md](DboLibViewsIter.md) |
-| `DboLine` | 16 | [DboLine.md](DboLine.md) |
-| `DboLineData` | 8 | [DboLineData.md](DboLineData.md) |
-| `DboMiscFileWriter` | 20 | [DboMiscFileWriter.md](DboMiscFileWriter.md) |
-| `DboModifiedFlatNetsIter` | 2 | [DboModifiedFlatNetsIter.md](DboModifiedFlatNetsIter.md) |
-| `DboNet` | 52 | [DboNet.md](DboNet.md) |
-| `DboNetAliasesIter` | 2 | [DboNetAliasesIter.md](DboNetAliasesIter.md) |
-| `DboNetBus` | 12 | [DboNetBus.md](DboNetBus.md) |
-| `DboNetBusEntriesIter` | 4 | [DboNetBusEntriesIter.md](DboNetBusEntriesIter.md) |
-| `DboNetBusMembersIter` | 4 | [DboNetBusMembersIter.md](DboNetBusMembersIter.md) |
-| `DboNetEffectivePropsIter` | 2 | [DboNetEffectivePropsIter.md](DboNetEffectivePropsIter.md) |
-| `DboNetGlobalsIter` | 4 | [DboNetGlobalsIter.md](DboNetGlobalsIter.md) |
-| `DboNetOccurrence` | 21 | [DboNetOccurrence.md](DboNetOccurrence.md) |
-| `DboNetOccurrenceEffectivePropsIter` | 2 | [DboNetOccurrenceEffectivePropsIter.md](DboNetOccurrenceEffectivePropsIter.md) |
-| `DboNetOffPageConnectorsIter` | 4 | [DboNetOffPageConnectorsIter.md](DboNetOffPageConnectorsIter.md) |
-| `DboNetPortInstsIter` | 4 | [DboNetPortInstsIter.md](DboNetPortInstsIter.md) |
-| `DboNetPortsIter` | 4 | [DboNetPortsIter.md](DboNetPortsIter.md) |
-| `DboNetScalar` | 2 | [DboNetScalar.md](DboNetScalar.md) |
-| `DboNetSymbol` | 3 | [DboNetSymbol.md](DboNetSymbol.md) |
-| `DboNetSymbolInstance` | 24 | [DboNetSymbolInstance.md](DboNetSymbolInstance.md) |
-| `DboNetWiresIter` | 4 | [DboNetWiresIter.md](DboNetWiresIter.md) |
-| `DboNullPointerException` | 1 | [DboNullPointerException.md](DboNullPointerException.md) |
-| `DboObjectLocationStruct` | 7 | [DboObjectLocationStruct.md](DboObjectLocationStruct.md) |
-| `DboOccurrence` | 30 | [DboOccurrence.md](DboOccurrence.md) |
-| `DboOccurrenceChildrenIter` | 4 | [DboOccurrenceChildrenIter.md](DboOccurrenceChildrenIter.md) |
-| `DboOffPageConnector` | 6 | [DboOffPageConnector.md](DboOffPageConnector.md) |
-| `DboOffPageConnectorOccurrence` | 22 | [DboOffPageConnectorOccurrence.md](DboOffPageConnectorOccurrence.md) |
-| `DboOffPageConnectorOccurrenceEffectivePropsIter` | 2 | [DboOffPageConnectorOccurrenceEffectivePropsIter.md](DboOffPageConnectorOccurrenceEffectivePropsIter.md) |
-| `DboOleEmbed` | 16 | [DboOleEmbed.md](DboOleEmbed.md) |
-| `DboPackage` | 34 | [DboPackage.md](DboPackage.md) |
-| `DboPackageAliasesIter` | 3 | [DboPackageAliasesIter.md](DboPackageAliasesIter.md) |
-| `DboPackageDevicesIter` | 4 | [DboPackageDevicesIter.md](DboPackageDevicesIter.md) |
-| `DboPackageInstOccurrencesIter` | 4 | [DboPackageInstOccurrencesIter.md](DboPackageInstOccurrencesIter.md) |
-| `DboPackageNamesIter` | 2 | [DboPackageNamesIter.md](DboPackageNamesIter.md) |
-| `DboPackagePartsIter` | 4 | [DboPackagePartsIter.md](DboPackagePartsIter.md) |
-| `DboPackageReferencedPartInstIter` | 4 | [DboPackageReferencedPartInstIter.md](DboPackageReferencedPartInstIter.md) |
-| `DboPage` | 265 | [DboPage.md](DboPage.md) |
-| `DboPageBookMarksIter` | 4 | [DboPageBookMarksIter.md](DboPageBookMarksIter.md) |
-| `DboPageBusEntriesIter` | 4 | [DboPageBusEntriesIter.md](DboPageBusEntriesIter.md) |
-| `DboPageCommentGraphicsIter` | 4 | [DboPageCommentGraphicsIter.md](DboPageCommentGraphicsIter.md) |
-| `DboPageCustomItemsListIter` | 4 | [DboPageCustomItemsListIter.md](DboPageCustomItemsListIter.md) |
-| `DboPageEditsIter` | 2 | [DboPageEditsIter.md](DboPageEditsIter.md) |
-| `DboPageERCsIter` | 4 | [DboPageERCsIter.md](DboPageERCsIter.md) |
-| `DboPageFindGraphicInstIter` | 4 | [DboPageFindGraphicInstIter.md](DboPageFindGraphicInstIter.md) |
-| `DboPageGlobalsIter` | 4 | [DboPageGlobalsIter.md](DboPageGlobalsIter.md) |
-| `DboPageNetsIter` | 4 | [DboPageNetsIter.md](DboPageNetsIter.md) |
-| `DboPageObjectsAtPointIter` | 4 | [DboPageObjectsAtPointIter.md](DboPageObjectsAtPointIter.md) |
-| `DboPageOffPageConnectorsIter` | 4 | [DboPageOffPageConnectorsIter.md](DboPageOffPageConnectorsIter.md) |
-| `DboPagePartInstsIter` | 4 | [DboPagePartInstsIter.md](DboPagePartInstsIter.md) |
-| `DboPagePortsIter` | 4 | [DboPagePortsIter.md](DboPagePortsIter.md) |
-| `DboPageStructOcc` | 6 | [DboPageStructOcc.md](DboPageStructOcc.md) |
-| `DboPageTitleBlocksIter` | 4 | [DboPageTitleBlocksIter.md](DboPageTitleBlocksIter.md) |
-| `DboPageTransaction` | 7 | [DboPageTransaction.md](DboPageTransaction.md) |
-| `DboPageWiresIter` | 4 | [DboPageWiresIter.md](DboPageWiresIter.md) |
-| `DboPartInst` | 79 | [DboPartInst.md](DboPartInst.md) |
-| `DboPartInstPinsIter` | 4 | [DboPartInstPinsIter.md](DboPartInstPinsIter.md) |
-| `DboPartTextData` | 18 | [DboPartTextData.md](DboPartTextData.md) |
-| `DboPathMgr` | 43 | [DboPathMgr.md](DboPathMgr.md) |
-| `DboPinData` | 10 | [DboPinData.md](DboPinData.md) |
-| `DboPinShapeSymbol` | 2 | [DboPinShapeSymbol.md](DboPinShapeSymbol.md) |
-| `DboPkgInstOcc` | 9 | [DboPkgInstOcc.md](DboPkgInstOcc.md) |
-| `DboPlacedInst` | 36 | [DboPlacedInst.md](DboPlacedInst.md) |
-| `DboPointerException` | 1 | [DboPointerException.md](DboPointerException.md) |
-| `DboPolygon` | 20 | [DboPolygon.md](DboPolygon.md) |
-| `DboPolygonData` | 12 | [DboPolygonData.md](DboPolygonData.md) |
-| `DboPolygonPointsIter` | 2 | [DboPolygonPointsIter.md](DboPolygonPointsIter.md) |
-| `DboPolyline` | 14 | [DboPolyline.md](DboPolyline.md) |
-| `DboPolylineData` | 8 | [DboPolylineData.md](DboPolylineData.md) |
-| `DboPolylinePointsIter` | 2 | [DboPolylinePointsIter.md](DboPolylinePointsIter.md) |
-| `DboPort` | 10 | [DboPort.md](DboPort.md) |
-| `DboPortBusMemberOccurrence` | 7 | [DboPortBusMemberOccurrence.md](DboPortBusMemberOccurrence.md) |
-| `DboPortInst` | 81 | [DboPortInst.md](DboPortInst.md) |
-| `DboPortInstBus` | 5 | [DboPortInstBus.md](DboPortInstBus.md) |
-| `DboPortInstBusMember` | 61 | [DboPortInstBusMember.md](DboPortInstBusMember.md) |
-| `DboPortInstDisplayPropsIter` | 5 | [DboPortInstDisplayPropsIter.md](DboPortInstDisplayPropsIter.md) |
-| `DboPortInstEffectivePropsIter` | 2 | [DboPortInstEffectivePropsIter.md](DboPortInstEffectivePropsIter.md) |
-| `DboPortInstScalar` | 1 | [DboPortInstScalar.md](DboPortInstScalar.md) |
-| `DboPortOccurrence` | 33 | [DboPortOccurrence.md](DboPortOccurrence.md) |
-| `DboPortOccurrenceEffectivePropsIter` | 2 | [DboPortOccurrenceEffectivePropsIter.md](DboPortOccurrenceEffectivePropsIter.md) |
-| `DboPortSymbol` | 2 | [DboPortSymbol.md](DboPortSymbol.md) |
-| `DboPrimitiveAndVisiblePowerPins` | 6 | [DboPrimitiveAndVisiblePowerPins.md](DboPrimitiveAndVisiblePowerPins.md) |
-| `DboRefDesAnnotate` | 13 | [DboRefDesAnnotate.md](DboRefDesAnnotate.md) |
-| `DboRefDesLog` | 4 | [DboRefDesLog.md](DboRefDesLog.md) |
-| `DboRefDesManager` | 11 | [DboRefDesManager.md](DboRefDesManager.md) |
-| `DboRefDesMap` | 5 | [DboRefDesMap.md](DboRefDesMap.md) |
-| `DboRefDesQueryHandler` | 5 | [DboRefDesQueryHandler.md](DboRefDesQueryHandler.md) |
-| `DboRefDesRTData` | 6 | [DboRefDesRTData.md](DboRefDesRTData.md) |
-| `DboRefDesUtils` | 22 | [DboRefDesUtils.md](DboRefDesUtils.md) |
-| `DboSchematic` | 94 | [DboSchematic.md](DboSchematic.md) |
-| `DboSchematicChangedPagesIter` | 4 | [DboSchematicChangedPagesIter.md](DboSchematicChangedPagesIter.md) |
-| `DboSchematicGlobal` | 3 | [DboSchematicGlobal.md](DboSchematicGlobal.md) |
-| `DboSchematicGlobalsIter` | 4 | [DboSchematicGlobalsIter.md](DboSchematicGlobalsIter.md) |
-| `DboSchematicInstsIter` | 4 | [DboSchematicInstsIter.md](DboSchematicInstsIter.md) |
-| `DboSchematicNet` | 44 | [DboSchematicNet.md](DboSchematicNet.md) |
-| `DboSchematicNetBus` | 4 | [DboSchematicNetBus.md](DboSchematicNetBus.md) |
-| `DboSchematicNetBusMembersIter` | 4 | [DboSchematicNetBusMembersIter.md](DboSchematicNetBusMembersIter.md) |
-| `DboSchematicNetEffectivePropsIter` | 2 | [DboSchematicNetEffectivePropsIter.md](DboSchematicNetEffectivePropsIter.md) |
-| `DboSchematicNetGlobalsIter` | 4 | [DboSchematicNetGlobalsIter.md](DboSchematicNetGlobalsIter.md) |
-| `DboSchematicNetNetsIter` | 4 | [DboSchematicNetNetsIter.md](DboSchematicNetNetsIter.md) |
-| `DboSchematicNetOffPageConnectorsIter` | 4 | [DboSchematicNetOffPageConnectorsIter.md](DboSchematicNetOffPageConnectorsIter.md) |
-| `DboSchematicNetPortInstsIter` | 4 | [DboSchematicNetPortInstsIter.md](DboSchematicNetPortInstsIter.md) |
-| `DboSchematicNetPortsIter` | 4 | [DboSchematicNetPortsIter.md](DboSchematicNetPortsIter.md) |
-| `DboSchematicNetScalar` | 1 | [DboSchematicNetScalar.md](DboSchematicNetScalar.md) |
-| `DboSchematicNetsIter` | 4 | [DboSchematicNetsIter.md](DboSchematicNetsIter.md) |
-| `DboSchematicNetWiresIter` | 4 | [DboSchematicNetWiresIter.md](DboSchematicNetWiresIter.md) |
-| `DboSchematicOffPageConnector` | 1 | [DboSchematicOffPageConnector.md](DboSchematicOffPageConnector.md) |
-| `DboSchematicOffPageConnectorsIter` | 4 | [DboSchematicOffPageConnectorsIter.md](DboSchematicOffPageConnectorsIter.md) |
-| `DboSchematicOptimizerParametersIter` | 4 | [DboSchematicOptimizerParametersIter.md](DboSchematicOptimizerParametersIter.md) |
-| `DboSchematicPageNamesIter` | 2 | [DboSchematicPageNamesIter.md](DboSchematicPageNamesIter.md) |
-| `DboSchematicPagesIter` | 4 | [DboSchematicPagesIter.md](DboSchematicPagesIter.md) |
-| `DboSchematicPort` | 2 | [DboSchematicPort.md](DboSchematicPort.md) |
-| `DboSchematicPortsIter` | 4 | [DboSchematicPortsIter.md](DboSchematicPortsIter.md) |
-| `DboSchematicSymbolInst` | 24 | [DboSchematicSymbolInst.md](DboSchematicSymbolInst.md) |
-| `DboSession` | 47 | [DboSession.md](DboSession.md) |
-| `DboSessionDesignsIter` | 4 | [DboSessionDesignsIter.md](DboSessionDesignsIter.md) |
-| `DboSessionLibsIter` | 4 | [DboSessionLibsIter.md](DboSessionLibsIter.md) |
-| `DboShadowPage` | 1 | [DboShadowPage.md](DboShadowPage.md) |
-| `DboSplitPath` | 6 | [DboSplitPath.md](DboSplitPath.md) |
-| `DboState` | 29 | [DboState.md](DboState.md) |
-| `DboSymbol` | 22 | [DboSymbol.md](DboSymbol.md) |
-| `DboSymbolDisplayPropsIter` | 4 | [DboSymbolDisplayPropsIter.md](DboSymbolDisplayPropsIter.md) |
-| `DboSymbolPin` | 62 | [DboSymbolPin.md](DboSymbolPin.md) |
-| `DboSymbolPinBus` | 2 | [DboSymbolPinBus.md](DboSymbolPinBus.md) |
-| `DboSymbolPinDisplayPropsIter` | 5 | [DboSymbolPinDisplayPropsIter.md](DboSymbolPinDisplayPropsIter.md) |
-| `DboSymbolPinScalar` | 1 | [DboSymbolPinScalar.md](DboSymbolPinScalar.md) |
-| `DboSymbolPinsIter` | 4 | [DboSymbolPinsIter.md](DboSymbolPinsIter.md) |
-| `DboSymbolVector` | 14 | [DboSymbolVector.md](DboSymbolVector.md) |
-| `DboSymbolVectorVectorsIter` | 2 | [DboSymbolVectorVectorsIter.md](DboSymbolVectorVectorsIter.md) |
-| `DboTclBom` | 3 | [DboTclBom.md](DboTclBom.md) |
-| `DboTclHelper` | 90 | [DboTclHelper.md](DboTclHelper.md) |
-| `DboTclUtilHelper` | 1 | [DboTclUtilHelper.md](DboTclUtilHelper.md) |
-| `DboTclUtils` | 23 | [DboTclUtils.md](DboTclUtils.md) |
-| `DboTitleBlock` | 59 | [DboTitleBlock.md](DboTitleBlock.md) |
-| `DboTitleBlockOccurrence` | 22 | [DboTitleBlockOccurrence.md](DboTitleBlockOccurrence.md) |
-| `DboTitleBlockOccurrenceEffectivePropsIter` | 2 | [DboTitleBlockOccurrenceEffectivePropsIter.md](DboTitleBlockOccurrenceEffectivePropsIter.md) |
-| `DboTitleBlockSymbol` | 7 | [DboTitleBlockSymbol.md](DboTitleBlockSymbol.md) |
-| `DboUserProp` | 12 | [DboUserProp.md](DboUserProp.md) |
-| `DboUserPropsIter` | 3 | [DboUserPropsIter.md](DboUserPropsIter.md) |
-| `DboValidValuesIter` | 1 | [DboValidValuesIter.md](DboValidValuesIter.md) |
-| `DboValue` | 56 | [DboValue.md](DboValue.md) |
-| `DboVector` | 4 | [DboVector.md](DboVector.md) |
-| `DboView` | 15 | [DboView.md](DboView.md) |
-| `DboWire` | 80 | [DboWire.md](DboWire.md) |
-| `DboWireAliasesIter` | 4 | [DboWireAliasesIter.md](DboWireAliasesIter.md) |
-| `DboWireBus` | 5 | [DboWireBus.md](DboWireBus.md) |
-| `DboWireBusEntriesIter` | 4 | [DboWireBusEntriesIter.md](DboWireBusEntriesIter.md) |
-| `DboWireConnectedWiresIter` | 4 | [DboWireConnectedWiresIter.md](DboWireConnectedWiresIter.md) |
-| `DboWireData` | 10 | [DboWireData.md](DboWireData.md) |
-| `DboWireDisplayPropsIter` | 4 | [DboWireDisplayPropsIter.md](DboWireDisplayPropsIter.md) |
-| `DboWireGlobalsIter` | 4 | [DboWireGlobalsIter.md](DboWireGlobalsIter.md) |
-| `DboWireJunctionsIter` | 2 | [DboWireJunctionsIter.md](DboWireJunctionsIter.md) |
-| `DboWireOffPageConnectorsIter` | 4 | [DboWireOffPageConnectorsIter.md](DboWireOffPageConnectorsIter.md) |
-| `DboWirePortInstsIter` | 4 | [DboWirePortInstsIter.md](DboWirePortInstsIter.md) |
-| `DboWirePortsIter` | 4 | [DboWirePortsIter.md](DboWirePortsIter.md) |
-| `DboWiresAtPointIter` | 2 | [DboWiresAtPointIter.md](DboWiresAtPointIter.md) |
-| `DboWireScalar` | 3 | [DboWireScalar.md](DboWireScalar.md) |
-| `DboWiresInAreaIter` | 2 | [DboWiresInAreaIter.md](DboWiresInAreaIter.md) |
-| `XMATIC` | 18 | [XMATIC.md](XMATIC.md) |
+`official_calls` = occurrences of the method name across Cadence tclscripts (upper bound: generic names aggregate across classes).
+`shared` = how many Dbo classes declare that method name; `shared>1` means the count is not attributable to this class alone.
+
+| class | methods | official_calls | file |
+| --- | --- | --- | --- |
+| `DboAlias` | 46 | 627 | [DboAlias.md](DboAlias.md) |
+| `DboAliasData` | 12 | 0 | [DboAliasData.md](DboAliasData.md) |
+| `DboAnnotateControl` | 4 | 2 | [DboAnnotateControl.md](DboAnnotateControl.md) |
+| `DboAnnotateRange` | 6 | 0 | [DboAnnotateRange.md](DboAnnotateRange.md) |
+| `DboArc` | 22 | 189 | [DboArc.md](DboArc.md) |
+| `DboArcData` | 10 | 0 | [DboArcData.md](DboArcData.md) |
+| `DboBaseObject` | 113 | 701 | [DboBaseObject.md](DboBaseObject.md) |
+| `DboBezier` | 14 | 109 | [DboBezier.md](DboBezier.md) |
+| `DboBezierPointsIter` | 2 | 30 | [DboBezierPointsIter.md](DboBezierPointsIter.md) |
+| `DboBitMap` | 20 | 192 | [DboBitMap.md](DboBitMap.md) |
+| `DboBitMapData` | 6 | 0 | [DboBitMapData.md](DboBitMapData.md) |
+| `DboBookMark` | 3 | 9 | [DboBookMark.md](DboBookMark.md) |
+| `DboBox` | 22 | 106 | [DboBox.md](DboBox.md) |
+| `DboBoxData` | 10 | 0 | [DboBoxData.md](DboBoxData.md) |
+| `DboBundle` | 31 | 3 | [DboBundle.md](DboBundle.md) |
+| `DboBundleBusMember` | 8 | 199 | [DboBundleBusMember.md](DboBundleBusMember.md) |
+| `DboBundleMemberIter` | 2 | 30 | [DboBundleMemberIter.md](DboBundleMemberIter.md) |
+| `DboBundleNetIter` | 2 | 30 | [DboBundleNetIter.md](DboBundleNetIter.md) |
+| `DboBundleScalarMember` | 2 | 0 | [DboBundleScalarMember.md](DboBundleScalarMember.md) |
+| `DboBundleTemplateMap` | 43 | 0 | [DboBundleTemplateMap.md](DboBundleTemplateMap.md) |
+| `DboBundleType` | 10 | 356 | [DboBundleType.md](DboBundleType.md) |
+| `DboBus` | 11 | 1 | [DboBus.md](DboBus.md) |
+| `DboBusEntry` | 25 | 364 | [DboBusEntry.md](DboBusEntry.md) |
+| `DboBusEntryData` | 6 | 0 | [DboBusEntryData.md](DboBusEntryData.md) |
+| `DboBusMemberNamesIter` | 3 | 0 | [DboBusMemberNamesIter.md](DboBusMemberNamesIter.md) |
+| `DboCell` | 9 | 103 | [DboCell.md](DboCell.md) |
+| `DboCellPartNamesIter` | 2 | 7 | [DboCellPartNamesIter.md](DboCellPartNamesIter.md) |
+| `DboCellPartsIter` | 4 | 45 | [DboCellPartsIter.md](DboCellPartsIter.md) |
+| `DboColorRotMirror` | 6 | 14 | [DboColorRotMirror.md](DboColorRotMirror.md) |
+| `DboCommentText` | 25 | 215 | [DboCommentText.md](DboCommentText.md) |
+| `DboConnectivityChangeIter` | 5 | 0 | [DboConnectivityChangeIter.md](DboConnectivityChangeIter.md) |
+| `DboConnectivityObjectsAtPointIter` | 4 | 34 | [DboConnectivityObjectsAtPointIter.md](DboConnectivityObjectsAtPointIter.md) |
+| `DboCustomItemInstance` | 9 | 1 | [DboCustomItemInstance.md](DboCustomItemInstance.md) |
+| `DboDBPropsIter` | 3 | 30 | [DboDBPropsIter.md](DboDBPropsIter.md) |
+| `DboDBQuery` | 20 | 0 | [DboDBQuery.md](DboDBQuery.md) |
+| `DboDefinition` | 4 | 0 | [DboDefinition.md](DboDefinition.md) |
+| `DboDeletedObject` | 4 | 86 | [DboDeletedObject.md](DboDeletedObject.md) |
+| `DboDesign` | 85 | 187 | [DboDesign.md](DboDesign.md) |
+| `DboDesignCachesIter` | 4 | 30 | [DboDesignCachesIter.md](DboDesignCachesIter.md) |
+| `DboDesignFlatNetsIter` | 4 | 33 | [DboDesignFlatNetsIter.md](DboDesignFlatNetsIter.md) |
+| `DboDesignGlobalsIter` | 4 | 39 | [DboDesignGlobalsIter.md](DboDesignGlobalsIter.md) |
+| `DboDesignOccurrencesIter` | 4 | 56 | [DboDesignOccurrencesIter.md](DboDesignOccurrencesIter.md) |
+| `DboDesignPackageInstOccIter` | 4 | 30 | [DboDesignPackageInstOccIter.md](DboDesignPackageInstOccIter.md) |
+| `DboDesignSchematicOccurrencesIter` | 5 | 31 | [DboDesignSchematicOccurrencesIter.md](DboDesignSchematicOccurrencesIter.md) |
+| `DboDesignUpdateOccurrenceBlockerManager` | 1 | 19 | [DboDesignUpdateOccurrenceBlockerManager.md](DboDesignUpdateOccurrenceBlockerManager.md) |
+| `DboDevice` | 30 | 205 | [DboDevice.md](DboDevice.md) |
+| `DboDevicePinNumbersIter` | 2 | 2 | [DboDevicePinNumbersIter.md](DboDevicePinNumbersIter.md) |
+| `DboDirectory` | 21 | 20 | [DboDirectory.md](DboDirectory.md) |
+| `DboDirectoryEntriesIter` | 2 | 0 | [DboDirectoryEntriesIter.md](DboDirectoryEntriesIter.md) |
+| `DboDirectoryEntry` | 4 | 0 | [DboDirectoryEntry.md](DboDirectoryEntry.md) |
+| `DboDirectoryObjectsIter` | 2 | 4 | [DboDirectoryObjectsIter.md](DboDirectoryObjectsIter.md) |
+| `DboDirectoryRec` | 20 | 0 | [DboDirectoryRec.md](DboDirectoryRec.md) |
+| `DboDisplayProp` | 50 | 658 | [DboDisplayProp.md](DboDisplayProp.md) |
+| `DboDisplayPropsIter` | 4 | 35 | [DboDisplayPropsIter.md](DboDisplayPropsIter.md) |
+| `DboDrawnInst` | 16 | 31 | [DboDrawnInst.md](DboDrawnInst.md) |
+| `DboEffectivePropsIter` | 2 | 10 | [DboEffectivePropsIter.md](DboEffectivePropsIter.md) |
+| `DboEllipse` | 20 | 187 | [DboEllipse.md](DboEllipse.md) |
+| `DboEllipseData` | 10 | 0 | [DboEllipseData.md](DboEllipseData.md) |
+| `DboERC` | 10 | 9 | [DboERC.md](DboERC.md) |
+| `DboExtBlobHandler` | 7 | 7 | [DboExtBlobHandler.md](DboExtBlobHandler.md) |
+| `DboExtBlobHandlerExtMask` | 3 | 2 | [DboExtBlobHandlerExtMask.md](DboExtBlobHandlerExtMask.md) |
+| `DboExtBlobHandlerImage` | 3 | 2 | [DboExtBlobHandlerImage.md](DboExtBlobHandlerImage.md) |
+| `DboExtBlobHandlerLineStyle` | 3 | 2 | [DboExtBlobHandlerLineStyle.md](DboExtBlobHandlerLineStyle.md) |
+| `DboExtBlobHandlerPassThru` | 3 | 2 | [DboExtBlobHandlerPassThru.md](DboExtBlobHandlerPassThru.md) |
+| `DboExtBlobHandlerRegistry` | 5 | 0 | [DboExtBlobHandlerRegistry.md](DboExtBlobHandlerRegistry.md) |
+| `DboExtBlobNode` | 34 | 97 | [DboExtBlobNode.md](DboExtBlobNode.md) |
+| `DboExtBlobNodeExtMask` | 4 | 12 | [DboExtBlobNodeExtMask.md](DboExtBlobNodeExtMask.md) |
+| `DboExtBlobNodeImage` | 11 | 12 | [DboExtBlobNodeImage.md](DboExtBlobNodeImage.md) |
+| `DboExtBlobNodePassThru` | 7 | 12 | [DboExtBlobNodePassThru.md](DboExtBlobNodePassThru.md) |
+| `DboExtBlobNodePsp2Cap` | 5 | 0 | [DboExtBlobNodePsp2Cap.md](DboExtBlobNodePsp2Cap.md) |
+| `DboExtCentral` | 8 | 0 | [DboExtCentral.md](DboExtCentral.md) |
+| `DboExtension` | 10 | 39 | [DboExtension.md](DboExtension.md) |
+| `DboExtensionCreator` | 1 | 80 | [DboExtensionCreator.md](DboExtensionCreator.md) |
+| `DboExtensionDataT` | 8 | 0 | [DboExtensionDataT.md](DboExtensionDataT.md) |
+| `DboExtensionFactory` | 3 | 0 | [DboExtensionFactory.md](DboExtensionFactory.md) |
+| `DboExtensionGeneric` | 4 | 39 | [DboExtensionGeneric.md](DboExtensionGeneric.md) |
+| `DboExtensionIter` | 2 | 0 | [DboExtensionIter.md](DboExtensionIter.md) |
+| `DboExtensionManager` | 14 | 0 | [DboExtensionManager.md](DboExtensionManager.md) |
+| `DboExtensionMaskInfo` | 11 | 39 | [DboExtensionMaskInfo.md](DboExtensionMaskInfo.md) |
+| `DboExtnAttrLockPvt` | 24 | 39 | [DboExtnAttrLockPvt.md](DboExtnAttrLockPvt.md) |
+| `DboExtnPropertyBag` | 10 | 39 | [DboExtnPropertyBag.md](DboExtnPropertyBag.md) |
+| `DboFill` | 12 | 104 | [DboFill.md](DboFill.md) |
+| `DboFlatNet` | 31 | 532 | [DboFlatNet.md](DboFlatNet.md) |
+| `DboFlatNetEffectivePropsIter` | 2 | 10 | [DboFlatNetEffectivePropsIter.md](DboFlatNetEffectivePropsIter.md) |
+| `DboFlatNetNetOccurrencesIter` | 4 | 30 | [DboFlatNetNetOccurrencesIter.md](DboFlatNetNetOccurrencesIter.md) |
+| `DboFlatNetNetsIter` | 4 | 38 | [DboFlatNetNetsIter.md](DboFlatNetNetsIter.md) |
+| `DboFlatNetPortOccurrencesIter` | 4 | 32 | [DboFlatNetPortOccurrencesIter.md](DboFlatNetPortOccurrencesIter.md) |
+| `DboFlatNetWiresIter` | 4 | 51 | [DboFlatNetWiresIter.md](DboFlatNetWiresIter.md) |
+| `DboFontAndRotation` | 4 | 3 | [DboFontAndRotation.md](DboFontAndRotation.md) |
+| `DboGlobal` | 5 | 74 | [DboGlobal.md](DboGlobal.md) |
+| `DboGraphicArcInst` | 18 | 14 | [DboGraphicArcInst.md](DboGraphicArcInst.md) |
+| `DboGraphicBezierInst` | 9 | 15 | [DboGraphicBezierInst.md](DboGraphicBezierInst.md) |
+| `DboGraphicBitMapInst` | 7 | 83 | [DboGraphicBitMapInst.md](DboGraphicBitMapInst.md) |
+| `DboGraphicBoxInst` | 17 | 14 | [DboGraphicBoxInst.md](DboGraphicBoxInst.md) |
+| `DboGraphicCommentTextInst` | 14 | 34 | [DboGraphicCommentTextInst.md](DboGraphicCommentTextInst.md) |
+| `DboGraphicEllipseInst` | 16 | 14 | [DboGraphicEllipseInst.md](DboGraphicEllipseInst.md) |
+| `DboGraphicInstance` | 48 | 835 | [DboGraphicInstance.md](DboGraphicInstance.md) |
+| `DboGraphicInstEffectivePropsIter` | 2 | 10 | [DboGraphicInstEffectivePropsIter.md](DboGraphicInstEffectivePropsIter.md) |
+| `DboGraphicLineInst` | 13 | 14 | [DboGraphicLineInst.md](DboGraphicLineInst.md) |
+| `DboGraphicObject` | 24 | 116 | [DboGraphicObject.md](DboGraphicObject.md) |
+| `DboGraphicObjectVectorsIter` | 2 | 2 | [DboGraphicObjectVectorsIter.md](DboGraphicObjectVectorsIter.md) |
+| `DboGraphicOleEmbedInst` | 7 | 83 | [DboGraphicOleEmbedInst.md](DboGraphicOleEmbedInst.md) |
+| `DboGraphicPolygonInst` | 13 | 15 | [DboGraphicPolygonInst.md](DboGraphicPolygonInst.md) |
+| `DboGraphicPolylineInst` | 9 | 15 | [DboGraphicPolylineInst.md](DboGraphicPolylineInst.md) |
+| `DboGraphicSymbolVectorInst` | 1 | 0 | [DboGraphicSymbolVectorInst.md](DboGraphicSymbolVectorInst.md) |
+| `DboInstanceDisplayPropsIter` | 4 | 35 | [DboInstanceDisplayPropsIter.md](DboInstanceDisplayPropsIter.md) |
+| `DboInstData` | 8 | 0 | [DboInstData.md](DboInstData.md) |
+| `DboInstOccMapper` | 4 | 4 | [DboInstOccMapper.md](DboInstOccMapper.md) |
+| `DboInstOccurrence` | 88 | 231 | [DboInstOccurrence.md](DboInstOccurrence.md) |
+| `DboInstOccurrenceEffectivePropsIter` | 2 | 10 | [DboInstOccurrenceEffectivePropsIter.md](DboInstOccurrenceEffectivePropsIter.md) |
+| `DboInvalidDeleteException` | 1 | 45 | [DboInvalidDeleteException.md](DboInvalidDeleteException.md) |
+| `DboInvalidPointerAccessException` | 1 | 45 | [DboInvalidPointerAccessException.md](DboInvalidPointerAccessException.md) |
+| `DboJsonUtils` | 1 | 0 | [DboJsonUtils.md](DboJsonUtils.md) |
+| `DboLib` | 325 | 584 | [DboLib.md](DboLib.md) |
+| `DboLibCachesIter` | 4 | 41 | [DboLibCachesIter.md](DboLibCachesIter.md) |
+| `DboLibCellNamesIter` | 2 | 7 | [DboLibCellNamesIter.md](DboLibCellNamesIter.md) |
+| `DboLibCellsIter` | 4 | 30 | [DboLibCellsIter.md](DboLibCellsIter.md) |
+| `DboLibChangedObjectsIter` | 4 | 34 | [DboLibChangedObjectsIter.md](DboLibChangedObjectsIter.md) |
+| `DboLibExportBlockNamesIter` | 2 | 7 | [DboLibExportBlockNamesIter.md](DboLibExportBlockNamesIter.md) |
+| `DboLibExportBlocksIter` | 4 | 30 | [DboLibExportBlocksIter.md](DboLibExportBlocksIter.md) |
+| `DboLibGraphicNamesIter` | 2 | 7 | [DboLibGraphicNamesIter.md](DboLibGraphicNamesIter.md) |
+| `DboLibGraphicsIter` | 4 | 30 | [DboLibGraphicsIter.md](DboLibGraphicsIter.md) |
+| `DboLibObject` | 19 | 441 | [DboLibObject.md](DboLibObject.md) |
+| `DboLibPackageAliasesIter` | 2 | 24 | [DboLibPackageAliasesIter.md](DboLibPackageAliasesIter.md) |
+| `DboLibPackageNamesIter` | 2 | 7 | [DboLibPackageNamesIter.md](DboLibPackageNamesIter.md) |
+| `DboLibPackagesIter` | 4 | 36 | [DboLibPackagesIter.md](DboLibPackagesIter.md) |
+| `DboLibPart` | 38 | 64 | [DboLibPart.md](DboLibPart.md) |
+| `DboLibPartNamesIter` | 2 | 7 | [DboLibPartNamesIter.md](DboLibPartNamesIter.md) |
+| `DboLibPartPinsIter` | 2 | 23 | [DboLibPartPinsIter.md](DboLibPartPinsIter.md) |
+| `DboLibPartsIter` | 4 | 45 | [DboLibPartsIter.md](DboLibPartsIter.md) |
+| `DboLibSymbolNamesIter` | 2 | 7 | [DboLibSymbolNamesIter.md](DboLibSymbolNamesIter.md) |
+| `DboLibSymbolsIter` | 4 | 32 | [DboLibSymbolsIter.md](DboLibSymbolsIter.md) |
+| `DboLibUnusedCacheEntriesIter` | 4 | 30 | [DboLibUnusedCacheEntriesIter.md](DboLibUnusedCacheEntriesIter.md) |
+| `DboLibViewNamesIter` | 2 | 7 | [DboLibViewNamesIter.md](DboLibViewNamesIter.md) |
+| `DboLibViewsIter` | 4 | 65 | [DboLibViewsIter.md](DboLibViewsIter.md) |
+| `DboLine` | 16 | 106 | [DboLine.md](DboLine.md) |
+| `DboLineData` | 8 | 0 | [DboLineData.md](DboLineData.md) |
+| `DboMiscFileWriter` | 20 | 0 | [DboMiscFileWriter.md](DboMiscFileWriter.md) |
+| `DboModifiedFlatNetsIter` | 2 | 2 | [DboModifiedFlatNetsIter.md](DboModifiedFlatNetsIter.md) |
+| `DboNet` | 52 | 646 | [DboNet.md](DboNet.md) |
+| `DboNetAliasesIter` | 2 | 24 | [DboNetAliasesIter.md](DboNetAliasesIter.md) |
+| `DboNetBus` | 12 | 104 | [DboNetBus.md](DboNetBus.md) |
+| `DboNetBusEntriesIter` | 4 | 36 | [DboNetBusEntriesIter.md](DboNetBusEntriesIter.md) |
+| `DboNetBusMembersIter` | 4 | 30 | [DboNetBusMembersIter.md](DboNetBusMembersIter.md) |
+| `DboNetEffectivePropsIter` | 2 | 10 | [DboNetEffectivePropsIter.md](DboNetEffectivePropsIter.md) |
+| `DboNetGlobalsIter` | 4 | 39 | [DboNetGlobalsIter.md](DboNetGlobalsIter.md) |
+| `DboNetOccurrence` | 21 | 145 | [DboNetOccurrence.md](DboNetOccurrence.md) |
+| `DboNetOccurrenceEffectivePropsIter` | 2 | 10 | [DboNetOccurrenceEffectivePropsIter.md](DboNetOccurrenceEffectivePropsIter.md) |
+| `DboNetOffPageConnectorsIter` | 4 | 40 | [DboNetOffPageConnectorsIter.md](DboNetOffPageConnectorsIter.md) |
+| `DboNetPortInstsIter` | 4 | 30 | [DboNetPortInstsIter.md](DboNetPortInstsIter.md) |
+| `DboNetPortsIter` | 4 | 41 | [DboNetPortsIter.md](DboNetPortsIter.md) |
+| `DboNetScalar` | 2 | 86 | [DboNetScalar.md](DboNetScalar.md) |
+| `DboNetSymbol` | 3 | 2 | [DboNetSymbol.md](DboNetSymbol.md) |
+| `DboNetSymbolInstance` | 24 | 144 | [DboNetSymbolInstance.md](DboNetSymbolInstance.md) |
+| `DboNetWiresIter` | 4 | 51 | [DboNetWiresIter.md](DboNetWiresIter.md) |
+| `DboNullPointerException` | 1 | 45 | [DboNullPointerException.md](DboNullPointerException.md) |
+| `DboObjectLocationStruct` | 7 | 0 | [DboObjectLocationStruct.md](DboObjectLocationStruct.md) |
+| `DboOccurrence` | 30 | 323 | [DboOccurrence.md](DboOccurrence.md) |
+| `DboOccurrenceChildrenIter` | 4 | 56 | [DboOccurrenceChildrenIter.md](DboOccurrenceChildrenIter.md) |
+| `DboOffPageConnector` | 6 | 79 | [DboOffPageConnector.md](DboOffPageConnector.md) |
+| `DboOffPageConnectorOccurrence` | 22 | 400 | [DboOffPageConnectorOccurrence.md](DboOffPageConnectorOccurrence.md) |
+| `DboOffPageConnectorOccurrenceEffectivePropsIter` | 2 | 10 | [DboOffPageConnectorOccurrenceEffectivePropsIter.md](DboOffPageConnectorOccurrenceEffectivePropsIter.md) |
+| `DboOleEmbed` | 16 | 192 | [DboOleEmbed.md](DboOleEmbed.md) |
+| `DboPackage` | 34 | 221 | [DboPackage.md](DboPackage.md) |
+| `DboPackageAliasesIter` | 3 | 54 | [DboPackageAliasesIter.md](DboPackageAliasesIter.md) |
+| `DboPackageDevicesIter` | 4 | 39 | [DboPackageDevicesIter.md](DboPackageDevicesIter.md) |
+| `DboPackageInstOccurrencesIter` | 4 | 30 | [DboPackageInstOccurrencesIter.md](DboPackageInstOccurrencesIter.md) |
+| `DboPackageNamesIter` | 2 | 7 | [DboPackageNamesIter.md](DboPackageNamesIter.md) |
+| `DboPackagePartsIter` | 4 | 45 | [DboPackagePartsIter.md](DboPackagePartsIter.md) |
+| `DboPackageReferencedPartInstIter` | 4 | 53 | [DboPackageReferencedPartInstIter.md](DboPackageReferencedPartInstIter.md) |
+| `DboPage` | 265 | 570 | [DboPage.md](DboPage.md) |
+| `DboPageBookMarksIter` | 4 | 30 | [DboPageBookMarksIter.md](DboPageBookMarksIter.md) |
+| `DboPageBusEntriesIter` | 4 | 36 | [DboPageBusEntriesIter.md](DboPageBusEntriesIter.md) |
+| `DboPageCommentGraphicsIter` | 4 | 36 | [DboPageCommentGraphicsIter.md](DboPageCommentGraphicsIter.md) |
+| `DboPageCustomItemsListIter` | 4 | 30 | [DboPageCustomItemsListIter.md](DboPageCustomItemsListIter.md) |
+| `DboPageEditsIter` | 2 | 0 | [DboPageEditsIter.md](DboPageEditsIter.md) |
+| `DboPageERCsIter` | 4 | 32 | [DboPageERCsIter.md](DboPageERCsIter.md) |
+| `DboPageFindGraphicInstIter` | 4 | 30 | [DboPageFindGraphicInstIter.md](DboPageFindGraphicInstIter.md) |
+| `DboPageGlobalsIter` | 4 | 39 | [DboPageGlobalsIter.md](DboPageGlobalsIter.md) |
+| `DboPageNetsIter` | 4 | 38 | [DboPageNetsIter.md](DboPageNetsIter.md) |
+| `DboPageObjectsAtPointIter` | 4 | 34 | [DboPageObjectsAtPointIter.md](DboPageObjectsAtPointIter.md) |
+| `DboPageOffPageConnectorsIter` | 4 | 40 | [DboPageOffPageConnectorsIter.md](DboPageOffPageConnectorsIter.md) |
+| `DboPagePartInstsIter` | 4 | 53 | [DboPagePartInstsIter.md](DboPagePartInstsIter.md) |
+| `DboPagePortsIter` | 4 | 41 | [DboPagePortsIter.md](DboPagePortsIter.md) |
+| `DboPageStructOcc` | 6 | 1 | [DboPageStructOcc.md](DboPageStructOcc.md) |
+| `DboPageTitleBlocksIter` | 4 | 40 | [DboPageTitleBlocksIter.md](DboPageTitleBlocksIter.md) |
+| `DboPageTransaction` | 7 | 0 | [DboPageTransaction.md](DboPageTransaction.md) |
+| `DboPageWiresIter` | 4 | 51 | [DboPageWiresIter.md](DboPageWiresIter.md) |
+| `DboPartInst` | 79 | 225 | [DboPartInst.md](DboPartInst.md) |
+| `DboPartInstPinsIter` | 4 | 53 | [DboPartInstPinsIter.md](DboPartInstPinsIter.md) |
+| `DboPartTextData` | 18 | 0 | [DboPartTextData.md](DboPartTextData.md) |
+| `DboPathMgr` | 43 | 0 | [DboPathMgr.md](DboPathMgr.md) |
+| `DboPinData` | 10 | 0 | [DboPinData.md](DboPinData.md) |
+| `DboPinShapeSymbol` | 2 | 8 | [DboPinShapeSymbol.md](DboPinShapeSymbol.md) |
+| `DboPkgInstOcc` | 9 | 160 | [DboPkgInstOcc.md](DboPkgInstOcc.md) |
+| `DboPlacedInst` | 36 | 184 | [DboPlacedInst.md](DboPlacedInst.md) |
+| `DboPointerException` | 1 | 45 | [DboPointerException.md](DboPointerException.md) |
+| `DboPolygon` | 20 | 111 | [DboPolygon.md](DboPolygon.md) |
+| `DboPolygonData` | 12 | 0 | [DboPolygonData.md](DboPolygonData.md) |
+| `DboPolygonPointsIter` | 2 | 30 | [DboPolygonPointsIter.md](DboPolygonPointsIter.md) |
+| `DboPolyline` | 14 | 109 | [DboPolyline.md](DboPolyline.md) |
+| `DboPolylineData` | 8 | 0 | [DboPolylineData.md](DboPolylineData.md) |
+| `DboPolylinePointsIter` | 2 | 30 | [DboPolylinePointsIter.md](DboPolylinePointsIter.md) |
+| `DboPort` | 10 | 89 | [DboPort.md](DboPort.md) |
+| `DboPortBusMemberOccurrence` | 7 | 96 | [DboPortBusMemberOccurrence.md](DboPortBusMemberOccurrence.md) |
+| `DboPortInst` | 81 | 490 | [DboPortInst.md](DboPortInst.md) |
+| `DboPortInstBus` | 5 | 105 | [DboPortInstBus.md](DboPortInstBus.md) |
+| `DboPortInstBusMember` | 61 | 311 | [DboPortInstBusMember.md](DboPortInstBusMember.md) |
+| `DboPortInstDisplayPropsIter` | 5 | 35 | [DboPortInstDisplayPropsIter.md](DboPortInstDisplayPropsIter.md) |
+| `DboPortInstEffectivePropsIter` | 2 | 10 | [DboPortInstEffectivePropsIter.md](DboPortInstEffectivePropsIter.md) |
+| `DboPortInstScalar` | 1 | 86 | [DboPortInstScalar.md](DboPortInstScalar.md) |
+| `DboPortOccurrence` | 33 | 424 | [DboPortOccurrence.md](DboPortOccurrence.md) |
+| `DboPortOccurrenceEffectivePropsIter` | 2 | 10 | [DboPortOccurrenceEffectivePropsIter.md](DboPortOccurrenceEffectivePropsIter.md) |
+| `DboPortSymbol` | 2 | 8 | [DboPortSymbol.md](DboPortSymbol.md) |
+| `DboPrimitiveAndVisiblePowerPins` | 6 | 0 | [DboPrimitiveAndVisiblePowerPins.md](DboPrimitiveAndVisiblePowerPins.md) |
+| `DboRefDesAnnotate` | 13 | 9 | [DboRefDesAnnotate.md](DboRefDesAnnotate.md) |
+| `DboRefDesLog` | 4 | 0 | [DboRefDesLog.md](DboRefDesLog.md) |
+| `DboRefDesManager` | 11 | 0 | [DboRefDesManager.md](DboRefDesManager.md) |
+| `DboRefDesMap` | 5 | 0 | [DboRefDesMap.md](DboRefDesMap.md) |
+| `DboRefDesQueryHandler` | 5 | 0 | [DboRefDesQueryHandler.md](DboRefDesQueryHandler.md) |
+| `DboRefDesRTData` | 6 | 0 | [DboRefDesRTData.md](DboRefDesRTData.md) |
+| `DboRefDesUtils` | 22 | 16 | [DboRefDesUtils.md](DboRefDesUtils.md) |
+| `DboSchematic` | 94 | 284 | [DboSchematic.md](DboSchematic.md) |
+| `DboSchematicChangedPagesIter` | 4 | 71 | [DboSchematicChangedPagesIter.md](DboSchematicChangedPagesIter.md) |
+| `DboSchematicGlobal` | 3 | 94 | [DboSchematicGlobal.md](DboSchematicGlobal.md) |
+| `DboSchematicGlobalsIter` | 4 | 39 | [DboSchematicGlobalsIter.md](DboSchematicGlobalsIter.md) |
+| `DboSchematicInstsIter` | 4 | 32 | [DboSchematicInstsIter.md](DboSchematicInstsIter.md) |
+| `DboSchematicNet` | 44 | 636 | [DboSchematicNet.md](DboSchematicNet.md) |
+| `DboSchematicNetBus` | 4 | 101 | [DboSchematicNetBus.md](DboSchematicNetBus.md) |
+| `DboSchematicNetBusMembersIter` | 4 | 30 | [DboSchematicNetBusMembersIter.md](DboSchematicNetBusMembersIter.md) |
+| `DboSchematicNetEffectivePropsIter` | 2 | 10 | [DboSchematicNetEffectivePropsIter.md](DboSchematicNetEffectivePropsIter.md) |
+| `DboSchematicNetGlobalsIter` | 4 | 39 | [DboSchematicNetGlobalsIter.md](DboSchematicNetGlobalsIter.md) |
+| `DboSchematicNetNetsIter` | 4 | 38 | [DboSchematicNetNetsIter.md](DboSchematicNetNetsIter.md) |
+| `DboSchematicNetOffPageConnectorsIter` | 4 | 40 | [DboSchematicNetOffPageConnectorsIter.md](DboSchematicNetOffPageConnectorsIter.md) |
+| `DboSchematicNetPortInstsIter` | 4 | 30 | [DboSchematicNetPortInstsIter.md](DboSchematicNetPortInstsIter.md) |
+| `DboSchematicNetPortsIter` | 4 | 41 | [DboSchematicNetPortsIter.md](DboSchematicNetPortsIter.md) |
+| `DboSchematicNetScalar` | 1 | 86 | [DboSchematicNetScalar.md](DboSchematicNetScalar.md) |
+| `DboSchematicNetsIter` | 4 | 38 | [DboSchematicNetsIter.md](DboSchematicNetsIter.md) |
+| `DboSchematicNetWiresIter` | 4 | 51 | [DboSchematicNetWiresIter.md](DboSchematicNetWiresIter.md) |
+| `DboSchematicOffPageConnector` | 1 | 86 | [DboSchematicOffPageConnector.md](DboSchematicOffPageConnector.md) |
+| `DboSchematicOffPageConnectorsIter` | 4 | 40 | [DboSchematicOffPageConnectorsIter.md](DboSchematicOffPageConnectorsIter.md) |
+| `DboSchematicOptimizerParametersIter` | 4 | 30 | [DboSchematicOptimizerParametersIter.md](DboSchematicOptimizerParametersIter.md) |
+| `DboSchematicPageNamesIter` | 2 | 7 | [DboSchematicPageNamesIter.md](DboSchematicPageNamesIter.md) |
+| `DboSchematicPagesIter` | 4 | 71 | [DboSchematicPagesIter.md](DboSchematicPagesIter.md) |
+| `DboSchematicPort` | 2 | 94 | [DboSchematicPort.md](DboSchematicPort.md) |
+| `DboSchematicPortsIter` | 4 | 41 | [DboSchematicPortsIter.md](DboSchematicPortsIter.md) |
+| `DboSchematicSymbolInst` | 24 | 364 | [DboSchematicSymbolInst.md](DboSchematicSymbolInst.md) |
+| `DboSession` | 47 | 138 | [DboSession.md](DboSession.md) |
+| `DboSessionDesignsIter` | 4 | 39 | [DboSessionDesignsIter.md](DboSessionDesignsIter.md) |
+| `DboSessionLibsIter` | 4 | 32 | [DboSessionLibsIter.md](DboSessionLibsIter.md) |
+| `DboShadowPage` | 1 | 86 | [DboShadowPage.md](DboShadowPage.md) |
+| `DboSplitPath` | 6 | 20 | [DboSplitPath.md](DboSplitPath.md) |
+| `DboState` | 29 | 545 | [DboState.md](DboState.md) |
+| `DboSymbol` | 22 | 70 | [DboSymbol.md](DboSymbol.md) |
+| `DboSymbolDisplayPropsIter` | 4 | 35 | [DboSymbolDisplayPropsIter.md](DboSymbolDisplayPropsIter.md) |
+| `DboSymbolPin` | 62 | 487 | [DboSymbolPin.md](DboSymbolPin.md) |
+| `DboSymbolPinBus` | 2 | 86 | [DboSymbolPinBus.md](DboSymbolPinBus.md) |
+| `DboSymbolPinDisplayPropsIter` | 5 | 35 | [DboSymbolPinDisplayPropsIter.md](DboSymbolPinDisplayPropsIter.md) |
+| `DboSymbolPinScalar` | 1 | 86 | [DboSymbolPinScalar.md](DboSymbolPinScalar.md) |
+| `DboSymbolPinsIter` | 4 | 53 | [DboSymbolPinsIter.md](DboSymbolPinsIter.md) |
+| `DboSymbolVector` | 14 | 299 | [DboSymbolVector.md](DboSymbolVector.md) |
+| `DboSymbolVectorVectorsIter` | 2 | 2 | [DboSymbolVectorVectorsIter.md](DboSymbolVectorVectorsIter.md) |
+| `DboTclBom` | 3 | 0 | [DboTclBom.md](DboTclBom.md) |
+| `DboTclHelper` | 90 | 0 | [DboTclHelper.md](DboTclHelper.md) |
+| `DboTclUtilHelper` | 1 | 0 | [DboTclUtilHelper.md](DboTclUtilHelper.md) |
+| `DboTclUtils` | 23 | 0 | [DboTclUtils.md](DboTclUtils.md) |
+| `DboTitleBlock` | 59 | 132 | [DboTitleBlock.md](DboTitleBlock.md) |
+| `DboTitleBlockOccurrence` | 22 | 134 | [DboTitleBlockOccurrence.md](DboTitleBlockOccurrence.md) |
+| `DboTitleBlockOccurrenceEffectivePropsIter` | 2 | 10 | [DboTitleBlockOccurrenceEffectivePropsIter.md](DboTitleBlockOccurrenceEffectivePropsIter.md) |
+| `DboTitleBlockSymbol` | 7 | 2 | [DboTitleBlockSymbol.md](DboTitleBlockSymbol.md) |
+| `DboUserProp` | 12 | 370 | [DboUserProp.md](DboUserProp.md) |
+| `DboUserPropsIter` | 3 | 30 | [DboUserPropsIter.md](DboUserPropsIter.md) |
+| `DboValidValuesIter` | 1 | 0 | [DboValidValuesIter.md](DboValidValuesIter.md) |
+| `DboValue` | 56 | 90 | [DboValue.md](DboValue.md) |
+| `DboVector` | 4 | 157 | [DboVector.md](DboVector.md) |
+| `DboView` | 15 | 1 | [DboView.md](DboView.md) |
+| `DboWire` | 80 | 364 | [DboWire.md](DboWire.md) |
+| `DboWireAliasesIter` | 4 | 54 | [DboWireAliasesIter.md](DboWireAliasesIter.md) |
+| `DboWireBus` | 5 | 154 | [DboWireBus.md](DboWireBus.md) |
+| `DboWireBusEntriesIter` | 4 | 36 | [DboWireBusEntriesIter.md](DboWireBusEntriesIter.md) |
+| `DboWireConnectedWiresIter` | 4 | 51 | [DboWireConnectedWiresIter.md](DboWireConnectedWiresIter.md) |
+| `DboWireData` | 10 | 0 | [DboWireData.md](DboWireData.md) |
+| `DboWireDisplayPropsIter` | 4 | 35 | [DboWireDisplayPropsIter.md](DboWireDisplayPropsIter.md) |
+| `DboWireGlobalsIter` | 4 | 39 | [DboWireGlobalsIter.md](DboWireGlobalsIter.md) |
+| `DboWireJunctionsIter` | 2 | 0 | [DboWireJunctionsIter.md](DboWireJunctionsIter.md) |
+| `DboWireOffPageConnectorsIter` | 4 | 40 | [DboWireOffPageConnectorsIter.md](DboWireOffPageConnectorsIter.md) |
+| `DboWirePortInstsIter` | 4 | 30 | [DboWirePortInstsIter.md](DboWirePortInstsIter.md) |
+| `DboWirePortsIter` | 4 | 41 | [DboWirePortsIter.md](DboWirePortsIter.md) |
+| `DboWiresAtPointIter` | 2 | 21 | [DboWiresAtPointIter.md](DboWiresAtPointIter.md) |
+| `DboWireScalar` | 3 | 152 | [DboWireScalar.md](DboWireScalar.md) |
+| `DboWiresInAreaIter` | 2 | 21 | [DboWiresInAreaIter.md](DboWiresInAreaIter.md) |
+| `XMATIC` | 18 | 0 | [XMATIC.md](XMATIC.md) |

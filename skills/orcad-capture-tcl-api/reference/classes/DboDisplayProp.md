@@ -1,56 +1,56 @@
-# DboDisplayProp (50 methods)
+# DboDisplayProp (50 methods, official_calls(upper bound)=658)
 
-| method | params | note |
-| --- | --- | --- |
-| `GetActualValueString` | `self,pBaseObject,value` | argc=1 |
-| `GetAnchorPoint` | `self` | argc=1 |
-| `GetBoundingBox` | `self` | argc=1 |
-| `GetColor` | `self,status` | argc=1 |
-| `GetContainingLib` | `self` | argc=1 |
-| `GetDefaultFontType` | `` | overloaded-C++ |
-| `GetDisplayType` | `self,status` | argc=1 |
-| `GetFont` | `self,dbFontType,logfont` | argc=1 |
-| `GetFontID` | `self` | argc=1 |
-| `GetHorizontalTextJustification` | `self` | argc=1 |
-| `GetId` | `` | overloaded-C++ |
-| `GetLocation` | `self,status` | argc=1 |
-| `GetName` | `self,name` | argc=1 |
-| `GetObjectType` | `self` | argc=1 |
-| `GetOwner` | `self` | argc=1 |
-| `GetParentObj` | `self` | argc=1 |
-| `GetRotation` | `self,status` | argc=1 |
-| `GetValueString` | `` | overloaded-C++ |
-| `GetValueStringForOccurrence` | `self,DWID,value` | argc=1 |
-| `IsBoundingBoxDirty` | `self` | argc=1 |
-| `IsFontDefault` | `self,DboState&` | argc=1 |
-| `MarkModified` | `self` | argc=1 |
-| `SetAnchorPoint` | `self,pAnchorPT` | argc=1 |
-| `SetBoundingBox` | `self,rect` | argc=1 |
-| `SetBoundingBoxDirty` | `self,bSetting` | argc=1 |
-| `SetColor` | `self,color` | argc=1 |
-| `SetDisplayType` | `self,type` | argc=1 |
-| `SetFont` | `self,font` | argc=1 |
-| `SetHorizontalTextJustification` | `self,pHpos` | argc=1 |
-| `SetId` | `self,newId` | argc=1 |
-| `SetLocation` | `self,location` | argc=1 |
-| `SetName` | `self,name` | argc=1 |
-| `SetOwnerBoundingBoxDirty` | `self,bSetting` | argc=1 |
-| `SetRotation` | `self,rotation` | argc=1 |
-| `SetValueString` | `` | overloaded-C++ |
-| `sGetColor` | `obj,status` | argc=1 |
-| `sGetDisplayType` | `obj,status` | argc=1 |
-| `sGetFont` | `obj,status` | argc=1 |
-| `sGetLocationX` | `obj,status` | argc=1 |
-| `sGetLocationY` | `obj,status` | argc=1 |
-| `sGetName` | `obj,status` | argc=1 |
-| `sGetRotation` | `obj,status` | argc=1 |
-| `sGetValue` | `obj,status` | argc=1 |
-| `sSetColor` | `obj,color` | argc=1 |
-| `sSetDisplayType` | `obj,displayType` | argc=1 |
-| `sSetFont` | `obj,font` | argc=1 |
-| `sSetLocationX` | `obj,x` | argc=1 |
-| `sSetLocationY` | `obj,y` | argc=1 |
-| `sSetName` | `obj,name` | argc=1 |
-| `sSetRotation` | `obj,rotation` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `GetActualValueString` | `self,pBaseObject,value` | argc=1 | 1 | 1 |
+| `GetAnchorPoint` | `self` | argc=1 | 0 | 2 |
+| `GetBoundingBox` | `self` | argc=1 | 79 | 16 |
+| `GetColor` | `self,status` | argc=1 | 0 | 12 |
+| `GetContainingLib` | `self` | argc=1 | 2 | 20 |
+| `GetDefaultFontType` | `` | overloaded-C++ | 0 | 1 |
+| `GetDisplayType` | `self,status` | argc=1 | 1 | 1 |
+| `GetFont` | `self,dbFontType,logfont` | argc=1 | 1 | 5 |
+| `GetFontID` | `self` | argc=1 | 0 | 4 |
+| `GetHorizontalTextJustification` | `self` | argc=1 | 0 | 2 |
+| `GetId` | `` | overloaded-C++ | 37 | 15 |
+| `GetLocation` | `self,status` | argc=1 | 14 | 7 |
+| `GetName` | `self,name` | argc=1 | 185 | 18 |
+| `GetObjectType` | `self` | argc=1 | 86 | 57 |
+| `GetOwner` | `self` | argc=1 | 69 | 19 |
+| `GetParentObj` | `self` | argc=1 | 0 | 18 |
+| `GetRotation` | `self,status` | argc=1 | 3 | 5 |
+| `GetValueString` | `` | overloaded-C++ | 2 | 1 |
+| `GetValueStringForOccurrence` | `self,DWID,value` | argc=1 | 0 | 1 |
+| `IsBoundingBoxDirty` | `self` | argc=1 | 0 | 6 |
+| `IsFontDefault` | `self,DboState&` | argc=1 | 0 | 3 |
+| `MarkModified` | `self` | argc=1 | 13 | 13 |
+| `SetAnchorPoint` | `self,pAnchorPT` | argc=1 | 0 | 2 |
+| `SetBoundingBox` | `self,rect` | argc=1 | 4 | 16 |
+| `SetBoundingBoxDirty` | `self,bSetting` | argc=1 | 1 | 6 |
+| `SetColor` | `self,color` | argc=1 | 10 | 11 |
+| `SetDisplayType` | `self,type` | argc=1 | 9 | 2 |
+| `SetFont` | `self,font` | argc=1 | 2 | 5 |
+| `SetHorizontalTextJustification` | `self,pHpos` | argc=1 | 2 | 2 |
+| `SetId` | `self,newId` | argc=1 | 55 | 10 |
+| `SetLocation` | `self,location` | argc=1 | 9 | 12 |
+| `SetName` | `self,name` | argc=1 | 66 | 17 |
+| `SetOwnerBoundingBoxDirty` | `self,bSetting` | argc=1 | 1 | 2 |
+| `SetRotation` | `self,rotation` | argc=1 | 0 | 13 |
+| `SetValueString` | `` | overloaded-C++ | 5 | 1 |
+| `sGetColor` | `obj,status` | argc=1 | 0 | 8 |
+| `sGetDisplayType` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetFont` | `obj,status` | argc=1 | 0 | 4 |
+| `sGetLocationX` | `obj,status` | argc=1 | 0 | 8 |
+| `sGetLocationY` | `obj,status` | argc=1 | 0 | 8 |
+| `sGetName` | `obj,status` | argc=1 | 1 | 15 |
+| `sGetRotation` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetValue` | `obj,status` | argc=1 | 0 | 2 |
+| `sSetColor` | `obj,color` | argc=1 | 0 | 3 |
+| `sSetDisplayType` | `obj,displayType` | argc=1 | 0 | 1 |
+| `sSetFont` | `obj,font` | argc=1 | 0 | 2 |
+| `sSetLocationX` | `obj,x` | argc=1 | 0 | 2 |
+| `sSetLocationY` | `obj,y` | argc=1 | 0 | 2 |
+| `sSetName` | `obj,name` | argc=1 | 0 | 2 |
+| `sSetRotation` | `obj,rotation` | argc=1 | 0 | 2 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboDisplayProp_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboDisplayProp_<method> $obj <args...>`

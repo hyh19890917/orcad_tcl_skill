@@ -1,11 +1,11 @@
-# DboPortInstBus (5 methods)
+# DboPortInstBus (5 methods, official_calls(upper bound)=105)
 
-| method | params | note |
-| --- | --- | --- |
-| `CopyUnnamedNegroupInfo` | `self,pObj` | argc=1 |
-| `GetMember` | `self,nPos,status` | argc=1 |
-| `GetObjectType` | `self` | argc=1 |
-| `GetWidth` | `self,status` | argc=1 |
-| `NewUserProp` | `` | overloaded-C++ |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `CopyUnnamedNegroupInfo` | `self,pObj` | argc=1 | 0 | 1 |
+| `GetMember` | `self,nPos,status` | argc=1 | 1 | 5 |
+| `GetObjectType` | `self` | argc=1 | 86 | 57 |
+| `GetWidth` | `self,status` | argc=1 | 14 | 5 |
+| `NewUserProp` | `` | overloaded-C++ | 4 | 8 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboPortInstBus_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboPortInstBus_<method> $obj <args...>`

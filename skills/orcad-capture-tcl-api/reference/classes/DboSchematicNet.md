@@ -1,50 +1,50 @@
-# DboSchematicNet (44 methods)
+# DboSchematicNet (44 methods, official_calls(upper bound)=636)
 
-| method | params | note |
-| --- | --- | --- |
-| `AddBusNet` | `self,pBusNet` | argc=1 |
-| `ComputeNetName` | `self,name` | argc=1 |
-| `DeleteEffectiveProp` | `self,name` | argc=1 |
-| `EffectivePropsMatch` | `` | overloaded-C++ |
-| `GetAttributeLockingInfo` | `self,propName,lLock,preTrigger,postTrigger` | argc=1 |
-| `GetBusNets` | `self` | argc=1 |
-| `GetColor` | `self,status` | argc=1 |
-| `GetContainingLib` | `self` | argc=1 |
-| `GetEffectivePropStringValue` | `` | overloaded-C++ |
-| `GetEffectivePropValueChoices` | `self,name,choices` | argc=1 |
-| `GetEffectivePropValueExists` | `self,name,bExists` | argc=1 |
-| `GetEffectivePropValueType` | `self,name,nType,bEditable,bDeletable` | argc=1 |
-| `GetId` | `self,status` | argc=1 |
-| `GetLineStyle` | `self,status` | argc=1 |
-| `GetLineWidth` | `self,status` | argc=1 |
-| `GetLocalNetName` | `self,name` | argc=1 |
-| `GetName` | `self,name` | argc=1 |
-| `GetObjectOccurrence` | `self,pParentSchematicOcc` | argc=1 |
-| `GetObjectOccurrences` | `` | overloaded-C++ |
-| `GetObjectType` | `self` | argc=1 |
-| `GetOwner` | `self` | argc=1 |
-| `GetParentObj` | `self` | argc=1 |
-| `GetSchNetNameForOldPspiceConnectivity` | `self,pEffectiveNetName` | argc=1 |
-| `HasBundleConnection` | `self` | argc=1 |
-| `HasNonNGOverrider` | `self` | argc=1 |
-| `IsBundleObject` | `self` | argc=1 |
-| `IsBusMember` | `self,pBusNet,status` | argc=1 |
-| `IsGlobal` | `self,status` | argc=1 |
-| `NewEffectivePropsIter` | `` | overloaded-C++ |
-| `NewGlobalsIter` | `self,status` | argc=1 |
-| `NewNetsIter` | `` | overloaded-C++ |
-| `NewOffPageConnectorsIter` | `self,status` | argc=1 |
-| `NewPortInstsIter` | `` | overloaded-C++ |
-| `NewPortsIter` | `` | overloaded-C++ |
-| `NewWiresIter` | `` | overloaded-C++ |
-| `RemoveBusNet` | `self,pBusNet` | argc=1 |
-| `ResolveComputedNameConflict` | `self,pName` | argc=1 |
-| `SetColor` | `self,color` | argc=1 |
-| `SetEffectivePropStringValue` | `` | overloaded-C++ |
-| `SetLineStyle` | `self,linestyle` | argc=1 |
-| `SetLineWidth` | `self,linewidth` | argc=1 |
-| `SetName` | `self,Name` | argc=1 |
-| `sGetId` | `obj,status` | argc=1 |
-| `sGetName` | `obj,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `AddBusNet` | `self,pBusNet` | argc=1 | 0 | 1 |
+| `ComputeNetName` | `self,name` | argc=1 | 0 | 2 |
+| `DeleteEffectiveProp` | `self,name` | argc=1 | 6 | 10 |
+| `EffectivePropsMatch` | `` | overloaded-C++ | 0 | 4 |
+| `GetAttributeLockingInfo` | `self,propName,lLock,preTrigger,postTrigger` | argc=1 | 0 | 5 |
+| `GetBusNets` | `self` | argc=1 | 0 | 1 |
+| `GetColor` | `self,status` | argc=1 | 0 | 12 |
+| `GetContainingLib` | `self` | argc=1 | 2 | 20 |
+| `GetEffectivePropStringValue` | `` | overloaded-C++ | 109 | 8 |
+| `GetEffectivePropValueChoices` | `self,name,choices` | argc=1 | 0 | 6 |
+| `GetEffectivePropValueExists` | `self,name,bExists` | argc=1 | 0 | 7 |
+| `GetEffectivePropValueType` | `self,name,nType,bEditable,bDeletable` | argc=1 | 0 | 9 |
+| `GetId` | `self,status` | argc=1 | 37 | 15 |
+| `GetLineStyle` | `self,status` | argc=1 | 1 | 11 |
+| `GetLineWidth` | `self,status` | argc=1 | 1 | 11 |
+| `GetLocalNetName` | `self,name` | argc=1 | 0 | 1 |
+| `GetName` | `self,name` | argc=1 | 185 | 18 |
+| `GetObjectOccurrence` | `self,pParentSchematicOcc` | argc=1 | 13 | 9 |
+| `GetObjectOccurrences` | `` | overloaded-C++ | 0 | 8 |
+| `GetObjectType` | `self` | argc=1 | 86 | 57 |
+| `GetOwner` | `self` | argc=1 | 69 | 19 |
+| `GetParentObj` | `self` | argc=1 | 0 | 18 |
+| `GetSchNetNameForOldPspiceConnectivity` | `self,pEffectiveNetName` | argc=1 | 0 | 1 |
+| `HasBundleConnection` | `self` | argc=1 | 0 | 2 |
+| `HasNonNGOverrider` | `self` | argc=1 | 0 | 2 |
+| `IsBundleObject` | `self` | argc=1 | 2 | 10 |
+| `IsBusMember` | `self,pBusNet,status` | argc=1 | 0 | 2 |
+| `IsGlobal` | `self,status` | argc=1 | 0 | 2 |
+| `NewEffectivePropsIter` | `` | overloaded-C++ | 6 | 12 |
+| `NewGlobalsIter` | `self,status` | argc=1 | 5 | 6 |
+| `NewNetsIter` | `` | overloaded-C++ | 2 | 3 |
+| `NewOffPageConnectorsIter` | `self,status` | argc=1 | 6 | 5 |
+| `NewPortInstsIter` | `` | overloaded-C++ | 0 | 3 |
+| `NewPortsIter` | `` | overloaded-C++ | 6 | 5 |
+| `NewWiresIter` | `` | overloaded-C++ | 10 | 4 |
+| `RemoveBusNet` | `self,pBusNet` | argc=1 | 0 | 1 |
+| `ResolveComputedNameConflict` | `self,pName` | argc=1 | 0 | 1 |
+| `SetColor` | `self,color` | argc=1 | 10 | 11 |
+| `SetEffectivePropStringValue` | `` | overloaded-C++ | 13 | 11 |
+| `SetLineStyle` | `self,linestyle` | argc=1 | 0 | 18 |
+| `SetLineWidth` | `self,linewidth` | argc=1 | 0 | 18 |
+| `SetName` | `self,Name` | argc=1 | 66 | 17 |
+| `sGetId` | `obj,status` | argc=1 | 0 | 8 |
+| `sGetName` | `obj,status` | argc=1 | 1 | 15 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboSchematicNet_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboSchematicNet_<method> $obj <args...>`

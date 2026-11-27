@@ -1,8 +1,8 @@
-# DboLibPartPinsIter (2 methods)
+# DboLibPartPinsIter (2 methods, official_calls(upper bound)=23)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `NextPin` | `self,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `NextPin` | `self,status` | argc=1 | 23 | 3 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboLibPartPinsIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboLibPartPinsIter_<method> $obj <args...>`

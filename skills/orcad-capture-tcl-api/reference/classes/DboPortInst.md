@@ -1,87 +1,87 @@
-# DboPortInst (81 methods)
+# DboPortInst (81 methods, official_calls(upper bound)=490)
 
-| method | params | note |
-| --- | --- | --- |
-| `DeleteUserProp` | `self,name` | argc=1 |
-| `DeleteUserPropValue` | `self,name` | argc=1 |
-| `GetCachedPinShapePtr` | `self` | argc=1 |
-| `GetContainingLib` | `self` | argc=1 |
-| `GetDefiningPin` | `self,status` | argc=1 |
-| `GetDisplayPropsPermitted` | `self,status` | argc=1 |
-| `GetDispPropArray` | `self` | argc=1 |
-| `GetEffectivePropStringValue` | `` | overloaded-C++ |
-| `GetEffectivePropValueType` | `self,name,nType,bEditable,bDeletable` | argc=1 |
-| `GetHotSpot` | `self,status` | argc=1 |
-| `GetId` | `` | overloaded-C++ |
-| `GetIsClock` | `self,status` | argc=1 |
-| `GetIsDot` | `self,status` | argc=1 |
-| `GetIsGlobal` | `self,status` | argc=1 |
-| `GetIsLeftPointing` | `self,status` | argc=1 |
-| `GetIsLong` | `self,status` | argc=1 |
-| `GetIsNetStyle` | `self,status` | argc=1 |
-| `GetIsNoConnect` | `self,status` | argc=1 |
-| `GetIsNumberVisible` | `self,status` | argc=1 |
-| `GetIsRightPointing` | `self,status` | argc=1 |
-| `GetIsShared` | `self,status` | argc=1 |
-| `GetIsUserDefinedShape` | `self,status` | argc=1 |
-| `GetIsVisible` | `self,status` | argc=1 |
-| `GetNet` | `self,status` | argc=1 |
-| `GetObjectOccurrence` | `self,pParentSchematicOcc` | argc=1 |
-| `GetObjectOccurrences` | `` | overloaded-C++ |
-| `GetObjectType` | `self` | argc=1 |
-| `GetOffsetHotSpot` | `self,status` | argc=1 |
-| `GetOffsetStartPoint` | `self,status` | argc=1 |
-| `GetOwner` | `self` | argc=1 |
-| `GetParentObj` | `self` | argc=1 |
-| `GetPinName` | `self,name` | argc=1 |
-| `GetPinNumber` | `self,number` | argc=1 |
-| `GetPinPosition` | `self,status` | argc=1 |
-| `GetPinSwapId` | `self,status` | argc=1 |
-| `GetPinType` | `self,status` | argc=1 |
-| `GetStartPoint` | `self,status` | argc=1 |
-| `GetWire` | `self,status` | argc=1 |
-| `IsBundleObject` | `self` | argc=1 |
-| `IsBundlePin` | `` | overloaded-C++ |
-| `NewDisplayProp` | `` | overloaded-C++ |
-| `NewDisplayPropsIter` | `self,status` | argc=1 |
-| `NewEffectivePropsIter` | `` | overloaded-C++ |
-| `NewUserProp` | `` | overloaded-C++ |
-| `SetCachedPinShapePtr` | `self,pPinShape` | argc=1 |
-| `SetHotSpot` | `self,point` | argc=1 |
-| `SetId` | `` | overloaded-C++ |
-| `SetIsClock` | `self,bval` | argc=1 |
-| `SetIsDot` | `self,bval` | argc=1 |
-| `SetIsGlobal` | `self,val` | argc=1 |
-| `SetIsLeftPointing` | `self,bval` | argc=1 |
-| `SetIsLong` | `self,bval` | argc=1 |
-| `SetIsNetStyle` | `self,val` | argc=1 |
-| `SetIsNoConnect` | `self,val` | argc=1 |
-| `SetIsRightPointing` | `self,bval` | argc=1 |
-| `SetIsVisible` | `self,val` | argc=1 |
-| `SetPinName` | `self,name` | argc=1 |
-| `SetPinNumber` | `self,name` | argc=1 |
-| `SetPinType` | `self,type` | argc=1 |
-| `SetStartPoint` | `self,point` | argc=1 |
-| `SetUserPropStringValue` | `self,name,value` | argc=1 |
-| `sGetHotSpotX` | `obj,status` | argc=1 |
-| `sGetHotSpotY` | `obj,status` | argc=1 |
-| `sGetIsClock` | `obj,status` | argc=1 |
-| `sGetIsDot` | `obj,status` | argc=1 |
-| `sGetIsGlobal` | `obj,status` | argc=1 |
-| `sGetIsLeftPointing` | `obj,status` | argc=1 |
-| `sGetIsLong` | `obj,status` | argc=1 |
-| `sGetIsNetStyle` | `obj,status` | argc=1 |
-| `sGetIsNoConnect` | `obj,status` | argc=1 |
-| `sGetIsRightPointing` | `obj,status` | argc=1 |
-| `sGetIsShared` | `obj,status` | argc=1 |
-| `sGetIsVisible` | `obj,status` | argc=1 |
-| `sGetNetName` | `obj,status` | argc=1 |
-| `sGetPinName` | `obj,status` | argc=1 |
-| `sGetPinNumber` | `obj,status` | argc=1 |
-| `sGetPinPosition` | `obj,status` | argc=1 |
-| `sGetPinSwapId` | `obj,status` | argc=1 |
-| `sGetPinType` | `obj,status` | argc=1 |
-| `sGetStartPointX` | `obj,status` | argc=1 |
-| `sGetStartPointY` | `obj,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `DeleteUserProp` | `self,name` | argc=1 | 0 | 7 |
+| `DeleteUserPropValue` | `self,name` | argc=1 | 0 | 5 |
+| `GetCachedPinShapePtr` | `self` | argc=1 | 0 | 1 |
+| `GetContainingLib` | `self` | argc=1 | 2 | 20 |
+| `GetDefiningPin` | `self,status` | argc=1 | 0 | 1 |
+| `GetDisplayPropsPermitted` | `self,status` | argc=1 | 0 | 6 |
+| `GetDispPropArray` | `self` | argc=1 | 0 | 5 |
+| `GetEffectivePropStringValue` | `` | overloaded-C++ | 109 | 8 |
+| `GetEffectivePropValueType` | `self,name,nType,bEditable,bDeletable` | argc=1 | 0 | 9 |
+| `GetHotSpot` | `self,status` | argc=1 | 2 | 4 |
+| `GetId` | `` | overloaded-C++ | 37 | 15 |
+| `GetIsClock` | `self,status` | argc=1 | 1 | 3 |
+| `GetIsDot` | `self,status` | argc=1 | 1 | 3 |
+| `GetIsGlobal` | `self,status` | argc=1 | 2 | 4 |
+| `GetIsLeftPointing` | `self,status` | argc=1 | 1 | 3 |
+| `GetIsLong` | `self,status` | argc=1 | 1 | 3 |
+| `GetIsNetStyle` | `self,status` | argc=1 | 1 | 3 |
+| `GetIsNoConnect` | `self,status` | argc=1 | 1 | 3 |
+| `GetIsNumberVisible` | `self,status` | argc=1 | 0 | 2 |
+| `GetIsRightPointing` | `self,status` | argc=1 | 1 | 3 |
+| `GetIsShared` | `self,status` | argc=1 | 0 | 3 |
+| `GetIsUserDefinedShape` | `self,status` | argc=1 | 1 | 2 |
+| `GetIsVisible` | `self,status` | argc=1 | 3 | 3 |
+| `GetNet` | `self,status` | argc=1 | 17 | 8 |
+| `GetObjectOccurrence` | `self,pParentSchematicOcc` | argc=1 | 13 | 9 |
+| `GetObjectOccurrences` | `` | overloaded-C++ | 0 | 8 |
+| `GetObjectType` | `self` | argc=1 | 86 | 57 |
+| `GetOffsetHotSpot` | `self,status` | argc=1 | 2 | 3 |
+| `GetOffsetStartPoint` | `self,status` | argc=1 | 3 | 2 |
+| `GetOwner` | `self` | argc=1 | 69 | 19 |
+| `GetParentObj` | `self` | argc=1 | 0 | 18 |
+| `GetPinName` | `self,name` | argc=1 | 10 | 4 |
+| `GetPinNumber` | `self,number` | argc=1 | 8 | 4 |
+| `GetPinPosition` | `self,status` | argc=1 | 4 | 5 |
+| `GetPinSwapId` | `self,status` | argc=1 | 0 | 2 |
+| `GetPinType` | `self,status` | argc=1 | 8 | 9 |
+| `GetStartPoint` | `self,status` | argc=1 | 8 | 4 |
+| `GetWire` | `self,status` | argc=1 | 0 | 3 |
+| `IsBundleObject` | `self` | argc=1 | 2 | 10 |
+| `IsBundlePin` | `` | overloaded-C++ | 1 | 1 |
+| `NewDisplayProp` | `` | overloaded-C++ | 12 | 7 |
+| `NewDisplayPropsIter` | `self,status` | argc=1 | 3 | 6 |
+| `NewEffectivePropsIter` | `` | overloaded-C++ | 6 | 12 |
+| `NewUserProp` | `` | overloaded-C++ | 4 | 8 |
+| `SetCachedPinShapePtr` | `self,pPinShape` | argc=1 | 0 | 1 |
+| `SetHotSpot` | `self,point` | argc=1 | 0 | 3 |
+| `SetId` | `` | overloaded-C++ | 55 | 10 |
+| `SetIsClock` | `self,bval` | argc=1 | 2 | 3 |
+| `SetIsDot` | `self,bval` | argc=1 | 2 | 3 |
+| `SetIsGlobal` | `self,val` | argc=1 | 2 | 3 |
+| `SetIsLeftPointing` | `self,bval` | argc=1 | 2 | 3 |
+| `SetIsLong` | `self,bval` | argc=1 | 2 | 3 |
+| `SetIsNetStyle` | `self,val` | argc=1 | 2 | 3 |
+| `SetIsNoConnect` | `self,val` | argc=1 | 2 | 3 |
+| `SetIsRightPointing` | `self,bval` | argc=1 | 2 | 3 |
+| `SetIsVisible` | `self,val` | argc=1 | 0 | 3 |
+| `SetPinName` | `self,name` | argc=1 | 0 | 4 |
+| `SetPinNumber` | `self,name` | argc=1 | 0 | 3 |
+| `SetPinType` | `self,type` | argc=1 | 0 | 7 |
+| `SetStartPoint` | `self,point` | argc=1 | 0 | 3 |
+| `SetUserPropStringValue` | `self,name,value` | argc=1 | 0 | 6 |
+| `sGetHotSpotX` | `obj,status` | argc=1 | 0 | 4 |
+| `sGetHotSpotY` | `obj,status` | argc=1 | 0 | 4 |
+| `sGetIsClock` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetIsDot` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetIsGlobal` | `obj,status` | argc=1 | 0 | 4 |
+| `sGetIsLeftPointing` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetIsLong` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetIsNetStyle` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetIsNoConnect` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetIsRightPointing` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetIsShared` | `obj,status` | argc=1 | 0 | 2 |
+| `sGetIsVisible` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetNetName` | `obj,status` | argc=1 | 0 | 5 |
+| `sGetPinName` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetPinNumber` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetPinPosition` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetPinSwapId` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetPinType` | `obj,status` | argc=1 | 0 | 4 |
+| `sGetStartPointX` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetStartPointY` | `obj,status` | argc=1 | 0 | 3 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboPortInst_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboPortInst_<method> $obj <args...>`

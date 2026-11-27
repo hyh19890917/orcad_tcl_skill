@@ -1,11 +1,11 @@
-# DboWireBus (5 methods)
+# DboWireBus (5 methods, official_calls(upper bound)=154)
 
-| method | params | note |
-| --- | --- | --- |
-| `GetObjectType` | `self` | argc=1 |
-| `IsBundleObject` | `self` | argc=1 |
-| `NewAlias` | `` | overloaded-C++ |
-| `NormalizeBundleWire` | `self` | argc=1 |
-| `SetName` | `self,name` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `GetObjectType` | `self` | argc=1 | 86 | 57 |
+| `IsBundleObject` | `self` | argc=1 | 2 | 10 |
+| `NewAlias` | `` | overloaded-C++ | 0 | 2 |
+| `NormalizeBundleWire` | `self` | argc=1 | 0 | 1 |
+| `SetName` | `self,name` | argc=1 | 66 | 17 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboWireBus_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboWireBus_<method> $obj <args...>`

@@ -1,13 +1,13 @@
-# DboPortBusMemberOccurrence (7 methods)
+# DboPortBusMemberOccurrence (7 methods, official_calls(upper bound)=96)
 
-| method | params | note |
-| --- | --- | --- |
-| `GetMemberName` | `self,name` | argc=1 |
-| `GetObjectType` | `self` | argc=1 |
-| `GetPathName` | `` | overloaded-C++ |
-| `GetPort` | `self,status` | argc=1 |
-| `GetPortInst` | `self,status` | argc=1 |
-| `GetRefPathName` | `` | overloaded-C++ |
-| `sGetMemberName` | `obj,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `GetMemberName` | `self,name` | argc=1 | 0 | 1 |
+| `GetObjectType` | `self` | argc=1 | 86 | 57 |
+| `GetPathName` | `` | overloaded-C++ | 7 | 7 |
+| `GetPort` | `self,status` | argc=1 | 0 | 4 |
+| `GetPortInst` | `self,status` | argc=1 | 3 | 3 |
+| `GetRefPathName` | `` | overloaded-C++ | 0 | 7 |
+| `sGetMemberName` | `obj,status` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboPortBusMemberOccurrence_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboPortBusMemberOccurrence_<method> $obj <args...>`

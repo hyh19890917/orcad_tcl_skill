@@ -1,10 +1,10 @@
-# DboLibPartsIter (4 methods)
+# DboLibPartsIter (4 methods, official_calls(upper bound)=45)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `GetKey` | `self,pObject` | argc=1 |
-| `Next` | `self,status` | argc=1 |
-| `NextPart` | `self,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `GetKey` | `self,pObject` | argc=1 | 0 | 80 |
+| `Next` | `self,status` | argc=1 | 30 | 88 |
+| `NextPart` | `self,status` | argc=1 | 15 | 3 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboLibPartsIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboLibPartsIter_<method> $obj <args...>`

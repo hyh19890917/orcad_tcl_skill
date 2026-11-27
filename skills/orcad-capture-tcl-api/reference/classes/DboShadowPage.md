@@ -1,7 +1,7 @@
-# DboShadowPage (1 methods)
+# DboShadowPage (1 methods, official_calls(upper bound)=86)
 
-| method | params | note |
-| --- | --- | --- |
-| `GetObjectType` | `self` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `GetObjectType` | `self` | argc=1 | 86 | 57 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboShadowPage_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboShadowPage_<method> $obj <args...>`

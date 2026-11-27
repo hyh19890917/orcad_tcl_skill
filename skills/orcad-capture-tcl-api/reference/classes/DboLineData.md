@@ -1,14 +1,14 @@
-# DboLineData (8 methods)
+# DboLineData (8 methods, official_calls(upper bound)=0)
 
-| method | params | note |
-| --- | --- | --- |
-| `End_get` | `self` | argc=1 |
-| `End_set` | `self,End` | argc=1 |
-| `LineStyle_get` | `self` | argc=1 |
-| `LineStyle_set` | `self,LineStyle` | argc=1 |
-| `LineWidth_get` | `self` | argc=1 |
-| `LineWidth_set` | `self,LineWidth` | argc=1 |
-| `Start_get` | `self` | argc=1 |
-| `Start_set` | `self,Start` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `End_get` | `self` | argc=1 | 0 | 4 |
+| `End_set` | `self,End` | argc=1 | 0 | 4 |
+| `LineStyle_get` | `self` | argc=1 | 0 | 6 |
+| `LineStyle_set` | `self,LineStyle` | argc=1 | 0 | 6 |
+| `LineWidth_get` | `self` | argc=1 | 0 | 6 |
+| `LineWidth_set` | `self,LineWidth` | argc=1 | 0 | 6 |
+| `Start_get` | `self` | argc=1 | 0 | 5 |
+| `Start_set` | `self,Start` | argc=1 | 0 | 5 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboLineData_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboLineData_<method> $obj <args...>`

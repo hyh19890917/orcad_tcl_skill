@@ -1,9 +1,9 @@
-# DboNetSymbol (3 methods)
+# DboNetSymbol (3 methods, official_calls(upper bound)=2)
 
-| method | params | note |
-| --- | --- | --- |
-| `GetPin` | `self,status` | argc=1 |
-| `NewSymbolPinBus` | `` | overloaded-C++ |
-| `NewSymbolPinScalar` | `` | overloaded-C++ |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `GetPin` | `self,status` | argc=1 | 0 | 3 |
+| `NewSymbolPinBus` | `` | overloaded-C++ | 0 | 3 |
+| `NewSymbolPinScalar` | `` | overloaded-C++ | 2 | 3 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboNetSymbol_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboNetSymbol_<method> $obj <args...>`

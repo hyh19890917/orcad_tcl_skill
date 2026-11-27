@@ -1,10 +1,10 @@
-# DboSymbolDisplayPropsIter (4 methods)
+# DboSymbolDisplayPropsIter (4 methods, official_calls(upper bound)=35)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `GetKey` | `self,pObject` | argc=1 |
-| `Next` | `self,status` | argc=1 |
-| `NextProp` | `self,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `GetKey` | `self,pObject` | argc=1 | 0 | 80 |
+| `Next` | `self,status` | argc=1 | 30 | 88 |
+| `NextProp` | `self,status` | argc=1 | 5 | 6 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboSymbolDisplayPropsIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboSymbolDisplayPropsIter_<method> $obj <args...>`

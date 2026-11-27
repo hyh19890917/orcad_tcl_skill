@@ -1,94 +1,94 @@
-# DboInstOccurrence (88 methods)
+# DboInstOccurrence (88 methods, official_calls(upper bound)=231)
 
-| method | params | note |
-| --- | --- | --- |
-| `AddVariantProp` | `self,strName,strVal` | argc=1 |
-| `ApplyIds` | `self` | argc=1 |
-| `CheckAndCorrectSubTreeOccurrences` | `self,pGetMapperObjects` | argc=1 |
-| `ClearVariantMap` | `` | overloaded-C++ |
-| `Copy` | `self,pSource` | argc=1 |
-| `CopyOccData` | `` | overloaded-C++ |
-| `DeleteDBProp` | `self,name` | argc=1 |
-| `DeleteEffectiveProp` | `self,name` | argc=1 |
-| `ExpandOccurrences` | `` | overloaded-C++ |
-| `ExpandSubTreeOccurrences` | `self` | argc=1 |
-| `FindInstance` | `self,status` | argc=1 |
-| `FindPartInst` | `self,status` | argc=1 |
-| `GetCanonicalName` | `` | overloaded-C++ |
-| `GetCanonicalRefDes` | `self` | argc=1 |
-| `GetCdsRefRangeMap` | `self` | argc=1 |
-| `GetCellName` | `self,bVHDL` | argc=1 |
-| `GetContents` | `self,status` | argc=1 |
-| `GetDesignator` | `self,designator` | argc=1 |
-| `GetEffectivePropValueChoices` | `self,name,choices` | argc=1 |
-| `GetEffectivePropValueExists` | `self,name,bExists` | argc=1 |
-| `GetEffectivePropValueType` | `self,name,nType,bEditable,bDeletable` | argc=1 |
-| `GetFlatNet` | `self,pDboSchematicNet,pStatus` | argc=1 |
-| `GetHdlName` | `` | overloaded-C++ |
-| `GetHierPathName` | `` | overloaded-C++ |
-| `GetImplementationName` | `` | overloaded-C++ |
-| `GetInstance` | `self,status` | argc=1 |
-| `GetInstChildrenCount` | `self,status` | argc=1 |
-| `GetInstOccurrence` | `` | overloaded-C++ |
-| `GetInstOccurrenceByHierPath` | `self,name,status` | argc=1 |
-| `GetInstOccurrenceByName` | `self,Name,status` | argc=1 |
-| `GetInstOccurrenceByRef` | `self,Name,bPhysical,status` | argc=1 |
-| `GetLibName` | `self,bVHDL` | argc=1 |
-| `GetNetAndPortsValid` | `self,status` | argc=1 |
-| `GetNetOccurrence` | `` | overloaded-C++ |
-| `GetNextNewVariantProp` | `self,strName,strVal,bNewFound` | argc=1 |
-| `GetObjectType` | `self` | argc=1 |
-| `GetOffPageOccurrence` | `` | overloaded-C++ |
-| `GetPackageInstOcc` | `self` | argc=1 |
-| `GetPartInst` | `self,status` | argc=1 |
-| `GetPartInstId` | `self,status` | argc=1 |
-| `GetPartInstNameForCanonicalPath` | `self,name` | argc=1 |
-| `GetPartValue` | `self,value` | argc=1 |
-| `GetPathName` | `` | overloaded-C++ |
-| `GetPathNameNumber` | `` | overloaded-C++ |
-| `GetPortOccurrence` | `` | overloaded-C++ |
-| `GetPortOccurrenceFromPinNumber` | `self,nPinNumber` | argc=1 |
-| `GetPrefixReferenceRange` | `` | overloaded-C++ |
-| `GetPropertyValuePrefixReferenceRange` | `self,pPrefix,pRangeList,pProperty,pValue,pStatus` | argc=1 |
-| `GetReference` | `self,ref` | argc=1 |
-| `GetReferenceDesignator` | `self,refDes` | argc=1 |
-| `GetReferenceRange` | `self` | argc=1 |
-| `GetRefPathName` | `` | overloaded-C++ |
-| `GetSchematic` | `self,status` | argc=1 |
-| `GetTitleBlockOccurrence` | `` | overloaded-C++ |
-| `GetVariantProp` | `self,strName,strVal` | argc=1 |
-| `GetViewStr` | `self,bVHDL` | argc=1 |
-| `HasChildren` | `self,status` | argc=1 |
-| `HasPropertyThatExists` | `self,status` | argc=1 |
-| `IsNetlistIgnore` | `self` | argc=1 |
-| `IsPartInstBelongToExternalDesign` | `self` | argc=1 |
-| `IsPrimitive` | `self,status` | argc=1 |
-| `IsPSpiceOnly` | `self` | argc=1 |
-| `IsRecursive` | `self,status` | argc=1 |
-| `IsVariantPropMapEmpty` | `self` | argc=1 |
-| `NewChildrenIter` | `` | overloaded-C++ |
-| `NewEffectivePropsIter` | `` | overloaded-C++ |
-| `ProcessFlatNetForPartRename` | `self` | argc=1 |
-| `SetDesignator` | `self,designator` | argc=1 |
-| `SetEffectivePropStringValue` | `` | overloaded-C++ |
-| `SetEffectivePropStringValueForced` | `` | overloaded-C++ |
-| `SetOnDiscardedPage` | `` | overloaded-C++ |
-| `SetPackageInstOcc` | `self,pPkgInstOcc` | argc=1 |
-| `SetPartInstId` | `self,nPartInstId` | argc=1 |
-| `SetPartValue` | `self,value` | argc=1 |
-| `SetReference` | `self,reference` | argc=1 |
-| `SetReferenceRange` | `self,pRefRangeValue` | argc=1 |
-| `sGetContentsLibName` | `obj,status` | argc=1 |
-| `sGetContentsViewName` | `obj,status` | argc=1 |
-| `sGetContentsViewType` | `obj,status` | argc=1 |
-| `sGetDesignator` | `obj,status` | argc=1 |
-| `sGetId` | `obj,status` | argc=1 |
-| `sGetIsPrimitive` | `obj,status` | argc=1 |
-| `sGetName` | `obj,status` | argc=1 |
-| `sGetPartValue` | `obj,status` | argc=1 |
-| `sGetPathName` | `obj,status` | argc=1 |
-| `sGetReference` | `obj,status` | argc=1 |
-| `sGetReferenceDesignator` | `obj,status` | argc=1 |
-| `UpdateNetAndPorts` | `self` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `AddVariantProp` | `self,strName,strVal` | argc=1 | 0 | 5 |
+| `ApplyIds` | `self` | argc=1 | 0 | 1 |
+| `CheckAndCorrectSubTreeOccurrences` | `self,pGetMapperObjects` | argc=1 | 0 | 1 |
+| `ClearVariantMap` | `` | overloaded-C++ | 0 | 5 |
+| `Copy` | `self,pSource` | argc=1 | 38 | 8 |
+| `CopyOccData` | `` | overloaded-C++ | 0 | 2 |
+| `DeleteDBProp` | `self,name` | argc=1 | 0 | 2 |
+| `DeleteEffectiveProp` | `self,name` | argc=1 | 6 | 10 |
+| `ExpandOccurrences` | `` | overloaded-C++ | 0 | 1 |
+| `ExpandSubTreeOccurrences` | `self` | argc=1 | 0 | 1 |
+| `FindInstance` | `self,status` | argc=1 | 0 | 3 |
+| `FindPartInst` | `self,status` | argc=1 | 0 | 1 |
+| `GetCanonicalName` | `` | overloaded-C++ | 0 | 4 |
+| `GetCanonicalRefDes` | `self` | argc=1 | 0 | 1 |
+| `GetCdsRefRangeMap` | `self` | argc=1 | 0 | 1 |
+| `GetCellName` | `self,bVHDL` | argc=1 | 0 | 2 |
+| `GetContents` | `self,status` | argc=1 | 1 | 3 |
+| `GetDesignator` | `self,designator` | argc=1 | 1 | 3 |
+| `GetEffectivePropValueChoices` | `self,name,choices` | argc=1 | 0 | 6 |
+| `GetEffectivePropValueExists` | `self,name,bExists` | argc=1 | 0 | 7 |
+| `GetEffectivePropValueType` | `self,name,nType,bEditable,bDeletable` | argc=1 | 0 | 9 |
+| `GetFlatNet` | `self,pDboSchematicNet,pStatus` | argc=1 | 4 | 3 |
+| `GetHdlName` | `` | overloaded-C++ | 0 | 1 |
+| `GetHierPathName` | `` | overloaded-C++ | 0 | 1 |
+| `GetImplementationName` | `` | overloaded-C++ | 0 | 1 |
+| `GetInstance` | `self,status` | argc=1 | 0 | 6 |
+| `GetInstChildrenCount` | `self,status` | argc=1 | 0 | 1 |
+| `GetInstOccurrence` | `` | overloaded-C++ | 0 | 2 |
+| `GetInstOccurrenceByHierPath` | `self,name,status` | argc=1 | 0 | 1 |
+| `GetInstOccurrenceByName` | `self,Name,status` | argc=1 | 0 | 2 |
+| `GetInstOccurrenceByRef` | `self,Name,bPhysical,status` | argc=1 | 0 | 2 |
+| `GetLibName` | `self,bVHDL` | argc=1 | 0 | 1 |
+| `GetNetAndPortsValid` | `self,status` | argc=1 | 0 | 1 |
+| `GetNetOccurrence` | `` | overloaded-C++ | 3 | 2 |
+| `GetNextNewVariantProp` | `self,strName,strVal,bNewFound` | argc=1 | 0 | 5 |
+| `GetObjectType` | `self` | argc=1 | 86 | 57 |
+| `GetOffPageOccurrence` | `` | overloaded-C++ | 0 | 2 |
+| `GetPackageInstOcc` | `self` | argc=1 | 0 | 2 |
+| `GetPartInst` | `self,status` | argc=1 | 13 | 3 |
+| `GetPartInstId` | `self,status` | argc=1 | 0 | 1 |
+| `GetPartInstNameForCanonicalPath` | `self,name` | argc=1 | 0 | 1 |
+| `GetPartValue` | `self,value` | argc=1 | 0 | 4 |
+| `GetPathName` | `` | overloaded-C++ | 7 | 7 |
+| `GetPathNameNumber` | `` | overloaded-C++ | 0 | 2 |
+| `GetPortOccurrence` | `` | overloaded-C++ | 1 | 2 |
+| `GetPortOccurrenceFromPinNumber` | `self,nPinNumber` | argc=1 | 0 | 1 |
+| `GetPrefixReferenceRange` | `` | overloaded-C++ | 0 | 2 |
+| `GetPropertyValuePrefixReferenceRange` | `self,pPrefix,pRangeList,pProperty,pValue,pStatus` | argc=1 | 0 | 1 |
+| `GetReference` | `self,ref` | argc=1 | 5 | 5 |
+| `GetReferenceDesignator` | `self,refDes` | argc=1 | 6 | 4 |
+| `GetReferenceRange` | `self` | argc=1 | 1 | 1 |
+| `GetRefPathName` | `` | overloaded-C++ | 0 | 7 |
+| `GetSchematic` | `self,status` | argc=1 | 4 | 7 |
+| `GetTitleBlockOccurrence` | `` | overloaded-C++ | 1 | 2 |
+| `GetVariantProp` | `self,strName,strVal` | argc=1 | 5 | 5 |
+| `GetViewStr` | `self,bVHDL` | argc=1 | 0 | 1 |
+| `HasChildren` | `self,status` | argc=1 | 0 | 1 |
+| `HasPropertyThatExists` | `self,status` | argc=1 | 0 | 3 |
+| `IsNetlistIgnore` | `self` | argc=1 | 0 | 2 |
+| `IsPartInstBelongToExternalDesign` | `self` | argc=1 | 0 | 1 |
+| `IsPrimitive` | `self,status` | argc=1 | 3 | 2 |
+| `IsPSpiceOnly` | `self` | argc=1 | 0 | 2 |
+| `IsRecursive` | `self,status` | argc=1 | 0 | 1 |
+| `IsVariantPropMapEmpty` | `self` | argc=1 | 6 | 5 |
+| `NewChildrenIter` | `` | overloaded-C++ | 12 | 1 |
+| `NewEffectivePropsIter` | `` | overloaded-C++ | 6 | 12 |
+| `ProcessFlatNetForPartRename` | `self` | argc=1 | 0 | 1 |
+| `SetDesignator` | `self,designator` | argc=1 | 0 | 3 |
+| `SetEffectivePropStringValue` | `` | overloaded-C++ | 13 | 11 |
+| `SetEffectivePropStringValueForced` | `` | overloaded-C++ | 0 | 1 |
+| `SetOnDiscardedPage` | `` | overloaded-C++ | 0 | 1 |
+| `SetPackageInstOcc` | `self,pPkgInstOcc` | argc=1 | 0 | 1 |
+| `SetPartInstId` | `self,nPartInstId` | argc=1 | 0 | 1 |
+| `SetPartValue` | `self,value` | argc=1 | 2 | 3 |
+| `SetReference` | `self,reference` | argc=1 | 5 | 4 |
+| `SetReferenceRange` | `self,pRefRangeValue` | argc=1 | 1 | 1 |
+| `sGetContentsLibName` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetContentsViewName` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetContentsViewType` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetDesignator` | `obj,status` | argc=1 | 0 | 2 |
+| `sGetId` | `obj,status` | argc=1 | 0 | 8 |
+| `sGetIsPrimitive` | `obj,status` | argc=1 | 0 | 2 |
+| `sGetName` | `obj,status` | argc=1 | 1 | 15 |
+| `sGetPartValue` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetPathName` | `obj,status` | argc=1 | 0 | 5 |
+| `sGetReference` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetReferenceDesignator` | `obj,status` | argc=1 | 0 | 3 |
+| `UpdateNetAndPorts` | `self` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboInstOccurrence_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboInstOccurrence_<method> $obj <args...>`

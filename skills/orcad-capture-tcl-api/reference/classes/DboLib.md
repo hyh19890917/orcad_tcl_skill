@@ -1,331 +1,331 @@
-# DboLib (325 methods)
+# DboLib (325 methods, official_calls(upper bound)=584)
 
-| method | params | note |
-| --- | --- | --- |
-| `AbortTransactions` | `self` | argc=1 |
-| `AddStringToStringTable` | `self,str,status` | argc=1 |
-| `CacheIsOutOfDate` | `` | overloaded-C++ |
-| `ChangePassword` | `self,pPassword` | argc=1 |
-| `CleanupCache` | `self` | argc=1 |
-| `ClearModified` | `` | overloaded-C++ |
-| `ClearModifiedAll` | `self,pDboPackage` | argc=1 |
-| `ClearPackageAll` | `self,DboPackage,*` | argc=1 |
-| `ClearSaveFlag` | `self,pPackage` | argc=1 |
-| `ClearUpRevDialogBit` | `self` | argc=1 |
-| `ComparePackageTimeFromDisk` | `self,aLibName,aPackageName,lPackageModFileTime` | argc=1 |
-| `ConvertRequired` | `self` | argc=1 |
-| `CopyCacheFromFile` | `self,pLibFile,status` | argc=1 |
-| `CopyCell` | `self,cell,newName,status` | argc=1 |
-| `CopyGraphicObject` | `self,graphic,newName,status` | argc=1 |
-| `CopyGraphicObjectFromFile` | `` | overloaded-C++ |
-| `CopyLibObject` | `self,LibObje,newName,status` | argc=1 |
-| `CopyObjectFromFile` | `` | overloaded-C++ |
-| `CopyPackage` | `self,pPackage,newName,status` | argc=1 |
-| `CopyPackageAll` | `self,pPackage,newName,status` | argc=1 |
-| `CopyPackageAllToCache` | `self,source,SourceLibName,SourcePackageName,status` | argc=1 |
-| `CopyPart` | `self,part,newName,status` | argc=1 |
-| `CopySymbol` | `self,symbol,newName,status` | argc=1 |
-| `CopySymbolFromFile` | `` | overloaded-C++ |
-| `CopyView` | `self,view,newName,status` | argc=1 |
-| `CorrectCacheEntry` | `self` | argc=1 |
-| `DeleteCell` | `self,cell` | argc=1 |
-| `DeleteGraphicObject` | `self,graphic` | argc=1 |
-| `DeleteLibObject` | `self,libObj` | argc=1 |
-| `DeleteLibStoragePtr` | `self` | argc=1 |
-| `DeletePackage` | `` | overloaded-C++ |
-| `DeletePackageAlias` | `` | overloaded-C++ |
-| `DeletePackageAll` | `self,pPackage` | argc=1 |
-| `DeletePart` | `self,part` | argc=1 |
-| `DeleteSymbol` | `self,symbol` | argc=1 |
-| `DeleteView` | `self,view` | argc=1 |
-| `DumpDirectoryInfo` | `self,pName` | argc=1 |
-| `ExplicitlyAddCellDirName` | `self,cellDir` | argc=1 |
-| `ExplicitlyAddPackageDirName` | `self,packageName` | argc=1 |
-| `ExplicitlyAddPartDirName` | `self,partDir` | argc=1 |
-| `ExplicitlyRemoveAliasName` | `self,AliasNameToBeRemoved` | argc=1 |
-| `ExplicitlyRemoveCellDirName` | `self,CellNameToBeRemoved` | argc=1 |
-| `ExplicitlyRemoveExportBlockDirName` | `self,SymbolNameToBeRemoved` | argc=1 |
-| `ExplicitlyRemoveGraphicDirName` | `self,SymbolNameToBeRemoved` | argc=1 |
-| `ExplicitlyRemovePackageDirName` | `self,PackageNameToBeRemoved` | argc=1 |
-| `ExplicitlyRemovePartDirName` | `self,PackageNameToBeRemoved` | argc=1 |
-| `ExplicitlyRemovePartsDirName` | `self,PartNameToBeRemoved` | argc=1 |
-| `ExplicitlyRemoveSymbolDirName` | `self,SymbolNameToBeRemoved` | argc=1 |
-| `ExplicitlyRemoveViewDirName` | `self,PackageNameToBeRemoved` | argc=1 |
-| `FixupMismatchedLibPartLookupNames` | `self` | argc=1 |
-| `GetBitFlag` | `self` | argc=1 |
-| `GetBookMarkSymbol` | `self,Name,status` | argc=1 |
-| `GetBundleDef` | `` | overloaded-C++ |
-| `GetBundleTemplateMap` | `self` | argc=1 |
-| `GetBundleTemplateMapForObject` | `self,pObject` | argc=1 |
-| `GetCachedCell` | `self,SourceLibName,SourceCellName` | argc=1 |
-| `GetCachedGraphicObject` | `self,SourceLibName,SourceGraphicName,type` | argc=1 |
-| `GetCachedPackage` | `self,SourceLibName,SourcePackageName` | argc=1 |
-| `GetCachedPart` | `self,SourceLibName,SourcePartName` | argc=1 |
-| `GetCachedSymbol` | `self,SourceLibName,SourceSymbolName,type` | argc=1 |
-| `GetCachedTime` | `self,nType,SourceLibName,objName,status` | argc=1 |
-| `GetCell` | `self,name,status` | argc=1 |
-| `GetCellCreateTime` | `self,cell,status` | argc=1 |
-| `GetCellModifyTime` | `self,cell,status` | argc=1 |
-| `GetContainingLib` | `self` | argc=1 |
-| `GetCreateTime` | `` | overloaded-C++ |
-| `GetDataFormatVersion` | `self,strVersion` | argc=1 |
-| `GetDataRelease` | `self` | argc=1 |
-| `GetDataVersion` | `self` | argc=1 |
-| `GetDefaultDrawnInstIsPrimitive` | `self,status` | argc=1 |
-| `GetDefaultFont` | `self,nFontType,status` | argc=1 |
-| `GetDefaultHorizontalLabelCount` | `self` | argc=1 |
-| `GetDefaultHorizontalLabelIsAscending` | `self` | argc=1 |
-| `GetDefaultHorizontalLabelIsChar` | `self` | argc=1 |
-| `GetDefaultHorizontalLabelWidth` | `self` | argc=1 |
-| `GetDefaultIsANSIGridRefs` | `self` | argc=1 |
-| `GetDefaultIsBorderDisplayed` | `self` | argc=1 |
-| `GetDefaultIsBorderPrinted` | `self` | argc=1 |
-| `GetDefaultIsGridRefDisplayed` | `self` | argc=1 |
-| `GetDefaultIsGridRefPrinted` | `self` | argc=1 |
-| `GetDefaultIsMetric` | `self` | argc=1 |
-| `GetDefaultIsTitleBlockDisplayed` | `self` | argc=1 |
-| `GetDefaultIsTitleBlockPrinted` | `self` | argc=1 |
-| `GetDefaultPageRec` | `self,status` | argc=1 |
-| `GetDefaultPinToPin` | `self` | argc=1 |
-| `GetDefaultPlacedInstIsPrimitive` | `self,status` | argc=1 |
-| `GetDefaultVerticalLabelCount` | `self` | argc=1 |
-| `GetDefaultVerticalLabelIsAscending` | `self` | argc=1 |
-| `GetDefaultVerticalLabelIsChar` | `self` | argc=1 |
-| `GetDefaultVerticalLabelWidth` | `self` | argc=1 |
-| `GetDirectoryEntryTimeZone` | `self,Name,nType,status` | argc=1 |
-| `GetDirectoryEntryTimeZoneValue` | `self,DboDirectoryEntry,*` | argc=1 |
-| `GetEffectivePropValueChoices` | `self,name,choices` | argc=1 |
-| `GetERCSymbol` | `self,Name,status` | argc=1 |
-| `GetExportBlock` | `self,name,status` | argc=1 |
-| `GetExportBlockCreateTime` | `self,exportBlock,status` | argc=1 |
-| `GetExportBlockModifyTime` | `self,exportBlock,status` | argc=1 |
-| `GetExternalView` | `self,Name,status` | argc=1 |
-| `GetFont` | `self,nFontId` | argc=1 |
-| `GetFontId` | `self,font` | argc=1 |
-| `GetGlobalSymbol` | `self,Name,status` | argc=1 |
-| `GetGraphicObject` | `self,name,status` | argc=1 |
-| `GetGraphicObjectCreateTime` | `self,graphic,status` | argc=1 |
-| `GetGraphicObjectModifyTime` | `self,graphic,status` | argc=1 |
-| `GetIndexForString` | `self,str,status` | argc=1 |
-| `GetLibStoragePtr` | `self` | argc=1 |
-| `GetModifiedPackages` | `pLibName,aOpenPackages,aModifiedPackages` | argc=1 |
-| `GetModifiedTime` | `self,objName,nType,status` | argc=1 |
-| `GetModifiedTimeInUTC` | `self,Name,nType,status` | argc=1 |
-| `GetModifyTime` | `` | overloaded-C++ |
-| `GetName` | `self,name` | argc=1 |
-| `GetObjectType` | `self` | argc=1 |
-| `GetOffPageSymbol` | `self,Name,status` | argc=1 |
-| `GetOldName` | `self,name` | argc=1 |
-| `GetOrStorageStream` | `designName,storageName,std::vector<,std::string,>&,std::vector<,std::string,>&` | argc=1 |
-| `GetOwner` | `self` | argc=1 |
-| `GetPackage` | `self,name,status` | argc=1 |
-| `GetPackageCreateTime` | `self,pPackage,status` | argc=1 |
-| `GetPackageFromMemory` | `self,aName,status` | argc=1 |
-| `GetPackageModifiedTime` | `self,apPackageName,aFileTime` | argc=1 |
-| `GetPackageModifyTime` | `self,pPackage,status` | argc=1 |
-| `GetPackageTimeZone` | `self,apPackageName,TimeZone` | argc=1 |
-| `GetParentObj` | `self` | argc=1 |
-| `GetPart` | `self,name,status` | argc=1 |
-| `GetPartCreateTime` | `self,part,status` | argc=1 |
-| `GetPartFieldMapping` | `self,nNum,field` | argc=1 |
-| `GetPartModifyTime` | `self,part,status` | argc=1 |
-| `GetPinShapeSymbol` | `self,name,status` | argc=1 |
-| `GetPortSymbol` | `self,Name,status` | argc=1 |
-| `GetSaveAsRelease` | `self` | argc=1 |
-| `GetSaveAsVersion` | `self` | argc=1 |
-| `GetSchematic` | `self,Name,status` | argc=1 |
-| `GetSourceLibName` | `self,objName,pCachedObj,libName` | argc=1 |
-| `GetSourceTimeZone` | `self,DboDirectoryEntry,*,aFileTimeToTimeT` | argc=1 |
-| `GetStringPtrFromIndex` | `self,nIndex,status` | argc=1 |
-| `GetSymbol` | `self,name,status` | argc=1 |
-| `GetSymbolCreateTime` | `self,symbol,status` | argc=1 |
-| `GetSymbolModifyTime` | `self,symbol,status` | argc=1 |
-| `GetSymbolTimeZone` | `self,aSymbolName,TimeZone` | argc=1 |
-| `GetTempPackageName` | `self,pszFormatString,name` | argc=1 |
-| `GetTempViewName` | `self,pszFormatString,name` | argc=1 |
-| `GetTitleBlockSymbol` | `self,name,status` | argc=1 |
-| `GetUpdatedPackage` | `self,name,status` | argc=1 |
-| `GetUserStorage` | `self,name,status` | argc=1 |
-| `GetView` | `self,name,status` | argc=1 |
-| `GetViewCreateTime` | `self,view,status` | argc=1 |
-| `GetViewModifyTime` | `self,view,status` | argc=1 |
-| `IsAutoBackupOn` | `self` | argc=1 |
-| `IsAutoSaving` | `self` | argc=1 |
-| `IsBitSet` | `self,bit` | argc=1 |
-| `isBundleTemplateExists` | `self` | argc=1 |
-| `IsBundleUsed` | `` | overloaded-C++ |
-| `IsCacheTimeSameAsSource` | `self,nType,SourceLibName,SourceName,status` | argc=1 |
-| `IsCheckOn` | `self` | argc=1 |
-| `IsCorrectOn` | `self` | argc=1 |
-| `IsLibModifiedOnDisk` | `self` | argc=1 |
-| `IsModified` | `self,status` | argc=1 |
-| `IsModifiedSinceAutoSave` | `self,status` | argc=1 |
-| `IsModifiedSinceLastAutoBackup` | `self,status` | argc=1 |
-| `IsObjectModified` | `self,pObj,status` | argc=1 |
-| `IsOccRetainAndRemapMode` | `self` | argc=1 |
-| `IsPackageInMemory` | `self,name,status` | argc=1 |
-| `IsPasswordProtected` | `self` | argc=1 |
-| `IsPersistent` | `` | overloaded-C++ |
-| `IsRemoveBundleSelected` | `self` | argc=1 |
-| `IsSymbolInMemory` | `self,name,status` | argc=1 |
-| `IsUnnamedBundle` | `` | overloaded-C++ |
-| `IsUpRevDialogBitSet` | `self` | argc=1 |
-| `LibTitle` | `` | zero-arg-ok |
-| `LimitExceeded` | `self` | argc=1 |
-| `MarkModified` | `` | overloaded-C++ |
-| `NewBookMarkSymbol` | `self,name,status` | argc=1 |
-| `NewCachedCell` | `self,pPackageName,pLibName,status` | argc=1 |
-| `NewCachedPackage` | `self,pPackageName,pLibName,status` | argc=1 |
-| `NewCachedPart` | `self,pPackageName,pLibName,status` | argc=1 |
-| `NewCachedSymbol` | `self,pSymbolName,pLibName,pObjectType,status` | argc=1 |
-| `NewCachesIter` | `` | overloaded-C++ |
-| `NewCell` | `self,name,status` | argc=1 |
-| `NewCellNamesIter` | `self,status` | argc=1 |
-| `NewCellsIter` | `self,status` | argc=1 |
-| `NewChangedObjectsIter` | `self,status` | argc=1 |
-| `NewERCSymbol` | `self,name,status` | argc=1 |
-| `NewExportBlockNamesIter` | `self,status` | argc=1 |
-| `NewExportBlocksIter` | `self,status` | argc=1 |
-| `NewExternalView` | `self,name,type,FileName,status` | argc=1 |
-| `NewGlobalSymbol` | `self,name,status` | argc=1 |
-| `NewGraphicNamesIter` | `self,status` | argc=1 |
-| `NewGraphicObject` | `self,name,status` | argc=1 |
-| `NewGraphicObjectsIter` | `self,status` | argc=1 |
-| `NewOffPageSymbol` | `self,name,status` | argc=1 |
-| `NewPackage` | `self,name,status` | argc=1 |
-| `NewPackageAlias` | `self,pPackage,alias` | argc=1 |
-| `NewPackageAliasesIter` | `self,name,status` | argc=1 |
-| `NewPackageNamesIter` | `` | overloaded-C++ |
-| `NewPackagesIter` | `self,status` | argc=1 |
-| `NewPart` | `self,name,status` | argc=1 |
-| `NewPartNamesIter` | `self,status` | argc=1 |
-| `NewPartsIter` | `self,status` | argc=1 |
-| `NewPinShapeSymbol` | `self,name,status` | argc=1 |
-| `NewPortSymbol` | `self,name,status` | argc=1 |
-| `NewSchematic` | `self,name,status` | argc=1 |
-| `NewSymbolNamesIter` | `self,status` | argc=1 |
-| `NewSymbolsIter` | `` | overloaded-C++ |
-| `NewTitleBlockSymbol` | `self,name,status` | argc=1 |
-| `NewUntitledName` | `self,name` | argc=1 |
-| `NewUnusedCacheEntriesIter` | `self,status` | argc=1 |
-| `NewViewNamesIter` | `self,status` | argc=1 |
-| `NewViewsIter` | `` | overloaded-C++ |
-| `OnChangeBundleDefinition` | `self` | argc=1 |
-| `PackageExists` | `self,name,status` | argc=1 |
-| `ReadForExistenceOfBundleMapData` | `` | overloaded-C++ |
-| `ReadPackage` | `self,aPackageName,DboPackage,*&,aCellDir,aPartDir` | argc=1 |
-| `RefreshPackageDirectory` | `self` | argc=1 |
-| `RegenerateMissingCell` | `self,pDev,strLibName,cellName,status` | argc=1 |
-| `RemoveBundles` | `self` | argc=1 |
-| `RemoveCell` | `self,cell` | argc=1 |
-| `RemoveGraphicObject` | `self,graphic` | argc=1 |
-| `RemoveOrStorageStream` | `designName,storageName,std::vector<,std::string,>&` | argc=1 |
-| `RemovePackage` | `self,pPackage` | argc=1 |
-| `RemovePart` | `self,part` | argc=1 |
-| `RemovePassword` | `self` | argc=1 |
-| `RemoveSymbol` | `self,symbol` | argc=1 |
-| `RemoveView` | `self,view` | argc=1 |
-| `RenameObject` | `self,pObj,newName` | argc=1 |
-| `RenameOrStorageStream` | `designName,storageName,streamName` | argc=1 |
-| `ReplaceCache` | `` | overloaded-C++ |
-| `ReplaceSourceLibName` | `self,objName,pCachedObj,libName,newLibName` | argc=1 |
-| `SaveAsRequired` | `self,nRelease,nVersion` | argc=1 |
-| `SaveBookMarkSymbol` | `self,pSymbol` | argc=1 |
-| `SaveCell` | `self,cell` | argc=1 |
-| `SaveERCSymbol` | `self,pSymbol` | argc=1 |
-| `SaveExternalView` | `self,view` | argc=1 |
-| `SaveGlobalSymbol` | `self,global` | argc=1 |
-| `SaveGraphicObject` | `self,graphic` | argc=1 |
-| `SaveObject` | `self,pObj` | argc=1 |
-| `SaveOffPageSymbol` | `self,offpage` | argc=1 |
-| `SavePackage` | `self,pPackage` | argc=1 |
-| `SavePackageAll` | `self,pPackage` | argc=1 |
-| `SavePart` | `self,part` | argc=1 |
-| `SavePinShapeSymbol` | `self,pinShape` | argc=1 |
-| `SavePortSymbol` | `self,port` | argc=1 |
-| `SaveSchematic` | `self,schematic` | argc=1 |
-| `SaveSymbol` | `self,symbol` | argc=1 |
-| `SaveTitleBlockSymbol` | `self,titleblock` | argc=1 |
-| `SaveView` | `self,view` | argc=1 |
-| `sEquivalentNames` | `name1,name2,status` | argc=1 |
-| `SetBit` | `self,bit,bOn` | argc=1 |
-| `SetCheckFlag` | `self,pCheck` | argc=1 |
-| `SetCorrectFlag` | `self,pCorrect` | argc=1 |
-| `SetDataRelease` | `self,pRelease` | argc=1 |
-| `SetDataVersion` | `self,pVersion` | argc=1 |
-| `SetDefaultDrawnInstIsPrimitive` | `self,bVal` | argc=1 |
-| `SetDefaultFont` | `self,nFontTYpe,font` | argc=1 |
-| `SetDefaultHorizontalLabelCount` | `self,pHorizontalLabelCount` | argc=1 |
-| `SetDefaultHorizontalLabelIsAscending` | `self,pHorizontalLabelIsAscending` | argc=1 |
-| `SetDefaultHorizontalLabelIsChar` | `self,pHorizontalLabelIsChar` | argc=1 |
-| `SetDefaultHorizontalLabelWidth` | `self,pHorizontalLabelWidth` | argc=1 |
-| `SetDefaultIsANSIGridRefs` | `self,pANSIGridRefs` | argc=1 |
-| `SetDefaultIsBorderDisplayed` | `self,pBorderDisplayed` | argc=1 |
-| `SetDefaultIsBorderPrinted` | `self,pBorderPrinted` | argc=1 |
-| `SetDefaultIsGridRefDisplayed` | `self,pGridRefDisplayed` | argc=1 |
-| `SetDefaultIsGridRefPrinted` | `self,pGridRefPrinted` | argc=1 |
-| `SetDefaultIsMetric` | `self,pIsMetric` | argc=1 |
-| `SetDefaultIsTitleBlockDisplayed` | `self,pTitleBlockDisplayed` | argc=1 |
-| `SetDefaultIsTitleBlockPrinted` | `self,pTitleBlockPrinted` | argc=1 |
-| `SetDefaultPinToPin` | `self,pPinToPin` | argc=1 |
-| `SetDefaultPlacedInstIsPrimitive` | `self,bVal` | argc=1 |
-| `SetDefaultVerticalLabelCount` | `self,pVerticalLabelCount` | argc=1 |
-| `SetDefaultVerticalLabelIsAscending` | `self,pVerticalLabelIsAscending` | argc=1 |
-| `SetDefaultVerticalLabelIsChar` | `self,pVerticalLabelIsChar` | argc=1 |
-| `SetDefaultVerticalLabelWidth` | `self,pVerticalLabelWidth` | argc=1 |
-| `SetFont` | `self,font` | argc=1 |
-| `SetIsAutoBackupOn` | `` | overloaded-C++ |
-| `SetIsAutoSaving` | `` | overloaded-C++ |
-| `SetIsBundleSaveInProgress` | `` | overloaded-C++ |
-| `SetLibStoragePtr` | `self,pShareStorage` | argc=1 |
-| `SetPartFieldMapping` | `self,nNum,str` | argc=1 |
-| `SetPassword` | `self,pPassword` | argc=1 |
-| `SetUpRevDialogBit` | `self` | argc=1 |
-| `sGetCreateTime` | `obj,status` | argc=1 |
-| `sGetDefaultAliasFont` | `obj,status` | argc=1 |
-| `sGetDefaultBookMarkFont` | `obj,status` | argc=1 |
-| `sGetDefaultBorderFont` | `obj,status` | argc=1 |
-| `sGetDefaultCommentFont` | `obj,status` | argc=1 |
-| `sGetDefaultDrawnInstIsPrimitive` | `obj,status` | argc=1 |
-| `sGetDefaultDrawnInstNameFont` | `obj,status` | argc=1 |
-| `sGetDefaultERCFont` | `obj,status` | argc=1 |
-| `sGetDefaultGraphicObjectFont` | `obj,status` | argc=1 |
-| `sGetDefaultNetNameFont` | `obj,status` | argc=1 |
-| `sGetDefaultNoConnectFont` | `obj,status` | argc=1 |
-| `sGetDefaultOffPageConnectorFont` | `obj,status` | argc=1 |
-| `sGetDefaultOptimizerFont` | `obj,status` | argc=1 |
-| `sGetDefaultParameterFont` | `obj,status` | argc=1 |
-| `sGetDefaultPartReferenceFont` | `obj,status` | argc=1 |
-| `sGetDefaultPartValueFont` | `obj,status` | argc=1 |
-| `sGetDefaultPinNameFont` | `obj,status` | argc=1 |
-| `sGetDefaultPinNumberFont` | `obj,status` | argc=1 |
-| `sGetDefaultPlacedInstIsPrimitive` | `obj,status` | argc=1 |
-| `sGetDefaultPortFont` | `obj,status` | argc=1 |
-| `sGetDefaultPowerFont` | `obj,status` | argc=1 |
-| `sGetDefaultPropertyFont` | `obj,status` | argc=1 |
-| `sGetDefaultPSpiceABMSymbolFont` | `obj,status` | argc=1 |
-| `sGetDefaultPSpiceSimulationDirectiveSymbolFont` | `obj,status` | argc=1 |
-| `sGetDefaultPSpiceSourceSymbolFont` | `obj,status` | argc=1 |
-| `sGetDefaultStimulusSymbolFont` | `obj,status` | argc=1 |
-| `sGetDefaultTitleBlockFont` | `obj,status` | argc=1 |
-| `sGetModifyTime` | `obj,status` | argc=1 |
-| `sGetName` | `obj,status` | argc=1 |
-| `sGetNormalizedName` | `` | overloaded-C++ |
-| `sGetNormalizedObjectName` | `name,NormalizedName` | argc=1 |
-| `sGetTempName` | `` | overloaded-C++ |
-| `sGetTimeFormat` | `obj,status` | argc=1 |
-| `sGetUnNormalizedObjectName` | `normalizeName,name` | argc=1 |
-| `SizeOfLibTitle` | `` | zero-arg-ok |
-| `SkipGraphicObjectOnFile` | `` | overloaded-C++ |
-| `SkipObjectOnFile` | `self,pFile,status` | argc=1 |
-| `SkipSymbolOnFile` | `` | overloaded-C++ |
-| `sSetTimeFormat` | `obj,format` | argc=1 |
-| `sSplitName` | `pszName,BaseName,Uniquifier,Extension` | argc=1 |
-| `strgStatus_get` | `self` | argc=1 |
-| `strgStatus_set` | `self,strgStatus` | argc=1 |
-| `SymbolExists` | `self,name,status` | argc=1 |
-| `TimeToString` | `self,time` | argc=1 |
-| `TopologicalOrderingOfBundlesUsed` | `self,SourceLibName,pTopologicalOrder` | argc=1 |
-| `UpdateCache` | `` | overloaded-C++ |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `AbortTransactions` | `self` | argc=1 | 0 | 1 |
+| `AddStringToStringTable` | `self,str,status` | argc=1 | 0 | 1 |
+| `CacheIsOutOfDate` | `` | overloaded-C++ | 0 | 1 |
+| `ChangePassword` | `self,pPassword` | argc=1 | 0 | 1 |
+| `CleanupCache` | `self` | argc=1 | 0 | 1 |
+| `ClearModified` | `` | overloaded-C++ | 0 | 3 |
+| `ClearModifiedAll` | `self,pDboPackage` | argc=1 | 0 | 1 |
+| `ClearPackageAll` | `self,DboPackage,*` | argc=1 | 0 | 1 |
+| `ClearSaveFlag` | `self,pPackage` | argc=1 | 0 | 1 |
+| `ClearUpRevDialogBit` | `self` | argc=1 | 0 | 1 |
+| `ComparePackageTimeFromDisk` | `self,aLibName,aPackageName,lPackageModFileTime` | argc=1 | 0 | 1 |
+| `ConvertRequired` | `self` | argc=1 | 0 | 1 |
+| `CopyCacheFromFile` | `self,pLibFile,status` | argc=1 | 0 | 1 |
+| `CopyCell` | `self,cell,newName,status` | argc=1 | 0 | 1 |
+| `CopyGraphicObject` | `self,graphic,newName,status` | argc=1 | 0 | 1 |
+| `CopyGraphicObjectFromFile` | `` | overloaded-C++ | 0 | 1 |
+| `CopyLibObject` | `self,LibObje,newName,status` | argc=1 | 0 | 1 |
+| `CopyObjectFromFile` | `` | overloaded-C++ | 0 | 1 |
+| `CopyPackage` | `self,pPackage,newName,status` | argc=1 | 0 | 1 |
+| `CopyPackageAll` | `self,pPackage,newName,status` | argc=1 | 5 | 1 |
+| `CopyPackageAllToCache` | `self,source,SourceLibName,SourcePackageName,status` | argc=1 | 0 | 1 |
+| `CopyPart` | `self,part,newName,status` | argc=1 | 0 | 1 |
+| `CopySymbol` | `self,symbol,newName,status` | argc=1 | 1 | 1 |
+| `CopySymbolFromFile` | `` | overloaded-C++ | 0 | 1 |
+| `CopyView` | `self,view,newName,status` | argc=1 | 0 | 1 |
+| `CorrectCacheEntry` | `self` | argc=1 | 0 | 1 |
+| `DeleteCell` | `self,cell` | argc=1 | 0 | 1 |
+| `DeleteGraphicObject` | `self,graphic` | argc=1 | 0 | 1 |
+| `DeleteLibObject` | `self,libObj` | argc=1 | 0 | 1 |
+| `DeleteLibStoragePtr` | `self` | argc=1 | 0 | 1 |
+| `DeletePackage` | `` | overloaded-C++ | 0 | 1 |
+| `DeletePackageAlias` | `` | overloaded-C++ | 1 | 1 |
+| `DeletePackageAll` | `self,pPackage` | argc=1 | 2 | 1 |
+| `DeletePart` | `self,part` | argc=1 | 0 | 1 |
+| `DeleteSymbol` | `self,symbol` | argc=1 | 1 | 1 |
+| `DeleteView` | `self,view` | argc=1 | 0 | 1 |
+| `DumpDirectoryInfo` | `self,pName` | argc=1 | 0 | 1 |
+| `ExplicitlyAddCellDirName` | `self,cellDir` | argc=1 | 0 | 1 |
+| `ExplicitlyAddPackageDirName` | `self,packageName` | argc=1 | 0 | 1 |
+| `ExplicitlyAddPartDirName` | `self,partDir` | argc=1 | 0 | 1 |
+| `ExplicitlyRemoveAliasName` | `self,AliasNameToBeRemoved` | argc=1 | 3 | 1 |
+| `ExplicitlyRemoveCellDirName` | `self,CellNameToBeRemoved` | argc=1 | 1 | 1 |
+| `ExplicitlyRemoveExportBlockDirName` | `self,SymbolNameToBeRemoved` | argc=1 | 0 | 1 |
+| `ExplicitlyRemoveGraphicDirName` | `self,SymbolNameToBeRemoved` | argc=1 | 0 | 1 |
+| `ExplicitlyRemovePackageDirName` | `self,PackageNameToBeRemoved` | argc=1 | 1 | 1 |
+| `ExplicitlyRemovePartDirName` | `self,PackageNameToBeRemoved` | argc=1 | 0 | 1 |
+| `ExplicitlyRemovePartsDirName` | `self,PartNameToBeRemoved` | argc=1 | 2 | 1 |
+| `ExplicitlyRemoveSymbolDirName` | `self,SymbolNameToBeRemoved` | argc=1 | 0 | 1 |
+| `ExplicitlyRemoveViewDirName` | `self,PackageNameToBeRemoved` | argc=1 | 0 | 1 |
+| `FixupMismatchedLibPartLookupNames` | `self` | argc=1 | 0 | 1 |
+| `GetBitFlag` | `self` | argc=1 | 0 | 1 |
+| `GetBookMarkSymbol` | `self,Name,status` | argc=1 | 0 | 1 |
+| `GetBundleDef` | `` | overloaded-C++ | 0 | 1 |
+| `GetBundleTemplateMap` | `self` | argc=1 | 0 | 3 |
+| `GetBundleTemplateMapForObject` | `self,pObject` | argc=1 | 0 | 1 |
+| `GetCachedCell` | `self,SourceLibName,SourceCellName` | argc=1 | 0 | 1 |
+| `GetCachedGraphicObject` | `self,SourceLibName,SourceGraphicName,type` | argc=1 | 0 | 1 |
+| `GetCachedPackage` | `self,SourceLibName,SourcePackageName` | argc=1 | 0 | 1 |
+| `GetCachedPart` | `self,SourceLibName,SourcePartName` | argc=1 | 0 | 1 |
+| `GetCachedSymbol` | `self,SourceLibName,SourceSymbolName,type` | argc=1 | 0 | 1 |
+| `GetCachedTime` | `self,nType,SourceLibName,objName,status` | argc=1 | 0 | 1 |
+| `GetCell` | `self,name,status` | argc=1 | 5 | 2 |
+| `GetCellCreateTime` | `self,cell,status` | argc=1 | 0 | 1 |
+| `GetCellModifyTime` | `self,cell,status` | argc=1 | 0 | 1 |
+| `GetContainingLib` | `self` | argc=1 | 2 | 20 |
+| `GetCreateTime` | `` | overloaded-C++ | 0 | 4 |
+| `GetDataFormatVersion` | `self,strVersion` | argc=1 | 0 | 1 |
+| `GetDataRelease` | `self` | argc=1 | 0 | 2 |
+| `GetDataVersion` | `self` | argc=1 | 0 | 2 |
+| `GetDefaultDrawnInstIsPrimitive` | `self,status` | argc=1 | 0 | 1 |
+| `GetDefaultFont` | `self,nFontType,status` | argc=1 | 0 | 1 |
+| `GetDefaultHorizontalLabelCount` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultHorizontalLabelIsAscending` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultHorizontalLabelIsChar` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultHorizontalLabelWidth` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultIsANSIGridRefs` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultIsBorderDisplayed` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultIsBorderPrinted` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultIsGridRefDisplayed` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultIsGridRefPrinted` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultIsMetric` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultIsTitleBlockDisplayed` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultIsTitleBlockPrinted` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultPageRec` | `self,status` | argc=1 | 0 | 1 |
+| `GetDefaultPinToPin` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultPlacedInstIsPrimitive` | `self,status` | argc=1 | 0 | 1 |
+| `GetDefaultVerticalLabelCount` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultVerticalLabelIsAscending` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultVerticalLabelIsChar` | `self` | argc=1 | 0 | 1 |
+| `GetDefaultVerticalLabelWidth` | `self` | argc=1 | 0 | 1 |
+| `GetDirectoryEntryTimeZone` | `self,Name,nType,status` | argc=1 | 0 | 1 |
+| `GetDirectoryEntryTimeZoneValue` | `self,DboDirectoryEntry,*` | argc=1 | 0 | 1 |
+| `GetEffectivePropValueChoices` | `self,name,choices` | argc=1 | 0 | 6 |
+| `GetERCSymbol` | `self,Name,status` | argc=1 | 0 | 1 |
+| `GetExportBlock` | `self,name,status` | argc=1 | 0 | 1 |
+| `GetExportBlockCreateTime` | `self,exportBlock,status` | argc=1 | 0 | 1 |
+| `GetExportBlockModifyTime` | `self,exportBlock,status` | argc=1 | 0 | 1 |
+| `GetExternalView` | `self,Name,status` | argc=1 | 0 | 1 |
+| `GetFont` | `self,nFontId` | argc=1 | 1 | 5 |
+| `GetFontId` | `self,font` | argc=1 | 0 | 4 |
+| `GetGlobalSymbol` | `self,Name,status` | argc=1 | 0 | 2 |
+| `GetGraphicObject` | `self,name,status` | argc=1 | 0 | 1 |
+| `GetGraphicObjectCreateTime` | `self,graphic,status` | argc=1 | 0 | 1 |
+| `GetGraphicObjectModifyTime` | `self,graphic,status` | argc=1 | 0 | 1 |
+| `GetIndexForString` | `self,str,status` | argc=1 | 0 | 2 |
+| `GetLibStoragePtr` | `self` | argc=1 | 0 | 1 |
+| `GetModifiedPackages` | `pLibName,aOpenPackages,aModifiedPackages` | argc=1 | 0 | 1 |
+| `GetModifiedTime` | `self,objName,nType,status` | argc=1 | 0 | 1 |
+| `GetModifiedTimeInUTC` | `self,Name,nType,status` | argc=1 | 0 | 1 |
+| `GetModifyTime` | `` | overloaded-C++ | 0 | 4 |
+| `GetName` | `self,name` | argc=1 | 185 | 18 |
+| `GetObjectType` | `self` | argc=1 | 86 | 57 |
+| `GetOffPageSymbol` | `self,Name,status` | argc=1 | 0 | 1 |
+| `GetOldName` | `self,name` | argc=1 | 0 | 1 |
+| `GetOrStorageStream` | `designName,storageName,std::vector<,std::string,>&,std::vector<,std::string,>&` | argc=1 | 0 | 1 |
+| `GetOwner` | `self` | argc=1 | 69 | 19 |
+| `GetPackage` | `self,name,status` | argc=1 | 26 | 2 |
+| `GetPackageCreateTime` | `self,pPackage,status` | argc=1 | 0 | 1 |
+| `GetPackageFromMemory` | `self,aName,status` | argc=1 | 0 | 2 |
+| `GetPackageModifiedTime` | `self,apPackageName,aFileTime` | argc=1 | 0 | 1 |
+| `GetPackageModifyTime` | `self,pPackage,status` | argc=1 | 0 | 1 |
+| `GetPackageTimeZone` | `self,apPackageName,TimeZone` | argc=1 | 0 | 1 |
+| `GetParentObj` | `self` | argc=1 | 0 | 18 |
+| `GetPart` | `self,name,status` | argc=1 | 1 | 3 |
+| `GetPartCreateTime` | `self,part,status` | argc=1 | 0 | 1 |
+| `GetPartFieldMapping` | `self,nNum,field` | argc=1 | 0 | 1 |
+| `GetPartModifyTime` | `self,part,status` | argc=1 | 0 | 1 |
+| `GetPinShapeSymbol` | `self,name,status` | argc=1 | 1 | 1 |
+| `GetPortSymbol` | `self,Name,status` | argc=1 | 0 | 2 |
+| `GetSaveAsRelease` | `self` | argc=1 | 0 | 1 |
+| `GetSaveAsVersion` | `self` | argc=1 | 0 | 1 |
+| `GetSchematic` | `self,Name,status` | argc=1 | 4 | 7 |
+| `GetSourceLibName` | `self,objName,pCachedObj,libName` | argc=1 | 6 | 6 |
+| `GetSourceTimeZone` | `self,DboDirectoryEntry,*,aFileTimeToTimeT` | argc=1 | 0 | 1 |
+| `GetStringPtrFromIndex` | `self,nIndex,status` | argc=1 | 0 | 2 |
+| `GetSymbol` | `self,name,status` | argc=1 | 9 | 3 |
+| `GetSymbolCreateTime` | `self,symbol,status` | argc=1 | 0 | 1 |
+| `GetSymbolModifyTime` | `self,symbol,status` | argc=1 | 0 | 1 |
+| `GetSymbolTimeZone` | `self,aSymbolName,TimeZone` | argc=1 | 0 | 1 |
+| `GetTempPackageName` | `self,pszFormatString,name` | argc=1 | 0 | 1 |
+| `GetTempViewName` | `self,pszFormatString,name` | argc=1 | 0 | 1 |
+| `GetTitleBlockSymbol` | `self,name,status` | argc=1 | 0 | 1 |
+| `GetUpdatedPackage` | `self,name,status` | argc=1 | 0 | 1 |
+| `GetUserStorage` | `self,name,status` | argc=1 | 0 | 3 |
+| `GetView` | `self,name,status` | argc=1 | 0 | 1 |
+| `GetViewCreateTime` | `self,view,status` | argc=1 | 0 | 1 |
+| `GetViewModifyTime` | `self,view,status` | argc=1 | 0 | 1 |
+| `IsAutoBackupOn` | `self` | argc=1 | 0 | 1 |
+| `IsAutoSaving` | `self` | argc=1 | 0 | 1 |
+| `IsBitSet` | `self,bit` | argc=1 | 0 | 2 |
+| `isBundleTemplateExists` | `self` | argc=1 | 0 | 3 |
+| `IsBundleUsed` | `` | overloaded-C++ | 0 | 1 |
+| `IsCacheTimeSameAsSource` | `self,nType,SourceLibName,SourceName,status` | argc=1 | 0 | 1 |
+| `IsCheckOn` | `self` | argc=1 | 0 | 1 |
+| `IsCorrectOn` | `self` | argc=1 | 0 | 1 |
+| `IsLibModifiedOnDisk` | `self` | argc=1 | 0 | 1 |
+| `IsModified` | `self,status` | argc=1 | 7 | 6 |
+| `IsModifiedSinceAutoSave` | `self,status` | argc=1 | 0 | 1 |
+| `IsModifiedSinceLastAutoBackup` | `self,status` | argc=1 | 0 | 1 |
+| `IsObjectModified` | `self,pObj,status` | argc=1 | 0 | 1 |
+| `IsOccRetainAndRemapMode` | `self` | argc=1 | 0 | 1 |
+| `IsPackageInMemory` | `self,name,status` | argc=1 | 0 | 1 |
+| `IsPasswordProtected` | `self` | argc=1 | 0 | 1 |
+| `IsPersistent` | `` | overloaded-C++ | 1 | 3 |
+| `IsRemoveBundleSelected` | `self` | argc=1 | 0 | 1 |
+| `IsSymbolInMemory` | `self,name,status` | argc=1 | 0 | 1 |
+| `IsUnnamedBundle` | `` | overloaded-C++ | 0 | 1 |
+| `IsUpRevDialogBitSet` | `self` | argc=1 | 0 | 1 |
+| `LibTitle` | `` | zero-arg-ok | 0 | 1 |
+| `LimitExceeded` | `self` | argc=1 | 0 | 1 |
+| `MarkModified` | `` | overloaded-C++ | 13 | 13 |
+| `NewBookMarkSymbol` | `self,name,status` | argc=1 | 0 | 1 |
+| `NewCachedCell` | `self,pPackageName,pLibName,status` | argc=1 | 0 | 1 |
+| `NewCachedPackage` | `self,pPackageName,pLibName,status` | argc=1 | 0 | 1 |
+| `NewCachedPart` | `self,pPackageName,pLibName,status` | argc=1 | 0 | 1 |
+| `NewCachedSymbol` | `self,pSymbolName,pLibName,pObjectType,status` | argc=1 | 0 | 1 |
+| `NewCachesIter` | `` | overloaded-C++ | 5 | 2 |
+| `NewCell` | `self,name,status` | argc=1 | 2 | 1 |
+| `NewCellNamesIter` | `self,status` | argc=1 | 0 | 1 |
+| `NewCellsIter` | `self,status` | argc=1 | 0 | 1 |
+| `NewChangedObjectsIter` | `self,status` | argc=1 | 0 | 1 |
+| `NewERCSymbol` | `self,name,status` | argc=1 | 0 | 1 |
+| `NewExportBlockNamesIter` | `self,status` | argc=1 | 0 | 1 |
+| `NewExportBlocksIter` | `self,status` | argc=1 | 0 | 1 |
+| `NewExternalView` | `self,name,type,FileName,status` | argc=1 | 0 | 1 |
+| `NewGlobalSymbol` | `self,name,status` | argc=1 | 0 | 1 |
+| `NewGraphicNamesIter` | `self,status` | argc=1 | 0 | 1 |
+| `NewGraphicObject` | `self,name,status` | argc=1 | 0 | 1 |
+| `NewGraphicObjectsIter` | `self,status` | argc=1 | 0 | 1 |
+| `NewOffPageSymbol` | `self,name,status` | argc=1 | 0 | 1 |
+| `NewPackage` | `self,name,status` | argc=1 | 2 | 1 |
+| `NewPackageAlias` | `self,pPackage,alias` | argc=1 | 2 | 1 |
+| `NewPackageAliasesIter` | `self,name,status` | argc=1 | 5 | 1 |
+| `NewPackageNamesIter` | `` | overloaded-C++ | 3 | 1 |
+| `NewPackagesIter` | `self,status` | argc=1 | 3 | 1 |
+| `NewPart` | `self,name,status` | argc=1 | 2 | 1 |
+| `NewPartNamesIter` | `self,status` | argc=1 | 0 | 2 |
+| `NewPartsIter` | `self,status` | argc=1 | 11 | 4 |
+| `NewPinShapeSymbol` | `self,name,status` | argc=1 | 0 | 1 |
+| `NewPortSymbol` | `self,name,status` | argc=1 | 0 | 1 |
+| `NewSchematic` | `self,name,status` | argc=1 | 0 | 1 |
+| `NewSymbolNamesIter` | `self,status` | argc=1 | 0 | 1 |
+| `NewSymbolsIter` | `` | overloaded-C++ | 4 | 1 |
+| `NewTitleBlockSymbol` | `self,name,status` | argc=1 | 0 | 1 |
+| `NewUntitledName` | `self,name` | argc=1 | 0 | 1 |
+| `NewUnusedCacheEntriesIter` | `self,status` | argc=1 | 0 | 1 |
+| `NewViewNamesIter` | `self,status` | argc=1 | 1 | 1 |
+| `NewViewsIter` | `` | overloaded-C++ | 20 | 1 |
+| `OnChangeBundleDefinition` | `self` | argc=1 | 0 | 1 |
+| `PackageExists` | `self,name,status` | argc=1 | 5 | 1 |
+| `ReadForExistenceOfBundleMapData` | `` | overloaded-C++ | 0 | 1 |
+| `ReadPackage` | `self,aPackageName,DboPackage,*&,aCellDir,aPartDir` | argc=1 | 0 | 1 |
+| `RefreshPackageDirectory` | `self` | argc=1 | 0 | 1 |
+| `RegenerateMissingCell` | `self,pDev,strLibName,cellName,status` | argc=1 | 0 | 1 |
+| `RemoveBundles` | `self` | argc=1 | 0 | 1 |
+| `RemoveCell` | `self,cell` | argc=1 | 0 | 1 |
+| `RemoveGraphicObject` | `self,graphic` | argc=1 | 0 | 1 |
+| `RemoveOrStorageStream` | `designName,storageName,std::vector<,std::string,>&` | argc=1 | 0 | 1 |
+| `RemovePackage` | `self,pPackage` | argc=1 | 0 | 1 |
+| `RemovePart` | `self,part` | argc=1 | 0 | 1 |
+| `RemovePassword` | `self` | argc=1 | 0 | 1 |
+| `RemoveSymbol` | `self,symbol` | argc=1 | 0 | 1 |
+| `RemoveView` | `self,view` | argc=1 | 0 | 1 |
+| `RenameObject` | `self,pObj,newName` | argc=1 | 0 | 1 |
+| `RenameOrStorageStream` | `designName,storageName,streamName` | argc=1 | 0 | 1 |
+| `ReplaceCache` | `` | overloaded-C++ | 0 | 1 |
+| `ReplaceSourceLibName` | `self,objName,pCachedObj,libName,newLibName` | argc=1 | 4 | 1 |
+| `SaveAsRequired` | `self,nRelease,nVersion` | argc=1 | 0 | 1 |
+| `SaveBookMarkSymbol` | `self,pSymbol` | argc=1 | 0 | 1 |
+| `SaveCell` | `self,cell` | argc=1 | 0 | 1 |
+| `SaveERCSymbol` | `self,pSymbol` | argc=1 | 0 | 1 |
+| `SaveExternalView` | `self,view` | argc=1 | 0 | 1 |
+| `SaveGlobalSymbol` | `self,global` | argc=1 | 0 | 1 |
+| `SaveGraphicObject` | `self,graphic` | argc=1 | 0 | 1 |
+| `SaveObject` | `self,pObj` | argc=1 | 0 | 1 |
+| `SaveOffPageSymbol` | `self,offpage` | argc=1 | 0 | 1 |
+| `SavePackage` | `self,pPackage` | argc=1 | 0 | 1 |
+| `SavePackageAll` | `self,pPackage` | argc=1 | 6 | 1 |
+| `SavePart` | `self,part` | argc=1 | 0 | 1 |
+| `SavePinShapeSymbol` | `self,pinShape` | argc=1 | 0 | 1 |
+| `SavePortSymbol` | `self,port` | argc=1 | 0 | 1 |
+| `SaveSchematic` | `self,schematic` | argc=1 | 0 | 1 |
+| `SaveSymbol` | `self,symbol` | argc=1 | 0 | 1 |
+| `SaveTitleBlockSymbol` | `self,titleblock` | argc=1 | 0 | 1 |
+| `SaveView` | `self,view` | argc=1 | 0 | 1 |
+| `sEquivalentNames` | `name1,name2,status` | argc=1 | 0 | 1 |
+| `SetBit` | `self,bit,bOn` | argc=1 | 2 | 2 |
+| `SetCheckFlag` | `self,pCheck` | argc=1 | 0 | 1 |
+| `SetCorrectFlag` | `self,pCorrect` | argc=1 | 0 | 1 |
+| `SetDataRelease` | `self,pRelease` | argc=1 | 0 | 1 |
+| `SetDataVersion` | `self,pVersion` | argc=1 | 0 | 1 |
+| `SetDefaultDrawnInstIsPrimitive` | `self,bVal` | argc=1 | 2 | 1 |
+| `SetDefaultFont` | `self,nFontTYpe,font` | argc=1 | 48 | 1 |
+| `SetDefaultHorizontalLabelCount` | `self,pHorizontalLabelCount` | argc=1 | 0 | 1 |
+| `SetDefaultHorizontalLabelIsAscending` | `self,pHorizontalLabelIsAscending` | argc=1 | 0 | 1 |
+| `SetDefaultHorizontalLabelIsChar` | `self,pHorizontalLabelIsChar` | argc=1 | 0 | 1 |
+| `SetDefaultHorizontalLabelWidth` | `self,pHorizontalLabelWidth` | argc=1 | 0 | 1 |
+| `SetDefaultIsANSIGridRefs` | `self,pANSIGridRefs` | argc=1 | 0 | 1 |
+| `SetDefaultIsBorderDisplayed` | `self,pBorderDisplayed` | argc=1 | 0 | 1 |
+| `SetDefaultIsBorderPrinted` | `self,pBorderPrinted` | argc=1 | 0 | 1 |
+| `SetDefaultIsGridRefDisplayed` | `self,pGridRefDisplayed` | argc=1 | 0 | 1 |
+| `SetDefaultIsGridRefPrinted` | `self,pGridRefPrinted` | argc=1 | 0 | 1 |
+| `SetDefaultIsMetric` | `self,pIsMetric` | argc=1 | 0 | 1 |
+| `SetDefaultIsTitleBlockDisplayed` | `self,pTitleBlockDisplayed` | argc=1 | 0 | 1 |
+| `SetDefaultIsTitleBlockPrinted` | `self,pTitleBlockPrinted` | argc=1 | 0 | 1 |
+| `SetDefaultPinToPin` | `self,pPinToPin` | argc=1 | 0 | 1 |
+| `SetDefaultPlacedInstIsPrimitive` | `self,bVal` | argc=1 | 2 | 1 |
+| `SetDefaultVerticalLabelCount` | `self,pVerticalLabelCount` | argc=1 | 0 | 1 |
+| `SetDefaultVerticalLabelIsAscending` | `self,pVerticalLabelIsAscending` | argc=1 | 0 | 1 |
+| `SetDefaultVerticalLabelIsChar` | `self,pVerticalLabelIsChar` | argc=1 | 0 | 1 |
+| `SetDefaultVerticalLabelWidth` | `self,pVerticalLabelWidth` | argc=1 | 0 | 1 |
+| `SetFont` | `self,font` | argc=1 | 2 | 5 |
+| `SetIsAutoBackupOn` | `` | overloaded-C++ | 0 | 1 |
+| `SetIsAutoSaving` | `` | overloaded-C++ | 0 | 1 |
+| `SetIsBundleSaveInProgress` | `` | overloaded-C++ | 0 | 1 |
+| `SetLibStoragePtr` | `self,pShareStorage` | argc=1 | 0 | 1 |
+| `SetPartFieldMapping` | `self,nNum,str` | argc=1 | 16 | 1 |
+| `SetPassword` | `self,pPassword` | argc=1 | 0 | 1 |
+| `SetUpRevDialogBit` | `self` | argc=1 | 0 | 1 |
+| `sGetCreateTime` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetDefaultAliasFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultBookMarkFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultBorderFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultCommentFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultDrawnInstIsPrimitive` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultDrawnInstNameFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultERCFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultGraphicObjectFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultNetNameFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultNoConnectFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultOffPageConnectorFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultOptimizerFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultParameterFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultPartReferenceFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultPartValueFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultPinNameFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultPinNumberFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultPlacedInstIsPrimitive` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultPortFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultPowerFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultPropertyFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultPSpiceABMSymbolFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultPSpiceSimulationDirectiveSymbolFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultPSpiceSourceSymbolFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultStimulusSymbolFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDefaultTitleBlockFont` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetModifyTime` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetName` | `obj,status` | argc=1 | 1 | 15 |
+| `sGetNormalizedName` | `` | overloaded-C++ | 0 | 1 |
+| `sGetNormalizedObjectName` | `name,NormalizedName` | argc=1 | 0 | 1 |
+| `sGetTempName` | `` | overloaded-C++ | 0 | 1 |
+| `sGetTimeFormat` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetUnNormalizedObjectName` | `normalizeName,name` | argc=1 | 0 | 1 |
+| `SizeOfLibTitle` | `` | zero-arg-ok | 0 | 1 |
+| `SkipGraphicObjectOnFile` | `` | overloaded-C++ | 0 | 1 |
+| `SkipObjectOnFile` | `self,pFile,status` | argc=1 | 0 | 1 |
+| `SkipSymbolOnFile` | `` | overloaded-C++ | 0 | 1 |
+| `sSetTimeFormat` | `obj,format` | argc=1 | 0 | 1 |
+| `sSplitName` | `pszName,BaseName,Uniquifier,Extension` | argc=1 | 0 | 1 |
+| `strgStatus_get` | `self` | argc=1 | 0 | 1 |
+| `strgStatus_set` | `self,strgStatus` | argc=1 | 0 | 1 |
+| `SymbolExists` | `self,name,status` | argc=1 | 0 | 1 |
+| `TimeToString` | `self,time` | argc=1 | 0 | 1 |
+| `TopologicalOrderingOfBundlesUsed` | `self,SourceLibName,pTopologicalOrder` | argc=1 | 0 | 1 |
+| `UpdateCache` | `` | overloaded-C++ | 3 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboLib_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboLib_<method> $obj <args...>`

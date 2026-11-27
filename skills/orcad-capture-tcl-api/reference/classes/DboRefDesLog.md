@@ -1,10 +1,10 @@
-# DboRefDesLog (4 methods)
+# DboRefDesLog (4 methods, official_calls(upper bound)=0)
 
-| method | params | note |
-| --- | --- | --- |
-| `GetLogType` | `self` | argc=1 |
-| `GetMessage` | `self` | argc=1 |
-| `SetLogType` | `self,pLogType` | argc=1 |
-| `SetMessage` | `self,pMessage` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `GetLogType` | `self` | argc=1 | 0 | 1 |
+| `GetMessage` | `self` | argc=1 | 0 | 1 |
+| `SetLogType` | `self,pLogType` | argc=1 | 0 | 1 |
+| `SetMessage` | `self,pMessage` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboRefDesLog_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboRefDesLog_<method> $obj <args...>`

@@ -201,3 +201,27 @@ orjson_delete $node / orjson_free $node
 | 导出 PDF | `examples/export-pdf.tcl` |
 | 插件骨架 | `examples/plugin-skeleton.tcl` |
 | 导出宿主人面 | `scripts/export-host-commands.tcl`（`--probe-place` / `--probe-pdf` / `--probe-bom`） |
+
+## 9. 官方使用度（决定先看哪个 API）
+
+`[实测]` 扫描 564 个官方 `.tcl`，2,217 个唯一 Dbo 方法名里**只有 338 个真的被用过**；292 个类里 **50 个零使用**。
+
+调用次数（`official-usage.tsv` 的 `official_calls` 列）Top：
+
+| 方法 | 次数 | 同名声明的类数 | 可信度 |
+| --- | --- | --- | --- |
+| `Failed` | 240 | 1 | 真实（只有 `DboState`） |
+| `GetOptionString` | 121 | 1 | 真实 |
+| `Update` | 113 | 1 | 真实 |
+| `GetName` | 185 | **18** | 高估（多类共用名） |
+| `GetEffectivePropStringValue` | 109 | 2 | 基本可信 |
+| `GetObjectType` | 86 | 3 | 基本可信 |
+| `Create` | 80 | 1 | 真实 |
+| `GetBoundingBox` | 79 | 3 | 基本可信 |
+| `OK` | 61 | 1 | 真实 |
+| `WriteToStatusBar` | 53 | 1 | 真实 |
+| `NextPage` / `NextView` | 41 / 35 | 1 | 真实 |
+
+用法：`shared_by_classes > 1` 表示该名称被多个类共用，计数不能归因到单个类；`shared = 1` 的计数可信。据此判断"这个 API 官方走不走得通"比看文档描述更硬。
+
+数据文件：[`official-usage.tsv`](official-usage.tsv)（3,941 行：command / class / method / official_calls / shared_by_classes）；逐类版本见 [`classes/`](classes/README.md) 每个文件里的 `official` 与 `shared` 两列。

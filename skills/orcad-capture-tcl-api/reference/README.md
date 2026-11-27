@@ -72,6 +72,7 @@
 | [classes/](classes/README.md) | 293 个文件 / 256 KB | **按类拆分的签名表**：每个 Dbo 类一个文件（`DboLibPart.md` 等），只加载需要的类，不必吞 245 KB 的 signatures.md；[classes/README.md](classes/README.md) 是全类索引（类名 → 方法数 → 文件） |
 | [traps.tsv](traps.tsv) | 30 行 / 7 列 | **坑表**：`api` `area` `symptom` `cause` `fix` `evidence` `status`；可直接按 `area`/`status` 过滤。`status` 取值：`verified`(23) / `unknown`(6) / `unknown-enum`(1) |
 | [llm-facts.md](llm-facts.md) | 事实库 | 硬规则、精确签名、假成功清单、报错映射、决策表、未验证清单——先读这个 |
+| [official-usage.tsv](official-usage.tsv) | 3,941 行 / 5 列 | **官方使用度**：`command` `class` `method` `official_calls` `shared_by_classes`。2,217 个方法名里只有 338 个被官方用过、50 个类零使用；`shared=1` 的计数可信，`>1` 说明是泛名、不能归因到单个类 |
 
 ## 建议阅读路径
 

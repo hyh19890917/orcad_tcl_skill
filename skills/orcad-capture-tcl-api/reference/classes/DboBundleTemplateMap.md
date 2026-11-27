@@ -1,49 +1,49 @@
-# DboBundleTemplateMap (43 methods)
+# DboBundleTemplateMap (43 methods, official_calls(upper bound)=0)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `AddBundleMember` | `self,name,memberOfName,type,owner` | argc=1 |
-| `AddBundleNet` | `self,name,type,owner` | argc=1 |
-| `AddBundleTemplate` | `self,name,owner,width,isNewBundleCreated` | argc=1 |
-| `BundleAlreadyThere` | `self,bundleName` | argc=1 |
-| `ClearEditMaps` | `self` | argc=1 |
-| `CopyBundleDefToLib` | `self,NGName,destLib` | argc=1 |
-| `DeleteBundleMember` | `self,name,memberOfName` | argc=1 |
-| `ExportToDCF` | `pLib,fileName,FElockNF` | argc=1 |
-| `GetAllUnNamedBundles` | `` | overloaded-C++ |
-| `GetBundle` | `` | overloaded-C++ |
-| `GetBundleMembers` | `self,name,bundleMemberArray` | argc=1 |
-| `GetBundleNet` | `` | overloaded-C++ |
-| `GetBundleNets` | `` | overloaded-C++ |
-| `GetBundleProperty` | `self,BundleName,PropName` | argc=1 |
-| `GetBundlePropertyMap` | `self,BundleName,PropertiesMap` | argc=1 |
-| `GetBundleTemplates` | `` | overloaded-C++ |
-| `GetDisplayBundleName` | `` | overloaded-C++ |
-| `GetInternalBundleName` | `` | overloaded-C++ |
-| `GetMemerIndexFromUnnamedBundle` | `self,pObj,memberName` | argc=1 |
-| `GetNameForUnNamedBundle` | `self,index,pObj,bundleNetName,parentName` | argc=1 |
-| `GetNextPort` | `self,nPos,Name` | argc=1 |
-| `GetPortIter` | `self` | argc=1 |
-| `GetSubBundleName` | `` | overloaded-C++ |
-| `GetTempName` | `self,isTop,BundleName,bundleTempName` | argc=1 |
-| `GetUnnamedBundleOwnerObject` | `self,pObj,newIndex` | argc=1 |
-| `GetUnnamedBundleWidth` | `self,pObject,width` | argc=1 |
-| `IsBundle` | `self,name` | argc=1 |
-| `IsBundleMember` | `` | overloaded-C++ |
-| `IsInstantiatedBundleMember` | `self,bundleOwner,bundleName,memberName` | argc=1 |
-| `IsInternalProperty` | `propName` | argc=1 |
-| `isMemberAddable` | `` | overloaded-C++ |
-| `LookUpNets` | `self,name` | argc=1 |
-| `MarkModifiedDesign` | `self` | argc=1 |
-| `MoveUpDown` | `self,BundleName,index,isUp` | argc=1 |
-| `NewBundleMemberIter` | `self,name` | argc=1 |
-| `NewBundleNetIter` | `` | overloaded-C++ |
-| `ReadOneBundle` | `self,file,TemplateVersion` | argc=1 |
-| `RemoveBundleSafe` | `self,name,BundleSourceLibName` | argc=1 |
-| `RenameBundleMember` | `self,name,OldmemberOfName,NewMemberName` | argc=1 |
-| `SaveOneBundle` | `self,file,BundleName` | argc=1 |
-| `sGetMemberTypeIdGivenString` | `memberType` | argc=1 |
-| `sGetMemberTypeStringGivenId` | `id` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `AddBundleMember` | `self,name,memberOfName,type,owner` | argc=1 | 0 | 1 |
+| `AddBundleNet` | `self,name,type,owner` | argc=1 | 0 | 1 |
+| `AddBundleTemplate` | `self,name,owner,width,isNewBundleCreated` | argc=1 | 0 | 1 |
+| `BundleAlreadyThere` | `self,bundleName` | argc=1 | 0 | 1 |
+| `ClearEditMaps` | `self` | argc=1 | 0 | 2 |
+| `CopyBundleDefToLib` | `self,NGName,destLib` | argc=1 | 0 | 1 |
+| `DeleteBundleMember` | `self,name,memberOfName` | argc=1 | 0 | 1 |
+| `ExportToDCF` | `pLib,fileName,FElockNF` | argc=1 | 0 | 1 |
+| `GetAllUnNamedBundles` | `` | overloaded-C++ | 0 | 1 |
+| `GetBundle` | `` | overloaded-C++ | 0 | 1 |
+| `GetBundleMembers` | `self,name,bundleMemberArray` | argc=1 | 0 | 1 |
+| `GetBundleNet` | `` | overloaded-C++ | 0 | 1 |
+| `GetBundleNets` | `` | overloaded-C++ | 0 | 1 |
+| `GetBundleProperty` | `self,BundleName,PropName` | argc=1 | 0 | 2 |
+| `GetBundlePropertyMap` | `self,BundleName,PropertiesMap` | argc=1 | 0 | 2 |
+| `GetBundleTemplates` | `` | overloaded-C++ | 0 | 1 |
+| `GetDisplayBundleName` | `` | overloaded-C++ | 0 | 1 |
+| `GetInternalBundleName` | `` | overloaded-C++ | 0 | 1 |
+| `GetMemerIndexFromUnnamedBundle` | `self,pObj,memberName` | argc=1 | 0 | 1 |
+| `GetNameForUnNamedBundle` | `self,index,pObj,bundleNetName,parentName` | argc=1 | 0 | 1 |
+| `GetNextPort` | `self,nPos,Name` | argc=1 | 0 | 1 |
+| `GetPortIter` | `self` | argc=1 | 0 | 1 |
+| `GetSubBundleName` | `` | overloaded-C++ | 0 | 1 |
+| `GetTempName` | `self,isTop,BundleName,bundleTempName` | argc=1 | 0 | 1 |
+| `GetUnnamedBundleOwnerObject` | `self,pObj,newIndex` | argc=1 | 0 | 1 |
+| `GetUnnamedBundleWidth` | `self,pObject,width` | argc=1 | 0 | 1 |
+| `IsBundle` | `self,name` | argc=1 | 0 | 4 |
+| `IsBundleMember` | `` | overloaded-C++ | 0 | 5 |
+| `IsInstantiatedBundleMember` | `self,bundleOwner,bundleName,memberName` | argc=1 | 0 | 1 |
+| `IsInternalProperty` | `propName` | argc=1 | 0 | 1 |
+| `isMemberAddable` | `` | overloaded-C++ | 0 | 2 |
+| `LookUpNets` | `self,name` | argc=1 | 0 | 1 |
+| `MarkModifiedDesign` | `self` | argc=1 | 0 | 1 |
+| `MoveUpDown` | `self,BundleName,index,isUp` | argc=1 | 0 | 2 |
+| `NewBundleMemberIter` | `self,name` | argc=1 | 0 | 1 |
+| `NewBundleNetIter` | `` | overloaded-C++ | 0 | 1 |
+| `ReadOneBundle` | `self,file,TemplateVersion` | argc=1 | 0 | 1 |
+| `RemoveBundleSafe` | `self,name,BundleSourceLibName` | argc=1 | 0 | 1 |
+| `RenameBundleMember` | `self,name,OldmemberOfName,NewMemberName` | argc=1 | 0 | 1 |
+| `SaveOneBundle` | `self,file,BundleName` | argc=1 | 0 | 1 |
+| `sGetMemberTypeIdGivenString` | `memberType` | argc=1 | 0 | 1 |
+| `sGetMemberTypeStringGivenId` | `id` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboBundleTemplateMap_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboBundleTemplateMap_<method> $obj <args...>`

@@ -1,16 +1,16 @@
-# DboERC (10 methods)
+# DboERC (10 methods, official_calls(upper bound)=9)
 
-| method | params | note |
-| --- | --- | --- |
-| `GetDetail` | `self,detail` | argc=1 |
-| `GetError` | `self,error` | argc=1 |
-| `GetLocationString` | `self,location` | argc=1 |
-| `GetSeverity` | `self,status` | argc=1 |
-| `SetLocation` | `self,location` | argc=1 |
-| `SetMirror` | `self,mirror` | argc=1 |
-| `SetRotation` | `self,rotation` | argc=1 |
-| `sGetDetail` | `obj,status` | argc=1 |
-| `sGetError` | `obj,status` | argc=1 |
-| `sGetSeverity` | `obj,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `GetDetail` | `self,detail` | argc=1 | 0 | 1 |
+| `GetError` | `self,error` | argc=1 | 0 | 1 |
+| `GetLocationString` | `self,location` | argc=1 | 0 | 1 |
+| `GetSeverity` | `self,status` | argc=1 | 0 | 1 |
+| `SetLocation` | `self,location` | argc=1 | 9 | 12 |
+| `SetMirror` | `self,mirror` | argc=1 | 0 | 9 |
+| `SetRotation` | `self,rotation` | argc=1 | 0 | 13 |
+| `sGetDetail` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetError` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetSeverity` | `obj,status` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboERC_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboERC_<method> $obj <args...>`

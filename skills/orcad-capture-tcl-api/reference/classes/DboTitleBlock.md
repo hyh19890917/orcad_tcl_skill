@@ -1,65 +1,65 @@
-# DboTitleBlock (59 methods)
+# DboTitleBlock (59 methods, official_calls(upper bound)=132)
 
-| method | params | note |
-| --- | --- | --- |
-| `AddVariantProp` | `self,strName,strVal` | argc=1 |
-| `ClearVariantMap` | `` | overloaded-C++ |
-| `GetBoundingBox` | `self` | argc=1 |
-| `GetDesignCreateDate` | `self,status` | argc=1 |
-| `GetDesignCreateTime` | `self,time` | argc=1 |
-| `GetDesignFileName` | `self,name` | argc=1 |
-| `GetDesignModifyDate` | `self,status` | argc=1 |
-| `GetDesignModifyTime` | `self,time` | argc=1 |
-| `GetDesignName` | `self,name` | argc=1 |
-| `GetEffectivePropValueChoices` | `self,name,choices` | argc=1 |
-| `GetKeepInLowerRightCorner` | `self,DboState&` | argc=1 |
-| `GetNextNewVariantProp` | `self,strName,strVal,bNewFound` | argc=1 |
-| `GetObjectOccurrence` | `self,pParentSchematicOcc` | argc=1 |
-| `GetObjectOccurrences` | `` | overloaded-C++ |
-| `GetPageCount` | `self,status` | argc=1 |
-| `GetPageCreateDate` | `self,status` | argc=1 |
-| `GetPageCreateTime` | `self,time` | argc=1 |
-| `GetPageModifyDate` | `self,status` | argc=1 |
-| `GetPageModifyTime` | `self,time` | argc=1 |
-| `GetPageName` | `self,name` | argc=1 |
-| `GetPageNumber` | `self,status` | argc=1 |
-| `GetPageSize` | `self,size` | argc=1 |
-| `GetSchematicCreateDate` | `self,status` | argc=1 |
-| `GetSchematicCreateTime` | `self,time` | argc=1 |
-| `GetSchematicModifyDate` | `self,status` | argc=1 |
-| `GetSchematicModifyTime` | `self,time` | argc=1 |
-| `GetSchematicName` | `self,name` | argc=1 |
-| `GetSourceLibName` | `self,name` | argc=1 |
-| `GetSourceSymbolName` | `self,name` | argc=1 |
-| `GetSymbol` | `self,status` | argc=1 |
-| `GetVariantProp` | `self,strName,strVal` | argc=1 |
-| `IsBoundingBoxDirty` | `self` | argc=1 |
-| `IsVariantPropMapEmpty` | `self` | argc=1 |
-| `SetBoundingBox` | `self,boundingBox` | argc=1 |
-| `SetBoundingBoxDirty` | `self,bSetting` | argc=1 |
-| `SetKeepInLowerRightCorner` | `self,bLR` | argc=1 |
-| `SetPageCount` | `self,nPageCount` | argc=1 |
-| `SetPageNumber` | `self,nPageNumber` | argc=1 |
-| `sGetDesignCreateDate` | `obj,status` | argc=1 |
-| `sGetDesignCreateTime` | `obj,status` | argc=1 |
-| `sGetDesignFileName` | `obj,status` | argc=1 |
-| `sGetDesignModifyDate` | `obj,status` | argc=1 |
-| `sGetDesignModifyTime` | `obj,status` | argc=1 |
-| `sGetDesignName` | `obj,status` | argc=1 |
-| `sGetPageCount` | `obj,status` | argc=1 |
-| `sGetPageCreateDate` | `obj,status` | argc=1 |
-| `sGetPageCreateTime` | `obj,status` | argc=1 |
-| `sGetPageModifyDate` | `obj,status` | argc=1 |
-| `sGetPageModifyTime` | `obj,status` | argc=1 |
-| `sGetPageName` | `obj,status` | argc=1 |
-| `sGetPageNumber` | `obj,status` | argc=1 |
-| `sGetPageSize` | `obj,status` | argc=1 |
-| `sGetSchematicCreateDate` | `obj,status` | argc=1 |
-| `sGetSchematicCreateTime` | `obj,status` | argc=1 |
-| `sGetSchematicModifyDate` | `obj,status` | argc=1 |
-| `sGetSchematicModifyTime` | `obj,status` | argc=1 |
-| `sGetSchematicName` | `obj,status` | argc=1 |
-| `sGetSourceLibName` | `obj,status` | argc=1 |
-| `sGetSourceSymbolName` | `obj,status` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `AddVariantProp` | `self,strName,strVal` | argc=1 | 0 | 5 |
+| `ClearVariantMap` | `` | overloaded-C++ | 0 | 5 |
+| `GetBoundingBox` | `self` | argc=1 | 79 | 16 |
+| `GetDesignCreateDate` | `self,status` | argc=1 | 0 | 1 |
+| `GetDesignCreateTime` | `self,time` | argc=1 | 0 | 1 |
+| `GetDesignFileName` | `self,name` | argc=1 | 0 | 1 |
+| `GetDesignModifyDate` | `self,status` | argc=1 | 0 | 1 |
+| `GetDesignModifyTime` | `self,time` | argc=1 | 0 | 1 |
+| `GetDesignName` | `self,name` | argc=1 | 1 | 1 |
+| `GetEffectivePropValueChoices` | `self,name,choices` | argc=1 | 0 | 6 |
+| `GetKeepInLowerRightCorner` | `self,DboState&` | argc=1 | 0 | 1 |
+| `GetNextNewVariantProp` | `self,strName,strVal,bNewFound` | argc=1 | 0 | 5 |
+| `GetObjectOccurrence` | `self,pParentSchematicOcc` | argc=1 | 13 | 9 |
+| `GetObjectOccurrences` | `` | overloaded-C++ | 0 | 8 |
+| `GetPageCount` | `self,status` | argc=1 | 0 | 2 |
+| `GetPageCreateDate` | `self,status` | argc=1 | 0 | 1 |
+| `GetPageCreateTime` | `self,time` | argc=1 | 0 | 1 |
+| `GetPageModifyDate` | `self,status` | argc=1 | 0 | 1 |
+| `GetPageModifyTime` | `self,time` | argc=1 | 0 | 1 |
+| `GetPageName` | `self,name` | argc=1 | 0 | 1 |
+| `GetPageNumber` | `self,status` | argc=1 | 6 | 3 |
+| `GetPageSize` | `self,size` | argc=1 | 0 | 1 |
+| `GetSchematicCreateDate` | `self,status` | argc=1 | 0 | 1 |
+| `GetSchematicCreateTime` | `self,time` | argc=1 | 0 | 1 |
+| `GetSchematicModifyDate` | `self,status` | argc=1 | 0 | 1 |
+| `GetSchematicModifyTime` | `self,time` | argc=1 | 0 | 1 |
+| `GetSchematicName` | `self,name` | argc=1 | 0 | 1 |
+| `GetSourceLibName` | `self,name` | argc=1 | 6 | 6 |
+| `GetSourceSymbolName` | `self,name` | argc=1 | 0 | 2 |
+| `GetSymbol` | `self,status` | argc=1 | 9 | 3 |
+| `GetVariantProp` | `self,strName,strVal` | argc=1 | 5 | 5 |
+| `IsBoundingBoxDirty` | `self` | argc=1 | 0 | 6 |
+| `IsVariantPropMapEmpty` | `self` | argc=1 | 6 | 5 |
+| `SetBoundingBox` | `self,boundingBox` | argc=1 | 4 | 16 |
+| `SetBoundingBoxDirty` | `self,bSetting` | argc=1 | 1 | 6 |
+| `SetKeepInLowerRightCorner` | `self,bLR` | argc=1 | 2 | 1 |
+| `SetPageCount` | `self,nPageCount` | argc=1 | 0 | 1 |
+| `SetPageNumber` | `self,nPageNumber` | argc=1 | 0 | 2 |
+| `sGetDesignCreateDate` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDesignCreateTime` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDesignFileName` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDesignModifyDate` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDesignModifyTime` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetDesignName` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetPageCount` | `obj,status` | argc=1 | 0 | 2 |
+| `sGetPageCreateDate` | `obj,status` | argc=1 | 0 | 2 |
+| `sGetPageCreateTime` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetPageModifyDate` | `obj,status` | argc=1 | 0 | 2 |
+| `sGetPageModifyTime` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetPageName` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetPageNumber` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetPageSize` | `obj,status` | argc=1 | 0 | 2 |
+| `sGetSchematicCreateDate` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetSchematicCreateTime` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetSchematicModifyDate` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetSchematicModifyTime` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetSchematicName` | `obj,status` | argc=1 | 0 | 1 |
+| `sGetSourceLibName` | `obj,status` | argc=1 | 0 | 3 |
+| `sGetSourceSymbolName` | `obj,status` | argc=1 | 0 | 2 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboTitleBlock_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboTitleBlock_<method> $obj <args...>`

@@ -1,8 +1,8 @@
-# DboOffPageConnectorOccurrenceEffectivePropsIter (2 methods)
+# DboOffPageConnectorOccurrenceEffectivePropsIter (2 methods, official_calls(upper bound)=10)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `NextEffectiveProp` | `` | overloaded-C++ |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `NextEffectiveProp` | `` | overloaded-C++ | 10 | 11 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboOffPageConnectorOccurrenceEffectivePropsIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboOffPageConnectorOccurrenceEffectivePropsIter_<method> $obj <args...>`

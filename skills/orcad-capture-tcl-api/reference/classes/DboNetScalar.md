@@ -1,8 +1,8 @@
-# DboNetScalar (2 methods)
+# DboNetScalar (2 methods, official_calls(upper bound)=86)
 
-| method | params | note |
-| --- | --- | --- |
-| `GetBundleOwnerForBus` | `self` | argc=1 |
-| `GetObjectType` | `self` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `GetBundleOwnerForBus` | `self` | argc=1 | 0 | 1 |
+| `GetObjectType` | `self` | argc=1 | 86 | 57 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboNetScalar_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboNetScalar_<method> $obj <args...>`

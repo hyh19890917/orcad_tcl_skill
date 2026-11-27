@@ -1,86 +1,86 @@
-# DboWire (80 methods)
+# DboWire (80 methods, official_calls(upper bound)=364)
 
-| method | params | note |
-| --- | --- | --- |
-| `AreConnectionsAbuttingAtPoint` | `self,pLocation,rStatus` | argc=1 |
-| `CleanupQuad` | `self` | argc=1 |
-| `ClearCreatedByDB` | `self` | argc=1 |
-| `ConnectInitialization` | `self,StartPoint,EndPoint` | argc=1 |
-| `DeleteAlias` | `self,pAlias` | argc=1 |
-| `DeleteJunction` | `self,location` | argc=1 |
-| `DeletePoints` | `self` | argc=1 |
-| `DeleteUserProp` | `self,name` | argc=1 |
-| `DeleteUserPropValue` | `self,name` | argc=1 |
-| `GetBoundingBox` | `` | overloaded-C++ |
-| `GetBundleOwnerPropName` | `self,propName,sourceLibName` | argc=1 |
-| `GetBundleOwnerPropNameFromAlias` | `self,BundleOwnerPropName,libName` | argc=1 |
-| `GetColor` | `self,status` | argc=1 |
-| `GetConnection` | `self,nPosition,status` | argc=1 |
-| `GetContainingLib` | `self` | argc=1 |
-| `GetCreatedByDB` | `self,status` | argc=1 |
-| `GetDisplayPropsPermitted` | `self,status` | argc=1 |
-| `GetDispPropArray` | `self` | argc=1 |
-| `GetEnd` | `self,status` | argc=1 |
-| `GetEndPoint` | `self,status` | argc=1 |
-| `GetId` | `self,status` | argc=1 |
-| `GetLinesIntersect` | `Start1,End1,Start2,End2,Intersection` | argc=1 |
-| `GetLineStyle` | `self,status` | argc=1 |
-| `GetLineWidth` | `self,status` | argc=1 |
-| `GetNet` | `self,status` | argc=1 |
-| `GetNetAliasArray` | `self` | argc=1 |
-| `GetNetName` | `self,name` | argc=1 |
-| `GetObjectOccurrence` | `self,pParentSchematicOcc` | argc=1 |
-| `GetOwner` | `self` | argc=1 |
-| `GetParentObj` | `self` | argc=1 |
-| `GetPoint` | `self,position,status` | argc=1 |
-| `GetPointCount` | `self,status` | argc=1 |
-| `GetPointPosition` | `self,point,status` | argc=1 |
-| `GetStart` | `self,status` | argc=1 |
-| `GetStartPoint` | `self,status` | argc=1 |
-| `GetUserData` | `self,status` | argc=1 |
-| `IsBoundingBoxDirty` | `self` | argc=1 |
-| `IsBundleObject` | `self` | argc=1 |
-| `IsGlobal` | `self,status` | argc=1 |
-| `IsHorizontal` | `self,status` | argc=1 |
-| `IsNonOrthogonal` | `self,status` | argc=1 |
-| `IsVertical` | `self,status` | argc=1 |
-| `IsZeroLen` | `self,status` | argc=1 |
-| `JunctionOnWire` | `self,point` | argc=1 |
-| `LineIntersectsRect` | `rect,LineStart,LineEnd` | argc=1 |
-| `LinesIntersect` | `Start1,End1,Start2,End2` | argc=1 |
-| `MovePoint` | `self,position,offset` | argc=1 |
-| `NewAlias` | `` | overloaded-C++ |
-| `NewAliasesIter` | `self,status` | argc=1 |
-| `NewBusEntriesIter` | `self,status` | argc=1 |
-| `NewConnectedWiresIter` | `self,status` | argc=1 |
-| `NewConnection` | `` | overloaded-C++ |
-| `NewDisplayProp` | `` | overloaded-C++ |
-| `NewDisplayPropsIter` | `self,status` | argc=1 |
-| `NewGlobalsIter` | `self,status` | argc=1 |
-| `NewJunction` | `self,location` | argc=1 |
-| `NewJunctionsIter` | `self,status` | argc=1 |
-| `NewName` | `self,name,location,font,rotation,color` | argc=1 |
-| `NewOffPageConnectorsIter` | `self,status` | argc=1 |
-| `NewPoint` | `` | overloaded-C++ |
-| `NewPortInstsIter` | `self,status,mode` | argc=1 |
-| `NewPortsIter` | `self,status,mode` | argc=1 |
-| `NewUserProp` | `` | overloaded-C++ |
-| `PointIsJunction` | `self,point,status` | argc=1 |
-| `PointOnLine` | `point,LineStart,LineEnd` | argc=1 |
-| `PointOnWire` | `self,point` | argc=1 |
-| `RemoveExtraJunctions` | `self` | argc=1 |
-| `SetBoundingBox` | `self,rect` | argc=1 |
-| `SetBoundingBoxDirty` | `self,bSetting` | argc=1 |
-| `SetColor` | `self,color` | argc=1 |
-| `SetDuplicateId` | `self,newId` | argc=1 |
-| `SetId` | `self,newId` | argc=1 |
-| `SetLineStyle` | `self,linestyle` | argc=1 |
-| `SetLineWidth` | `self,linewidth` | argc=1 |
-| `SetPoint` | `self,position,location` | argc=1 |
-| `SetUserData` | `self,pPtr` | argc=1 |
-| `SetUserPropStringValue` | `self,name,value` | argc=1 |
-| `sGetColor` | `obj,status` | argc=1 |
-| `sGetNetName` | `obj,status` | argc=1 |
-| `SyncNetGroupAliases` | `self` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `AreConnectionsAbuttingAtPoint` | `self,pLocation,rStatus` | argc=1 | 0 | 1 |
+| `CleanupQuad` | `self` | argc=1 | 0 | 1 |
+| `ClearCreatedByDB` | `self` | argc=1 | 0 | 1 |
+| `ConnectInitialization` | `self,StartPoint,EndPoint` | argc=1 | 0 | 1 |
+| `DeleteAlias` | `self,pAlias` | argc=1 | 0 | 2 |
+| `DeleteJunction` | `self,location` | argc=1 | 0 | 2 |
+| `DeletePoints` | `self` | argc=1 | 0 | 1 |
+| `DeleteUserProp` | `self,name` | argc=1 | 0 | 7 |
+| `DeleteUserPropValue` | `self,name` | argc=1 | 0 | 5 |
+| `GetBoundingBox` | `` | overloaded-C++ | 79 | 16 |
+| `GetBundleOwnerPropName` | `self,propName,sourceLibName` | argc=1 | 0 | 3 |
+| `GetBundleOwnerPropNameFromAlias` | `self,BundleOwnerPropName,libName` | argc=1 | 0 | 1 |
+| `GetColor` | `self,status` | argc=1 | 0 | 12 |
+| `GetConnection` | `self,nPosition,status` | argc=1 | 0 | 2 |
+| `GetContainingLib` | `self` | argc=1 | 2 | 20 |
+| `GetCreatedByDB` | `self,status` | argc=1 | 0 | 1 |
+| `GetDisplayPropsPermitted` | `self,status` | argc=1 | 0 | 6 |
+| `GetDispPropArray` | `self` | argc=1 | 0 | 5 |
+| `GetEnd` | `self,status` | argc=1 | 2 | 3 |
+| `GetEndPoint` | `self,status` | argc=1 | 7 | 2 |
+| `GetId` | `self,status` | argc=1 | 37 | 15 |
+| `GetLinesIntersect` | `Start1,End1,Start2,End2,Intersection` | argc=1 | 0 | 1 |
+| `GetLineStyle` | `self,status` | argc=1 | 1 | 11 |
+| `GetLineWidth` | `self,status` | argc=1 | 1 | 11 |
+| `GetNet` | `self,status` | argc=1 | 17 | 8 |
+| `GetNetAliasArray` | `self` | argc=1 | 0 | 1 |
+| `GetNetName` | `self,name` | argc=1 | 2 | 3 |
+| `GetObjectOccurrence` | `self,pParentSchematicOcc` | argc=1 | 13 | 9 |
+| `GetOwner` | `self` | argc=1 | 69 | 19 |
+| `GetParentObj` | `self` | argc=1 | 0 | 18 |
+| `GetPoint` | `self,position,status` | argc=1 | 0 | 1 |
+| `GetPointCount` | `self,status` | argc=1 | 0 | 1 |
+| `GetPointPosition` | `self,point,status` | argc=1 | 0 | 1 |
+| `GetStart` | `self,status` | argc=1 | 2 | 4 |
+| `GetStartPoint` | `self,status` | argc=1 | 8 | 4 |
+| `GetUserData` | `self,status` | argc=1 | 0 | 3 |
+| `IsBoundingBoxDirty` | `self` | argc=1 | 0 | 6 |
+| `IsBundleObject` | `self` | argc=1 | 2 | 10 |
+| `IsGlobal` | `self,status` | argc=1 | 0 | 2 |
+| `IsHorizontal` | `self,status` | argc=1 | 3 | 1 |
+| `IsNonOrthogonal` | `self,status` | argc=1 | 3 | 1 |
+| `IsVertical` | `self,status` | argc=1 | 0 | 1 |
+| `IsZeroLen` | `self,status` | argc=1 | 0 | 1 |
+| `JunctionOnWire` | `self,point` | argc=1 | 0 | 1 |
+| `LineIntersectsRect` | `rect,LineStart,LineEnd` | argc=1 | 0 | 1 |
+| `LinesIntersect` | `Start1,End1,Start2,End2` | argc=1 | 0 | 1 |
+| `MovePoint` | `self,position,offset` | argc=1 | 0 | 7 |
+| `NewAlias` | `` | overloaded-C++ | 0 | 2 |
+| `NewAliasesIter` | `self,status` | argc=1 | 6 | 2 |
+| `NewBusEntriesIter` | `self,status` | argc=1 | 3 | 3 |
+| `NewConnectedWiresIter` | `self,status` | argc=1 | 0 | 1 |
+| `NewConnection` | `` | overloaded-C++ | 0 | 1 |
+| `NewDisplayProp` | `` | overloaded-C++ | 12 | 7 |
+| `NewDisplayPropsIter` | `self,status` | argc=1 | 3 | 6 |
+| `NewGlobalsIter` | `self,status` | argc=1 | 5 | 6 |
+| `NewJunction` | `self,location` | argc=1 | 0 | 1 |
+| `NewJunctionsIter` | `self,status` | argc=1 | 0 | 1 |
+| `NewName` | `self,name,location,font,rotation,color` | argc=1 | 0 | 1 |
+| `NewOffPageConnectorsIter` | `self,status` | argc=1 | 6 | 5 |
+| `NewPoint` | `` | overloaded-C++ | 1 | 7 |
+| `NewPortInstsIter` | `self,status,mode` | argc=1 | 0 | 3 |
+| `NewPortsIter` | `self,status,mode` | argc=1 | 6 | 5 |
+| `NewUserProp` | `` | overloaded-C++ | 4 | 8 |
+| `PointIsJunction` | `self,point,status` | argc=1 | 0 | 1 |
+| `PointOnLine` | `point,LineStart,LineEnd` | argc=1 | 0 | 1 |
+| `PointOnWire` | `self,point` | argc=1 | 0 | 1 |
+| `RemoveExtraJunctions` | `self` | argc=1 | 0 | 1 |
+| `SetBoundingBox` | `self,rect` | argc=1 | 4 | 16 |
+| `SetBoundingBoxDirty` | `self,bSetting` | argc=1 | 1 | 6 |
+| `SetColor` | `self,color` | argc=1 | 10 | 11 |
+| `SetDuplicateId` | `self,newId` | argc=1 | 0 | 1 |
+| `SetId` | `self,newId` | argc=1 | 55 | 10 |
+| `SetLineStyle` | `self,linestyle` | argc=1 | 0 | 18 |
+| `SetLineWidth` | `self,linewidth` | argc=1 | 0 | 18 |
+| `SetPoint` | `self,position,location` | argc=1 | 0 | 1 |
+| `SetUserData` | `self,pPtr` | argc=1 | 0 | 3 |
+| `SetUserPropStringValue` | `self,name,value` | argc=1 | 0 | 6 |
+| `sGetColor` | `obj,status` | argc=1 | 0 | 8 |
+| `sGetNetName` | `obj,status` | argc=1 | 0 | 5 |
+| `SyncNetGroupAliases` | `self` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboWire_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboWire_<method> $obj <args...>`

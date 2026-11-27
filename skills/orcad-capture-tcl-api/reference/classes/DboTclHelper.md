@@ -1,96 +1,96 @@
-# DboTclHelper (90 methods)
+# DboTclHelper (90 methods, official_calls(upper bound)=0)
 
-| method | params | note |
-| --- | --- | --- |
-| `CleanOrCADRegistry` | `key` | argc=1 |
-| `DesignDiffAndDump` | `` | overloaded-C++ |
-| `ReRegisterOrCADPlugins` | `` | zero-arg-ok |
-| `sAddToStringMap` | `aMap,aMapKey,aMapValue` | argc=1 |
-| `sCastPtr` | `pName,pFrom,pTo` | argc=1 |
-| `sCheckIsWritable` | `nativePath,mode` | argc=1 |
-| `sCheckNativeIsExec` | `path` | argc=1 |
-| `sCloseCFile` | `aFile` | argc=1 |
-| `sCreateSession` | `` | zero-arg-ok |
-| `sDeleteBool` | `pBool` | argc=1 |
-| `sDeleteCPoint` | `pPoint` | argc=1 |
-| `sDeleteCRect` | `pRect` | argc=1 |
-| `sDeleteCSize` | `pObj` | argc=1 |
-| `sDeleteCString` | `pStr` | argc=1 |
-| `sDeleteCStringSet` | `std::set<,CString,>,*` | argc=1 |
-| `sDeleteDboValue` | `pObj` | argc=1 |
-| `sDeleteDboValueType` | `pObj` | argc=1 |
-| `sDeleteInt` | `pInt` | argc=1 |
-| `sDeleteLOGFONT` | `pObj` | argc=1 |
-| `sDeleteSession` | `pSession` | argc=1 |
-| `sDeleteStdStr` | `pStr` | argc=1 |
-| `sDeleteStringMap` | `std::map<,std::string,std::string,>,*` | argc=1 |
-| `sDeleteULong` | `pObj` | argc=1 |
-| `SetLiteMode` | `` | zero-arg-ok |
-| `SetRegionalSetting` | `aDecimalSeperator,aThousandSeperator,aDigitGroupingFormat,aDigitAfterDecimal` | argc=1 |
-| `SetTimeZone` | `lValue,aTimeZoneName` | argc=1 |
-| `sEvalPage` | `pPage` | argc=1 |
-| `sFindInCStringSet` | `pCStringSet,pStrToFind` | argc=1 |
-| `sGetBase64BitmapForOle` | `pOleEmbedInst,pOutEncodedString` | argc=1 |
-| `sGetBase64DataOfOle` | `pOleEmbedInst,pOutEncodedString` | argc=1 |
-| `sGetBool` | `pVal` | argc=1 |
-| `sGetCFile` | `aFileName,aFileMode` | argc=1 |
-| `sGetConstCharPtr` | `` | overloaded-C++ |
-| `sGetConstCharPtrFromVector` | `pVector,index` | argc=1 |
-| `sGetCPointX` | `CPoint&` | argc=1 |
-| `sGetCPointY` | `CPoint&` | argc=1 |
-| `sGetCRectBottomRight` | `CRect&` | argc=1 |
-| `sGetCRectTopLeft` | `CRect&` | argc=1 |
-| `sGetCSizeX` | `rSize` | argc=1 |
-| `sGetCSizeY` | `rSize` | argc=1 |
-| `sGetDboObjectInProcess` | `` | zero-arg-ok |
-| `sGetEnv` | `pEnv` | argc=1 |
-| `sGetInt` | `pVal` | argc=1 |
-| `sGetLFCharSet` | `rLOGFONT` | argc=1 |
-| `sGetLFClipPrecision` | `rLOGFONT` | argc=1 |
-| `sGetLFEscapement` | `rLOGFONT` | argc=1 |
-| `sGetLFHeight` | `rLOGFONT` | argc=1 |
-| `sGetLFItalic` | `rLOGFONT` | argc=1 |
-| `sGetLFName` | `rLOGFONT,rFaceName` | argc=1 |
-| `sGetLFOrientation` | `rLOGFONT` | argc=1 |
-| `sGetLFOutPrecision` | `rLOGFONT` | argc=1 |
-| `sGetLFPitchAndFamily` | `rLOGFONT` | argc=1 |
-| `sGetLFQuality` | `rLOGFONT` | argc=1 |
-| `sGetLFStrikeOut` | `rLOGFONT` | argc=1 |
-| `sGetLFUnderline` | `rLOGFONT` | argc=1 |
-| `sGetLFWeight` | `rLOGFONT` | argc=1 |
-| `sGetLFWidth` | `rLOGFONT` | argc=1 |
-| `sGetStringMap` | `` | zero-arg-ok |
-| `sGetStringMapData` | `aMap,aVectorStr` | argc=1 |
-| `sGetTclList` | `self,pList` | argc=1 |
-| `sGetULong` | `pVal` | argc=1 |
-| `sGetValueFromStringMap` | `aMap,aMapKey,aKeyValue` | argc=1 |
-| `sGetVectorSize` | `pVector` | argc=1 |
-| `sInsertToCStringSet` | `pCStringSet,pStrToInsert` | argc=1 |
-| `sLockProperty` | `pObj,propName,lockFlag,preTrigger,postTrigger` | argc=1 |
-| `sMakeBitmap` | `pBitMapStruct,pGrObj,pPage,pRotation,status` | argc=1 |
-| `sMakeBitMapData` | `BoundingBox,Location,bmpFile` | argc=1 |
-| `sMakeBool` | `` | overloaded-C++ |
-| `sMakeCPoint` | `` | zero-arg-ok |
-| `sMakeCRect` | `` | zero-arg-ok |
-| `sMakeCSize` | `` | zero-arg-ok |
-| `sMakeCString` | `` | zero-arg-ok |
-| `sMakeCStringAppOwned` | `` | zero-arg-ok |
-| `sMakeCStringSet` | `` | zero-arg-ok |
-| `sMakeDboValue` | `` | zero-arg-ok |
-| `sMakeDboValueType` | `` | zero-arg-ok |
-| `sMakeInt` | `` | zero-arg-ok |
-| `sMakeIntAppOwned` | `` | zero-arg-ok |
-| `sMakeLOGFONT` | `` | zero-arg-ok |
-| `sMakeStdStr` | `` | overloaded-C++ |
-| `sMakeStdVector` | `` | zero-arg-ok |
-| `sMakeULong` | `` | zero-arg-ok |
-| `sPushBackToVector` | `pVector,char,const,*` | argc=1 |
-| `sReleaseAllCreatedPtrs` | `` | zero-arg-ok |
-| `sRemoveFromVector` | `pVector,index` | argc=1 |
-| `sSetCString` | `pStr,pVal` | argc=1 |
-| `sSetDboObjectInProcess` | `pObject` | argc=1 |
-| `sSetDboSessionKey` | `pSessionKey` | argc=1 |
-| `sSetEnv` | `pEnv,pValue` | argc=1 |
-| `sSetServerMode` | `pLiscense` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `CleanOrCADRegistry` | `key` | argc=1 | 0 | 1 |
+| `DesignDiffAndDump` | `` | overloaded-C++ | 0 | 1 |
+| `ReRegisterOrCADPlugins` | `` | zero-arg-ok | 0 | 1 |
+| `sAddToStringMap` | `aMap,aMapKey,aMapValue` | argc=1 | 0 | 1 |
+| `sCastPtr` | `pName,pFrom,pTo` | argc=1 | 0 | 1 |
+| `sCheckIsWritable` | `nativePath,mode` | argc=1 | 0 | 1 |
+| `sCheckNativeIsExec` | `path` | argc=1 | 0 | 1 |
+| `sCloseCFile` | `aFile` | argc=1 | 0 | 1 |
+| `sCreateSession` | `` | zero-arg-ok | 0 | 1 |
+| `sDeleteBool` | `pBool` | argc=1 | 0 | 1 |
+| `sDeleteCPoint` | `pPoint` | argc=1 | 0 | 1 |
+| `sDeleteCRect` | `pRect` | argc=1 | 0 | 1 |
+| `sDeleteCSize` | `pObj` | argc=1 | 0 | 1 |
+| `sDeleteCString` | `pStr` | argc=1 | 0 | 1 |
+| `sDeleteCStringSet` | `std::set<,CString,>,*` | argc=1 | 0 | 1 |
+| `sDeleteDboValue` | `pObj` | argc=1 | 0 | 1 |
+| `sDeleteDboValueType` | `pObj` | argc=1 | 0 | 1 |
+| `sDeleteInt` | `pInt` | argc=1 | 0 | 1 |
+| `sDeleteLOGFONT` | `pObj` | argc=1 | 0 | 1 |
+| `sDeleteSession` | `pSession` | argc=1 | 0 | 1 |
+| `sDeleteStdStr` | `pStr` | argc=1 | 0 | 1 |
+| `sDeleteStringMap` | `std::map<,std::string,std::string,>,*` | argc=1 | 0 | 1 |
+| `sDeleteULong` | `pObj` | argc=1 | 0 | 1 |
+| `SetLiteMode` | `` | zero-arg-ok | 0 | 1 |
+| `SetRegionalSetting` | `aDecimalSeperator,aThousandSeperator,aDigitGroupingFormat,aDigitAfterDecimal` | argc=1 | 0 | 1 |
+| `SetTimeZone` | `lValue,aTimeZoneName` | argc=1 | 0 | 1 |
+| `sEvalPage` | `pPage` | argc=1 | 0 | 1 |
+| `sFindInCStringSet` | `pCStringSet,pStrToFind` | argc=1 | 0 | 1 |
+| `sGetBase64BitmapForOle` | `pOleEmbedInst,pOutEncodedString` | argc=1 | 0 | 1 |
+| `sGetBase64DataOfOle` | `pOleEmbedInst,pOutEncodedString` | argc=1 | 0 | 1 |
+| `sGetBool` | `pVal` | argc=1 | 0 | 1 |
+| `sGetCFile` | `aFileName,aFileMode` | argc=1 | 0 | 1 |
+| `sGetConstCharPtr` | `` | overloaded-C++ | 0 | 1 |
+| `sGetConstCharPtrFromVector` | `pVector,index` | argc=1 | 0 | 1 |
+| `sGetCPointX` | `CPoint&` | argc=1 | 0 | 1 |
+| `sGetCPointY` | `CPoint&` | argc=1 | 0 | 1 |
+| `sGetCRectBottomRight` | `CRect&` | argc=1 | 0 | 1 |
+| `sGetCRectTopLeft` | `CRect&` | argc=1 | 0 | 1 |
+| `sGetCSizeX` | `rSize` | argc=1 | 0 | 1 |
+| `sGetCSizeY` | `rSize` | argc=1 | 0 | 1 |
+| `sGetDboObjectInProcess` | `` | zero-arg-ok | 0 | 1 |
+| `sGetEnv` | `pEnv` | argc=1 | 0 | 1 |
+| `sGetInt` | `pVal` | argc=1 | 0 | 1 |
+| `sGetLFCharSet` | `rLOGFONT` | argc=1 | 0 | 1 |
+| `sGetLFClipPrecision` | `rLOGFONT` | argc=1 | 0 | 1 |
+| `sGetLFEscapement` | `rLOGFONT` | argc=1 | 0 | 1 |
+| `sGetLFHeight` | `rLOGFONT` | argc=1 | 0 | 1 |
+| `sGetLFItalic` | `rLOGFONT` | argc=1 | 0 | 1 |
+| `sGetLFName` | `rLOGFONT,rFaceName` | argc=1 | 0 | 1 |
+| `sGetLFOrientation` | `rLOGFONT` | argc=1 | 0 | 1 |
+| `sGetLFOutPrecision` | `rLOGFONT` | argc=1 | 0 | 1 |
+| `sGetLFPitchAndFamily` | `rLOGFONT` | argc=1 | 0 | 1 |
+| `sGetLFQuality` | `rLOGFONT` | argc=1 | 0 | 1 |
+| `sGetLFStrikeOut` | `rLOGFONT` | argc=1 | 0 | 1 |
+| `sGetLFUnderline` | `rLOGFONT` | argc=1 | 0 | 1 |
+| `sGetLFWeight` | `rLOGFONT` | argc=1 | 0 | 1 |
+| `sGetLFWidth` | `rLOGFONT` | argc=1 | 0 | 1 |
+| `sGetStringMap` | `` | zero-arg-ok | 0 | 1 |
+| `sGetStringMapData` | `aMap,aVectorStr` | argc=1 | 0 | 1 |
+| `sGetTclList` | `self,pList` | argc=1 | 0 | 1 |
+| `sGetULong` | `pVal` | argc=1 | 0 | 1 |
+| `sGetValueFromStringMap` | `aMap,aMapKey,aKeyValue` | argc=1 | 0 | 1 |
+| `sGetVectorSize` | `pVector` | argc=1 | 0 | 1 |
+| `sInsertToCStringSet` | `pCStringSet,pStrToInsert` | argc=1 | 0 | 1 |
+| `sLockProperty` | `pObj,propName,lockFlag,preTrigger,postTrigger` | argc=1 | 0 | 1 |
+| `sMakeBitmap` | `pBitMapStruct,pGrObj,pPage,pRotation,status` | argc=1 | 0 | 1 |
+| `sMakeBitMapData` | `BoundingBox,Location,bmpFile` | argc=1 | 0 | 1 |
+| `sMakeBool` | `` | overloaded-C++ | 0 | 1 |
+| `sMakeCPoint` | `` | zero-arg-ok | 0 | 1 |
+| `sMakeCRect` | `` | zero-arg-ok | 0 | 1 |
+| `sMakeCSize` | `` | zero-arg-ok | 0 | 1 |
+| `sMakeCString` | `` | zero-arg-ok | 0 | 1 |
+| `sMakeCStringAppOwned` | `` | zero-arg-ok | 0 | 1 |
+| `sMakeCStringSet` | `` | zero-arg-ok | 0 | 1 |
+| `sMakeDboValue` | `` | zero-arg-ok | 0 | 1 |
+| `sMakeDboValueType` | `` | zero-arg-ok | 0 | 1 |
+| `sMakeInt` | `` | zero-arg-ok | 0 | 1 |
+| `sMakeIntAppOwned` | `` | zero-arg-ok | 0 | 1 |
+| `sMakeLOGFONT` | `` | zero-arg-ok | 0 | 1 |
+| `sMakeStdStr` | `` | overloaded-C++ | 0 | 1 |
+| `sMakeStdVector` | `` | zero-arg-ok | 0 | 1 |
+| `sMakeULong` | `` | zero-arg-ok | 0 | 1 |
+| `sPushBackToVector` | `pVector,char,const,*` | argc=1 | 0 | 1 |
+| `sReleaseAllCreatedPtrs` | `` | zero-arg-ok | 0 | 1 |
+| `sRemoveFromVector` | `pVector,index` | argc=1 | 0 | 1 |
+| `sSetCString` | `pStr,pVal` | argc=1 | 0 | 1 |
+| `sSetDboObjectInProcess` | `pObject` | argc=1 | 0 | 1 |
+| `sSetDboSessionKey` | `pSessionKey` | argc=1 | 0 | 1 |
+| `sSetEnv` | `pEnv,pValue` | argc=1 | 0 | 1 |
+| `sSetServerMode` | `pLiscense` | argc=1 | 0 | 1 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboTclHelper_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboTclHelper_<method> $obj <args...>`

@@ -1,16 +1,16 @@
-# DboExtnPropertyBag (10 methods)
+# DboExtnPropertyBag (10 methods, official_calls(upper bound)=39)
 
-| method | params | note |
-| --- | --- | --- |
-| `AddProperty` | `self,BagType,pBagName,pPropName,pPropValue` | argc=1 |
-| `Copy` | `self` | argc=1 |
-| `GetBagTypeString` | `self,bagType` | argc=1 |
-| `GetPropertyBag` | `self,BagType` | argc=1 |
-| `GetPropertyNameValueMap` | `self,BagType,aBagName,lPropertyNameValue` | argc=1 |
-| `GetPropertyTypeMap` | `self` | argc=1 |
-| `GetPropertyValue` | `self,BagType,aBagName,PropName,PropValue` | argc=1 |
-| `sGetExtension` | `pHandle` | argc=1 |
-| `sLoad` | `pExtensionData` | argc=1 |
-| `Store` | `self,pExtensionData` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `AddProperty` | `self,BagType,pBagName,pPropName,pPropValue` | argc=1 | 0 | 1 |
+| `Copy` | `self` | argc=1 | 38 | 8 |
+| `GetBagTypeString` | `self,bagType` | argc=1 | 0 | 1 |
+| `GetPropertyBag` | `self,BagType` | argc=1 | 0 | 2 |
+| `GetPropertyNameValueMap` | `self,BagType,aBagName,lPropertyNameValue` | argc=1 | 0 | 1 |
+| `GetPropertyTypeMap` | `self` | argc=1 | 0 | 1 |
+| `GetPropertyValue` | `self,BagType,aBagName,PropName,PropValue` | argc=1 | 0 | 1 |
+| `sGetExtension` | `pHandle` | argc=1 | 0 | 3 |
+| `sLoad` | `pExtensionData` | argc=1 | 0 | 4 |
+| `Store` | `self,pExtensionData` | argc=1 | 1 | 5 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboExtnPropertyBag_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboExtnPropertyBag_<method> $obj <args...>`

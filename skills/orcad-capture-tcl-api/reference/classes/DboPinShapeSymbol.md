@@ -1,8 +1,8 @@
-# DboPinShapeSymbol (2 methods)
+# DboPinShapeSymbol (2 methods, official_calls(upper bound)=8)
 
-| method | params | note |
-| --- | --- | --- |
-| `GetPinType` | `self,status` | argc=1 |
-| `SetPinType` | `self,type` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `GetPinType` | `self,status` | argc=1 | 8 | 9 |
+| `SetPinType` | `self,type` | argc=1 | 0 | 7 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboPinShapeSymbol_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboPinShapeSymbol_<method> $obj <args...>`

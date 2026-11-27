@@ -1,8 +1,8 @@
-# DboBundleNetIter (2 methods)
+# DboBundleNetIter (2 methods, official_calls(upper bound)=30)
 
-| method | params | note |
-| --- | --- | --- |
-| `~delete` | `self` | argc=1 |
-| `Next` | `self,name` | argc=1 |
+| method | params | note | official | shared |
+| --- | --- | --- | --- | --- |
+| `~delete` | `self` | argc=1 | 0 | 151 |
+| `Next` | `self,name` | argc=1 | 30 | 88 |
 
-Usage (object form): `$obj <method> <args...>`  /  global form: `DboBundleNetIter_<method> $obj <args...>`
+Usage: `$obj <method> <args...>`  |  `DboBundleNetIter_<method> $obj <args...>`
