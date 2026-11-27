@@ -52,15 +52,38 @@ Capture 17.4 的 PDF 能力分两层：**宿主命令 `CapPdf*`（真正干活�
 
 ### 2.2 配套的偏好键（`GetOptionString` / `SetOptionString`）
 
-面板把用户上次的选择存在 Capture 偏好里，键名与选项的对应关系：
+面板把用户上次的选择存在 Capture 偏好里。**本机 `…\cdssetup\OrCAD_Capture\17.4.0\Capture.ini` 里的实际键（12 条）**：
 
-| 偏好键 | 对应 |
+```ini
+capPDFOutputFolder=
+capPDFDriver=OrCADPS_17.4
+capPDFCommandIndex=2
+capPDFConverter=Ghostscript 64 bit / equivalent
+capPDFExcludeProp=Line Style!!Line Width!!Color!!Location X-Coordinate!!Location Y-Coordinate
+capPDFCommand2={gswin64c.exe} -sDEVICE=pdfwrite -sOutputFile=$::capPdfUtil::mPdfFilePath -dBATCH -dNOPAUSE $::capPdfUtil::mPSFilePath
+capPDFCommand0=
+capPDFCommand1=
+capPDFCommand3=
+capPDFPrintingMode=0
+capPDFOrientation=1
+capPDFCreatePropertiesFile=0
+capPDFCreateNetAndBookmark=1
+capPDFPaperSize=9
+```
+
+| 键 | 作用 |
 | --- | --- |
-| `capPDFCreatePropertiesFile` | `CreatePropertiesPdfFile` |
-| `capPDFCreateNetAndBookmark` | `CreateRefdesBookMarks` / `CreateNetBookMarks` |
-| `capPDFPaperSize` | `PaperSize`（存的就是索引） |
-| `capPDFDriver` | `PostscriptDriver` |
-| `capPDFPrintingMode` | 打印模式（面板/驱动选择） |
+| `capPDFDriver` | PostScript 打印机名（本机 `OrCADPS_17.4`） |
+| `capPDFConverter` | 转换器描述（人读，如 `Ghostscript 64 bit / equivalent`） |
+| `capPDFCommandIndex` + `capPDFCommand<N>` | 选中的转换命令；命令是**一段可 `eval exec` 的 Tcl 串**，里面引用 `$::capPdfUtil::mPdfFilePath` / `mPSFilePath` |
+| `capPDFExcludeProp` | **要排除的属性名列表，用 `!!` 分隔** —— `capPdfUtil::isFilteredProp` 就是读它来过滤标注属性 |
+| `capPDFOutputFolder` | 上次输出目录 |
+| `capPDFOrientation` | 纸张方向（1 = ？与 `LandscapeOrientation` 不同键） |
+| `capPDFPaperSize` | 纸张索引（与 `PaperSize` 同值域 0..69） |
+| `capPDFPrintingMode` | 打印模式（0/1） |
+| `capPDFCreatePropertiesFile` / `capPDFCreateNetAndBookmark` | 附带属性 PDF / 网络与位号书签 |
+
+**实测印证**：用 `SetOptionString capPDFPaperSize 9` 写过一次之后，这份 ini 里的值确实变成了 `9` —— 说明"写 ini → `setPdfGenerationOptions` 读取 → 生效"这条链是通的，这也是控制官方编排层选项的正确入口。
 
 自己写工具时，**读这些键可以继承用户上次的选择**，不用每次硬编码。
 
@@ -185,8 +208,31 @@ SetOptionString capPDFCreateNetAndBookmark 1
 
 两条附加事实：
 
-- `capIsPrinterDriverAvailable` 在本机返回**空串**（不是 0/1），不能当布尔用；
+- `capIsPrinterDriverAvailable` **要带驱动名**：官方 `OrHandlerPDFExport::checkPrinterDriver` 是 `capIsPrinterDriverAvailable $pPrinterDriver`，用它做 1/0 判断。之前无参调用得到空串，是**用法错**，不能据此说"驱动不可用"；
 - ini 的转换命令是**一段可 `eval exec` 的 Tcl 串**，里面直接引用 `$::capPdfUtil::mPdfFilePath` 与 `$::capPdfUtil::mPSFilePath`——也就是说这两个变量由编排层在调用前填好，单独调 `CapPdfPrint` 就永远为空。
+
+### 7.2 走编排层之后：PS 出来 0 字节
+
+第三次真机运行（改用 `::capPdfUtil::printPdf`）：
+
+```text
+using official orchestrator: ::capPdfUtil::printPdf
+printPdf code=0 ret=
+outDir now has: CapOutput.ps (0 B)
+file NOT created: D:/tmp/pdf-out/test.pdf
+```
+
+也就是说**编排层走通了、但打印阶段产出空 PostScript**（0 字节），后续 GS 转换自然没有输入。官方面板在调 `printPdf` 之前有三个前置检查，正是针对这种"静默出空文件"的场景：
+
+| 官方检查 | 判据 |
+| --- | --- |
+| `OrHandlerPDFExport::checkPrinterDriver $driver` | `capIsPrinterDriverAvailable <驱动名>` == 1 |
+| `OrHandlerPDFExport::checkWritableOutDir $dir` | `file writable` |
+| `OrHandlerPDFExport::checkToolPath $cmd` | `auto_execok [lindex $cmd 0]` 非空 |
+
+三者任一不满足，面板会弹消息框并**直接 return**，不会去调 `printPdf`。
+
+脚本已按这三条改造：打印前打印 `driver «X» available = «0/1»`、`converter exe «gswin64c.exe» found = «path»`，并在驱动不可用时明确提示"会产出 0 字节 PS"。这样下一次运行就能一句话判断是"虚拟打印机没装/没注册"还是"Ghostscript 不在 PATH"。
 
 ## 8. 未验证的点
 

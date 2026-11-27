@@ -137,12 +137,28 @@ proc ::pdfexp::Run {outDir args} {
     if {$design eq "NULL" || $design eq ""} { error "no active design" }
     ::pdfexp::Note "design ok"
 
+    # 驱动检查：官方 OrHandlerPDFExport::checkPrinterDriver 是带驱动名调用的
+    set driverName "OrCADPS_17.4"
+    catch { set ini ""; set ini [GetOptionString capPDFDriver]; if {$ini ne ""} { set driverName $ini } }
     if {[llength [info commands capIsPrinterDriverAvailable]]} {
         set avail ""
-        catch {set avail [capIsPrinterDriverAvailable]}
-        ::pdfexp::Note "printer driver available: $avail"
-        if {$avail ne "" && ![string is true -strict $avail] && $avail ne "1"} {
-            ::pdfexp::Note "WARNING: driver reported unavailable, continuing anyway"
+        catch {set avail [capIsPrinterDriverAvailable $driverName]}
+        ::pdfexp::Note "driver «$driverName» available = «$avail»"
+        if {$avail eq "" || $avail eq "0"} {
+            ::pdfexp::Note "WARNING: driver unavailable -> CapPdfPrint will emit an empty PS (0 B) and no PDF"
+        }
+    }
+    # 转换器是否在 PATH（官方 checkToolPath 用 lindex $cmd 0 + auto_execok）
+    set idx ""
+    catch {set idx [GetOptionString capPDFCommandIndex]}
+    if {$idx ne ""} {
+        set cmd ""
+        catch {set cmd [GetOptionString "capPDFCommand$idx"]}
+        set exe [lindex $cmd 0]
+        if {$exe ne ""} {
+            set found ""
+            catch {set found [auto_execok $exe]}
+            ::pdfexp::Note "converter exe «$exe» found = «$found»"
         }
     }
 

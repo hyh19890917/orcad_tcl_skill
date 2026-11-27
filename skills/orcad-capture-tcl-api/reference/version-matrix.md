@@ -91,6 +91,9 @@ $env:PATH = "$root\tools\bin;" + $env:PATH
 | `$wire GetPointCount $st` | 返回 2 | 返回 2 | 形态一致 |
 | `$wire GetPoint 0 $st` | 返回 `CPoint*` | 返回 `CPoint*` | 形态一致（指针串在 32 位下更短，不影响用法） |
 | `DboTclBom_GetBOMOptionsJSON` | **不存在**（`invalid command name`） | 存在，返回 `std::string*` | BOM JSON 助手是 **17.x 才有** |
+| PDF 脚本层位置 | `tclscripts\capUtils\capPdfUtil.tcl` | `tclscripts\capPDFExport\tcl\capPdfUtil.tcl`（另有 `OrEntryPDFExport`/`OrHandlerPDFExport`） | **`package require capPdfUtil` 的提供者位置不同**，按路径找文件时要分版本 |
+
+另外，安装目录里的 `Allegro System Capture AppNote - Autoloading Tcl Scripts.pdf` 讲的是**另一个产品**（Allegro System Capture，路径 `<install>/share/cdssetup/canvas/resources/syscap`），**不适用 OrCAD Capture**——别拿它当 OrCAD 的自动加载规范。
 
 两条工程结论：
 
