@@ -6,12 +6,14 @@ Capture 17.4 的 PDF 能力分两层：**宿主命令 `CapPdf*`（真正干活�
 
 | 命令 | 参数的来源 | 形态 |
 | --- | --- | --- |
-| `CapPdfSetOption` | `CapPdfSetOption "InstMode" $value` | 选项名（字符串）+ 值 |
-| `CapPdfGetOption` | `if {[CapPdfGetOption InstMode] == "True"}` | 选项名 → 返回字符串（注意 `InstMode` 这里**不带引号**，两种写法都行） |
-| `CapPdfPrint` | `capPdfPrint $mOutDir $mOutFile`（官方 `catch` 包裹） | 输出目录 + 文件名 |
-| `CapPdfAddMarkStart` | `CapPdfAddMarkStart x1 y1 x2 y2 <idOrName> 0` | 包围盒两角点 + 标识 + 一个标志位（官方恒传 0） |
-| `CapPdfAddMarkData` | `CapPdfAddMarkData <name> <value>` | 一条键值对（标注内容） |
-| `CapPdfAddMarkEnd` | `CapPdfAddMarkEnd` | 无参，闭合当前标注 |
+| `CapPdfSetOption` | 探测：`lOptionName lOptionValue` | 选项名 + 值 |
+| `CapPdfGetOption` | 探测：`lOptionName` | 选项名 → 返回字符串 |
+| `CapPdfPrint` | 探测：`lOutDir lOutFileName` | 输出目录 + 文件名 |
+| `CapPdfAddMarkStart` | 探测：`pStartPtX pStartPtY pEndPtX pEndPtY pId pAttributeMarkType` | 包围盒两角点 + 标识 + **标注类型** |
+| `CapPdfAddMarkData` | 探测：`pName pValue` | 一条键值对 |
+| `CapPdfAddMarkEnd` | 探测：零参（返回 ok） | 闭合当前标注 |
+
+> 六个签名现在全部来自**真机零参探测**（参数名由宿主报出），不是从调用点猜的。第 6 参的名字是 `pAttributeMarkType`——**它是"标注类型"，不是布尔**；官方 18 处调用一律传 `0`（默认类型）。
 
 ## 2. 选项表（从 `CapPdfSetOption` 的调用点归纳）
 
@@ -118,7 +120,33 @@ CapPdfPrint outDir outFile              ;# 真正生成 PDF
 
 也就是说：**脚本层负责"准备什么"，命令层负责"生成"**。自己写导出工具时，可以跳过 `capPdfUtil` 只调 `CapPdf*`，但页对象的遍历/包围盒/属性过滤仍要自己做（那部分逻辑在 `capPdfUtil` 里，可参考）。
 
-## 5. 未验证的点
+## 7. 真机实测记录（17.4，`examples/export-pdf.tcl`）
+
+第一次在真实 Capture 里跑，结果值得记下来——**选项全通，但不出文件**：
+
+```text
+set InstMode = True (readback: True)
+set CreateNetBookMarks = True (readback: True)
+set CreateRefdesBookMarks = True (readback: True)
+set CreatePropertiesPdfFile = False (readback: False)
+set LandscapeOrientation = False (readback: False)
+set PaperSize = 9 (readback: 9)
+CapPdfPrint code=0 ret=  elapsed=4ms
+file NOT created: D:/tmp/pdf-out/test.pdf
+result: FAILED (print returned ok but no file)
+```
+
+结论与下一步：
+
+1. **七个选项的 Set/Get 全部可靠**（readback 逐项一致），`PaperSize=9` 也被接受——选项层不用怀疑；
+2. `CapPdfPrint` **返回成功但什么都没生成**，耗时仅 4 ms（不像真在渲染）。两个最可能的原因：
+   - **`PostscriptDriver` 没设**：官方 `capPdfUtil::setPdfGenerationOptions` 里**总是**先 `CapPdfSetOption "PostscriptDriver"`（ini `capPDFDriver` 优先，否则默认 `"Acrobat Distiller"`），而脚本第一版只在显式 `--driver` 时才设；
+   - **PS→PDF 转换器缺失**：官方代码里有 `mPSToPDFConverterCommand` / `capPDFCommand$index` 这一层——说明它先把页面打成 PostScript，再调用外部转换器生成 PDF。机器上没有 Ghostscript/Acrobat 命令行时，"打印成功"只意味着 PS 阶段没报错。
+3. `capIsPrinterDriverAvailable` 在真机上**返回空串**，不能当布尔用。
+
+脚本已按这两条改进：**总是设置 `PostscriptDriver`**（含 ini 回退），打印后**列出输出目录内容**（看是否只生成了 `.ps`），并在 `--dry-run` 时打印一段诊断（ini 键、驱动可用性、`gswin64c/ps2ps/ps2pdf` 是否存在、目录内容）。用同一命令重跑即可定位是"驱动没设"还是"转换器缺失"。
+
+## 8. 未验证的点
 
 | 项 | 状态 |
 | --- | --- |

@@ -56,6 +56,38 @@ proc ::pdfexp::SetOpt {name value} {
     return 1
 }
 
+# 诊断：把 ini 里的 PDF 相关键、驱动可用性、转换器是否存在、输出目录内容都打出来
+proc ::pdfexp::Diagnose {outDir} {
+    foreach k {capPDFDriver capPDFCommandIndex capPDFPaperSize capPDFPrintingMode capPDFCreateNetAndBookmark capPDFCreatePropertiesFile} {
+        set v ""
+        catch {set v [GetOptionString $k]}
+        ::pdfexp::Note "ini $k = «$v»"
+    }
+    set idx ""
+    catch {set idx [GetOptionString capPDFCommandIndex]}
+    if {$idx ne ""} {
+        set cv ""
+        catch {set cv [GetOptionString "capPDFCommand$idx"]}
+        ::pdfexp::Note "ini capPDFCommand$idx = «$cv»"
+    }
+    if {[llength [info commands capIsPrinterDriverAvailable]]} {
+        set a ""
+        catch {set a [capIsPrinterDriverAvailable]}
+        ::pdfexp::Note "capIsPrinterDriverAvailable = «$a»"
+    }
+    foreach exe {gswin64c gswin32c gs ps2pdf ps2pdf14} {
+        set p ""
+        catch {set p [auto_execok $exe]}
+        if {$p ne ""} { ::pdfexp::Note "converter found: $exe -> $p" }
+    }
+    if {[file isdirectory $outDir]} {
+        set files {}
+        catch {set files [glob -nocomplain -directory $outDir *]}
+        ::pdfexp::Note "outDir contains: [llength $files] file(s)"
+        foreach f [lrange $files 0 9] { ::pdfexp::Note "  [file tail $f] ([file size $f] B)" }
+    }
+}
+
 proc ::pdfexp::Run {outDir args} {
     variable log
     set log {}
@@ -126,9 +158,16 @@ proc ::pdfexp::Run {outDir args} {
     ::pdfexp::SetOpt "CreatePropertiesPdfFile" $propspdf
     ::pdfexp::SetOpt "LandscapeOrientation" $landscape
     if {$paper ne ""}  { ::pdfexp::SetOpt "PaperSize" [::pdfexp::PaperIndex $paper] }
-    if {$driver ne ""} { ::pdfexp::SetOpt "PostscriptDriver" $driver }
+
+    # 驱动：官方 setPdfGenerationOptions 总是设一次（ini capPDFDriver 优先，否则默认 Acrobat Distiller）
+    if {$driver eq ""} {
+        set driver "Acrobat Distiller"
+        catch { set ini ""; set ini [GetOptionString capPDFDriver]; if {$ini ne ""} { set driver $ini } }
+    }
+    ::pdfexp::SetOpt "PostscriptDriver" $driver
 
     if {$dry} {
+        ::pdfexp::Diagnose $outDir
         ::pdfexp::Note "dry-run: options applied, nothing printed"
         return 0
     }
@@ -142,6 +181,11 @@ proc ::pdfexp::Run {outDir args} {
     ::pdfexp::Note "CapPdfPrint code=$code ret=[string range $res 0 120] elapsed=[expr {$t1-$t0}]ms"
 
     # ---- 回读校验 ----
+    set produced {}
+    catch {set produced [glob -nocomplain -directory $outDir *]}
+    if {[llength $produced]} {
+        foreach f [lrange $produced 0 9] { ::pdfexp::Note "outDir now has: [file tail $f] ([file size $f] B)" }
+    }
     set ok 0
     if {[file exists $target]} {
         set size [file size $target]
