@@ -101,7 +101,7 @@ PlaceNew / PlacePartEx -> No matching function（真重载）
 CapPdfSetOption lOptionName lOptionValue
 CapPdfGetOption lOptionName
 CapPdfPrint     lOutDir lOutFileName
-CapPdfAddMarkStart pStartPtX pStartPtY pEndPtX pEndPtY pId pAttributeMarkType   ;# 官方恒传 0
+CapPdfAddMarkStart pStartPtX pStartPtY pEndPtX pEndPtY pId pAttributeMarkType   ;# pId=文本或形状名；pAttributeMarkType: 0=仅包围盒 1=按形状名绘制
 CapPdfAddMarkData  pName pValue
 CapPdfAddMarkEnd
 ```
@@ -177,9 +177,8 @@ orjson_delete $node / orjson_free $node
 
 ## 7. 明确未验证（禁止当事实输出）
 
-- `[未知]` `CapPdfAddMarkStart` 第 6 参 `pAttributeMarkType` 的**取值枚举**（官方恒 0）。
+- `[未知]` `CapPdfAddMarkStart` 第 6 参的**枚举名**（0/1 的实际用法已由 18 个调用点解出：0=仅包围盒，1=按第 5 参的形状名绘制；具体常量名未暴露）。
 - `[未知]` `PlacePart` 第 6 参语义（先按 0 用）。
-- `[未知]` `PlacePartEx` / `PlaceNew` 的重载参数。
 - `[未知]` `PlaceNext*Point` 续点坐标是绝对还是相对。
 - `[未知]` `DboTclHelper_sMakeDboValueType` 返回值如何**读回**枚举（`sGetInt` 无效）。
 - `[未知]` `CNewBOm_*` / `CVariant_*` / `CDiff*` / `orExprEval` 的参数表（零调用点，需 `--probe-bom` 真机探）。
@@ -224,4 +223,4 @@ orjson_delete $node / orjson_free $node
 
 用法：`shared_by_classes > 1` 表示该名称被多个类共用，计数不能归因到单个类；`shared = 1` 的计数可信。据此判断"这个 API 官方走不走得通"比看文档描述更硬。
 
-数据文件：[`official-usage.tsv`](official-usage.tsv)（3,941 行：command / class / method / official_calls / shared_by_classes）；逐类版本见 [`classes/`](classes/README.md) 每个文件里的 `official` 与 `shared` 两列。
+数据文件：[`official-usage.tsv`](official-usage.tsv)（3,941 行：command / class / method / official_calls / shared_by_classes / **call_sites**——每条给最多 3 个 `文件:行号` 定位）；逐类版本见 [`classes/`](classes/README.md) 每个文件里的 `official` 与 `shared` 两列。要看官方怎么调某个方法，直接跳 `call_sites`。

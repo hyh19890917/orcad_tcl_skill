@@ -13,7 +13,7 @@ Capture 17.4 的 PDF 能力分两层：**宿主命令 `CapPdf*`（真正干活�
 | `CapPdfAddMarkData` | 探测：`pName pValue` | 一条键值对 |
 | `CapPdfAddMarkEnd` | 探测：零参（返回 ok） | 闭合当前标注 |
 
-> 六个签名现在全部来自**真机零参探测**（参数名由宿主报出），不是从调用点猜的。第 6 参的名字是 `pAttributeMarkType`——**它是"标注类型"，不是布尔**；官方 18 处调用一律传 `0`（默认类型）。
+> 六个签名现在全部来自**真机零参探测**（参数名由宿主报出），不是从调用点猜的。第 6 参的名字是 `pAttributeMarkType`——**它是"标注类型"标记，不是简单布尔**；官方 18 处调用里 **0 与 1 都出现过**，规律见 §8.1。
 
 ## 2. 选项表（从 `CapPdfSetOption` 的调用点归纳）
 
@@ -238,7 +238,36 @@ file NOT created: D:/tmp/pdf-out/test.pdf
 
 | 项 | 状态 |
 | --- | --- |
-| `CapPdfAddMarkStart` 第 6 参的语义 | 官方 18 处调用**全部传 `0`**；第 5 参是自由文本标识（有一处传的是 `"… (Wire ID = 123 )"` 这种拼接串）。含义仍未定 |
+| `CapPdfAddMarkStart` 第 6 参的语义 | **已由 18 个官方调用点解出**（§8.1）：第 5 参是"标识或形状名"，第 6 参 0/1 分工明确。具体枚举名仍未知，但用法可照抄 |
+
+### 8.1 `CapPdfAddMarkStart` 的 18 个官方调用点（全部来自 `capPdfUtil.tcl`）
+
+| 行号 | 所在 annotate proc | 第 5 参 | 第 6 参 |
+| --- | --- | --- | --- |
+| 680 | `annotateAlias` | `[sGetConstCharPtr $lName]`（网络别名文本） | **0** |
+| 764 / 769 | `annotateWire` | `$lID`（含 `" (Wire ID = N )"` 的拼接串） | **0** |
+| 826 | `annotateGlobal` | 名字 | **0** |
+| 890 | `annotatePort` | `$lID` | **0** |
+| 959 | `annotateOffPageConnector` | `$lID` | **0** |
+| 1027 | `annotateTitleBlock` | `$lID` | **0** |
+| 1075 | `annotateERCS` | 名字 | **0** |
+| 1154 | `annotateBusEntry` | `$lID` | **0** |
+| 1236 | `annotatePart` | `$lID` | **0** |
+| 1274 | `annotateGraphicBoxInst` | `"Rectangle"` | **0** |
+| 1310 | `annotateGraphicLineInst` | `"Line"` | **1** |
+| 1347 | `annotateGraphicEllipseInst` | `"Ellipse"` | **1** |
+| 1384 | `annotateGraphicArcInst` | `"Arc"` | **1** |
+| 1421 | `annotateGraphicPolylineInst` | `"Polyline"` | **1** |
+| 1459 | `annotateGraphicPolygonInst` | `"Polygon"` | **1** |
+| 1501 | `annotateGraphicCommentTextInst` | `[sGetConstCharPtr $lTxt]` | **0** |
+| 1541 | `annotateGraphicBitMapInst` | `"Bitmap"` | **1** |
+
+规律（`[推断]`，与全部 18 条一致）：
+
+- **第 5 参**：文本/属性类标注传"标识字符串"（别名名、`ID`、`"... (Wire ID = N )"`、注释文本）；图形类标注传**形状名**（`"Rectangle"`/`"Line"`/`"Ellipse"`/`"Arc"`/`"Polyline"`/`"Polygon"`/`"Bitmap"`）。
+- **第 6 参**：**0 = 用包围盒矩形即可**（文本、属性、别名、导线、端口、页间连接符、标题栏、ERC、总线入口、器件、`Rectangle`、注释文本）；**1 = 标注要按第 5 参给出的形状绘制**（`Line`/`Ellipse`/`Arc`/`Polyline`/`Polygon`/`Bitmap`）。`Rectangle` 传 0 是自洽的——盒子的形状本来就等于它的包围盒。
+
+实践含义：**做纯矩形热区（可点/可搜索）用 `0`；要让 PDF 里的标注呈现真实轮廓，用 `1` 并在第 5 参给形状名。**
 | ~~`PaperSize` 索引范围~~ | **已解决**：0..69 共 70 项，见 2.1；默认 0 |
 | ~~`PostscriptDriver` 取值~~ | **部分解决**：默认值是 `"Acrobat Distiller"`；ini 键 `capPDFDriver` / `capPDFPrintingMode` 存的是驱动名/模式字符串 |
 | `CreatePropertiesPdfFile` 生成的文件名规则 | 未测 |
