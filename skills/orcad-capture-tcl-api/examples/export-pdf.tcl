@@ -172,13 +172,33 @@ proc ::pdfexp::Run {outDir args} {
         return 0
     }
 
-    # ---- 打印 ----
+    # ---- 打印：优先用官方编排 ::capPdfUtil::printPdf ----
+    # 原因：裸调 CapPdfPrint 只走了"打印"这一步，而 PDF 的实际生成是
+    # capPdfUtil::printPdfFromPS 用 mPSToPDFConverterCommand(gs) 把 .ps 转成 .pdf。
+    # 官方编排会先 setOptionValues（初始化转换器命令与临时路径）再打印。
     set target [file join $outDir $outFile]
+    set printed 0
+    if {[catch {package require capPdfUtil}] == 0 && [llength [info commands ::capPdfUtil::printPdf]]} {
+        # 把我们的选择写进 ini（setPdfGenerationOptions 就是从 ini 读的）
+        catch {SetOptionString capPDFPaperSize [::pdfexp::PaperIndex $paper]}
+        catch {SetOptionString capPDFDriver $driver}
+        catch {SetOptionString capPDFCreatePropertiesFile [expr {$propspdf eq "True" ? "1" : "0"}]}
+        catch {SetOptionString capPDFCreateNetAndBookmark [expr {($netmarks eq "True" || $refmarks eq "True") ? "1" : "0"}]}
+        ::pdfexp::Note "using official orchestrator: ::capPdfUtil::printPdf"
+        set code [catch {::capPdfUtil::printPdf $outDir $outFile} res]
+        ::pdfexp::Note "printPdf code=$code ret=[string range $res 0 120]"
+        set printed 1
+    } else {
+        ::pdfexp::Note "capPdfUtil not available -> raw CapPdfPrint (may only produce .ps)"
+    }
+
+    if {!$printed} {
     catch {file delete -force $target}
-    set t0 [clock clicks -milliseconds]
-    set code [catch {CapPdfPrint $outDir $outFile} res]
-    set t1 [clock clicks -milliseconds]
-    ::pdfexp::Note "CapPdfPrint code=$code ret=[string range $res 0 120] elapsed=[expr {$t1-$t0}]ms"
+        set t0 [clock clicks -milliseconds]
+        set code [catch {CapPdfPrint $outDir $outFile} res]
+        set t1 [clock clicks -milliseconds]
+        ::pdfexp::Note "CapPdfPrint code=$code ret=[string range $res 0 120] elapsed=[expr {$t1-$t0}]ms"
+    }
 
     # ---- 回读校验 ----
     set produced {}

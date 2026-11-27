@@ -146,6 +146,48 @@ result: FAILED (print returned ok but no file)
 
 脚本已按这两条改进：**总是设置 `PostscriptDriver`**（含 ini 回退），打印后**列出输出目录内容**（看是否只生成了 `.ps`），并在 `--dry-run` 时打印一段诊断（ini 键、驱动可用性、`gswin64c/ps2ps/ps2pdf` 是否存在、目录内容）。用同一命令重跑即可定位是"驱动没设"还是"转换器缺失"。
 
+### 7.1 复跑诊断：原因锁定在"少了编排层"
+
+第二次真机运行（带诊断）拿到关键三行：
+
+```text
+set PostscriptDriver = OrCADPS_17.4 (readback: OrCADPS_17.4)
+ini capPDFDriver = «OrCADPS_17.4»
+ini capPDFCommand2 = «{gswin64c.exe} -sDEVICE=pdfwrite -sOutputFile=$::capPdfUtil::mPdfFilePath -dBATCH -dNOPAUSE $::capPdfUtil::mPSFilePath»
+CapPdfPrint code=0 ret=  elapsed=2ms      ← 仍然不出文件
+```
+
+驱动是设好的、Ghostscript 的转换命令也在 ini 里，**问题不在驱动也不在转换器本身**，而在调用层次：
+
+读 `capPdfUtil.tcl` 可见完整链路：
+
+```text
+::capPdfUtil::printPdf {outDir outFile {removeTemp 1}}
+  ├─ ::capPdfUtil::setOptionValues      ;# 初始化 mPSToPDFConverterCommand、返回 0 则中止
+  ├─ set ::capPdfUtil::mOutDir / mOutFile
+  ├─ ::capPdfUtil::setPdfGenerationOptions   ;# 从 ini 读驱动/InstMode/书签，逐个 CapPdfSetOption
+  ├─ CapPdfPrint $outDir $outFile            ;# 打印到 PostScript
+  └─ ::capPdfUtil::printPdfFromPS …          ;# exec $mPSToPDFConverterCommand 把 .ps → .pdf
+```
+
+**裸调 `CapPdfPrint` 只走到第 4 步**：`mPdfFilePath` / `mPSFilePath` / `mPSToPDFConverterCommand` 都还没初始化，于是它 2 ms 返回、什么都不生成——这正是那两次"code=0 但没文件"的原因。
+
+正确用法（脚本已改）：
+
+```tcl
+package require capPdfUtil                      ;# 编排层在 capPDFExport/tcl 里
+# 想控制选项就先写 ini（setPdfGenerationOptions 是从 ini 读的）
+SetOptionString capPDFPaperSize 9               ;# A4
+SetOptionString capPDFDriver    "OrCADPS_17.4"
+SetOptionString capPDFCreateNetAndBookmark 1
+::capPdfUtil::printPdf $outDir $outFile         ;# 初始化 → 打印 → PS→PDF → 打开
+```
+
+两条附加事实：
+
+- `capIsPrinterDriverAvailable` 在本机返回**空串**（不是 0/1），不能当布尔用；
+- ini 的转换命令是**一段可 `eval exec` 的 Tcl 串**，里面直接引用 `$::capPdfUtil::mPdfFilePath` 与 `$::capPdfUtil::mPSFilePath`——也就是说这两个变量由编排层在调用前填好，单独调 `CapPdfPrint` 就永远为空。
+
 ## 8. 未验证的点
 
 | 项 | 状态 |
