@@ -335,6 +335,7 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 | [host-capability-map.md](reference/host-capability-map.md) | 宿主家族地图：CorSimSrvr/CPMgt/DBXMLWriter/orSysObjectsManager/CIS*/CVariant/orjson/CNewBOm 的数量与用途、掌握度标注、下一步挖掘顺序 |
 | [host-commands-surface.md](reference/host-commands-surface.md) | **宿主命令面盘点**：Capture 内 9830 条 vs headless 6112 条、家族分布、`Place*` 63 条全清单（PlaceNetAlias/PlaceOffPage/PlacePort…）、关键命令存在性核对、`cap*` 533 条亮点、旧结论勘误 |
 | [web-panel-bridge.md](reference/web-panel-bridge.md) | 面板桥官方实现：服务端 methodLabel=executeTcl 直接 eval、页面侧 orPrmConnector(widgetId, tcl)、Tcl 侧 webpanel::exec/nativeCall、白名单骨架 |
+| [symbol-editor-api.md](reference/symbol-editor-api.md) | 符号编辑器 59 个面板方法：**GetPackageXmL→改→savePackageData 的 XML 往返**、12 个 OnClickPlace*、RunCommand 命令通道、orjson 命令打包协议、与 Dbo 建符号路线的取舍 |
 | [host-event-hooks.md](reference/host-event-hooks.md) | **事件钩子目录**：RegisterAction 的 ~100 个保留名（设计打开/保存/关闭、页创建、连接性变更、选择、上下文菜单、`_cdnCapAction/Update*` 成对、PDF 两钩子）、`SubscribeForDBChange` 订阅点、DRC 接口 |
 | [plugin-lifecycle.md](reference/plugin-lifecycle.md) | 插件生命周期：capAutoLoad 即入口、`<Feature>Init.tcl` 壳与体之分、约定式 proc 名、`package require orPrmDesigner` 面板三步、命令表盲区（宿主命令不在 6109 条里） |
 | [host-actions.md](reference/host-actions.md) | RegisterAction 的 5 参数形态、InsertXMLMenu 嵌套结构 + RefreshMenu、handler/enabler 的 {args}/return true 契约、headless 不存在该命令的硬边界、可复用 enabler 名单 |
