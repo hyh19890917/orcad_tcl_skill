@@ -326,6 +326,7 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 | [`signatures.md`](reference/signatures.md) | **主查表**：3,941 条命令的官方参数名 + C++ 类型（17.4），按声明类分组；重载未暴露的条目单独标注 |
 | [`signatures-17.4.csv`](reference/signatures-17.4.csv) / [`.tsv`](reference/signatures-17.4.tsv) | 同上，机读格式（command, class, method, params），便于 grep/脚本消费 |
 | [`classes/`](reference/classes/README.md) | **按类拆分的方法表（292 个文件 / 3,941 条）**：每个方法带 `official`（官方调用次数）与 `shared`（同类名共用类数）两列；模型按需只加载一个类，避免每次吞 245 KB；索引见 [classes/README.md](reference/classes/README.md) |
+| [`dbolutils-json.md`](reference/dbolutils-json.md) | **DboTclUtils 的 JSON 助手**：`std::string&` 出参必须 `sMakeStdStr <CString>`；`GetPropertyBlockHierachy` 实测 11.8 KB 属性树（含按值分布 `refCount`）；`sGetDesignPartPropertyJSON`→`{"Pkgs":[]}`；`GetReferencePrefix`/`GetReferenceFromID`（2 参）；容器 helper 全表 |
 | [`official-usage.tsv`](reference/official-usage.tsv) | **官方使用度（3,941 行 / 5 列）**：每个方法在 564 个官方 tcl 里被用多少次 + 共用类数 + **最多 3 个 `文件:行号` 调用点**；2,217 名中仅 338 被用过、50 个类零使用——判断"官方这条路走不走得通"并可直接跳源码 |
 | [`traps.tsv`](reference/traps.tsv) | **可筛的坑表（33 行 TSV）**：api / area / symptom / cause / fix / evidence / status，含 5 条假成功、报错映射、版本差异、明确 unknown 项 |
 | [`dbo-classes.md`](reference/dbo-classes.md) | 291 个类的成员总表：类 → 方法 → 参数，用来反查"这个东西在哪个类上" |

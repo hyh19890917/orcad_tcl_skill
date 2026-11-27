@@ -140,6 +140,21 @@ orjson_encode64 $node / orjson_decode64 $b64
 orjson_delete $node / orjson_free $node
 ```
 
+### 4.7 DboTclUtils / 容器 helper（JSON 输出）
+
+```tcl
+set out [DboTclHelper_sMakeStdStr [DboTclHelper_sMakeCString ""]]   ;# std::string*，零参会报重载错误
+DboTclUtils_sGetDesignPartPropertyJSON <design> <CStringSet> $out    ;# -> {"Pkgs":[...]}（样本空）
+set p [DboTclUtils_GetPropertyBlockHierachy <design> <CString prop>];# -> 11.8KB BlockTree JSON，data[].refCount 是按值分布
+set pfx [DboTclUtils_GetReferencePrefix <CString ref>]               ;# R101 -> "R"
+set ref [DboTclUtils_GetReferenceFromID <design> <CString id>]       ;# 只 2 参，第 3 参报 Wrong # args
+DboTclHelper_sGetConstCharPtr $out                                   ;# 读 std::string 正文（空串返回指针串）
+```
+
+容器：`sMakeCStringSet` / `sInsertToCStringSet` / `sFindInCStringSet`（对已插入项返回 0，语义不明，别当布尔）/ `sDeleteCStringSet`；`sMakeStdVector` / `sPushBackToVector` / `sGetVectorSize` / `sGetConstCharPtrFromVector` / `sRemoveFromVector`；`sGetStringMap` / `sAddToStringMap` / `sGetStringMapData`。
+
+**`signatures-17.4.csv` 对 `DboTclUtils_*` 的参数名/顺序不可信**（`sGetPartRefAllOccOfParts` 第 2 参实际是 CStringSet），必须逐位探测。
+
 ### 4.6 符号编辑器（XML 往返，改已有封装的最短路径）
 
 ```tcl
