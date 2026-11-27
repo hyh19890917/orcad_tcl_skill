@@ -311,64 +311,37 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 
 ## 15. 文件索引
 
-| 文件 | 内容 |
+**完整清单（按主题分组、带依据等级）见 [`reference/README.md`](reference/README.md)**。这里只列最常用的入口。
+
+### 15.1 主查表（写代码时最常翻）
+
+| 文件 | 用途 |
 | --- | --- |
-| [`signatures.md`](reference/signatures.md) | **主查表**：3941 条命令的官方参数名与 C++ 类型（17.4），按类分组 |
-| [`signatures-17.4.csv`](reference/signatures-17.4.csv) / `.tsv` | 同上，机读（command,class,method,params,note） |
-| [`dbo-classes.md`](reference/dbo-classes.md) | 291 个类的成员总表（17.4） |
-| [`dbo-commands-17.4.csv`](reference/dbo-commands-17.4.csv) / `-16.6.csv` | 类/方法/种类/命令名，便于 diff |
-| [`iterators.md`](reference/iterators.md) | 127 个迭代器 → Next 方法 → delete 命令 |
-| [`host-api.md`](reference/host-api.md) | Capture 宿主命令（菜单、控制条、放置、文档）与 executeTcl 桥 |
-| [`marshalling.md`](reference/marshalling.md) | 90 个 `DboTclHelper_*` 分组与所有权规则 |
-| [`version-matrix.md`](reference/version-matrix.md) | 三版本实测对照、增量、适配清单 |
-| [official-patterns.md](reference/official-patterns.md) | 官方 564 个 tcl 的用法统计、宿主常量、capDB/orPrmDboUtils 封装、推荐范式与反模式 |
-| [dbo-advanced.md](reference/dbo-advanced.md) | 进阶族：事务/撤销、器件与 BOM JSON、位号标注、路径与内存目录、扩展属性、官方 web 宿主 |
-| [official-symbol-builder.md](reference/official-symbol-builder.md) | 官方符号生成器的九步序列：NewPackage/NewPart/NewSymbolPinScalar/NewDisplayProp/SaveLib + 可抄骨架 |
-| [official-workflows.md](reference/official-workflows.md) | 应用层 C* 类、StringMap、CIS 分组、差异/搜索/路径/PDF、官方 web 宿主与对象流协议 |
-| [constants.md](reference/constants.md) · [constants-17.4.txt](reference/constants-17.4.txt) | 437 个宿主常量（对象类型/值枚举/迭代位），附 [dump-constants.tcl](scripts/dump-constants.tcl) |
-| [official-ui-layout-export.md](reference/official-ui-layout-export.md) | 官方四套范式：偏好表单（CFT 字段+树表+JSON）、对齐/分布选项模型、PDF 导出的标注+跨进程管线、对象流序列化字段分层 |
-| [host-pdf-api.md](reference/host-pdf-api.md) | **PDF 打印与标注**：CapPdfPrint(outDir,outFile)、CapPdfAddMarkStart(x1y1x2y2,id,0)+AddMarkData+AddMarkEnd、七个选项(InstMode/书签/纸张索引/驱动)、与 capPdfUtil 脚本层的分工 |
-| [host-place-api.md](reference/host-place-api.md) | **放置类完整签名**（实测）：PlaceWire/PlaceBus(x1y1x2y2)、PlaceNetAlias(x,y,name)、PlaceOffPage/Port/Power/Ground(x,y,lib,symbol,name)、PlacePart 六参与索引状态机、PlaceNetgroup 需页上下文 |
-| [host-panel-api.md](reference/host-panel-api.md) | 面板 API 全景：240 命名空间/3126 方法、`pStrClientId` 契约、`::capObjectAlignment::` 120 个对齐方法、`orPrmServerPrimary` RPC 形态 |
-| [coverage.md](reference/coverage.md) | **覆盖面盘点**：9,832 条命令 vs 文档提及率 69.7%；未覆盖家族分三层（离线可挖 / 需真机 / 绑定层不必挖），以及收尾顺序建议 |
-| [orjson-usage.md](reference/orjson-usage.md) | `orjson_*` 64 命令速查：构造/解析/序列化/类型转换分组表、官方调用形态、五个配方（建对象/取值/遍历/大小写不敏感/Base64）、5 个坑 |
-| [host-capability-map.md](reference/host-capability-map.md) | 宿主家族地图：CorSimSrvr/CPMgt/DBXMLWriter/orSysObjectsManager/CIS*/CVariant/orjson/CNewBOm 的数量与用途、掌握度标注、下一步挖掘顺序 |
-| [host-commands-surface.md](reference/host-commands-surface.md) | **宿主命令面盘点**：Capture 内 9830 条 vs headless 6112 条、家族分布、`Place*` 63 条全清单（PlaceNetAlias/PlaceOffPage/PlacePort…）、关键命令存在性核对、`cap*` 533 条亮点、旧结论勘误 |
-| [web-panel-bridge.md](reference/web-panel-bridge.md) | 面板桥官方实现：服务端 methodLabel=executeTcl 直接 eval、页面侧 orPrmConnector(widgetId, tcl)、Tcl 侧 webpanel::exec/nativeCall、白名单骨架 |
-| [symbol-editor-api.md](reference/symbol-editor-api.md) | 符号编辑器 59 个面板方法：**GetPackageXmL→改→savePackageData 的 XML 往返**、12 个 OnClickPlace*、RunCommand 命令通道、orjson 命令打包协议、与 Dbo 建符号路线的取舍 |
-| [host-event-hooks.md](reference/host-event-hooks.md) | **事件钩子目录**：RegisterAction 的 ~100 个保留名（设计打开/保存/关闭、页创建、连接性变更、选择、上下文菜单、`_cdnCapAction/Update*` 成对、PDF 两钩子）、`SubscribeForDBChange` 订阅点、DRC 接口 |
-| [plugin-lifecycle.md](reference/plugin-lifecycle.md) | 插件生命周期：capAutoLoad 即入口、`<Feature>Init.tcl` 壳与体之分、约定式 proc 名、`package require orPrmDesigner` 面板三步、命令表盲区（宿主命令不在 6109 条里） |
-| [host-actions.md](reference/host-actions.md) | RegisterAction 的 5 参数形态、InsertXMLMenu 嵌套结构 + RefreshMenu、handler/enabler 的 {args}/return true 契约、headless 不存在该命令的硬边界、可复用 enabler 名单 |
-| [dbo-value-and-creation.md](reference/dbo-value-and-creation.md) | DboValue 类型与创建类 API 实测：ValueType&/int& 出参的正确指针、junction 可用、NewName 假成功、offpage 真重载、ReleaseAllCreatedPtrs |
-| [probing-api-gaps.md](reference/probing-api-gaps.md) | 自己补签名空白：类型错误文本反推参数（arg N of type）、临时对象当 self 逐级逼近、DboState 报错真实语义（Message 是 setter、Code 常为 0、有的直接抛异常） |
-| [allegro-3d-and-models.md](reference/allegro-3d-and-models.md) | 封装与 3D 绑定：axlStepSet/axlStepGet 读回校验、PACKAGE_HEIGHT_MAX、清单哈希与 height_source 设计、反模式 |
-| [`commands-16.6.txt`](reference/commands-16.6.txt) · [`-17.2`](reference/commands-17.2.txt) · [`-17.4`](reference/commands-17.4.txt) | 全量命令名（diff / grep 用） |
+| [`signatures.md`](reference/signatures.md) / [`signatures-17.4.csv`](reference/signatures-17.4.csv) | 3,941 条命令的参数名 + C++ 类型（按类分组 / 机读） |
+| [`dbo-classes.md`](reference/dbo-classes.md) | 291 个类的成员总表 |
+| [`iterators.md`](reference/iterators.md) | 迭代器 → `Next*` → `delete_*` 对应 |
+| [`constants.md`](reference/constants.md) · [`constants-17.4.txt`](reference/constants-17.4.txt) | 437 个宿主常量（对象类型/值枚举/迭代位） |
+| [`marshalling.md`](reference/marshalling.md) | `DboTclHelper_*` 指针与所有权 |
+| [`version-matrix.md`](reference/version-matrix.md) | 16.6/17.2/17.4 实测对照与行为差异 |
+
+### 15.2 按任务找文档
+
+- **改属性 / 批量编辑** → [`dbo-advanced.md`](reference/dbo-advanced.md)、[`safe-edit-prop.tcl`](examples/safe-edit-prop.tcl)、[`bulk-edit-csv.tcl`](examples/bulk-edit-csv.tcl)
+- **写插件（菜单 / 面板 / 事件）** → [`host-actions.md`](reference/host-actions.md)、[`plugin-lifecycle.md`](reference/plugin-lifecycle.md)、[`host-event-hooks.md`](reference/host-event-hooks.md)、[`web-panel-bridge.md`](reference/web-panel-bridge.md)、[`plugin-skeleton.tcl`](examples/plugin-skeleton.tcl)
+- **符号库（新建 / 修改）** → [`official-symbol-builder.md`](reference/official-symbol-builder.md)、[`symbol-editor-api.md`](reference/symbol-editor-api.md)、[`build-symbol.tcl`](examples/build-symbol.tcl)
+- **放置 / 连线** → [`host-place-api.md`](reference/host-place-api.md)、[`place-from-csv.tcl`](examples/place-from-csv.tcl)
+- **PDF / 导出** → [`host-pdf-api.md`](reference/host-pdf-api.md)、[`export-pdf.tcl`](examples/export-pdf.tcl)
+- **BOM / 变体** → [`dbo-advanced.md`](reference/dbo-advanced.md) §10、[`host-capability-map.md`](reference/host-capability-map.md) §3
+- **预览 / 索引（离线）** → [`hier-tree.tcl`](examples/hier-tree.tcl)、[`page-stream.tcl`](examples/page-stream.tcl)、[`stream-olb.tcl`](examples/stream-olb.tcl)、[`design-browser.tcl`](examples/design-browser.tcl)
+- **自己继续挖 API** → [`probing-api-gaps.md`](reference/probing-api-gaps.md)、[`coverage.md`](reference/coverage.md)、[`export-host-commands.tcl`](scripts/export-host-commands.tcl)
+
+### 15.3 脚本
+
+| 脚本 | 用途 |
+| --- | --- |
 | [`dump-dbo-api.tcl`](scripts/dump-dbo-api.tcl) | 换机器/换版本时重新导出命令面 |
 | [`dump-dbo-signatures.tcl`](scripts/dump-dbo-signatures.tcl) | 重新导出参数签名（零参调用法） |
+| [`dump-constants.tcl`](scripts/dump-constants.tcl) | 重新导出宿主常量 |
 | [`probe-calling-form.tcl`](scripts/probe-calling-form.tcl) | 验证调用形态 / 对象命名 / 类型码 |
-| [`debug-olb.tcl`](scripts/debug-olb.tcl) | 单库诊断：打开是否成功、Package 迭代器是否为空 |
-| [`batch-olb-index.tcl`](examples/batch-olb-index.tcl) | headless：OLB → TSV（Package/Symbol/Part/Pin 全量，已对真实库验证） |
-| [`safe-edit-prop.tcl`](examples/safe-edit-prop.tcl) | 批量改属性：before/after 校验 + 逆序回滚（8.4 兼容） |
-| [`probe-design.tcl`](examples/probe-design.tcl) | 进程内：设计/页/实例/选中体检（只读） |
-| [`plugin-skeleton.tcl`](examples/plugin-skeleton.tcl) | 进程内：菜单 + 控制条 + executeTcl 白名单入口骨架 |
-| [`build-symbol.tcl`](examples/build-symbol.tcl) | headless：从零建符号（Package/Cell/Part/Device + 管脚 + 显示属性），保存后回读校验 |
-| [`stream-olb.tcl`](examples/stream-olb.tcl) | headless：OLB → JSON（封装/器件/管脚，字段风格对齐官方 streamer，可喂预览器） |
-| [`hier-tree.tcl`](examples/hier-tree.tcl) | headless：.dsn → 层级 JSON（occurrence 树 + 分支页/器件数/类型直方图，可选 `--html` 折叠树）；平面与层级设计均实测 |
-| [`page-stream.tcl`](examples/page-stream.tcl) | headless：单页 → JSON（器件/导线/端口 + extent），`--html` 出 SVG 线框预览；与 hier-tree 组成离线浏览器 |
-| [`export-pdf.tcl`](examples/export-pdf.tcl) | **Capture 内导出 PDF**：七选项设一遍并逐个 `GetOption` 回读、`CapPdfPrint` 后按 `file exists`+大小判定成败；`--dry-run` 只验前置与选项 |
-| [`place-from-csv.tcl`](examples/place-from-csv.tcl) | **Capture 内批量放置**：CSV 驱动 wire/alias/offpage/port/power/ground/junction/noconnect/**part/partsel/block**；逐行 catch 记账、前置页检查、`--dry-run`/`--verify`（Dbo 回读计数）；桩环境已验证 6 类参数顺序 |
-| [`design-browser.tcl`](examples/design-browser.tcl) | headless：一条命令出**自包含 HTML 浏览器**：层级树（带分支页/器件数）+ 逐页 SVG + **网络配色**（HSL 均分、图例可点、可关）+ 滚轮缩放/拖拽/双击复位 + 点器件看封装管脚；数据内嵌双击即用 |
-| [`align-objects.tcl`](examples/align-objects.tcl) | 进程内：对齐/等距分布（包围盒 + SetLocation，dry-run 先看计划） |
-| [`bulk-edit-csv.tcl`](examples/bulk-edit-csv.tcl) | 进程内：CSV 驱动批量改属性（前值校验 + 读回 + 逆序回滚，-commit 才存盘） |
-
-> `signatures.*` 目前只导出了 17.4；16.6 / 17.2 只有命令面（`commands-*.txt`）。需要签名时按 §4 的两行命令自己生成对应版本即可（同一脚本，换 DLL 与输出名）。
-
-重新生成整套参考（换 Cadence 版本时）：
-
-```powershell
-$env:PATH = '<root>\tools\bin;' + $env:PATH
-'<root>\tools\bin\tclsh.exe' scripts\dump-dbo-api.tcl '<root>\tools\bin\orDb_Dll_Tcl64.dll' reference\commands-<ver>.txt
-'<root>\tools\bin\tclsh.exe' scripts\dump-dbo-signatures.tcl '<root>\tools\bin\orDb_Dll_Tcl64.dll' reference\signatures-<ver>.tsv
-```
-
-| [export-host-commands.tcl](scripts/export-host-commands.tcl) | **在 Capture 里跑**：导出宿主命令面（commands/procs/namespaces/packages/env + 安全前缀的零参 arity 探测），补 headless 拿不到的那部分 |
+| [`debug-olb.tcl`](scripts/debug-olb.tcl) | 单库诊断（打开是否成功、Package 迭代器是否为空） |
+| [`export-host-commands.tcl`](scripts/export-host-commands.tcl) | **在 Capture 里跑**：导出宿主人面（`--probe-place` / `--probe-pdf` / `--probe-bom`） |
