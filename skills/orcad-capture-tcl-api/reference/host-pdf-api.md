@@ -22,8 +22,45 @@ Capture 17.4 的 PDF 能力分两层：**宿主命令 `CapPdf*`（真正干活�
 | `CreateRefdesBookMarks` | `"True"` / `"False"` | 为位号生成书签 |
 | `CreatePropertiesPdfFile` | `"True"` / `"False"` | 附带属性 PDF |
 | `LandscapeOrientation` | `"True"` / `"False"` | 横向 |
-| `PaperSize` | 索引值（`$::capPdfUtil::mPaperSizeListIndex`） | 纸张，**传的是列表索引不是名字** |
-| `PostscriptDriver` | 驱动名字符串 | 打印驱动；官方从 ini 读 `capPDFPrintingMode` 兜底 |
+| `PaperSize` | 索引值（`$::capPdfUtil::mPaperSizeListIndex`，默认 0） | 纸张，**传的是列表索引不是名字**（见 2.1） |
+| `PostscriptDriver` | 驱动名字符串，默认 `"Acrobat Distiller"` | 打印驱动；官方从 ini `capPDFPrintingMode` 兜底 |
+
+### 2.1 纸张索引表（`capPdfUtil::populatePaperSizeList`，共 70 项 0..69）
+
+`PaperSize` 的取值就是这张表的下标，**0 = Default**。常用项：
+
+| 索引 | 名称 |
+| --- | --- |
+| 0 | Default |
+| 1 | US Letter 8 1/2 x 11 in |
+| 3 | US Tabloid 11 x 17 in |
+| 4 | US Ledger 17 x 11 in |
+| 5 | US Legal 8 1/2 x 14 in |
+| 8 | A3 297 x 420 mm |
+| 9 | A4 210 x 297 mm |
+| 11 | A5 148 x 210 mm |
+| 12 | B4 (JIS) 257 x 364 mm |
+| 13 | B5 (JIS) 182 x 257 mm |
+| 42 | B4 (ISO) 250 x 353 mm |
+| 66 | A2 420 x 594 mm |
+
+表里还有信封尺寸（19–23、27–36、47、69）、Fanfold（39–41）、Transverse 变体（54–56、61–62、67–68）、以及第 **48/49 项是 `RESERVED--DO NOT USE`**（别传这两个）。
+
+`examples/export-pdf.tcl` 支持写别名（`--paper a4` → 9、`--paper letter` → 1、`--paper tabloid` → 3），映射不到时按原值透传。
+
+### 2.2 配套的偏好键（`GetOptionString` / `SetOptionString`）
+
+面板把用户上次的选择存在 Capture 偏好里，键名与选项的对应关系：
+
+| 偏好键 | 对应 |
+| --- | --- |
+| `capPDFCreatePropertiesFile` | `CreatePropertiesPdfFile` |
+| `capPDFCreateNetAndBookmark` | `CreateRefdesBookMarks` / `CreateNetBookMarks` |
+| `capPDFPaperSize` | `PaperSize`（存的就是索引） |
+| `capPDFDriver` | `PostscriptDriver` |
+| `capPDFPrintingMode` | 打印模式（面板/驱动选择） |
+
+自己写工具时，**读这些键可以继承用户上次的选择**，不用每次硬编码。
 
 相关的宿主命令还有 `capIsPrinterDriverAvailable`（判断驱动是否可用，做前置检查用）与 `GetOptionString` / `SetOptionString`（Capture 偏好读写，官方用 `capPDFPrintingMode` 存"打印模式"）。
 
@@ -85,11 +122,13 @@ CapPdfPrint outDir outFile              ;# 真正生成 PDF
 
 | 项 | 状态 |
 | --- | --- |
-| `CapPdfAddMarkStart` 第 6 参的语义 | 官方恒传 `0`，含义未知（推测为"标注类型/是否链接"） |
-| `PaperSize` 索引范围与对应纸张名 | 官方从 `mPaperSizeListIndex` 取，列表本身在面板 JS 里，未提取 |
-| `PostscriptDriver` 与 ini `capPDFPrintingMode` 的映射 | 只看到"ini 值直接当驱动名传"，具体取值未列 |
+| `CapPdfAddMarkStart` 第 6 参的语义 | 官方 18 处调用**全部传 `0`**；第 5 参是自由文本标识（有一处传的是 `"… (Wire ID = 123 )"` 这种拼接串）。含义仍未定 |
+| ~~`PaperSize` 索引范围~~ | **已解决**：0..69 共 70 项，见 2.1；默认 0 |
+| ~~`PostscriptDriver` 取值~~ | **部分解决**：默认值是 `"Acrobat Distiller"`；ini 键 `capPDFDriver` / `capPDFPrintingMode` 存的是驱动名/模式字符串 |
 | `CreatePropertiesPdfFile` 生成的文件名规则 | 未测 |
-| 零参/少参调用的报错形态 | 这轮没做 arity 探测（v2 默认白名单不含 `CapPdf*`），可在下次导出时加 `--probe-pdf` 补一版 |
+| 零参/少参调用的报错形态 | 已给 `export-host-commands.tcl` 加 `--probe-pdf`，跑一次即可补齐 |
+
+另外确认过：安装目录里的 `OrCAD_Capture_TclTk_Extensions.pdf`（5.3 MB）**不含** `CapPdf*` 文档——把 1089 个 PDF 流全部解压后搜 `CapPdf`/`AddMarkStart`/`PaperSize` 均为 0 命中。所以这些签名只能靠调用点与探测恢复，官方没有公开文档。
 
 ## 6. 自测建议
 

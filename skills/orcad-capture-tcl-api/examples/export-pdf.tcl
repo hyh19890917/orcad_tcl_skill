@@ -13,7 +13,7 @@
 #     --refmarks 0|1             CreateRefdesBookMarks
 #     --propspdf 0|1             CreatePropertiesPdfFile
 #     --landscape 0|1            LandscapeOrientation
-#     --paper N                  PaperSize（**索引，不是纸张名**）
+#     --paper N|a4|letter|tabloid  PaperSize（索引或别名；3=Tabloid 11x17, 9=A4, 1=Letter）
 #     --driver "名称"            PostscriptDriver
 #
 # 设计要点：
@@ -24,6 +24,19 @@
 
 namespace eval ::pdfexp {
     variable log {}
+    # PaperSize 是索引；官方列表见 capPdfUtil::populatePaperSizeList（0..33）
+    array set papers {
+        default 0 letter 1 lettersmall 2 tabloid 3 ledger 4 legal 5 statement 6
+        executive 7 a3 8 a4 9 a4small 10 a5 11 b4 12 b5 13 folio 14 quarto 15
+        usletter 1 ustabloid 3 uslegal 5 usledger 4
+    }
+}
+
+proc ::pdfexp::PaperIndex {v} {
+    if {[string is integer -strict $v]} { return $v }
+    set k [string tolower [string map {" " "" "-" "" "_" ""} $v]]
+    if {[info exists ::pdfexp::papers($k)]} { return $::pdfexp::papers($k) }
+    return $v
 }
 
 proc ::pdfexp::Note {msg} {
@@ -112,7 +125,7 @@ proc ::pdfexp::Run {outDir args} {
     ::pdfexp::SetOpt "CreateRefdesBookMarks" $refmarks
     ::pdfexp::SetOpt "CreatePropertiesPdfFile" $propspdf
     ::pdfexp::SetOpt "LandscapeOrientation" $landscape
-    if {$paper ne ""}  { ::pdfexp::SetOpt "PaperSize" $paper }
+    if {$paper ne ""}  { ::pdfexp::SetOpt "PaperSize" [::pdfexp::PaperIndex $paper] }
     if {$driver ne ""} { ::pdfexp::SetOpt "PostscriptDriver" $driver }
 
     if {$dry} {
