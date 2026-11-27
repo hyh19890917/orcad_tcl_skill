@@ -1,0 +1,17 @@
+# DboExtBlobNodeImage (11 methods)
+
+| method | params | note |
+| --- | --- | --- |
+| `~delete` | `self` | argc=1 |
+| `GetImageStream` | `self` | argc=1 |
+| `GetImageStreamSize` | `self` | argc=1 |
+| `GetImageType` | `self` | argc=1 |
+| `Init` | `self` | argc=1 |
+| `LoadNodeData` | `self,pNodeData` | argc=1 |
+| `SetImageStream` | `self,pStream,pSize` | argc=1 |
+| `SetImageType` | `self,pType` | argc=1 |
+| `sImageTypeToName` | `pType` | argc=1 |
+| `sNameToImageType` | `pTypeExt` | argc=1 |
+| `StoreNodeData` | `self,pBuffer` | argc=1 |
+
+Usage (object form): `$obj <method> <args...>`  /  global form: `DboExtBlobNodeImage_<method> $obj <args...>`

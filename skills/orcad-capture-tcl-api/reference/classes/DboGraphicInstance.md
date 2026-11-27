@@ -1,0 +1,54 @@
+# DboGraphicInstance (48 methods)
+
+| method | params | note |
+| --- | --- | --- |
+| `DeleteAllDisplayProps` | `self` | argc=1 |
+| `DeleteUserProp` | `self,name` | argc=1 |
+| `DeleteUserPropValue` | `self,name` | argc=1 |
+| `Drag` | `self,offset` | argc=1 |
+| `GetBoundingBox` | `self` | argc=1 |
+| `GetColor` | `self,status` | argc=1 |
+| `GetContainingLib` | `self` | argc=1 |
+| `GetDefiningGraphicObject` | `self,status` | argc=1 |
+| `GetDisplayPropsPermitted` | `self,status` | argc=1 |
+| `GetDispPropArray` | `self` | argc=1 |
+| `GetEffectivePropStringValue` | `` | overloaded-C++ |
+| `GetEffectivePropStringValueNC` | `self,name,value` | argc=1 |
+| `GetGridLocation` | `self,gridValue` | argc=1 |
+| `GetId` | `self,status` | argc=1 |
+| `GetLocation` | `self,status` | argc=1 |
+| `GetMirror` | `self,status` | argc=1 |
+| `GetName` | `self,name` | argc=1 |
+| `GetObjectType` | `self` | argc=1 |
+| `GetOffsetBoundingBox` | `self,status` | argc=1 |
+| `GetOffsetGraphicPoint` | `self,definingPoint` | argc=1 |
+| `GetOwner` | `self` | argc=1 |
+| `GetParentObj` | `self` | argc=1 |
+| `GetRotation` | `self,status` | argc=1 |
+| `GetSourceDefinition` | `self,status` | argc=1 |
+| `GetSourceLibName` | `self,name` | argc=1 |
+| `GetUserData` | `self,status` | argc=1 |
+| `MarkModified` | `self` | argc=1 |
+| `Move` | `self,offset` | argc=1 |
+| `NewDisplayProp` | `` | overloaded-C++ |
+| `NewDisplayPropsIter` | `self,status` | argc=1 |
+| `NewEffectivePropsIter` | `` | overloaded-C++ |
+| `NewUserProp` | `` | overloaded-C++ |
+| `SetBoundingBox` | `self,boundingBox` | argc=1 |
+| `SetColor` | `self,color` | argc=1 |
+| `SetId` | `` | overloaded-C++ |
+| `SetLocation` | `self,location` | argc=1 |
+| `SetMirror` | `self,mirror` | argc=1 |
+| `SetName` | `self,name` | argc=1 |
+| `SetObjectType` | `self,nType` | argc=1 |
+| `SetRotation` | `self,rotation` | argc=1 |
+| `SetUserData` | `self,pPtr` | argc=1 |
+| `SetUserPropStringValue` | `self,name,value` | argc=1 |
+| `sGetColor` | `obj,status` | argc=1 |
+| `sGetLocationX` | `obj,status` | argc=1 |
+| `sGetLocationY` | `obj,status` | argc=1 |
+| `sGetMirror` | `obj,status` | argc=1 |
+| `sGetName` | `obj,status` | argc=1 |
+| `sGetRotation` | `obj,status` | argc=1 |
+
+Usage (object form): `$obj <method> <args...>`  /  global form: `DboGraphicInstance_<method> $obj <args...>`

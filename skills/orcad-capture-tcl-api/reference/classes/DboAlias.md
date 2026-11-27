@@ -1,0 +1,52 @@
+# DboAlias (46 methods)
+
+| method | params | note |
+| --- | --- | --- |
+| `GetBoundingBox` | `self` | argc=1 |
+| `GetBundleOwnerPropName` | `self,propName,sourceLibName` | argc=1 |
+| `GetBundleOwnerPropValue` | `self,propName,sourceLibName` | argc=1 |
+| `GetColor` | `self,status` | argc=1 |
+| `GetContainingLib` | `self` | argc=1 |
+| `GetDisplayName` | `self` | argc=1 |
+| `GetFont` | `self,status` | argc=1 |
+| `GetId` | `self,status` | argc=1 |
+| `GetLocation` | `self,status` | argc=1 |
+| `GetName` | `self,name` | argc=1 |
+| `GetObjectType` | `self` | argc=1 |
+| `GetOwner` | `self` | argc=1 |
+| `GetRotation` | `self,status` | argc=1 |
+| `IsBoundingBoxDirty` | `self` | argc=1 |
+| `IsBundleObject` | `self` | argc=1 |
+| `IsFontDefault` | `self,status` | argc=1 |
+| `m_nId_get` | `self` | argc=1 |
+| `m_nId_set` | `self,m_nId` | argc=1 |
+| `RemoveBundleOwner` | `self` | argc=1 |
+| `RemoveBundleProperties` | `self` | argc=1 |
+| `SetBoundingBox` | `self,boundingBox` | argc=1 |
+| `SetBoundingBoxDirty` | `self,bSetting` | argc=1 |
+| `SetBundleOwner` | `` | overloaded-C++ |
+| `SetColor` | `self,color` | argc=1 |
+| `SetDisplayName` | `self,pName` | argc=1 |
+| `SetFont` | `self,font` | argc=1 |
+| `SetId` | `self,newId` | argc=1 |
+| `SetLocation` | `self,location` | argc=1 |
+| `SetName` | `self,name` | argc=1 |
+| `SetOwnerBoundingBoxDirty` | `self,bSetting` | argc=1 |
+| `SetPropertyToExtention` | `self,bundleOwnerPropName,bundleOwnerPropValue` | argc=1 |
+| `SetRotation` | `self,rotation` | argc=1 |
+| `sGetColor` | `obj,status` | argc=1 |
+| `sGetFont` | `obj,status` | argc=1 |
+| `sGetLocationX` | `obj,status` | argc=1 |
+| `sGetLocationY` | `obj,status` | argc=1 |
+| `sGetName` | `obj,status` | argc=1 |
+| `sGetRotation` | `obj,status` | argc=1 |
+| `sSetColor` | `obj,color` | argc=1 |
+| `sSetFont` | `obj,font` | argc=1 |
+| `sSetLocationX` | `obj,x` | argc=1 |
+| `sSetLocationY` | `obj,y` | argc=1 |
+| `sSetName` | `obj,name` | argc=1 |
+| `sSetRotation` | `obj,rotation` | argc=1 |
+| `UpdateBundleOwner` | `` | overloaded-C++ |
+| `ValidateNGName` | `self,OldName,NewName,status` | argc=1 |
+
+Usage (object form): `$obj <method> <args...>`  /  global form: `DboAlias_<method> $obj <args...>`

@@ -65,6 +65,14 @@
 | [dbo-commands-17.4.csv](dbo-commands-17.4.csv) / [-16.6.csv](dbo-commands-16.6.csv) | ~6100 / 4962 行 | 类·方法·种类·命令名，便于 diff |
 | [commands-17.4.txt](commands-17.4.txt) · [-17.2](commands-17.2.txt) · [-16.6](commands-16.6.txt) | 6.1k / 6.0k / 5.0k 行 | 各版本命令全量清单 |
 
+## F. 机器可筛产物（给模型按需加载）
+
+| 产物 | 规模 | 用法 |
+| --- | --- | --- |
+| [classes/](classes/README.md) | 293 个文件 / 256 KB | **按类拆分的签名表**：每个 Dbo 类一个文件（`DboLibPart.md` 等），只加载需要的类，不必吞 245 KB 的 signatures.md；[classes/README.md](classes/README.md) 是全类索引（类名 → 方法数 → 文件） |
+| [traps.tsv](traps.tsv) | 30 行 / 7 列 | **坑表**：`api` `area` `symptom` `cause` `fix` `evidence` `status`；可直接按 `area`/`status` 过滤。`status` 取值：`verified`(23) / `unknown`(6) / `unknown-enum`(1) |
+| [llm-facts.md](llm-facts.md) | 事实库 | 硬规则、精确签名、假成功清单、报错映射、决策表、未验证清单——先读这个 |
+
 ## 建议阅读路径
 
 - **只写一个改属性的脚本**：[SKILL.md](../SKILL.md) §4.2 + §6 + [`safe-edit-prop.tcl`](../examples/safe-edit-prop.tcl)

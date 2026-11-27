@@ -325,6 +325,8 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 | [`llm-facts.md`](reference/llm-facts.md) | **事实库（先读这个）**：12 条硬规则、5 条假成功清单、精确签名（Dbo/Place/CapPdf/OrEntry/orjson/符号编辑器）、7 条报错文本映射、9 条决策表、7 条明确未验证、可运行入口表 |
 | [`signatures.md`](reference/signatures.md) | **主查表**：3,941 条命令的官方参数名 + C++ 类型（17.4），按声明类分组；重载未暴露的条目单独标注 |
 | [`signatures-17.4.csv`](reference/signatures-17.4.csv) / [`.tsv`](reference/signatures-17.4.tsv) | 同上，机读格式（command, class, method, params），便于 grep/脚本消费 |
+| [`classes/`](reference/classes/README.md) | **按类拆分的方法表（292 个文件 / 3,941 条）**：模型按需只加载一个类，避免每次吞 245 KB；索引见 [classes/README.md](reference/classes/README.md) |
+| [`traps.tsv`](reference/traps.tsv) | **可筛的坑表（33 行 TSV）**：api / area / symptom / cause / fix / evidence / status，含 5 条假成功、报错映射、版本差异、明确 unknown 项 |
 | [`dbo-classes.md`](reference/dbo-classes.md) | 291 个类的成员总表：类 → 方法 → 参数，用来反查"这个东西在哪个类上" |
 | [`dbo-commands-17.4.csv`](reference/dbo-commands-17.4.csv) / [`-16.6.csv`](reference/dbo-commands-16.6.csv) | 类·方法·种类·命令名四列，跨版本 diff 用 |
 | [`iterators.md`](reference/iterators.md) | 127 个迭代器 → `Next*` 方法名 → 对应的 `delete_Dbo*Iter`，含"必须删除"提醒 |

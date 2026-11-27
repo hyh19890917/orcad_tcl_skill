@@ -1,0 +1,53 @@
+# DboSession (47 methods)
+
+| method | params | note |
+| --- | --- | --- |
+| `~delete` | `self` | argc=1 |
+| `CallTclAttributeTrigger` | `pObj,triggerName,propName,propVal` | argc=1 |
+| `CopyLibAll` | `self,lib,name` | argc=1 |
+| `CreateDesign` | `` | overloaded-C++ |
+| `CreateLib` | `self,Name,status` | argc=1 |
+| `FindExternalDesignsToBeRemoved` | `self,pDsn,pDesList` | argc=1 |
+| `GetActiveDesign` | `self` | argc=1 |
+| `GetDataRelease` | `self` | argc=1 |
+| `GetDataReleaseForDBObject` | `self,pObj` | argc=1 |
+| `GetDataVersion` | `self` | argc=1 |
+| `GetDataVersionForDBObject` | `self,pObj` | argc=1 |
+| `GetDesign` | `self,Name,status` | argc=1 |
+| `GetDesignAndSchematics` | `self,Name,status` | argc=1 |
+| `GetDesignDataVersion` | `self` | argc=1 |
+| `GetFlatNetNamingStrategy` | `self` | argc=1 |
+| `GetIndexForString` | `self,str,status` | argc=1 |
+| `GetInterfaceVersion` | `self` | argc=1 |
+| `GetLib` | `self,Name,status` | argc=1 |
+| `GetLibAndSchematics` | `self,Name,status` | argc=1 |
+| `GetObjectFromUniqueStr` | `self,pUniqueStr` | argc=1 |
+| `GetOccByCanonicalName` | `` | overloaded-C++ |
+| `GetOpenDesign` | `self,Name,status` | argc=1 |
+| `GetOpenDesigns` | `self,designs,status` | argc=1 |
+| `GetOpenLib` | `self,Name,status` | argc=1 |
+| `GetStringPtrFromIndex` | `self,nIndex,status` | argc=1 |
+| `GetUniqueStringFromObject` | `self,pDboBaseObj` | argc=1 |
+| `IsBitSet` | `self,bit` | argc=1 |
+| `IsDesignPersistent` | `self,design,status` | argc=1 |
+| `IsEditingDisabledInSession` | `self` | argc=1 |
+| `IsFlatNetModificationRegistrationActive` | `self` | argc=1 |
+| `IsLibPersistent` | `self,lib,status` | argc=1 |
+| `IsObjLocked` | `self` | argc=1 |
+| `m_StringTable_get` | `self` | argc=1 |
+| `m_StringTable_set` | `self,m_StringTable` | argc=1 |
+| `m_StrTableArray_get` | `self` | argc=1 |
+| `m_StrTableArray_set` | `self,m_StrTableArray` | argc=1 |
+| `MarkAllLibForSave` | `self,lib` | argc=1 |
+| `NewDesignsIter` | `self,status` | argc=1 |
+| `NewLibsIter` | `self,status` | argc=1 |
+| `RemoveDesign` | `self,design` | argc=1 |
+| `RemoveLib` | `self,lib` | argc=1 |
+| `SaveDesign` | `self,design` | argc=1 |
+| `SaveDesignAs` | `` | overloaded-C++ |
+| `SaveLib` | `self,lib` | argc=1 |
+| `SaveLibAs` | `` | overloaded-C++ |
+| `SetBit` | `self,bit,bOn` | argc=1 |
+| `SetFlatNetNamingStrategy` | `self,pStrategy` | argc=1 |
+
+Usage (object form): `$obj <method> <args...>`  /  global form: `DboSession_<method> $obj <args...>`

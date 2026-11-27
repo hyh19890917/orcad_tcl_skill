@@ -1,0 +1,50 @@
+# DboSchematicNet (44 methods)
+
+| method | params | note |
+| --- | --- | --- |
+| `AddBusNet` | `self,pBusNet` | argc=1 |
+| `ComputeNetName` | `self,name` | argc=1 |
+| `DeleteEffectiveProp` | `self,name` | argc=1 |
+| `EffectivePropsMatch` | `` | overloaded-C++ |
+| `GetAttributeLockingInfo` | `self,propName,lLock,preTrigger,postTrigger` | argc=1 |
+| `GetBusNets` | `self` | argc=1 |
+| `GetColor` | `self,status` | argc=1 |
+| `GetContainingLib` | `self` | argc=1 |
+| `GetEffectivePropStringValue` | `` | overloaded-C++ |
+| `GetEffectivePropValueChoices` | `self,name,choices` | argc=1 |
+| `GetEffectivePropValueExists` | `self,name,bExists` | argc=1 |
+| `GetEffectivePropValueType` | `self,name,nType,bEditable,bDeletable` | argc=1 |
+| `GetId` | `self,status` | argc=1 |
+| `GetLineStyle` | `self,status` | argc=1 |
+| `GetLineWidth` | `self,status` | argc=1 |
+| `GetLocalNetName` | `self,name` | argc=1 |
+| `GetName` | `self,name` | argc=1 |
+| `GetObjectOccurrence` | `self,pParentSchematicOcc` | argc=1 |
+| `GetObjectOccurrences` | `` | overloaded-C++ |
+| `GetObjectType` | `self` | argc=1 |
+| `GetOwner` | `self` | argc=1 |
+| `GetParentObj` | `self` | argc=1 |
+| `GetSchNetNameForOldPspiceConnectivity` | `self,pEffectiveNetName` | argc=1 |
+| `HasBundleConnection` | `self` | argc=1 |
+| `HasNonNGOverrider` | `self` | argc=1 |
+| `IsBundleObject` | `self` | argc=1 |
+| `IsBusMember` | `self,pBusNet,status` | argc=1 |
+| `IsGlobal` | `self,status` | argc=1 |
+| `NewEffectivePropsIter` | `` | overloaded-C++ |
+| `NewGlobalsIter` | `self,status` | argc=1 |
+| `NewNetsIter` | `` | overloaded-C++ |
+| `NewOffPageConnectorsIter` | `self,status` | argc=1 |
+| `NewPortInstsIter` | `` | overloaded-C++ |
+| `NewPortsIter` | `` | overloaded-C++ |
+| `NewWiresIter` | `` | overloaded-C++ |
+| `RemoveBusNet` | `self,pBusNet` | argc=1 |
+| `ResolveComputedNameConflict` | `self,pName` | argc=1 |
+| `SetColor` | `self,color` | argc=1 |
+| `SetEffectivePropStringValue` | `` | overloaded-C++ |
+| `SetLineStyle` | `self,linestyle` | argc=1 |
+| `SetLineWidth` | `self,linewidth` | argc=1 |
+| `SetName` | `self,Name` | argc=1 |
+| `sGetId` | `obj,status` | argc=1 |
+| `sGetName` | `obj,status` | argc=1 |
+
+Usage (object form): `$obj <method> <args...>`  /  global form: `DboSchematicNet_<method> $obj <args...>`

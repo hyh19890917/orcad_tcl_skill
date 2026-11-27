@@ -1,0 +1,56 @@
+# DboDisplayProp (50 methods)
+
+| method | params | note |
+| --- | --- | --- |
+| `GetActualValueString` | `self,pBaseObject,value` | argc=1 |
+| `GetAnchorPoint` | `self` | argc=1 |
+| `GetBoundingBox` | `self` | argc=1 |
+| `GetColor` | `self,status` | argc=1 |
+| `GetContainingLib` | `self` | argc=1 |
+| `GetDefaultFontType` | `` | overloaded-C++ |
+| `GetDisplayType` | `self,status` | argc=1 |
+| `GetFont` | `self,dbFontType,logfont` | argc=1 |
+| `GetFontID` | `self` | argc=1 |
+| `GetHorizontalTextJustification` | `self` | argc=1 |
+| `GetId` | `` | overloaded-C++ |
+| `GetLocation` | `self,status` | argc=1 |
+| `GetName` | `self,name` | argc=1 |
+| `GetObjectType` | `self` | argc=1 |
+| `GetOwner` | `self` | argc=1 |
+| `GetParentObj` | `self` | argc=1 |
+| `GetRotation` | `self,status` | argc=1 |
+| `GetValueString` | `` | overloaded-C++ |
+| `GetValueStringForOccurrence` | `self,DWID,value` | argc=1 |
+| `IsBoundingBoxDirty` | `self` | argc=1 |
+| `IsFontDefault` | `self,DboState&` | argc=1 |
+| `MarkModified` | `self` | argc=1 |
+| `SetAnchorPoint` | `self,pAnchorPT` | argc=1 |
+| `SetBoundingBox` | `self,rect` | argc=1 |
+| `SetBoundingBoxDirty` | `self,bSetting` | argc=1 |
+| `SetColor` | `self,color` | argc=1 |
+| `SetDisplayType` | `self,type` | argc=1 |
+| `SetFont` | `self,font` | argc=1 |
+| `SetHorizontalTextJustification` | `self,pHpos` | argc=1 |
+| `SetId` | `self,newId` | argc=1 |
+| `SetLocation` | `self,location` | argc=1 |
+| `SetName` | `self,name` | argc=1 |
+| `SetOwnerBoundingBoxDirty` | `self,bSetting` | argc=1 |
+| `SetRotation` | `self,rotation` | argc=1 |
+| `SetValueString` | `` | overloaded-C++ |
+| `sGetColor` | `obj,status` | argc=1 |
+| `sGetDisplayType` | `obj,status` | argc=1 |
+| `sGetFont` | `obj,status` | argc=1 |
+| `sGetLocationX` | `obj,status` | argc=1 |
+| `sGetLocationY` | `obj,status` | argc=1 |
+| `sGetName` | `obj,status` | argc=1 |
+| `sGetRotation` | `obj,status` | argc=1 |
+| `sGetValue` | `obj,status` | argc=1 |
+| `sSetColor` | `obj,color` | argc=1 |
+| `sSetDisplayType` | `obj,displayType` | argc=1 |
+| `sSetFont` | `obj,font` | argc=1 |
+| `sSetLocationX` | `obj,x` | argc=1 |
+| `sSetLocationY` | `obj,y` | argc=1 |
+| `sSetName` | `obj,name` | argc=1 |
+| `sSetRotation` | `obj,rotation` | argc=1 |
+
+Usage (object form): `$obj <method> <args...>`  /  global form: `DboDisplayProp_<method> $obj <args...>`
