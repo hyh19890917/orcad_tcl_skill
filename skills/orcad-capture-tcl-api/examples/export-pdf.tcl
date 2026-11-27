@@ -137,6 +137,49 @@ proc ::pdfexp::Run {outDir args} {
     if {$design eq "NULL" || $design eq ""} { error "no active design" }
     ::pdfexp::Note "design ok"
 
+    # 活动页：没有打开的页窗口时，打印阶段会产出 0 字节 PS（实测）
+    if {[catch {set ap [GetActivePage]} e]} {
+        ::pdfexp::Note "active page: NONE ($e) -- open a schematic page window before printing"
+    } else {
+        ::pdfexp::Note "active page ok"
+    }
+
+    # Ghostscript 自动探测：找到就改写转换命令为全路径
+    set gsPath ""
+    foreach cand [list \
+        "C:/Program Files/gs" "C:/Program Files (x86)/gs" ] {
+        if {[file isdirectory $cand]} {
+            catch {
+                set hit [lindex [glob -nocomplain -directory $cand -types d *] end]
+                if {$hit ne ""} {
+                    set exe [file join $hit "bin" "gswin64c.exe"]
+                    if {[file isfile $exe]} { set gsPath $exe }
+                }
+            }
+        }
+    }
+    if {$gsPath eq ""} {
+        foreach exe {gswin64c.exe gswin32c.exe} {
+            set p ""
+            catch {set p [auto_execok $exe]}
+            if {$p ne ""} { set gsPath $p; break }
+        }
+    }
+    if {$gsPath ne ""} {
+        ::pdfexp::Note "ghostscript found: $gsPath"
+        catch {
+            set idx ""
+            set idx [GetOptionString capPDFCommandIndex]
+            if {$idx ne ""} {
+                set cmd "{$gsPath} -sDEVICE=pdfwrite -sOutputFile=\$::capPdfUtil::mPdfFilePath -dBATCH -dNOPAUSE \$::capPdfUtil::mPSFilePath"
+                SetOptionString "capPDFCommand$idx" $cmd
+                ::pdfexp::Note "rewrote capPDFCommand$idx with full gs path"
+            }
+        }
+    } else {
+        ::pdfexp::Note "ghostscript NOT found -> PDF conversion will fail; install 64-bit Ghostscript or point capPDFCommand<idx> at a converter"
+    }
+
     # 驱动检查：官方 OrHandlerPDFExport::checkPrinterDriver 是带驱动名调用的
     set driverName "OrCADPS_17.4"
     catch { set ini ""; set ini [GetOptionString capPDFDriver]; if {$ini ne ""} { set driverName $ini } }

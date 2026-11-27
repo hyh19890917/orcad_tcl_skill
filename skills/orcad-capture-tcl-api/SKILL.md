@@ -329,6 +329,8 @@ Cadence 自己用这套 API 写了 564 个官方 tcl（`tools\capture\tclscripts
 | [official-ui-layout-export.md](reference/official-ui-layout-export.md) | 官方四套范式：偏好表单（CFT 字段+树表+JSON）、对齐/分布选项模型、PDF 导出的标注+跨进程管线、对象流序列化字段分层 |
 | [host-pdf-api.md](reference/host-pdf-api.md) | **PDF 打印与标注**：CapPdfPrint(outDir,outFile)、CapPdfAddMarkStart(x1y1x2y2,id,0)+AddMarkData+AddMarkEnd、七个选项(InstMode/书签/纸张索引/驱动)、与 capPdfUtil 脚本层的分工 |
 | [host-place-api.md](reference/host-place-api.md) | **放置类完整签名**（实测）：PlaceWire/PlaceBus(x1y1x2y2)、PlaceNetAlias(x,y,name)、PlaceOffPage/Port/Power/Ground(x,y,lib,symbol,name)、PlacePart 六参与索引状态机、PlaceNetgroup 需页上下文 |
+| [host-panel-api.md](reference/host-panel-api.md) | 面板 API 全景：240 命名空间/3126 方法、`pStrClientId` 契约、`::capObjectAlignment::` 120 个对齐方法、`orPrmServerPrimary` RPC 形态 |
+| [host-capability-map.md](reference/host-capability-map.md) | 宿主家族地图：CorSimSrvr/CPMgt/DBXMLWriter/orSysObjectsManager/CIS*/CVariant/orjson/CNewBOm 的数量与用途、掌握度标注、下一步挖掘顺序 |
 | [host-commands-surface.md](reference/host-commands-surface.md) | **宿主命令面盘点**：Capture 内 9830 条 vs headless 6112 条、家族分布、`Place*` 63 条全清单（PlaceNetAlias/PlaceOffPage/PlacePort…）、关键命令存在性核对、`cap*` 533 条亮点、旧结论勘误 |
 | [web-panel-bridge.md](reference/web-panel-bridge.md) | 面板桥官方实现：服务端 methodLabel=executeTcl 直接 eval、页面侧 orPrmConnector(widgetId, tcl)、Tcl 侧 webpanel::exec/nativeCall、白名单骨架 |
 | [plugin-lifecycle.md](reference/plugin-lifecycle.md) | 插件生命周期：capAutoLoad 即入口、`<Feature>Init.tcl` 壳与体之分、约定式 proc 名、`package require orPrmDesigner` 面板三步、命令表盲区（宿主命令不在 6109 条里） |
