@@ -36,6 +36,8 @@ autoload 里的 proc 遵循可被宿主/启动器识别的命名：
 | `<feature>_EnableXxxActions` / `_HideXxxActions` | 动态开关菜单项 |
 | `<feature>_CompareDesigns {}` 之类 | 具体业务入口 |
 
+> **勘误**：早期版本这里写过"官方脚本里没有通用事件注册 API"——错。事件系统就是 `RegisterAction` 加**保留动作名**（`_cdnOrOnDesignPostSave` / `_cdnOrNotifyDesignOpened` / `_cdnOrOnNewSchematicPage` … 约 100 个），完整目录见 [host-event-hooks.md](host-event-hooks.md)。
+
 注意：**这些文件大多不自我注册**（不调 `RegisterAction`）；注册集中在少数"菜单总装"文件里（例：`capAppLaunchMenu.tcl` 里 `RegisterAction "_cdnCapTclAddPageCustomMenu" "capTrue" "" "capAddAppLauncher" ""`）。也就是说官方把"注册"与"实现"分开，便于统一管理菜单结构。
 
 ## 3. 面板启动：`package require orPrmDesigner`
