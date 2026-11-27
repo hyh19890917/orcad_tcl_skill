@@ -63,11 +63,13 @@ proc ::hostdump::Run {args} {
     set probe 1
     set deep 0
     set probePlace 0
+    set probePdf 0
     foreach a $args {
         switch -- $a {
             --no-probe { set probe 0 }
             --deep        { set deep 1 }
             --probe-place { set probePlace 1 }
+            --probe-pdf   { set probePdf 1 }
             default    { set outdir $a }
         }
     }
@@ -174,6 +176,7 @@ proc ::hostdump::Run {args} {
         set allow {^(Get|Is|Has|Can|Find|Query|List)}
         set block {exit|quit|delete|remove|close|open|save|load|\brun\b|exec|reset|clear|withdialog|drop|kill|placenext}
         if {$probePlace} { set allow {^(Get|Is|Has|Can|Find|Query|List|Place)} }
+        if {$probePdf} { set allow {^(Get|Is|Has|Can|Find|Query|List|CapPdf)} }
         set n 0
         foreach c $all {
             if {![regexp -- $allow $c]} { continue }
@@ -234,4 +237,4 @@ proc ::hostdump::Run {args} {
     return $outdir
 }
 
-puts "::hostdump::Run ?outdir? ?--no-probe? ?--deep? ?--probe-place?  ready (v2)"
+puts "::hostdump::Run ?outdir? ?--no-probe? ?--deep? ?--probe-place? ?--probe-pdf?  ready (v2)"
